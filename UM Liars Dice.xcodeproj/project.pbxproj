@@ -14,6 +14,20 @@
 		4DE93C391CE8D7D4008041C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C371CE8D7D4008041C3 /* LaunchScreen.storyboard */; };
 		4DE93C441CE8D7D4008041C3 /* UM_Liars_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C431CE8D7D4008041C3 /* UM_Liars_DiceTests.swift */; };
 		4DE93C4F1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */; };
+		4DE93C7E1CE8DA99008041C3 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C611CE8DA99008041C3 /* about.html */; };
+		4DE93C7F1CE8DA99008041C3 /* rules.html in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C621CE8DA99008041C3 /* rules.html */; };
+		4DE93C801CE8DA99008041C3 /* AppIcon-iPad@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C641CE8DA99008041C3 /* AppIcon-iPad@1x.png */; };
+		4DE93C811CE8DA99008041C3 /* AppIcon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C651CE8DA99008041C3 /* AppIcon-iPad@2x.png */; };
+		4DE93C821CE8DA99008041C3 /* AppIcon-iPadPro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C661CE8DA99008041C3 /* AppIcon-iPadPro@2x.png */; };
+		4DE93C901CE8DA99008041C3 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C741CE8DA99008041C3 /* AppIcon@2x.png */; };
+		4DE93C911CE8DA99008041C3 /* AppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C751CE8DA99008041C3 /* AppIcon@3x.png */; };
+		4DE93C931CE8DA99008041C3 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C771CE8DA99008041C3 /* iTunesArtwork.png */; };
+		4DE93C941CE8DA99008041C3 /* Settings@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C781CE8DA99008041C3 /* Settings@1x.png */; };
+		4DE93C951CE8DA99008041C3 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C791CE8DA99008041C3 /* Settings@2x.png */; };
+		4DE93C961CE8DA99008041C3 /* Settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7A1CE8DA99008041C3 /* Settings@3x.png */; };
+		4DE93C971CE8DA99008041C3 /* Spotlight@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */; };
+		4DE93C981CE8DA99008041C3 /* Spotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */; };
+		4DE93C991CE8DA99008041C3 /* Spotlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +61,21 @@
 		4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UM Liars DiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UM_Liars_DiceUITests.swift; sourceTree = "<group>"; };
 		4DE93C501CE8D7D4008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE93C611CE8DA99008041C3 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		4DE93C621CE8DA99008041C3 /* rules.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rules.html; sourceTree = "<group>"; };
+		4DE93C641CE8DA99008041C3 /* AppIcon-iPad@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-iPad@1x.png"; sourceTree = "<group>"; };
+		4DE93C651CE8DA99008041C3 /* AppIcon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-iPad@2x.png"; sourceTree = "<group>"; };
+		4DE93C661CE8DA99008041C3 /* AppIcon-iPadPro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-iPadPro@2x.png"; sourceTree = "<group>"; };
+		4DE93C741CE8DA99008041C3 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		4DE93C751CE8DA99008041C3 /* AppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x.png"; sourceTree = "<group>"; };
+		4DE93C761CE8DA99008041C3 /* Artwork VectorGraphics.afdesign */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Artwork VectorGraphics.afdesign"; sourceTree = "<group>"; };
+		4DE93C771CE8DA99008041C3 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		4DE93C781CE8DA99008041C3 /* Settings@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@1x.png"; sourceTree = "<group>"; };
+		4DE93C791CE8DA99008041C3 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
+		4DE93C7A1CE8DA99008041C3 /* Settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@3x.png"; sourceTree = "<group>"; };
+		4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@1x.png"; sourceTree = "<group>"; };
+		4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@2x.png"; sourceTree = "<group>"; };
+		4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +106,8 @@
 		4DE93C221CE8D7D4008041C3 = {
 			isa = PBXGroup;
 			children = (
+				4DE93C601CE8DA99008041C3 /* HTML */,
+				4DE93C631CE8DA99008041C3 /* Images */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
@@ -123,6 +154,37 @@
 				4DE93C501CE8D7D4008041C3 /* Info.plist */,
 			);
 			path = "UM Liars DiceUITests";
+			sourceTree = "<group>";
+		};
+		4DE93C601CE8DA99008041C3 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C611CE8DA99008041C3 /* about.html */,
+				4DE93C621CE8DA99008041C3 /* rules.html */,
+			);
+			name = HTML;
+			path = "UM Liars Dice/HTML";
+			sourceTree = "<group>";
+		};
+		4DE93C631CE8DA99008041C3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C641CE8DA99008041C3 /* AppIcon-iPad@1x.png */,
+				4DE93C651CE8DA99008041C3 /* AppIcon-iPad@2x.png */,
+				4DE93C661CE8DA99008041C3 /* AppIcon-iPadPro@2x.png */,
+				4DE93C741CE8DA99008041C3 /* AppIcon@2x.png */,
+				4DE93C751CE8DA99008041C3 /* AppIcon@3x.png */,
+				4DE93C761CE8DA99008041C3 /* Artwork VectorGraphics.afdesign */,
+				4DE93C771CE8DA99008041C3 /* iTunesArtwork.png */,
+				4DE93C781CE8DA99008041C3 /* Settings@1x.png */,
+				4DE93C791CE8DA99008041C3 /* Settings@2x.png */,
+				4DE93C7A1CE8DA99008041C3 /* Settings@3x.png */,
+				4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */,
+				4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */,
+				4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */,
+			);
+			name = Images;
+			path = "UM Liars Dice/Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,8 +291,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE93C981CE8DA99008041C3 /* Spotlight@2x.png in Resources */,
+				4DE93C961CE8DA99008041C3 /* Settings@3x.png in Resources */,
+				4DE93C991CE8DA99008041C3 /* Spotlight@3x.png in Resources */,
+				4DE93C911CE8DA99008041C3 /* AppIcon@3x.png in Resources */,
+				4DE93C7E1CE8DA99008041C3 /* about.html in Resources */,
+				4DE93C821CE8DA99008041C3 /* AppIcon-iPadPro@2x.png in Resources */,
+				4DE93C951CE8DA99008041C3 /* Settings@2x.png in Resources */,
 				4DE93C391CE8D7D4008041C3 /* LaunchScreen.storyboard in Resources */,
+				4DE93C801CE8DA99008041C3 /* AppIcon-iPad@1x.png in Resources */,
+				4DE93C901CE8DA99008041C3 /* AppIcon@2x.png in Resources */,
+				4DE93C971CE8DA99008041C3 /* Spotlight@1x.png in Resources */,
+				4DE93C941CE8DA99008041C3 /* Settings@1x.png in Resources */,
+				4DE93C7F1CE8DA99008041C3 /* rules.html in Resources */,
+				4DE93C811CE8DA99008041C3 /* AppIcon-iPad@2x.png in Resources */,
 				4DE93C361CE8D7D4008041C3 /* Assets.xcassets in Resources */,
+				4DE93C931CE8DA99008041C3 /* iTunesArtwork.png in Resources */,
 				4DE93C341CE8D7D4008041C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
