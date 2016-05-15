@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */; };
+		4DE93C311CE8D7D4008041C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C301CE8D7D4008041C3 /* ViewController.swift */; };
+		4DE93C341CE8D7D4008041C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C321CE8D7D4008041C3 /* Main.storyboard */; };
+		4DE93C361CE8D7D4008041C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C351CE8D7D4008041C3 /* Assets.xcassets */; };
+		4DE93C391CE8D7D4008041C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C371CE8D7D4008041C3 /* LaunchScreen.storyboard */; };
+		4DE93C441CE8D7D4008041C3 /* UM_Liars_DiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C431CE8D7D4008041C3 /* UM_Liars_DiceTests.swift */; };
+		4DE93C4F1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DE93C401CE8D7D4008041C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DE93C2A1CE8D7D4008041C3;
+			remoteInfo = "UM Liars Dice";
+		};
+		4DE93C4B1CE8D7D4008041C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DE93C2A1CE8D7D4008041C3;
+			remoteInfo = "UM Liars Dice";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UM Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4DE93C301CE8D7D4008041C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4DE93C331CE8D7D4008041C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4DE93C351CE8D7D4008041C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DE93C381CE8D7D4008041C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4DE93C3A1CE8D7D4008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE93C3F1CE8D7D4008041C3 /* UM Liars DiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UM Liars DiceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE93C431CE8D7D4008041C3 /* UM_Liars_DiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UM_Liars_DiceTests.swift; sourceTree = "<group>"; };
+		4DE93C451CE8D7D4008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UM Liars DiceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UM_Liars_DiceUITests.swift; sourceTree = "<group>"; };
+		4DE93C501CE8D7D4008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DE93C281CE8D7D4008041C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C3C1CE8D7D4008041C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C471CE8D7D4008041C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DE93C221CE8D7D4008041C3 = {
+			isa = PBXGroup;
+			children = (
+				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
+				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
+				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
+				4DE93C2C1CE8D7D4008041C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DE93C2C1CE8D7D4008041C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */,
+				4DE93C3F1CE8D7D4008041C3 /* UM Liars DiceTests.xctest */,
+				4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */,
+				4DE93C301CE8D7D4008041C3 /* ViewController.swift */,
+				4DE93C321CE8D7D4008041C3 /* Main.storyboard */,
+				4DE93C351CE8D7D4008041C3 /* Assets.xcassets */,
+				4DE93C371CE8D7D4008041C3 /* LaunchScreen.storyboard */,
+				4DE93C3A1CE8D7D4008041C3 /* Info.plist */,
+			);
+			path = "UM Liars Dice";
+			sourceTree = "<group>";
+		};
+		4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C431CE8D7D4008041C3 /* UM_Liars_DiceTests.swift */,
+				4DE93C451CE8D7D4008041C3 /* Info.plist */,
+			);
+			path = "UM Liars DiceTests";
+			sourceTree = "<group>";
+		};
+		4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */,
+				4DE93C501CE8D7D4008041C3 /* Info.plist */,
+			);
+			path = "UM Liars DiceUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE93C531CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars Dice" */;
+			buildPhases = (
+				4DE93C271CE8D7D4008041C3 /* Sources */,
+				4DE93C281CE8D7D4008041C3 /* Frameworks */,
+				4DE93C291CE8D7D4008041C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UM Liars Dice";
+			productName = "UM Liars Dice";
+			productReference = 4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DE93C3E1CE8D7D4008041C3 /* UM Liars DiceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE93C561CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceTests" */;
+			buildPhases = (
+				4DE93C3B1CE8D7D4008041C3 /* Sources */,
+				4DE93C3C1CE8D7D4008041C3 /* Frameworks */,
+				4DE93C3D1CE8D7D4008041C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DE93C411CE8D7D4008041C3 /* PBXTargetDependency */,
+			);
+			name = "UM Liars DiceTests";
+			productName = "UM Liars DiceTests";
+			productReference = 4DE93C3F1CE8D7D4008041C3 /* UM Liars DiceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4DE93C491CE8D7D4008041C3 /* UM Liars DiceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE93C591CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceUITests" */;
+			buildPhases = (
+				4DE93C461CE8D7D4008041C3 /* Sources */,
+				4DE93C471CE8D7D4008041C3 /* Frameworks */,
+				4DE93C481CE8D7D4008041C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DE93C4C1CE8D7D4008041C3 /* PBXTargetDependency */,
+			);
+			name = "UM Liars DiceUITests";
+			productName = "UM Liars DiceUITests";
+			productReference = 4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DE93C231CE8D7D4008041C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Alex Turner";
+				TargetAttributes = {
+					4DE93C2A1CE8D7D4008041C3 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					4DE93C3E1CE8D7D4008041C3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
+					};
+					4DE93C491CE8D7D4008041C3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
+					};
+				};
+			};
+			buildConfigurationList = 4DE93C261CE8D7D4008041C3 /* Build configuration list for PBXProject "UM Liars Dice" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DE93C221CE8D7D4008041C3;
+			productRefGroup = 4DE93C2C1CE8D7D4008041C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */,
+				4DE93C3E1CE8D7D4008041C3 /* UM Liars DiceTests */,
+				4DE93C491CE8D7D4008041C3 /* UM Liars DiceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DE93C291CE8D7D4008041C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93C391CE8D7D4008041C3 /* LaunchScreen.storyboard in Resources */,
+				4DE93C361CE8D7D4008041C3 /* Assets.xcassets in Resources */,
+				4DE93C341CE8D7D4008041C3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C3D1CE8D7D4008041C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C481CE8D7D4008041C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DE93C271CE8D7D4008041C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93C311CE8D7D4008041C3 /* ViewController.swift in Sources */,
+				4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C3B1CE8D7D4008041C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93C441CE8D7D4008041C3 /* UM_Liars_DiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93C461CE8D7D4008041C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93C4F1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DE93C411CE8D7D4008041C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */;
+			targetProxy = 4DE93C401CE8D7D4008041C3 /* PBXContainerItemProxy */;
+		};
+		4DE93C4C1CE8D7D4008041C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */;
+			targetProxy = 4DE93C4B1CE8D7D4008041C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DE93C321CE8D7D4008041C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DE93C331CE8D7D4008041C3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4DE93C371CE8D7D4008041C3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DE93C381CE8D7D4008041C3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DE93C511CE8D7D4008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4DE93C521CE8D7D4008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DE93C541CE8D7D4008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4DE93C551CE8D7D4008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4DE93C571CE8D7D4008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UM Liars DiceTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-DiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UM Liars Dice.app/UM Liars Dice";
+			};
+			name = Debug;
+		};
+		4DE93C581CE8D7D4008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "UM Liars DiceTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-DiceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UM Liars Dice.app/UM Liars Dice";
+			};
+			name = Release;
+		};
+		4DE93C5A1CE8D7D4008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UM Liars DiceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-DiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UM Liars Dice";
+			};
+			name = Debug;
+		};
+		4DE93C5B1CE8D7D4008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "UM Liars DiceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-DiceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "UM Liars Dice";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DE93C261CE8D7D4008041C3 /* Build configuration list for PBXProject "UM Liars Dice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93C511CE8D7D4008041C3 /* Debug */,
+				4DE93C521CE8D7D4008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DE93C531CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars Dice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93C541CE8D7D4008041C3 /* Debug */,
+				4DE93C551CE8D7D4008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DE93C561CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93C571CE8D7D4008041C3 /* Debug */,
+				4DE93C581CE8D7D4008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DE93C591CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93C5A1CE8D7D4008041C3 /* Debug */,
+				4DE93C5B1CE8D7D4008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DE93C231CE8D7D4008041C3 /* Project object */;
+}
