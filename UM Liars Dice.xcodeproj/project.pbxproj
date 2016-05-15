@@ -28,6 +28,25 @@
 		4DE93C971CE8DA99008041C3 /* Spotlight@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */; };
 		4DE93C981CE8DA99008041C3 /* Spotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */; };
 		4DE93C991CE8DA99008041C3 /* Spotlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */; };
+		4DE93CA31CE8DD79008041C3 /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DE93CAA1CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; };
+		4DE93CB11CE8DD79008041C3 /* DiceLogicEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */; };
+		4DE93CB51CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; };
+		4DE93CB71CE8DD79008041C3 /* DiceLogicEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4DE93CBF1CE8DDCE008041C3 /* DiceLogicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */; };
+		4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC01CE8DE01008041C3 /* Die.swift */; };
+		4DE93CC51CE8E0D2008041C3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */; };
+		4DE93CC61CE8E0D2008041C3 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */; };
+		4DE93CCA1CE8E23E008041C3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */; };
+		4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */; };
+		4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */; };
+		4DE93CD11CE8EB5A008041C3 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD01CE8EB5A008041C3 /* Random.swift */; };
+		4DE93CD21CE8EFA8008041C3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */; };
+		4DE93CD41CE8F14D008041C3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD31CE8F14D008041C3 /* Player.swift */; };
+		4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD61CE8F270008041C3 /* HistoryItem.swift */; };
+		4DE93CD91CE8F5D0008041C3 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD81CE8F5D0008041C3 /* Serializable.swift */; };
+		4DE93CDB1CE8F83F008041C3 /* BidAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDA1CE8F83F008041C3 /* BidAction.swift */; };
+		4DE93CDD1CE8F856008041C3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDC1CE8F856008041C3 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +64,42 @@
 			remoteGlobalIDString = 4DE93C2A1CE8D7D4008041C3;
 			remoteInfo = "UM Liars Dice";
 		};
+		4DE93CAB1CE8DD79008041C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DE93C9F1CE8DD79008041C3;
+			remoteInfo = DiceLogicEngine;
+		};
+		4DE93CAD1CE8DD79008041C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DE93C2A1CE8D7D4008041C3;
+			remoteInfo = "UM Liars Dice";
+		};
+		4DE93CB31CE8DD79008041C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DE93C9F1CE8DD79008041C3;
+			remoteInfo = DiceLogicEngine;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4DE93CB61CE8DD79008041C3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4DE93CB71CE8DD79008041C3 /* DiceLogicEngine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UM Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +130,26 @@
 		4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@1x.png"; sourceTree = "<group>"; };
 		4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@2x.png"; sourceTree = "<group>"; };
 		4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@3x.png"; sourceTree = "<group>"; };
+		4DE93C9A1CE8DC08008041C3 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiceLogicEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiceLogicEngine.h; sourceTree = "<group>"; };
+		4DE93CA41CE8DD79008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE93CA91CE8DD79008041C3 /* DiceLogicEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiceLogicEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceLogicEngineTests.swift; sourceTree = "<group>"; };
+		4DE93CB21CE8DD79008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceLogicEngine.swift; sourceTree = "<group>"; };
+		4DE93CC01CE8DE01008041C3 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
+		4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessagePack.framework; path = Carthage/Build/iOS/MessagePack.framework; sourceTree = "<group>"; };
+		4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rainbow.framework; path = Carthage/Build/iOS/Rainbow.framework; sourceTree = "<group>"; };
+		4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
+		4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
+		4DE93CD01CE8EB5A008041C3 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		4DE93CD31CE8F14D008041C3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4DE93CD61CE8F270008041C3 /* HistoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		4DE93CD81CE8F5D0008041C3 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		4DE93CDA1CE8F83F008041C3 /* BidAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidAction.swift; sourceTree = "<group>"; };
+		4DE93CDC1CE8F856008041C3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE93CB51CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,17 +175,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DE93C9C1CE8DD79008041C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */,
+				4DE93CC51CE8E0D2008041C3 /* MessagePack.framework in Frameworks */,
+				4DE93CC61CE8E0D2008041C3 /* Rainbow.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93CA61CE8DD79008041C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93CAA1CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */,
+				4DE93CD21CE8EFA8008041C3 /* MessagePack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4DE93C221CE8D7D4008041C3 = {
 			isa = PBXGroup;
 			children = (
+				4DE93CCD1CE8EABC008041C3 /* Frameworks */,
+				4DE93C9A1CE8DC08008041C3 /* Cartfile */,
 				4DE93C601CE8DA99008041C3 /* HTML */,
 				4DE93C631CE8DA99008041C3 /* Images */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
+				4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */,
+				4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */,
 				4DE93C2C1CE8D7D4008041C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +219,8 @@
 				4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */,
 				4DE93C3F1CE8D7D4008041C3 /* UM Liars DiceTests.xctest */,
 				4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */,
+				4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */,
+				4DE93CA91CE8DD79008041C3 /* DiceLogicEngineTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,7 +287,64 @@
 			path = "UM Liars Dice/Images";
 			sourceTree = "<group>";
 		};
+		4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93CD51CE8F257008041C3 /* History */,
+				4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */,
+				4DE93CA41CE8DD79008041C3 /* Info.plist */,
+				4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */,
+				4DE93CC01CE8DE01008041C3 /* Die.swift */,
+				4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */,
+				4DE93CD31CE8F14D008041C3 /* Player.swift */,
+				4DE93CD01CE8EB5A008041C3 /* Random.swift */,
+				4DE93CD81CE8F5D0008041C3 /* Serializable.swift */,
+			);
+			path = DiceLogicEngine;
+			sourceTree = "<group>";
+		};
+		4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */,
+				4DE93CB21CE8DD79008041C3 /* Info.plist */,
+				4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */,
+			);
+			path = DiceLogicEngineTests;
+			sourceTree = "<group>";
+		};
+		4DE93CCD1CE8EABC008041C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */,
+				4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */,
+				4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DE93CD51CE8F257008041C3 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93CD61CE8F270008041C3 /* HistoryItem.swift */,
+				4DE93CDA1CE8F83F008041C3 /* BidAction.swift */,
+				4DE93CDC1CE8F856008041C3 /* Action.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4DE93C9D1CE8DD79008041C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93CA31CE8DD79008041C3 /* DiceLogicEngine.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */ = {
@@ -197,10 +354,13 @@
 				4DE93C271CE8D7D4008041C3 /* Sources */,
 				4DE93C281CE8D7D4008041C3 /* Frameworks */,
 				4DE93C291CE8D7D4008041C3 /* Resources */,
+				4DE93CB61CE8DD79008041C3 /* Embed Frameworks */,
+				4DE93CC81CE8E16F008041C3 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4DE93CB41CE8DD79008041C3 /* PBXTargetDependency */,
 			);
 			name = "UM Liars Dice";
 			productName = "UM Liars Dice";
@@ -243,6 +403,43 @@
 			productReference = 4DE93C4A1CE8D7D4008041C3 /* UM Liars DiceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4DE93C9F1CE8DD79008041C3 /* DiceLogicEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE93CB81CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngine" */;
+			buildPhases = (
+				4DE93C9B1CE8DD79008041C3 /* Sources */,
+				4DE93C9C1CE8DD79008041C3 /* Frameworks */,
+				4DE93C9D1CE8DD79008041C3 /* Headers */,
+				4DE93C9E1CE8DD79008041C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiceLogicEngine;
+			productName = DiceLogicEngine;
+			productReference = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4DE93CA81CE8DD79008041C3 /* DiceLogicEngineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DE93CBB1CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineTests" */;
+			buildPhases = (
+				4DE93CA51CE8DD79008041C3 /* Sources */,
+				4DE93CA61CE8DD79008041C3 /* Frameworks */,
+				4DE93CA71CE8DD79008041C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DE93CAC1CE8DD79008041C3 /* PBXTargetDependency */,
+				4DE93CAE1CE8DD79008041C3 /* PBXTargetDependency */,
+			);
+			name = DiceLogicEngineTests;
+			productName = DiceLogicEngineTests;
+			productReference = 4DE93CA91CE8DD79008041C3 /* DiceLogicEngineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,6 +461,13 @@
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
 					};
+					4DE93C9F1CE8DD79008041C3 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					4DE93CA81CE8DD79008041C3 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
+					};
 				};
 			};
 			buildConfigurationList = 4DE93C261CE8D7D4008041C3 /* Build configuration list for PBXProject "UM Liars Dice" */;
@@ -282,6 +486,8 @@
 				4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C3E1CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C491CE8D7D4008041C3 /* UM Liars DiceUITests */,
+				4DE93C9F1CE8DD79008041C3 /* DiceLogicEngine */,
+				4DE93CA81CE8DD79008041C3 /* DiceLogicEngineTests */,
 			);
 		};
 /* End PBXProject section */
@@ -325,7 +531,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DE93C9E1CE8DD79008041C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93CA71CE8DD79008041C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4DE93CC81CE8E16F008041C3 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/MessagePack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Rainbow.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4DE93C271CE8D7D4008041C3 /* Sources */ = {
@@ -353,6 +592,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4DE93C9B1CE8DD79008041C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93CD91CE8F5D0008041C3 /* Serializable.swift in Sources */,
+				4DE93CDD1CE8F856008041C3 /* Action.swift in Sources */,
+				4DE93CD41CE8F14D008041C3 /* Player.swift in Sources */,
+				4DE93CD11CE8EB5A008041C3 /* Random.swift in Sources */,
+				4DE93CCA1CE8E23E008041C3 /* ErrorHandling.swift in Sources */,
+				4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */,
+				4DE93CBF1CE8DDCE008041C3 /* DiceLogicEngine.swift in Sources */,
+				4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */,
+				4DE93CDB1CE8F83F008041C3 /* BidAction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DE93CA51CE8DD79008041C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */,
+				4DE93CB11CE8DD79008041C3 /* DiceLogicEngineTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -365,6 +629,21 @@
 			isa = PBXTargetDependency;
 			target = 4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */;
 			targetProxy = 4DE93C4B1CE8D7D4008041C3 /* PBXContainerItemProxy */;
+		};
+		4DE93CAC1CE8DD79008041C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DE93C9F1CE8DD79008041C3 /* DiceLogicEngine */;
+			targetProxy = 4DE93CAB1CE8DD79008041C3 /* PBXContainerItemProxy */;
+		};
+		4DE93CAE1CE8DD79008041C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DE93C2A1CE8D7D4008041C3 /* UM Liars Dice */;
+			targetProxy = 4DE93CAD1CE8DD79008041C3 /* PBXContainerItemProxy */;
+		};
+		4DE93CB41CE8DD79008041C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DE93C9F1CE8DD79008041C3 /* DiceLogicEngine */;
+			targetProxy = 4DE93CB31CE8DD79008041C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -477,6 +756,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
@@ -488,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
@@ -541,6 +822,85 @@
 			};
 			name = Release;
 		};
+		4DE93CB91CE8DD7A008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DiceLogicEngine/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4DE93CBA1CE8DD7A008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DiceLogicEngine/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4DE93CBC1CE8DD7A008041C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DiceLogicEngineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UM Liars Dice.app/UM Liars Dice";
+			};
+			name = Debug;
+		};
+		4DE93CBD1CE8DD7A008041C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DiceLogicEngineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UM Liars Dice.app/UM Liars Dice";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -574,6 +934,22 @@
 			buildConfigurations = (
 				4DE93C5A1CE8D7D4008041C3 /* Debug */,
 				4DE93C5B1CE8D7D4008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DE93CB81CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93CB91CE8DD7A008041C3 /* Debug */,
+				4DE93CBA1CE8DD7A008041C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DE93CBB1CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DE93CBC1CE8DD7A008041C3 /* Debug */,
+				4DE93CBD1CE8DD7A008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

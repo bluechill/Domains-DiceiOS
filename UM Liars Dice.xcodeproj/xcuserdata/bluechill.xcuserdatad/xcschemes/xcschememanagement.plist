@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DiceLogicEngine.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>UM Liars Dice.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>4DE93C491CE8D7D4008041C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DE93C9F1CE8DD79008041C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DE93CA81CE8DD79008041C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
