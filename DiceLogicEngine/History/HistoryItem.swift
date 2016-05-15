@@ -11,7 +11,7 @@ import MessagePack
 
 public class HistoryItem: Equatable, Serializable
 {
-    static private let typeKey: MessagePackValue = .UInt(0)
+    static let typeKey: Int = 0
     
     public enum HIType: UInt64
     {
@@ -20,6 +20,7 @@ public class HistoryItem: Equatable, Serializable
         case InitialState
         case SpecialRulesInEffect
         
+        case Action
         case BidAction
         case PassAction
         case ExactAction
@@ -36,21 +37,26 @@ public class HistoryItem: Equatable, Serializable
         self.type = type
     }
     
-    required public init(data: MessagePackValue)
+    required public init?(data: MessagePackValue)
     {
-        guard let map = data.dictionaryValue else {
-            error("HistoryItem data is not a map/dictionary")
-            return
+        guard let array = data.arrayValue else {
+            error("HistoryItem data is not an array")
+            return nil
         }
         
-        guard let typeRawValue = map[HistoryItem.typeKey]?.unsignedIntegerValue else {
+        guard array.count >= 1 else {
+            error("HistoryItem data has invalid array size")
+            return nil
+        }
+        
+        guard let typeRawValue = array[HistoryItem.typeKey].unsignedIntegerValue else {
             error("HistoryItem data has no type")
-            return
+            return nil
         }
         
         guard let type = HIType(rawValue: typeRawValue) else {
             error("HistoryItem data has an invalid type")
-            return
+            return nil
         }
         
         self.type = type
@@ -58,7 +64,7 @@ public class HistoryItem: Equatable, Serializable
     
     public func asData() -> MessagePackValue
     {
-        return .Map([HistoryItem.typeKey : .UInt(self.type.rawValue)])
+        return .Array([.UInt(self.type.rawValue)])
     }
 }
 

@@ -10,6 +10,6 @@ import MessagePack
 
 public protocol Serializable
 {
-    init(data: MessagePackValue)
+    init?(data: MessagePackValue)
     func asData() -> MessagePackValue
 }
