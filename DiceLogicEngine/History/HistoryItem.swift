@@ -11,7 +11,8 @@ import MessagePack
 
 public class HistoryItem: Equatable, Serializable
 {
-    static let typeKey: Int = 0
+    static let itemMaxKey: Int = 0
+    static private let typeKey: Int = 0
     
     public enum HIType: UInt64
     {
@@ -21,8 +22,11 @@ public class HistoryItem: Equatable, Serializable
         case SpecialRulesInEffect
         
         case Action
+        
+        case PushAction
         case BidAction
         case PassAction
+        
         case ExactAction
         case ChallengeAction
         
@@ -44,8 +48,8 @@ public class HistoryItem: Equatable, Serializable
             return nil
         }
         
-        guard array.count >= 1 else {
-            error("HistoryItem data has invalid array size")
+        guard array.count >= HistoryItem.itemMaxKey+1 else {
+            error("HistoryItem data has to have an array of size \(HistoryItem.itemMaxKey+1)")
             return nil
         }
         
@@ -66,9 +70,14 @@ public class HistoryItem: Equatable, Serializable
     {
         return .Array([.UInt(self.type.rawValue)])
     }
+    
+    public func isEqualTo(item: HistoryItem) -> Bool
+    {
+        return self.type == item.type
+    }
 }
 
 public func ==(lhs: HistoryItem, rhs: HistoryItem) -> Bool
 {
-    return lhs.type == rhs.type
+    return lhs.isEqualTo(rhs)
 }
