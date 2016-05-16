@@ -17,9 +17,9 @@ public class BidAction: PushAction
     public private(set) var count: UInt64 = 0
     public private(set) var face: UInt64 = 0
     
-    public init(player: String, count: UInt64, face: UInt64, pushedDice: Array<UInt64>, correct: Bool)
+    public init(player: String, count: UInt64, face: UInt64, pushedDice: [UInt64], newDice: [UInt64], correct: Bool)
     {
-        super.init(player: player, pushedDice: pushedDice, correct: correct, type: .BidAction)
+        super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .BidAction)
         
         self.count = count
         self.face = face

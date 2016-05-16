@@ -11,16 +11,19 @@ import MessagePack
 
 public class PushAction: HistoryAction
 {
-    static let pushMaxKey = HistoryAction.actionMaxKey+1
+    static let pushMaxKey = HistoryAction.actionMaxKey+2
     static private let pushKey: Int = HistoryAction.actionMaxKey+1
+    static private let newKey: Int = HistoryAction.actionMaxKey+2
     
-    public private(set) var pushedDice: Array<UInt64> = []
+    public private(set) var pushedDice = [UInt64]()
+    public private(set) var newDice = [UInt64]()
     
-    public init(player: String, pushedDice: Array<UInt64>, correct: Bool, type: HIType = .PushAction)
+    public init(player: String, pushedDice: [UInt64], newDice: [UInt64], correct: Bool, type: HIType = .PushAction)
     {
         super.init(player: player, correct: correct, type: type)
         
         self.pushedDice = pushedDice
+        self.newDice = newDice
     }
     
     required public init?(data: MessagePackValue)
@@ -39,6 +42,11 @@ public class PushAction: HistoryAction
             return nil
         }
         
+        guard let packedNewDice = array[PushAction.newKey].arrayValue else {
+            error("PushAction data must have an array of newDice")
+            return nil
+        }
+        
         for packedDie in packedDice
         {
             guard let die = packedDie.unsignedIntegerValue else {
@@ -48,6 +56,16 @@ public class PushAction: HistoryAction
             
             pushedDice.append(die)
         }
+        
+        for packedDie in packedNewDice
+        {
+            guard let die = packedDie.unsignedIntegerValue else {
+                error("PushAction data must consist of UInts")
+                return nil
+            }
+            
+            newDice.append(die)
+        }
     }
     
     public override func asData() -> MessagePackValue
@@ -55,6 +73,7 @@ public class PushAction: HistoryAction
         var array = super.asData().arrayValue!
         
         array.append(.Array(pushedDice.map{ .UInt($0) }))
+        array.append(.Array(newDice.map{ .UInt($0) }))
         
         return .Array(array)
     }
@@ -69,6 +88,6 @@ public class PushAction: HistoryAction
             return false
         }
         
-        return pushedDice == item.pushedDice
+        return pushedDice == item.pushedDice && newDice == newDice
     }
 }
