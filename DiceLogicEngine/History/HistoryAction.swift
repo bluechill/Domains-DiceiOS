@@ -11,15 +11,16 @@ import MessagePack
 
 public class HistoryAction: HistoryItem
 {
-    static private let playerKey: Int = 1
-    static private let correctKey: Int = 2
+    static let actionMaxKey: Int = itemMaxKey+2
+    static private let playerKey: Int = itemMaxKey+1
+    static private let correctKey: Int = itemMaxKey+2
     
     public private(set) var player: String = ""
     public private(set) var correct: Bool = false
     
-    public init(player: String, correct: Bool)
+    public init(player: String, correct: Bool, type: HIType = .Action)
     {
-        super.init(type: .Action)
+        super.init(type: type)
         
         self.player = player
         self.correct = correct
@@ -31,8 +32,8 @@ public class HistoryAction: HistoryItem
         
         let array = data.arrayValue!
         
-        guard array.count >= 3 else {
-            error("HistoryAction data must have an array of size 3!")
+        guard array.count >= HistoryAction.actionMaxKey+1 else {
+            error("HistoryAction data must have an array of size \(HistoryAction.actionMaxKey+1)!")
             return nil
         }
         
@@ -60,28 +61,17 @@ public class HistoryAction: HistoryItem
         
         return .Array(array)
     }
-}
-
-public func ==(lhs: HistoryAction, rhs: HistoryAction) -> Bool
-{
-    guard (lhs as HistoryItem) == (rhs as HistoryItem) else {
-        return false
-    }
     
-    return  lhs.player == rhs.player &&
-            lhs.correct == rhs.correct
-}
-
-public func ==(lhs: HistoryItem, rhs: HistoryAction) -> Bool
-{
-    guard let action = lhs as? HistoryAction else {
-        return false
+    public override func isEqualTo(item: HistoryItem) -> Bool
+    {
+        guard super.isEqualTo(item) else {
+            return false
+        }
+        
+        guard let item = (item as? HistoryAction) else {
+            return false
+        }
+        
+        return player == item.player && correct == item.correct
     }
-    
-    return action == rhs
-}
-
-public func ==(lhs: HistoryAction, rhs: HistoryItem) -> Bool
-{
-    return rhs == lhs
 }

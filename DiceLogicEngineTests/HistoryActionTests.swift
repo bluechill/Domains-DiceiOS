@@ -13,18 +13,18 @@ class HistoryActionTests: XCTestCase
 {
     func testInitialization()
     {
-        let action = HistoryAction(player: "test", correct: true)
-        XCTAssertTrue(action.player == "test")
+        let action = HistoryAction(player: "Alice", correct: true)
+        XCTAssertTrue(action.player == "Alice")
         XCTAssertTrue(action.correct)
         
-        let action2 = HistoryAction(player: "test2", correct: false)
-        XCTAssertTrue(action2.player == "test2")
+        let action2 = HistoryAction(player: "Bob", correct: false)
+        XCTAssertTrue(action2.player == "Bob")
         XCTAssertFalse(action2.correct)
     }
     
     func testSerialization()
     {
-        let action = HistoryAction(player: "test", correct: true)
+        let action = HistoryAction(player: "Alice", correct: true)
         let action_restore = HistoryAction(data: action.asData())
         
         XCTAssertTrue(action == action_restore)
@@ -35,21 +35,21 @@ class HistoryActionTests: XCTestCase
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"test",.Int(0)]))
-        XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"test",.Bool(false)]))
+        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Int(0)]))
+        XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Bool(false)]))
     }
     
     func testEquality()
     {
-        let action = HistoryAction(player: "test", correct: false)
-        let action2 = HistoryAction(player: "test", correct: true)
-        let action3 = HistoryAction(player: "test2", correct: false)
-        let action4 = HistoryAction(player: "test2", correct: true)
+        let action = HistoryAction(player: "Alice", correct: false)
+        let action2 = HistoryAction(player: "Alice", correct: true)
+        let action3 = HistoryAction(player: "Bob", correct: false)
+        let action4 = HistoryAction(player: "Bob", correct: true)
         
-        let action5 = HistoryAction(player: "test", correct: false)
-        let action6 = HistoryAction(player: "test", correct: true)
-        let action7 = HistoryAction(player: "test2", correct: false)
-        let action8 = HistoryAction(player: "test2", correct: true)
+        let action5 = HistoryAction(player: "Alice", correct: false)
+        let action6 = HistoryAction(player: "Alice", correct: true)
+        let action7 = HistoryAction(player: "Bob", correct: false)
+        let action8 = HistoryAction(player: "Bob", correct: true)
         
         XCTAssertTrue(action == action5)
         XCTAssertTrue(action2 == action6)
@@ -79,5 +79,11 @@ class HistoryActionTests: XCTestCase
         XCTAssertFalse((action as HistoryItem) == action2)
         
         XCTAssertFalse(HistoryItem(type: .Invalid) == action)
+        
+        let action9 = HistoryAction(player: "Alice", correct: false, type: .BidAction)
+        XCTAssertFalse(action == action9)
+        
+        let action10 = HistoryItem(type: .Action)
+        XCTAssertFalse(action == action10)
     }
 }
