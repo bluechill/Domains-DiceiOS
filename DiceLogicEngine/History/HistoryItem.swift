@@ -37,6 +37,46 @@ public class HistoryItem: Equatable, Serializable
     
     public private(set) var type: HIType = .Invalid
     
+    static public func makeHistoryItem(data: MessagePackValue) -> HistoryItem?
+    {
+        guard let item = HistoryItem(data: data) else {
+            error("Invalid History Item")
+            return nil
+        }
+        
+        switch item.type
+        {
+        case .Invalid:
+            return nil
+        case .PushAction:
+            return nil
+        case .Action:
+            return nil
+        case .PlayerInfoItem:
+            return nil
+        
+        case .InitialState:
+            return InitialState(data: data)
+        case .SpecialRulesInEffect:
+            return SpecialRulesInEffect(data: data)
+        
+        case .BidAction:
+            return BidAction(data: data)
+        case .PassAction:
+            return PassAction(data: data)
+            
+        case .ExactAction:
+            return ExactAction(data: data)
+        case .ChallengeAction:
+            return ChallengeAction(data: data)
+        
+        case .PlayerLostRound:
+            return PlayerLostRound(data: data)
+        case .PlayerWon:
+            return PlayerWon(data: data)
+        }
+    }
+    
     init(type: HIType)
     {
         self.type = type

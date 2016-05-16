@@ -20,6 +20,51 @@ class HistoryItemTests: XCTestCase
         XCTAssertTrue(item2.type == .Action)
     }
     
+    func testFactoryMake()
+    {
+        XCTAssertNil(HistoryItem.makeHistoryItem([]))
+        
+        let item01 = HistoryItem(type: .Invalid)
+        XCTAssertNil(HistoryItem.makeHistoryItem(item01.asData()))
+        
+        let item02 = HistoryAction(player: "Alice", correct: true)
+        XCTAssertNil(HistoryItem.makeHistoryItem(item02.asData()))
+        
+        let item03 = PlayerInfoItem(player: "Alice")
+        XCTAssertNil(HistoryItem.makeHistoryItem(item03.asData()))
+        
+        let item04 = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1,2], correct: true)
+        XCTAssertNil(HistoryItem.makeHistoryItem(item04.asData()))
+        
+        
+        let item05 = InitialState(players: ["Alice": [0,1,2], "Bob": [0,1,2]])
+        XCTAssertTrue(item05 == HistoryItem.makeHistoryItem(item05.asData()))
+        
+        let item06 = SpecialRulesInEffect(player: "Alice")
+        XCTAssertTrue(item06 == HistoryItem.makeHistoryItem(item06.asData()))
+        
+
+        let item07 = BidAction(player: "Alice", count: 1, face: 2, pushedDice: [], newDice: [], correct: true)
+        XCTAssertTrue(item07 == HistoryItem.makeHistoryItem(item07.asData()))
+        
+        let item08 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
+        XCTAssertTrue(item08 == HistoryItem.makeHistoryItem(item08.asData()))
+        
+        
+        let item09 = ExactAction(player: "Alice", correct: true)
+        XCTAssertTrue(item09 == HistoryItem.makeHistoryItem(item09.asData()))
+        
+        let item10 = ChallengeAction(player: "Alice", challengee: "Bob", challengeActionIndex: 0, correct: true)
+        XCTAssertTrue(item10 == HistoryItem.makeHistoryItem(item10.asData()))
+        
+        
+        let item11 = PlayerLostRound(player: "Alice")
+        XCTAssertTrue(item11 == HistoryItem.makeHistoryItem(item11.asData()))
+        
+        let item12 = PlayerWon(player: "Alice")
+        XCTAssertTrue(item12 == HistoryItem.makeHistoryItem(item12.asData()))
+    }
+    
     func testEquality()
     {
         let item = HistoryItem(type: .Invalid)
