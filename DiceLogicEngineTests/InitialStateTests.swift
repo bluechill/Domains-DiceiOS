@@ -24,7 +24,7 @@ class InitialStateTests: XCTestCase
         let item3 = InitialState(players: ["Alice": [0,1,2], "John": [3,4,5]])
         let item4 = InitialState(players: ["Alice": [0,1,2], "Bob": [4,5,6]])
         let item5 = InitialState(players: ["John": [0,1,2], "Bob": [3,4,5]])
-        let item6 = InitialState(players: ["Alice": [4,5,6], "Bob": [3,4,5]])
+        let item6 = InitialState(players: ["Alice": [4,5,6]])
 
         XCTAssertTrue(item1 == item2)
         XCTAssertFalse(item1 == item3)
@@ -47,6 +47,10 @@ class InitialStateTests: XCTestCase
         XCTAssertTrue(item == item_restore)
         
         XCTAssertNil(InitialState(data: [
+            .UInt(HistoryItem.HIType.Invalid.rawValue),
+        ]))
+        
+        XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.InitialState.rawValue),
         ]))
         
@@ -61,6 +65,10 @@ class InitialStateTests: XCTestCase
         XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.InitialState.rawValue),
             ["Alice":"A"]
+        ]))
+        XCTAssertNil(InitialState(data: [
+            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            [.Int(1):"A"]
         ]))
         XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.InitialState.rawValue),

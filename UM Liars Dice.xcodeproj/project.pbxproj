@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
 		4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */; };
 		4DE93C311CE8D7D4008041C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C301CE8D7D4008041C3 /* ViewController.swift */; };
 		4DE93C341CE8D7D4008041C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C321CE8D7D4008041C3 /* Main.storyboard */; };
@@ -49,6 +50,24 @@
 		4DE93CDD1CE8F856008041C3 /* HistoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDC1CE8F856008041C3 /* HistoryAction.swift */; };
 		4DE93CDF1CE9104C008041C3 /* HistoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDE1CE9104C008041C3 /* HistoryItemTests.swift */; };
 		4DE93CE11CE9126A008041C3 /* HistoryActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE01CE9126A008041C3 /* HistoryActionTests.swift */; };
+		4DE93CE31CE919F0008041C3 /* PushAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE21CE919F0008041C3 /* PushAction.swift */; };
+		4DE93CE51CE92288008041C3 /* PushActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE41CE92288008041C3 /* PushActionTests.swift */; };
+		4DE93CE71CE924A1008041C3 /* BidActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE61CE924A1008041C3 /* BidActionTests.swift */; };
+		4DE93CE91CE926B3008041C3 /* PassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE81CE926B3008041C3 /* PassAction.swift */; };
+		4DE93CEB1CE9270F008041C3 /* PassActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEA1CE9270F008041C3 /* PassActionTests.swift */; };
+		4DE93CED1CE92842008041C3 /* ExactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEC1CE92842008041C3 /* ExactAction.swift */; };
+		4DE93CEF1CE92873008041C3 /* ExactActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEE1CE92873008041C3 /* ExactActionTests.swift */; };
+		4DE93CF11CE928A9008041C3 /* ChallengeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF01CE928A9008041C3 /* ChallengeAction.swift */; };
+		4DE93CF31CE92A6F008041C3 /* ChallengeActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF21CE92A6F008041C3 /* ChallengeActionTests.swift */; };
+		4DE93CF51CEA1D3C008041C3 /* PlayerInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF41CEA1D3C008041C3 /* PlayerInfoItem.swift */; };
+		4DE93CF71CEA1DCD008041C3 /* InfoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF61CEA1DCD008041C3 /* InfoItemTests.swift */; };
+		4DE93CF91CEA222B008041C3 /* PlayerLostRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF81CEA222B008041C3 /* PlayerLostRound.swift */; };
+		4DE93CFB1CEA2238008041C3 /* PlayerWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFA1CEA2238008041C3 /* PlayerWon.swift */; };
+		4DE93CFD1CEA2280008041C3 /* PlayerLostRoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFC1CEA2280008041C3 /* PlayerLostRoundTests.swift */; };
+		4DE93CFF1CEA2288008041C3 /* PlayerWonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */; };
+		4DE93D011CEA23E9008041C3 /* InitialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D001CEA23E9008041C3 /* InitialState.swift */; };
+		4DE93D031CEA23F1008041C3 /* SpecialRulesInEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */; };
+		4DE93D051CEA24B9008041C3 /* SpecialRulesInEffectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +123,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
 		4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UM Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DE93C301CE8D7D4008041C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +174,24 @@
 		4DE93CDC1CE8F856008041C3 /* HistoryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAction.swift; sourceTree = "<group>"; };
 		4DE93CDE1CE9104C008041C3 /* HistoryItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemTests.swift; sourceTree = "<group>"; };
 		4DE93CE01CE9126A008041C3 /* HistoryActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryActionTests.swift; sourceTree = "<group>"; };
+		4DE93CE21CE919F0008041C3 /* PushAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushAction.swift; sourceTree = "<group>"; };
+		4DE93CE41CE92288008041C3 /* PushActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushActionTests.swift; sourceTree = "<group>"; };
+		4DE93CE61CE924A1008041C3 /* BidActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidActionTests.swift; sourceTree = "<group>"; };
+		4DE93CE81CE926B3008041C3 /* PassAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassAction.swift; sourceTree = "<group>"; };
+		4DE93CEA1CE9270F008041C3 /* PassActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassActionTests.swift; sourceTree = "<group>"; };
+		4DE93CEC1CE92842008041C3 /* ExactAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactAction.swift; sourceTree = "<group>"; };
+		4DE93CEE1CE92873008041C3 /* ExactActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactActionTests.swift; sourceTree = "<group>"; };
+		4DE93CF01CE928A9008041C3 /* ChallengeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeAction.swift; sourceTree = "<group>"; };
+		4DE93CF21CE92A6F008041C3 /* ChallengeActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeActionTests.swift; sourceTree = "<group>"; };
+		4DE93CF41CEA1D3C008041C3 /* PlayerInfoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfoItem.swift; sourceTree = "<group>"; };
+		4DE93CF61CEA1DCD008041C3 /* InfoItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoItemTests.swift; sourceTree = "<group>"; };
+		4DE93CF81CEA222B008041C3 /* PlayerLostRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLostRound.swift; sourceTree = "<group>"; };
+		4DE93CFA1CEA2238008041C3 /* PlayerWon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerWon.swift; sourceTree = "<group>"; };
+		4DE93CFC1CEA2280008041C3 /* PlayerLostRoundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLostRoundTests.swift; sourceTree = "<group>"; };
+		4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerWonTests.swift; sourceTree = "<group>"; };
+		4DE93D001CEA23E9008041C3 /* InitialState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialState.swift; sourceTree = "<group>"; };
+		4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialRulesInEffect.swift; sourceTree = "<group>"; };
+		4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialRulesInEffectTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +332,7 @@
 		4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */ = {
 			isa = PBXGroup;
 			children = (
+				4DE93D061CEA282C008041C3 /* Extensions */,
 				4DE93CD51CE8F257008041C3 /* History */,
 				4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */,
 				4DE93CA41CE8DD79008041C3 /* Info.plist */,
@@ -315,6 +354,16 @@
 				4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */,
 				4DE93CDE1CE9104C008041C3 /* HistoryItemTests.swift */,
 				4DE93CE01CE9126A008041C3 /* HistoryActionTests.swift */,
+				4DE93CE41CE92288008041C3 /* PushActionTests.swift */,
+				4DE93CE61CE924A1008041C3 /* BidActionTests.swift */,
+				4DE93CEA1CE9270F008041C3 /* PassActionTests.swift */,
+				4DE93CEE1CE92873008041C3 /* ExactActionTests.swift */,
+				4DE93CF21CE92A6F008041C3 /* ChallengeActionTests.swift */,
+				4DE93CF61CEA1DCD008041C3 /* InfoItemTests.swift */,
+				4DE93CFC1CEA2280008041C3 /* PlayerLostRoundTests.swift */,
+				4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */,
+				4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */,
+				4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */,
 			);
 			path = DiceLogicEngineTests;
 			sourceTree = "<group>";
@@ -335,8 +384,24 @@
 				4DE93CD61CE8F270008041C3 /* HistoryItem.swift */,
 				4DE93CDA1CE8F83F008041C3 /* BidAction.swift */,
 				4DE93CDC1CE8F856008041C3 /* HistoryAction.swift */,
+				4DE93CE21CE919F0008041C3 /* PushAction.swift */,
+				4DE93CE81CE926B3008041C3 /* PassAction.swift */,
+				4DE93CEC1CE92842008041C3 /* ExactAction.swift */,
+				4DE93CF01CE928A9008041C3 /* ChallengeAction.swift */,
+				4DE93CF41CEA1D3C008041C3 /* PlayerInfoItem.swift */,
+				4DE93CF81CEA222B008041C3 /* PlayerLostRound.swift */,
+				4DE93CFA1CEA2238008041C3 /* PlayerWon.swift */,
+				4DE93D001CEA23E9008041C3 /* InitialState.swift */,
+				4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		4DE93D061CEA282C008041C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -606,11 +671,20 @@
 				4DE93CDD1CE8F856008041C3 /* HistoryAction.swift in Sources */,
 				4DE93CD41CE8F14D008041C3 /* Player.swift in Sources */,
 				4DE93CD11CE8EB5A008041C3 /* Random.swift in Sources */,
+				4DE93D011CEA23E9008041C3 /* InitialState.swift in Sources */,
+				4DE93CF51CEA1D3C008041C3 /* PlayerInfoItem.swift in Sources */,
+				4DE93CF91CEA222B008041C3 /* PlayerLostRound.swift in Sources */,
+				4DE93D031CEA23F1008041C3 /* SpecialRulesInEffect.swift in Sources */,
 				4DE93CCA1CE8E23E008041C3 /* ErrorHandling.swift in Sources */,
+				4DE93CE91CE926B3008041C3 /* PassAction.swift in Sources */,
 				4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */,
 				4DE93CBF1CE8DDCE008041C3 /* DiceLogicEngine.swift in Sources */,
 				4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */,
+				4DE93CFB1CEA2238008041C3 /* PlayerWon.swift in Sources */,
 				4DE93CDB1CE8F83F008041C3 /* BidAction.swift in Sources */,
+				4DE93CE31CE919F0008041C3 /* PushAction.swift in Sources */,
+				4DE93CED1CE92842008041C3 /* ExactAction.swift in Sources */,
+				4DE93CF11CE928A9008041C3 /* ChallengeAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,9 +693,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */,
+				4DE93CE71CE924A1008041C3 /* BidActionTests.swift in Sources */,
+				4DE93CEB1CE9270F008041C3 /* PassActionTests.swift in Sources */,
 				4DE93CDF1CE9104C008041C3 /* HistoryItemTests.swift in Sources */,
+				4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */,
 				4DE93CE11CE9126A008041C3 /* HistoryActionTests.swift in Sources */,
 				4DE93CB11CE8DD79008041C3 /* DiceLogicEngineTests.swift in Sources */,
+				4DE93CFD1CEA2280008041C3 /* PlayerLostRoundTests.swift in Sources */,
+				4DE93CFF1CEA2288008041C3 /* PlayerWonTests.swift in Sources */,
+				4DE93D051CEA24B9008041C3 /* SpecialRulesInEffectTests.swift in Sources */,
+				4DE93CF31CE92A6F008041C3 /* ChallengeActionTests.swift in Sources */,
+				4DE93CE51CE92288008041C3 /* PushActionTests.swift in Sources */,
+				4DE93CF71CEA1DCD008041C3 /* InfoItemTests.swift in Sources */,
+				4DE93CEF1CE92873008041C3 /* ExactActionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,6 +1012,7 @@
 				4DE93C551CE8D7D4008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DE93C561CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceTests" */ = {
 			isa = XCConfigurationList;
@@ -936,6 +1021,7 @@
 				4DE93C581CE8D7D4008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DE93C591CE8D7D4008041C3 /* Build configuration list for PBXNativeTarget "UM Liars DiceUITests" */ = {
 			isa = XCConfigurationList;
@@ -944,6 +1030,7 @@
 				4DE93C5B1CE8D7D4008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DE93CB81CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngine" */ = {
 			isa = XCConfigurationList;
@@ -952,6 +1039,7 @@
 				4DE93CBA1CE8DD7A008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DE93CBB1CE8DD7A008041C3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineTests" */ = {
 			isa = XCConfigurationList;
@@ -960,6 +1048,7 @@
 				4DE93CBD1CE8DD7A008041C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
