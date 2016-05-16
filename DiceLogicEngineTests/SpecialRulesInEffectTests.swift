@@ -14,8 +14,8 @@ class SpecialRulesInEffectTests: XCTestCase
 {
     func testEquality()
     {
-        let action1 = SpecialRulesInEffect()
-        let action2 = SpecialRulesInEffect()
+        let action1 = SpecialRulesInEffect(player: "Alice")
+        let action2 = SpecialRulesInEffect(player: "Alice")
         let action3 = HistoryItem(type: .Invalid)
         let action4 = HistoryItem(type: .SpecialRulesInEffect)
         
@@ -26,13 +26,26 @@ class SpecialRulesInEffectTests: XCTestCase
     
     func testSerialization()
     {
-        let action = SpecialRulesInEffect()
+        let action = SpecialRulesInEffect(player: "Alice")
         let action_restored = SpecialRulesInEffect(data: action.asData())
         
         XCTAssertTrue(action == action_restored)
+        XCTAssertTrue(action.player == "Alice")
         
         XCTAssertNil(SpecialRulesInEffect(data: [
             .UInt(HistoryItem.HIType.Invalid.rawValue)
-            ]))
+        ]))
+        XCTAssertNil(SpecialRulesInEffect(data: [
+            .UInt(HistoryItem.HIType.Invalid.rawValue),
+            .Int(1)
+        ]))
+        XCTAssertNil(SpecialRulesInEffect(data: [
+            .UInt(HistoryItem.HIType.SpecialRulesInEffect.rawValue),
+            .Int(1)
+        ]))
+        XCTAssertNotNil(SpecialRulesInEffect(data: [
+            .UInt(HistoryItem.HIType.SpecialRulesInEffect.rawValue),
+            "Alice"
+        ]))
     }
 }

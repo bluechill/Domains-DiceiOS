@@ -11,9 +11,16 @@ import MessagePack
 
 public class SpecialRulesInEffect: HistoryItem
 {
-    public init()
+    static let specialMaxKey: Int = itemMaxKey+1
+    static private let playerKey: Int = itemMaxKey+1
+
+    public private(set) var player: String = ""
+    
+    public init(player: String)
     {
         super.init(type: .SpecialRulesInEffect)
+        
+        self.player = player
     }
     
     required public init?(data: MessagePackValue)
@@ -24,6 +31,24 @@ public class SpecialRulesInEffect: HistoryItem
             error("Must be a SpecialRulesInEffect to initialize as such")
             return nil
         }
+        
+        let array = data.arrayValue!
+        
+        guard let player = array[SpecialRulesInEffect.playerKey].stringValue else {
+            error("Must have the player who caused special rules")
+            return nil
+        }
+        
+        self.player = player
+    }
+    
+    public override func asData() -> MessagePackValue
+    {
+        var array = super.asData().arrayValue!
+        
+        array.append(.String(player))
+        
+        return .Array(array)
     }
     
     public override func isEqualTo(item: HistoryItem) -> Bool
@@ -32,6 +57,10 @@ public class SpecialRulesInEffect: HistoryItem
             return false
         }
         
-        return (item as? SpecialRulesInEffect) != nil
+        guard let item = (item as? SpecialRulesInEffect) else {
+            return false
+        }
+        
+        return item.player == player
     }
 }
