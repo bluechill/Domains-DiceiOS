@@ -30,6 +30,7 @@ public class HistoryItem: Equatable, Serializable
         case ExactAction
         case ChallengeAction
         
+        case PlayerInfoItem
         case PlayerLostRound
         case PlayerWon
     }
