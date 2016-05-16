@@ -44,6 +44,7 @@ class ChallengeActionTests: XCTestCase
         
         XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false)]))
         XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob"]))
+        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),.Int(5),1]))
         XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob","a"]))
         
         XCTAssertNotNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob",1]))
