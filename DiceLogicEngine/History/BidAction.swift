@@ -29,6 +29,11 @@ public class BidAction: PushAction
     {
         super.init(data: data)
         
+        guard self.type == .BidAction else {
+            error("Must be a BidAction to initialize as such")
+            return nil
+        }
+        
         let array = data.arrayValue!
         
         guard array.count >= PushAction.pushMaxKey+3 else {

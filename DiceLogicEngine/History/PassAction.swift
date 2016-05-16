@@ -19,6 +19,11 @@ public class PassAction: PushAction
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
+        
+        guard self.type == .PassAction else {
+            error("Must be a PassAction to initialize as such")
+            return nil
+        }
     }
     
     public override func isEqualTo(item: HistoryItem) -> Bool

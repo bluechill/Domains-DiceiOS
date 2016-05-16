@@ -19,6 +19,11 @@ public class ExactAction: HistoryAction
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
+        
+        guard self.type == .ExactAction else {
+            error("Must be a ExactAction to initialize as such")
+            return nil
+        }
     }
     
     public override func isEqualTo(item: HistoryItem) -> Bool

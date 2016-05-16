@@ -28,7 +28,14 @@ class PassActionTests: XCTestCase
     {
         let action = PassAction(player: "Alice", pushedDice: [], correct: true)
         let action_restored = PassAction(data: action.asData())
-        
+
         XCTAssertTrue(action == action_restored)
+        
+        XCTAssertNil(PassAction(data: [
+            .UInt(HistoryItem.HIType.Invalid.rawValue),
+            .String("Alice"),
+            .Bool(true),
+            []
+            ]))
     }
 }

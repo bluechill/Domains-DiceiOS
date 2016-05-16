@@ -55,5 +55,14 @@ class BidActionTests: XCTestCase
         XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.BidAction.rawValue),"Alice",.Bool(false),[],-1,1]))
         
         XCTAssertNotNil(BidAction(data: [.UInt(HistoryItem.HIType.BidAction.rawValue),"Alice",.Bool(false),[],1,2]))
+        
+        XCTAssertNil(BidAction(data: [
+            .UInt(HistoryItem.HIType.Invalid.rawValue),
+            .String("Alice"),
+            .Bool(true),
+            [],
+            .UInt(1),
+            .UInt(1)
+            ]))
     }
 }

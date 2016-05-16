@@ -30,6 +30,11 @@ public class ChallengeAction: HistoryAction
     {
         super.init(data: data)
         
+        guard self.type == .ChallengeAction else {
+            error("Must be a ChallengeAction to initialize as such")
+            return nil
+        }
+        
         let array = data.arrayValue!
         
         guard array.count >= ChallengeAction.challengeMaxKey+1 else {

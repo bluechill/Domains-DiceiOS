@@ -30,5 +30,11 @@ class ExactActionTests: XCTestCase
         let action_restored = ExactAction(data: action.asData())
         
         XCTAssertTrue(action == action_restored)
+        
+        XCTAssertNil(ExactAction(data: [
+            .UInt(HistoryItem.HIType.Invalid.rawValue),
+            .String("Alice"),
+            .Bool(true)
+            ]))
     }
 }

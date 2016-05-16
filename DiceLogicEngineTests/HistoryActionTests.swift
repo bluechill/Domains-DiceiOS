@@ -35,7 +35,7 @@ class HistoryActionTests: XCTestCase
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Int(0)]))
+        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Int(0)]))        
         XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Bool(false)]))
     }
     
