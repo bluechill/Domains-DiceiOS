@@ -12,6 +12,13 @@ import MessagePack
 
 class SpecialRulesInEffectTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testEquality()
     {
         let action1 = SpecialRulesInEffect(player: "Alice")
@@ -26,6 +33,8 @@ class SpecialRulesInEffectTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let action = SpecialRulesInEffect(player: "Alice")
         let action_restored = SpecialRulesInEffect(data: action.asData())
         
