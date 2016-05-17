@@ -11,6 +11,13 @@ import XCTest
 
 class ChallengeActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = ChallengeAction(player: "Alice", challengee: "Bob", challengeActionIndex: 1, correct: true)
@@ -37,6 +44,8 @@ class ChallengeActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let item = ChallengeAction(player: "Alice", challengee: "Bob", challengeActionIndex: 1, correct: true)
         let item_restore = ChallengeAction(data: item.asData())
         

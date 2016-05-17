@@ -15,8 +15,8 @@ public class ChallengeAction: HistoryAction
     static private let challengeeKey: Int = HistoryAction.actionMaxKey+1
     static private let challengeActionIndexKey: Int = HistoryAction.actionMaxKey+2
     
-    public private(set) var challengee: String = ""
-    public private(set) var challengeActionIndex: Int64 = 0
+    public internal(set) var challengee: String = ""
+    public internal(set) var challengeActionIndex: Int64 = 0
     
     public init(player: String, challengee: String, challengeActionIndex: Int64, correct: Bool)
     {
