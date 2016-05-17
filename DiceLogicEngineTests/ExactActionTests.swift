@@ -12,6 +12,13 @@ import MessagePack
 
 class ExactActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testEquality()
     {
         let action1 = ExactAction(player: "Alice", correct: true)
@@ -26,6 +33,9 @@ class ExactActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
+        
         let action = ExactAction(player: "Alice", correct: true)
         let action_restored = ExactAction(data: action.asData())
         
