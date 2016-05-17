@@ -11,6 +11,13 @@ import XCTest
 
 class InitialStateTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
@@ -41,6 +48,8 @@ class InitialStateTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
         let item_restore = InitialState(data: item.asData())
         

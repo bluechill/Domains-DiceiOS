@@ -14,7 +14,7 @@ public class InitialState: HistoryItem
     static let initialStateMaxKey: Int = itemMaxKey+1
     static private let playersKey: Int = itemMaxKey+1
     
-    public private(set) var players: [String: Array<UInt>] = [:]
+    public internal(set) var players: [String: Array<UInt>] = [:]
     
     public init(players: [String: Array<UInt>])
     {
