@@ -33,7 +33,7 @@ public class Die: Equatable, Serializable
             }
             else if newValue > Die.sides
             {
-                error("Invalid Die Face.  Setting it to 6.")
+                error("Invalid Die Face.  Setting it to \(Die.sides).")
                 _face = Die.sides
             }
             else
