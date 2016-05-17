@@ -12,6 +12,13 @@ import MessagePack
 
 class PlayerLostRoundTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testEquality()
     {
         let action1 = PlayerLostRound(player: "Alice")
@@ -24,6 +31,8 @@ class PlayerLostRoundTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let action = PlayerLostRound(player: "Alice")
         let action_restored = PlayerLostRound(data: action.asData())
         
