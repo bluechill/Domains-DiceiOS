@@ -12,6 +12,13 @@ import MessagePack
 
 class PassActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testEquality()
     {
         let action1 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
@@ -26,6 +33,8 @@ class PassActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let action = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
         let action_restored = PassAction(data: action.asData())
 
