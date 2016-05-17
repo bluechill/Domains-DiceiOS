@@ -14,8 +14,8 @@ public class BidAction: PushAction
     static private let countKey: Int = PushAction.pushMaxKey+1
     static private let faceKey: Int = PushAction.pushMaxKey+2
     
-    public private(set) var count: UInt64 = 0
-    public private(set) var face: UInt64 = 0
+    public internal(set) var count: UInt64 = 0
+    public internal(set) var face: UInt64 = 0
     
     public init(player: String, count: UInt64, face: UInt64, pushedDice: [UInt64], newDice: [UInt64], correct: Bool)
     {
@@ -31,7 +31,7 @@ public class BidAction: PushAction
         
         guard self.type == .BidAction else {
             error("Must be a BidAction to initialize as such")
-            return nil
+            return
         }
         
         let array = data.arrayValue!

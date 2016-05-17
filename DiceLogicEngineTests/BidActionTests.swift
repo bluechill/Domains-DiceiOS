@@ -12,6 +12,13 @@ import MessagePack
 
 class BidActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = BidAction(player: "Alice", count: 1, face: 2, pushedDice: [1,2,3], newDice: [0,1], correct: true)
@@ -41,6 +48,8 @@ class BidActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+        
         let item = BidAction(player: "Alice", count: 1, face: 2, pushedDice: [], newDice: [], correct: true)
         let item_restore = BidAction(data: item.asData())
         
