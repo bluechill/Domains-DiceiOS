@@ -11,6 +11,13 @@ import XCTest
 
 class HistoryItemTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = HistoryItem(type: .Invalid)
@@ -22,6 +29,8 @@ class HistoryItemTests: XCTestCase
     
     func testFactoryMake()
     {
+        Handlers.Error = { _ in }
+
         XCTAssertNil(HistoryItem.makeHistoryItem([]))
         
         let item01 = HistoryItem(type: .Invalid)
@@ -79,6 +88,8 @@ class HistoryItemTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let item = HistoryItem(type: .Action)
         let item_restore = HistoryItem(data: item.asData())
         
