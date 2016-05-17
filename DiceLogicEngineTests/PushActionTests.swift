@@ -11,6 +11,13 @@ import XCTest
 
 class PushActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = PushAction(player: "Alice", pushedDice: [1,2,3], newDice: [0,1], correct: true, type: .PushAction)
@@ -37,6 +44,8 @@ class PushActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let item = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1], correct: true)
         let item_restore = PushAction(data: item.asData())
         

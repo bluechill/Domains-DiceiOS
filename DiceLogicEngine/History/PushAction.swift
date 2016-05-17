@@ -15,8 +15,8 @@ public class PushAction: HistoryAction
     static private let pushKey: Int = HistoryAction.actionMaxKey+1
     static private let newKey: Int = HistoryAction.actionMaxKey+2
     
-    public private(set) var pushedDice = [UInt64]()
-    public private(set) var newDice = [UInt64]()
+    public internal(set) var pushedDice = [UInt64]()
+    public internal(set) var newDice = [UInt64]()
     
     public init(player: String, pushedDice: [UInt64], newDice: [UInt64], correct: Bool, type: HIType = .PushAction)
     {
