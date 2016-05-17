@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3228521CEB7DF000BEE34E /* PlayerLost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228511CEB7DF000BEE34E /* PlayerLost.swift */; };
+		4D3228541CEB7E0C00BEE34E /* PlayerLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */; };
 		4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
 		4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */; };
 		4DE93C311CE8D7D4008041C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C301CE8D7D4008041C3 /* ViewController.swift */; };
@@ -123,6 +125,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D3228511CEB7DF000BEE34E /* PlayerLost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLost.swift; sourceTree = "<group>"; };
+		4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLostTests.swift; sourceTree = "<group>"; };
 		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
 		4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UM Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -361,6 +365,7 @@
 				4DE93CF21CE92A6F008041C3 /* ChallengeActionTests.swift */,
 				4DE93CF61CEA1DCD008041C3 /* InfoItemTests.swift */,
 				4DE93CFC1CEA2280008041C3 /* PlayerLostRoundTests.swift */,
+				4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */,
 				4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */,
 				4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */,
 				4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */,
@@ -390,6 +395,7 @@
 				4DE93CF01CE928A9008041C3 /* ChallengeAction.swift */,
 				4DE93CF41CEA1D3C008041C3 /* PlayerInfoItem.swift */,
 				4DE93CF81CEA222B008041C3 /* PlayerLostRound.swift */,
+				4D3228511CEB7DF000BEE34E /* PlayerLost.swift */,
 				4DE93CFA1CEA2238008041C3 /* PlayerWon.swift */,
 				4DE93D001CEA23E9008041C3 /* InitialState.swift */,
 				4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */,
@@ -679,6 +685,7 @@
 				4DE93CE91CE926B3008041C3 /* PassAction.swift in Sources */,
 				4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */,
 				4DE93CBF1CE8DDCE008041C3 /* DiceLogicEngine.swift in Sources */,
+				4D3228521CEB7DF000BEE34E /* PlayerLost.swift in Sources */,
 				4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */,
 				4DE93CFB1CEA2238008041C3 /* PlayerWon.swift in Sources */,
 				4DE93CDB1CE8F83F008041C3 /* BidAction.swift in Sources */,
@@ -694,6 +701,7 @@
 			files = (
 				4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */,
 				4DE93CE71CE924A1008041C3 /* BidActionTests.swift in Sources */,
+				4D3228541CEB7E0C00BEE34E /* PlayerLostTests.swift in Sources */,
 				4DE93CEB1CE9270F008041C3 /* PassActionTests.swift in Sources */,
 				4DE93CDF1CE9104C008041C3 /* HistoryItemTests.swift in Sources */,
 				4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */,
