@@ -14,7 +14,7 @@ public class PlayerInfoItem: HistoryItem
     static let infoMaxKey: Int = itemMaxKey+1
     static private let playerKey: Int = itemMaxKey+1
     
-    public private(set) var player: String = ""
+    public internal(set) var player: String = ""
     
     public init(player: String, type: HIType = .PlayerInfoItem)
     {

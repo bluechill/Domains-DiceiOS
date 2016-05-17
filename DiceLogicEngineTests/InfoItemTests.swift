@@ -11,6 +11,13 @@ import XCTest
 
 class PlayerInfoItemTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let item = PlayerInfoItem(player: "Alice")
@@ -20,6 +27,8 @@ class PlayerInfoItemTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let action = PlayerInfoItem(player: "Alice")
         let action_restore = PlayerInfoItem(data: action.asData())
         
