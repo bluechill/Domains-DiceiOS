@@ -29,23 +29,23 @@ class DieTests: XCTestCase
 
     func testDie_InvalidFace_Below1()
     {
-        var error = false
-        Handlers.Error = { _ in error = true }
+        var error = String()
+        Handlers.Error = { (string) in error = string }
         
         let die = Die(face: 0)
         
-        XCTAssertTrue(error)
+        XCTAssertTrue(error == "Invalid Die Face.  Setting it to 1.")
         XCTAssertTrue(die.face == 1)
     }
     
     func testDie_InvalidFace_AboveSides()
     {
-        var error = false
-        Handlers.Error = { _ in error = true }
+        var error = String()
+        Handlers.Error = { (string) in error = string }
         
         let die = Die(face: Die.sides+1)
         
-        XCTAssertTrue(error)
+        XCTAssertTrue(error == "Invalid Die Face.  Setting it to \(Die.sides).")
         XCTAssertTrue(die.face == Die.sides)
     }
     
@@ -137,35 +137,35 @@ class DieTests: XCTestCase
     
     func testDie_InvalidSerialization()
     {
-        var error = false
-        Handlers.Error = { _ in error = true }
+        var error = String()
+        Handlers.Error = { (string) in error = string }
         
         _ = Die(data: .Bool(false))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Bad data passed to Die initializer: data is not an array")
+        error = ""
         
         _ = Die(data: .Array([.Bool(false)]))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Die data is not an array of size 2")
+        error = ""
         
         _ = Die(data: .Array([.Int(0)]))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Die data is not an array of size 2")
+        error = ""
         
         _ = Die(data: .Array([.Int(1)]))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Die data is not an array of size 2")
+        error = ""
         
         _ = Die(data: .Array([.Int(1), .Int(0)]))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Die has no pushed key")
+        error = ""
         
         _ = Die(data: .Array([.Bool(false), .Int(1)]))
-        XCTAssertTrue(error)
-        error = false
+        XCTAssertTrue(error == "Die has no face key")
+        error = ""
         
         let die = Die(data: .Array([.Int(1), .Bool(true)]))
-        XCTAssertFalse(error)
+        XCTAssertTrue(error.isEmpty)
         XCTAssertTrue(die.face == 1)
         XCTAssertTrue(die.pushed)
     }
