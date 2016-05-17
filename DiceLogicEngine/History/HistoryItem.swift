@@ -32,10 +32,11 @@ public class HistoryItem: Equatable, Serializable
         
         case PlayerInfoItem
         case PlayerLostRound
+        case PlayerLost
         case PlayerWon
     }
     
-    public private(set) var type: HIType = .Invalid
+    public internal(set) var type: HIType = .Invalid
     
     static public func makeHistoryItem(data: MessagePackValue) -> HistoryItem?
     {
@@ -72,6 +73,8 @@ public class HistoryItem: Equatable, Serializable
         
         case .PlayerLostRound:
             return PlayerLostRound(data: data)
+        case .PlayerLost:
+            return PlayerLost(data: data)
         case .PlayerWon:
             return PlayerWon(data: data)
         }
