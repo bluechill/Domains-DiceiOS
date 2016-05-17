@@ -15,8 +15,8 @@ public class HistoryAction: HistoryItem
     static private let playerKey: Int = itemMaxKey+1
     static private let correctKey: Int = itemMaxKey+2
     
-    public private(set) var player: String = ""
-    public private(set) var correct: Bool = false
+    public internal(set) var player: String = ""
+    public internal(set) var correct: Bool = false
     
     public init(player: String, correct: Bool, type: HIType = .Action)
     {

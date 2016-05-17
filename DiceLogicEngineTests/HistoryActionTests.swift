@@ -11,6 +11,13 @@ import XCTest
 
 class HistoryActionTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Handlers.Error = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let action = HistoryAction(player: "Alice", correct: true)
@@ -24,6 +31,8 @@ class HistoryActionTests: XCTestCase
     
     func testSerialization()
     {
+        Handlers.Error = { _ in }
+
         let action = HistoryAction(player: "Alice", correct: true)
         let action_restore = HistoryAction(data: action.asData())
         
