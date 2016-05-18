@@ -44,16 +44,11 @@ class DiceLogicEngineTests: XCTestCase
     
     func testCreateNewRound()
     {
-        var engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
         
         var error = String()
         Handlers.Error = { (string) in error = string }
         
-        engine.createNewRound()
-        XCTAssertTrue(error == "No PlayerLostRoundItem even though there is history.")
-        error = ""
-        
-        engine = DiceLogicEngine(players: ["Alice", "Bob"])
         XCTAssertTrue(engine.history.count == 1)
         engine.history[0].append(PlayerLostRound(player: "Eve"))
         
@@ -145,6 +140,28 @@ class DiceLogicEngineTests: XCTestCase
         engine2.createNewRound()
         
         XCTAssertFalse(engine2.isSpecialRules)
+        
+        let engine3 = DiceLogicEngine(players: ["Alice", "Bob"])
+        engine3.playerLosesRound("Alice")
+        XCTAssertFalse(engine3.isSpecialRules)
+        
+        engine3.playerLosesRound("Alice")
+        XCTAssertFalse(engine3.isSpecialRules)
+        
+        engine3.playerLosesRound("Alice")
+        XCTAssertFalse(engine3.isSpecialRules)
+        
+        engine3.playerLosesRound("Alice")
+        XCTAssertTrue(engine3.isSpecialRules)
+        
+        engine3.player("Alice")!.dice.append(Die(face: 1))
+        engine3.createNewRound()
+        
+        engine3.playerLosesRound("Alice")
+        XCTAssertFalse(engine3.isSpecialRules)
+        
+        engine3.playerLosesRound("Alice")
+        XCTAssertFalse(engine3.isSpecialRules)
     }
     
     func testEquality()
@@ -180,6 +197,11 @@ class DiceLogicEngineTests: XCTestCase
         XCTAssertFalse(engine == engine4)
         
         XCTAssertTrue(engine == engine5)
+    
+        XCTAssertTrue([[HistoryItem(type: .Invalid)]] == [[HistoryItem(type: .Invalid)]])
+        XCTAssertFalse([[HistoryItem(type: .Invalid)]] == [[HistoryItem(type: .Invalid)], [HistoryItem(type: .Invalid)]])
+        XCTAssertFalse([[HistoryItem(type: .Invalid)]] == [[HistoryItem(type: .Invalid), HistoryItem(type: .Invalid)]])
+        XCTAssertFalse([[HistoryItem(type: .Invalid)]] == [[HistoryItem(type: .BidAction)]])
     }
     
     func testSerialization()
@@ -352,5 +374,11 @@ class DiceLogicEngineTests: XCTestCase
         
         engine2.playerLosesRound("John")
         XCTAssertTrue(error == "Invalid player lost the round")
+        error = ""
+        
+        let engine3 = DiceLogicEngine(players: ["Alice", "Bob", "Eve"])
+        engine3.player("Alice")?.dice.removeRange(0..<4)
+        engine3.playerLosesRound("Alice")
+        XCTAssertTrue(error.isEmpty)
     }
 }

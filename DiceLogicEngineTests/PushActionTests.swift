@@ -56,7 +56,9 @@ class PushActionTests: XCTestCase
         XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[-1,-2,-3]]))
         XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[],-1]))
         XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[],[-1,-2,-3]]))
-       
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),"S",[0,1,2,3]]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[-1,1,2,3],[0,1,2,3]]))
+        
         XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[],[]]))
         XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.PushAction.rawValue),"Alice",.Bool(false),[0,1,2,3],[0,1,2,3]]))
     }

@@ -55,6 +55,8 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(bid.player == "Alice")
         XCTAssertTrue(bid.face == 2)
         XCTAssertTrue(bid.count == 2)
+        
+        XCTAssertNil(Player(name: "Test").lastBid)
     }
     
     func testEquality()

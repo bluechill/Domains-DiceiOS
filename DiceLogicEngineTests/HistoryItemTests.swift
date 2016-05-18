@@ -72,6 +72,9 @@ class HistoryItemTests: XCTestCase
         
         let item12 = PlayerWon(player: "Alice")
         XCTAssertTrue(item12 == HistoryItem.makeHistoryItem(item12.asData()))
+        
+        let item13 = PlayerLost(player: "Alice")
+        XCTAssertTrue(item13 == HistoryItem.makeHistoryItem(item13.asData()))
     }
     
     func testEquality()
