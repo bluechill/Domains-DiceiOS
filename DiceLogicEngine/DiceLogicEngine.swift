@@ -247,12 +247,24 @@ public class DiceLogicEngine: Serializable, Equatable
         
         if let round = history.last
         {
-            guard let lostItem = (round.last as? PlayerLostRound) else {
-                error("No PlayerLostRoundItem even though there is history.")
-                return
+            var lostItem = (round.last as? PlayerLostRound)
+            
+            if lostItem == nil
+            {
+                for item in round.reverse()
+                {
+                    if let item = (item as? PlayerLostRound)
+                    {
+                        lostItem = item
+                        break
+                    }
+                }
             }
             
-            playerWhoLostRound = lostItem.player
+            if let item = lostItem
+            {
+                playerWhoLostRound = item.player
+            }
         }
         
         history.append([])
