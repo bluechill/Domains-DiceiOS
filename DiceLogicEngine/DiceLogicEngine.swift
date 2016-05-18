@@ -87,7 +87,7 @@ public class DiceLogicEngine: Serializable, Equatable
     
     init(players: [String])
     {
-        self.players = players.map{ Player(name: $0) }
+        self.players = players.map{ Player(name: $0, engine: self) }
         
         createNewRound()
     }
@@ -190,7 +190,9 @@ public class DiceLogicEngine: Serializable, Equatable
                 return nil
             }
             
-            self.players.append(Player(name: player, dice: currentPlayerDiceCalculatedViaHistory(player)))
+            self.players.append(Player( name: player,
+                                        dice: currentPlayerDiceCalculatedViaHistory(player),
+                                        engine: self))
         }
     }
     
@@ -350,7 +352,14 @@ public func ==(lhs: [[HistoryItem]], rhs: [[HistoryItem]]) -> Bool
 
 public func ==(lhs: DiceLogicEngine, rhs: DiceLogicEngine) -> Bool
 {
-    let playersEqual = lhs.players == rhs.players
-    let historyEqual = lhs.history == rhs.history
-    return playersEqual && historyEqual
+    // Player == will fail for two different engines, special case it since it will definitely fail here
+    for (p1, p2) in zip(lhs.players, rhs.players)
+    {
+        if p1.name != p2.name || p1.dice != p2.dice
+        {
+            return false
+        }
+    }
+    
+    return lhs.history == rhs.history
 }

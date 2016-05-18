@@ -8,23 +8,53 @@
 
 import Foundation
 
-public class Player
+public class Player: Equatable
 {
     static public let startingDice = 5
     
     public var dice: Array<Die> = []
     public var name: String = ""
     
-    private weak var engine: DiceLogicEngine?
+    weak var engine: DiceLogicEngine?
     
-    init(name: String, dice: Array<Die> = [])
+    init(name: String, dice: Array<Die> = [], engine: DiceLogicEngine? = nil)
     {
         self.name = name
         self.dice = dice
+        self.engine = engine
         
-        if self.dice.count < 5
+        if self.dice.isEmpty
         {
-            self.dice.appendContentsOf(Array(count: Player.startingDice - self.dice.count, repeatedValue: Die()))
+            self.dice = [Die(),Die(),Die(),Die(),Die()]
         }
     }
+    
+    var lastBid: BidAction?
+    {
+        get
+        {
+            guard let engine = engine else {
+                return nil
+            }
+            
+            for index in (0..<engine.currentRoundHistory.count).reverse()
+            {
+                let item = engine.currentRoundHistory[index]
+                let bid = (item as? BidAction)
+                
+                if bid != nil && bid?.player == name
+                {
+                    return bid
+                }
+            }
+            
+            return nil
+        }
+    }
+}
+
+public func ==(lhs: Player, rhs: Player) -> Bool
+{
+    // engine === to check whether it is the same instance of the class
+    return lhs.dice == rhs.dice && lhs.name == rhs.name && lhs.engine === rhs.engine
 }
