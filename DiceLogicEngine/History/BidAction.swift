@@ -31,7 +31,7 @@ public class BidAction: PushAction
         
         guard self.type == .BidAction else {
             error("Must be a BidAction to initialize as such")
-            return
+            return nil
         }
         
         let array = data.arrayValue!
