@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D3228521CEB7DF000BEE34E /* PlayerLost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228511CEB7DF000BEE34E /* PlayerLost.swift */; };
 		4D3228541CEB7E0C00BEE34E /* PlayerLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */; };
+		4D3228561CECCBC200BEE34E /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228551CECCBC200BEE34E /* PlayerTests.swift */; };
+		4D3228581CECD77700BEE34E /* HandlersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228571CECD77700BEE34E /* HandlersTests.swift */; };
 		4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
 		4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */; };
 		4DE93C311CE8D7D4008041C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93C301CE8D7D4008041C3 /* ViewController.swift */; };
@@ -127,6 +129,8 @@
 /* Begin PBXFileReference section */
 		4D3228511CEB7DF000BEE34E /* PlayerLost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLost.swift; sourceTree = "<group>"; };
 		4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLostTests.swift; sourceTree = "<group>"; };
+		4D3228551CECCBC200BEE34E /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		4D3228571CECD77700BEE34E /* HandlersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandlersTests.swift; sourceTree = "<group>"; };
 		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
 		4DE93C2B1CE8D7D4008041C3 /* UM Liars Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UM Liars Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93C2E1CE8D7D4008041C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -354,8 +358,9 @@
 			isa = PBXGroup;
 			children = (
 				4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */,
-				4DE93CB21CE8DD79008041C3 /* Info.plist */,
+				4D3228551CECCBC200BEE34E /* PlayerTests.swift */,
 				4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */,
+				4DE93CB21CE8DD79008041C3 /* Info.plist */,
 				4DE93CDE1CE9104C008041C3 /* HistoryItemTests.swift */,
 				4DE93CE01CE9126A008041C3 /* HistoryActionTests.swift */,
 				4DE93CE41CE92288008041C3 /* PushActionTests.swift */,
@@ -369,6 +374,7 @@
 				4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */,
 				4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */,
 				4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */,
+				4D3228571CECD77700BEE34E /* HandlersTests.swift */,
 			);
 			path = DiceLogicEngineTests;
 			sourceTree = "<group>";
@@ -707,10 +713,12 @@
 				4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */,
 				4DE93CE11CE9126A008041C3 /* HistoryActionTests.swift in Sources */,
 				4DE93CB11CE8DD79008041C3 /* DiceLogicEngineTests.swift in Sources */,
+				4D3228581CECD77700BEE34E /* HandlersTests.swift in Sources */,
 				4DE93CFD1CEA2280008041C3 /* PlayerLostRoundTests.swift in Sources */,
 				4DE93CFF1CEA2288008041C3 /* PlayerWonTests.swift in Sources */,
 				4DE93D051CEA24B9008041C3 /* SpecialRulesInEffectTests.swift in Sources */,
 				4DE93CF31CE92A6F008041C3 /* ChallengeActionTests.swift in Sources */,
+				4D3228561CECCBC200BEE34E /* PlayerTests.swift in Sources */,
 				4DE93CE51CE92288008041C3 /* PushActionTests.swift in Sources */,
 				4DE93CF71CEA1DCD008041C3 /* InfoItemTests.swift in Sources */,
 				4DE93CEF1CE92873008041C3 /* ExactActionTests.swift in Sources */,
