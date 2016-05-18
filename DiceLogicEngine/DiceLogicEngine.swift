@@ -227,11 +227,8 @@ public class DiceLogicEngine: Serializable, Equatable
         {
             for item in round.reverse()
             {
-                guard let item = (item as? SpecialRulesInEffect) else {
-                    continue
-                }
-                
-                if item.player == player
+                if  (item as? SpecialRulesInEffect) != nil &&
+                    (item as! SpecialRulesInEffect).player == player
                 {
                     return true
                 }
