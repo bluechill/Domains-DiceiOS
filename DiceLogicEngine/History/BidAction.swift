@@ -14,10 +14,10 @@ public class BidAction: PushAction
     static private let countKey: Int = PushAction.pushMaxKey+1
     static private let faceKey: Int = PushAction.pushMaxKey+2
     
-    public internal(set) var count: UInt64 = 0
-    public internal(set) var face: UInt64 = 0
+    public internal(set) var count: UInt = 0
+    public internal(set) var face: UInt = 0
     
-    public init(player: String, count: UInt64, face: UInt64, pushedDice: [UInt64], newDice: [UInt64], correct: Bool)
+    public init(player: String, count: UInt, face: UInt, pushedDice: [UInt], newDice: [UInt], correct: Bool)
     {
         super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .BidAction)
         
@@ -51,16 +51,16 @@ public class BidAction: PushAction
             return nil
         }
         
-        self.count = count
-        self.face = face
+        self.count = UInt(count)
+        self.face = UInt(face)
     }
     
     public override func asData() -> MessagePackValue
     {
         var array = super.asData().arrayValue!
         
-        array.append(.UInt(count))
-        array.append(.UInt(face))
+        array.append(.UInt(UInt64(count)))
+        array.append(.UInt(UInt64(face)))
         
         return .Array(array)
     }

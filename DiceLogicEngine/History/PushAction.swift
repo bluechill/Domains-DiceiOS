@@ -15,10 +15,10 @@ public class PushAction: HistoryAction
     static private let pushKey: Int = HistoryAction.actionMaxKey+1
     static private let newKey: Int = HistoryAction.actionMaxKey+2
     
-    public internal(set) var pushedDice = [UInt64]()
-    public internal(set) var newDice = [UInt64]()
+    public internal(set) var pushedDice = [UInt]()
+    public internal(set) var newDice = [UInt]()
     
-    public init(player: String, pushedDice: [UInt64], newDice: [UInt64], correct: Bool, type: HIType = .PushAction)
+    public init(player: String, pushedDice: [UInt], newDice: [UInt], correct: Bool, type: HIType = .PushAction)
     {
         super.init(player: player, correct: correct, type: type)
         
@@ -54,7 +54,7 @@ public class PushAction: HistoryAction
                 return nil
             }
             
-            pushedDice.append(die)
+            pushedDice.append(UInt(die))
         }
         
         for packedDie in packedNewDice
@@ -64,7 +64,7 @@ public class PushAction: HistoryAction
                 return nil
             }
             
-            newDice.append(die)
+            newDice.append(UInt(die))
         }
     }
     
@@ -72,8 +72,8 @@ public class PushAction: HistoryAction
     {
         var array = super.asData().arrayValue!
         
-        array.append(.Array(pushedDice.map{ .UInt($0) }))
-        array.append(.Array(newDice.map{ .UInt($0) }))
+        array.append(.Array(pushedDice.map{ .UInt(UInt64($0)) }))
+        array.append(.Array(newDice.map{ .UInt(UInt64($0)) }))
         
         return .Array(array)
     }

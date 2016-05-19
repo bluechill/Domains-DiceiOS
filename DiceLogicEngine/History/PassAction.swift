@@ -11,7 +11,7 @@ import MessagePack
 
 public class PassAction: PushAction
 {
-    public init(player: String, pushedDice: [UInt64], newDice: [UInt64], correct: Bool)
+    public init(player: String, pushedDice: [UInt], newDice: [UInt], correct: Bool)
     {
         super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .PassAction)
     }
