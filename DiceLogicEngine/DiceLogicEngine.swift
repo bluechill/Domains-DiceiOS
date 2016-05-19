@@ -334,6 +334,24 @@ public class DiceLogicEngine: Serializable, Equatable
         
         createNewRound()
     }
+    
+    func countDice(face: UInt) -> UInt
+    {
+        var count: UInt = 0
+        
+        for player in self.players
+        {
+            for die in player.dice
+            {
+                if die.face == face || (!isSpecialRules && die.face == 1)
+                {
+                    count += 1
+                }
+            }
+        }
+        
+        return count
+    }
 }
 
 public func ==(lhs: [[HistoryItem]], rhs: [[HistoryItem]]) -> Bool

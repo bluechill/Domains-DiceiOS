@@ -381,4 +381,25 @@ class DiceLogicEngineTests: XCTestCase
         engine3.playerLosesRound("Alice")
         XCTAssertTrue(error.isEmpty)
     }
+    
+    func testCountDice()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        XCTAssertTrue(engine.countDice(1) == 1)
+        XCTAssertTrue(engine.countDice(2) == 3)
+        XCTAssertTrue(engine.countDice(3) == 4)
+        XCTAssertTrue(engine.countDice(4) == 2)
+        XCTAssertTrue(engine.countDice(5) == 3)
+        XCTAssertTrue(engine.countDice(6) == 2)
+        
+        engine.appendHistoryItem(SpecialRulesInEffect(player: "Alice"))
+               
+        XCTAssertTrue(engine.countDice(1) == 1)
+        XCTAssertTrue(engine.countDice(2) == 2)
+        XCTAssertTrue(engine.countDice(3) == 3)
+        XCTAssertTrue(engine.countDice(4) == 1)
+        XCTAssertTrue(engine.countDice(5) == 2)
+        XCTAssertTrue(engine.countDice(6) == 1)
+    }
 }
