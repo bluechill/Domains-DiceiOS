@@ -238,6 +238,12 @@ public class DiceLogicEngine: Serializable, Equatable
         return false
     }
     
+    func appendHistoryItem(item: HistoryItem)
+    {
+        let currentRoundIndex = history.count-1
+        history[currentRoundIndex].append(item)
+    }
+    
     func createNewRound()
     {
         var playerWhoLostRound = String?()
@@ -274,15 +280,13 @@ public class DiceLogicEngine: Serializable, Equatable
             }
         }
         
-        let currentRoundIndex = history.count-1
-        
         var playerStringUInts = [String:[UInt]]()
         for player in players
         {
             playerStringUInts[player.name] = player.dice.map{ $0.face }
         }
         
-        history[currentRoundIndex].append(InitialState(players: playerStringUInts))
+        appendHistoryItem(InitialState(players: playerStringUInts))
         
         if let playerWhoLostRound = playerWhoLostRound
         {
@@ -293,7 +297,7 @@ public class DiceLogicEngine: Serializable, Equatable
             
             if player.dice.count == 1 && !hasPlayerBeenInSpecialRulesBefore(player.name)
             {
-                history[currentRoundIndex].append(SpecialRulesInEffect(player: playerWhoLostRound))
+                appendHistoryItem(SpecialRulesInEffect(player: playerWhoLostRound))
             }
         }
     }
@@ -315,19 +319,18 @@ public class DiceLogicEngine: Serializable, Equatable
             return
         }
         
-        let index = history.count-1
-        history[index].append(PlayerLostRound(player: player.name))
+        appendHistoryItem(PlayerLostRound(player: player.name))
         
         player.dice.removeLast()
         
         if player.dice.count == 0
         {
-            history[index].append(PlayerLost(player: player.name))
+            appendHistoryItem(PlayerLost(player: player.name))
             
             let playersLeft = self.playersLeft
             if playersLeft.count == 1
             {
-                history[index].append(PlayerWon(player: playersLeft.first!.name))
+               appendHistoryItem(PlayerWon(player: playersLeft.first!.name))
                 return
             }
         }
