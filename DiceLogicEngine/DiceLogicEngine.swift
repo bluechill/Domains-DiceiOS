@@ -45,6 +45,24 @@ public class DiceLogicEngine: Serializable, Equatable
         }
     }
     
+    public var lastAction: HistoryAction?
+    {
+        get
+        {
+            for index in (0..<currentRoundHistory.count).reverse()
+            {
+                let item = currentRoundHistory[index]
+                
+                if let action = (item as? HistoryAction)
+                {
+                    return action
+                }
+            }
+            
+            return nil
+        }
+    }
+    
     public var isSpecialRules: Bool
     {
         get
@@ -89,7 +107,12 @@ public class DiceLogicEngine: Serializable, Equatable
     
     init(players: [String])
     {
-        self.players = players.map{ Player(name: $0, engine: self) }
+        self.players = players.map{ Player(
+            name: $0,
+            dice: [Die(),Die(),Die(),Die(),Die()],
+            engine: self)
+        }
+        
         self.players.shuffle()
         self.currentTurn = self.players[0]
         
@@ -121,7 +144,20 @@ public class DiceLogicEngine: Serializable, Equatable
         {
             let item = currentRound[index]
             
-            guard let action = (item as? PushAction) else {
+            guard (item as? PushAction) != nil || (item as? PlayerLost) != nil else {
+                continue
+            }
+            
+            let action2 = item as? PushAction
+            let lost = item as? PlayerLost
+            
+            if lost != nil && lost?.player == name
+            {
+                dice.removeAll()
+                break
+            }
+            
+            guard let action = action2 else {
                 continue
             }
             
@@ -339,9 +375,12 @@ public class DiceLogicEngine: Serializable, Equatable
         appendHistoryItem(PlayerLostRound(player: player.name))
         
         player.dice.removeLast()
-        
+        self.currentTurn = self.player(player.name)
+    
         if player.dice.count == 0
         {
+            advancePlayer()
+            
             appendHistoryItem(PlayerLost(player: player.name))
             
             let playersLeft = self.playersLeft
@@ -351,8 +390,6 @@ public class DiceLogicEngine: Serializable, Equatable
                 return
             }
         }
-        
-        self.currentTurn = self.player(player.name)
         
         createNewRound()
     }
@@ -377,15 +414,40 @@ public class DiceLogicEngine: Serializable, Equatable
     
     func advancePlayer()
     {
-        let index = players.indexOf({ $0.name == self.currentTurn?.name})
-        let newIndex = index!.advancedBy(1)
+        let index = players.indexOf({ $0.name == self.currentTurn?.name})!
+        var newIndex = index.advancedBy(1)
         
-        guard newIndex < players.count else {
-            self.currentTurn = players.first!
-            return
+        if newIndex >= players.count
+        {
+            newIndex = 0
         }
         
-        self.currentTurn = players[newIndex]
+        var nextPlayers = players[newIndex..<players.count]
+        nextPlayers.appendContentsOf(players[0..<index])
+        
+        for player in nextPlayers
+        {
+            if !player.hasLost
+            {
+                self.currentTurn = player
+                return
+            }
+        }
+    }
+    
+    func printState()
+    {
+        for player in players
+        {
+            print("\(player.name): ", terminator: "")
+            
+            for die in player.dice
+            {
+                print(" \(die.face)\(die.pushed ? "*" : "")", terminator: "")
+            }
+            
+            print("")
+        }
     }
 }
 

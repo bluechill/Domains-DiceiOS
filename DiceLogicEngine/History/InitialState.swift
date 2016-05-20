@@ -113,5 +113,16 @@ public func ==(lhs: [String: Array<UInt>], rhs: [String: Array<UInt>]) -> Bool
         return false
     }
     
-    return Array(lhs.keys) == Array(rhs.keys) && Array(lhs.values) == Array(rhs.values)
+    for (key, lhsValue) in lhs
+    {
+        guard let rhsValue = rhs[key] else {
+            return false
+        }
+        
+        guard rhsValue == lhsValue else {
+            return false
+        }
+    }
+    
+    return true
 }

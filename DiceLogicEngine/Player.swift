@@ -22,10 +22,13 @@ public class Player: Equatable
         self.name = name
         self.dice = dice
         self.engine = engine
-        
-        if self.dice.isEmpty
+    }
+    
+    public var hasLost: Bool
+    {
+        get
         {
-            self.dice = [Die(),Die(),Die(),Die(),Die()]
+            return dice.count == 0
         }
     }
     
@@ -380,16 +383,37 @@ public class Player: Equatable
         
         let myIndex = engine.players.indexOf({ $0.name == self.name })!
         var challenge1Index = myIndex-1
-        var challenge2Index = myIndex-2
         
         if challenge1Index < 0
         {
             challenge1Index = engine.players.count-1
         }
         
+        while engine.players[challenge1Index].hasLost
+        {
+            challenge1Index = challenge1Index-1
+            
+            if challenge1Index < 0
+            {
+                challenge1Index = engine.players.count-1
+            }
+        }
+        
+        var challenge2Index = challenge1Index-1
+        
         if challenge2Index < 0
         {
             challenge2Index = engine.players.count-2
+        }
+        
+        while engine.players[challenge2Index].hasLost
+        {
+            challenge2Index = challenge2Index-1
+            
+            if challenge2Index < 0
+            {
+                challenge2Index = engine.players.count-1
+            }
         }
         
         let challenge1Player = engine.players[challenge1Index]
