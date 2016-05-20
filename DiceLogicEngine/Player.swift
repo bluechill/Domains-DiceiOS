@@ -365,6 +365,110 @@ public class Player: Equatable
             engine.playerLosesRound(self.name)
         }
     }
+    
+    public func canChallenge(player: String) -> Bool
+    {
+        guard let engine = engine else {
+            error("Cannot challenge with no engine")
+            return false
+        }
+        
+        guard player != self.name else {
+            error("Cannot challenge yourself")
+            return false
+        }
+        
+        let myIndex = engine.players.indexOf({ $0.name == self.name })!
+        var challenge1Index = myIndex-1
+        var challenge2Index = myIndex-2
+        
+        if challenge1Index < 0
+        {
+            challenge1Index = engine.players.count-1
+        }
+        
+        if challenge2Index < 0
+        {
+            challenge2Index = engine.players.count-2
+        }
+        
+        let challenge1Player = engine.players[challenge1Index]
+        let challenge2Player = engine.players[challenge2Index]
+        
+        guard challenge1Player.name == player || challenge2Player.name == player else {
+            error("Cannot challenge a player other than the last two")
+            return false
+        }
+        
+        let challenge1Action = challenge1Player.lastAction
+        let challenge2Action = challenge2Player.lastAction
+        
+        let bidAction1 = challenge1Action as? BidAction
+        let passAction1 = challenge1Action as? PassAction
+        
+        if challenge1Player.name == player
+        {
+            guard bidAction1 != nil || passAction1 != nil else {
+                error("Cannot challenge something other than a bid or pass")
+                return false
+            }
+            
+            return true
+        }
+        
+        guard passAction1 != nil else {
+            error("Cannot challenge through anything but a pass")
+            return false
+        }
+        
+        let bidAction2 = challenge2Action as? BidAction
+        let passAction2 = challenge2Action as? PassAction
+        
+        guard bidAction2 != nil || passAction2 != nil else {
+            error("Cannot challenge something other than a bid or pass")
+            return false
+        }
+        
+        return true
+    }
+    
+    public func challenge(player: String)
+    {
+        guard let engine = engine else {
+            error("Cannot challenge with no engine")
+            return
+        }
+        
+        guard engine.currentTurn == self else {
+            error("It is not your turn")
+            return
+        }
+        
+        guard canChallenge(player) else {
+            return
+        }
+        
+        let lastAction = engine.player(player)!.lastAction!
+        
+        let correct = !lastAction.correct
+        
+        let index = engine.currentRoundHistory.indexOf(lastAction)!
+        
+        let action = ChallengeAction(player: self.name,
+                                     challengee: player,
+                                     challengeActionIndex: index,
+                                     correct: correct)
+        engine.appendHistoryItem(action)
+        
+        if correct
+        {
+            engine.playerLosesRound(player)
+        }
+        else
+        {
+            engine.playerLosesRound(self.name)
+        }
+    }
 }
 
 public func ==(lhs: Player, rhs: Player) -> Bool

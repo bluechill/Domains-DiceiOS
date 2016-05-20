@@ -352,6 +352,8 @@ public class DiceLogicEngine: Serializable, Equatable
             }
         }
         
+        self.currentTurn = self.player(player.name)
+        
         createNewRound()
     }
     

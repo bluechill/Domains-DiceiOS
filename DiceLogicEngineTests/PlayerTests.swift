@@ -429,5 +429,132 @@ class PlayerTests: XCTestCase
         let action = ExactAction(player: "Alice", correct: true)
         
         XCTAssertTrue(engine.history[0].last == action)
+        
+        engine.appendHistoryItem(BidAction(player: "Alice", count: 1, face: 2, pushedDice: [], newDice: [], correct: true))
+        engine.currentTurn = bob
+        bob.exact()
+        
+        let action2 = ExactAction(player: "Bob", correct: false)
+        
+        guard engine.history.count == 3 else {
+            XCTFail()
+            return
+        }
+        
+        guard engine.history[1].count == 4 else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertTrue(engine.history[1][2] == action2)
+    }
+    
+    func testCanChallenge()
+    {
+        let engine = DiceLogicEngine(players: ["Alice","Bob","Eve","Mary"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        
+        var error = String()
+        Handlers.Error = { error = $0 }
+        
+        alice.engine = nil
+        XCTAssertFalse(alice.canChallenge("Mary"))
+        XCTAssertTrue(error == "Cannot challenge with no engine")
+        error = ""
+        alice.engine = engine
+        
+        XCTAssertFalse(alice.canChallenge("Alice"))
+        XCTAssertTrue(error == "Cannot challenge yourself")
+        error = ""
+        
+        XCTAssertFalse(alice.canChallenge("Bob"))
+        XCTAssertTrue(error == "Cannot challenge a player other than the last two")
+        error = ""
+        
+        engine.appendHistoryItem(PassAction(player: "Mary", pushedDice: [], newDice: [], correct: true))
+        XCTAssertTrue(alice.canChallenge("Mary"))
+        
+        engine.appendHistoryItem(HistoryAction(player: "Mary", correct: true))
+        
+        XCTAssertFalse(alice.canChallenge("Mary"))
+        XCTAssertTrue(error == "Cannot challenge something other than a bid or pass")
+        error = ""
+        
+        XCTAssertFalse(alice.canChallenge("Eve"))
+        XCTAssertTrue(error == "Cannot challenge through anything but a pass")
+        error = ""
+        
+        engine.appendHistoryItem(HistoryAction(player: "Eve", correct: true))
+        engine.appendHistoryItem(PassAction(player: "Mary", pushedDice: [], newDice: [], correct: true))
+        
+        XCTAssertFalse(alice.canChallenge("Eve"))
+        XCTAssertTrue(error == "Cannot challenge something other than a bid or pass")
+        error = ""
+        
+        engine.appendHistoryItem(PassAction(player: "Eve", pushedDice: [], newDice: [], correct: true))
+        engine.appendHistoryItem(PassAction(player: "Mary", pushedDice: [], newDice: [], correct: true))
+        XCTAssertTrue(alice.canChallenge("Eve"))
+    }
+    
+    func testChallenge()
+    {
+        let engine = DiceLogicEngine(players: ["Alice","Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        guard let bob = engine.player("Bob") else { XCTFail(); return }
+        
+        var error = String()
+        Handlers.Error = { error = $0 }
+        
+        alice.engine = nil
+        alice.challenge("Bob")
+        XCTAssertTrue(error == "Cannot challenge with no engine")
+        error = ""
+        alice.engine = engine
+        
+        bob.challenge("Alice")
+        XCTAssertTrue(error == "It is not your turn")
+        error = ""
+        
+        alice.challenge("Bob")
+        XCTAssertTrue(error == "Cannot challenge something other than a bid or pass")
+        error = ""
+        
+        engine.appendHistoryItem(BidAction(player: "Bob", count: 1, face: 2, pushedDice: [], newDice: [], correct: true))
+        
+        alice.challenge("Bob")
+        XCTAssertTrue(error.isEmpty)
+        
+        guard engine.history.count == 2 else {
+            XCTFail()
+            return
+        }
+        
+        guard engine.history[0].count == 4 else {
+            XCTFail()
+            return
+        }
+        
+        let action = ChallengeAction(player: "Alice", challengee: "Bob", challengeActionIndex: 1, correct: false)
+        XCTAssertTrue(engine.history[0][2] == action)
+        
+        engine.appendHistoryItem(BidAction(player: "Bob", count: 1, face: 2, pushedDice: [], newDice: [], correct: false))
+        
+        alice.challenge("Bob")
+        XCTAssertTrue(error.isEmpty)
+        
+        guard engine.history.count == 3 else {
+            XCTFail()
+            return
+        }
+        
+        guard engine.history[1].count == 4 else {
+            XCTFail()
+            return
+        }
+        
+        let action2 = ChallengeAction(player: "Alice", challengee: "Bob", challengeActionIndex: 1, correct: true)
+        XCTAssertTrue(engine.history[1][2] == action2)
     }
 }
