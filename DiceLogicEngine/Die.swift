@@ -47,7 +47,7 @@ public class Die: Equatable, Serializable
     
     init()
     {
-        self.face = UInt(Random.dieFaceGenerator.nextInt())
+        self.face = UInt(Random.random.nextInt())
         self.pushed = false
     }
     
@@ -93,7 +93,7 @@ public class Die: Equatable, Serializable
     
     func roll()
     {
-        self.face = UInt(Random.dieFaceGenerator.nextInt())
+        self.face = UInt(Random.random.nextInt())
         self.pushed = false
     }
 }

@@ -11,7 +11,6 @@ import GameplayKit
 
 enum Random
 {
-    static var dieFaceGenerator = Random.newGenerator(0)
     static var random = Random.newGenerator(0)
     
     static func newGenerator(seed: UInt64) -> GKShuffledDistribution

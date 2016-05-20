@@ -16,7 +16,6 @@ class BidActionTests: XCTestCase
     {
         super.setUp()
         
-        Random.dieFaceGenerator = Random.newGenerator(0)
         Random.random = Random.newGenerator(0)
         Handlers.Error = { XCTFail($0) }
         Handlers.Warning = { XCTFail($0) }
