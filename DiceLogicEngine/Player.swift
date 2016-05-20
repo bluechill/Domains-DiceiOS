@@ -52,6 +52,29 @@ public class Player: Equatable
         }
     }
     
+    public var hasPassedThisRound: Bool
+    {
+        get
+        {
+            guard let engine = engine else {
+                return false
+            }
+            
+            for index in (0..<engine.currentRoundHistory.count).reverse()
+            {
+                let item = engine.currentRoundHistory[index]
+                let pass = (item as? PassAction)
+                
+                if pass != nil && pass?.player == name
+                {
+                    return true
+                }
+            }
+            
+            return false
+        }
+    }
+    
     func isValidSpecialRulesBid(count: UInt, face: UInt, lastBid: BidAction) -> Bool
     {
         if dice.count == 1
@@ -139,6 +162,10 @@ public class Player: Equatable
             return false
         }
         
+        guard dice.count > 0 else {
+            return true
+        }
+        
         for die in dice
         {
             let index = self.dice.indexOf({
@@ -186,6 +213,53 @@ public class Player: Equatable
                                correct: correct)
         
         engine.appendHistoryItem(action)
+        engine.advancePlayer()
+    }
+    
+    public func canPass() -> Bool
+    {
+        guard !hasPassedThisRound else {
+            error("You cannot pass more than once per round")
+            return false
+        }
+        
+        guard self.dice.count > 1 else {
+            error("You cannot pass with only one die")
+            return false
+        }
+        
+        return true
+    }
+    
+    public func pass(pushDice: [UInt] = [UInt]())
+    {
+        guard let engine = engine else {
+            error("Cannot bid with no engine")
+            return
+        }
+        
+        guard engine.currentTurn == self else {
+            error("It is not your turn")
+            return
+        }
+        
+        guard canPass() else {
+            return
+        }
+        
+        guard self.pushDice(pushDice) else {
+            return
+        }
+        
+        let correct = (self.dice.filter({ $0.face == self.dice[0].face}).count == self.dice.count)
+        
+        let action = PassAction(player: self.name,
+                                pushedDice: pushDice,
+                                newDice: self.dice.filter({ $0.pushed == false }).map({ $0.face }),
+                                correct: correct)
+        
+        engine.appendHistoryItem(action)
+        engine.advancePlayer()
     }
 }
 
