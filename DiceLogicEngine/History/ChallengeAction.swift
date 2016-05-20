@@ -16,9 +16,9 @@ public class ChallengeAction: HistoryAction
     static private let challengeActionIndexKey: Int = HistoryAction.actionMaxKey+2
     
     public internal(set) var challengee: String = ""
-    public internal(set) var challengeActionIndex: Int64 = 0
+    public internal(set) var challengeActionIndex: Int = 0
     
-    public init(player: String, challengee: String, challengeActionIndex: Int64, correct: Bool)
+    public init(player: String, challengee: String, challengeActionIndex: Int, correct: Bool)
     {
         super.init(player: player, correct: correct, type: .ChallengeAction)
 
@@ -53,7 +53,7 @@ public class ChallengeAction: HistoryAction
         }
         
         self.challengee = challengee
-        self.challengeActionIndex = challengeActionIndex
+        self.challengeActionIndex = Int(challengeActionIndex)
     }
     
     public override func asData() -> MessagePackValue
@@ -61,7 +61,7 @@ public class ChallengeAction: HistoryAction
         var array = super.asData().arrayValue!
         
         array.append(.String(challengee))
-        array.append(.Int(challengeActionIndex))
+        array.append(.Int(Int64(challengeActionIndex)))
         
         return .Array(array)
     }
