@@ -48,12 +48,16 @@ public class HistoryItem: Equatable, Serializable
         switch item.type
         {
         case .Invalid:
+            error("Non-Standalone history item")
             return nil
         case .PushAction:
+            error("Non-Standalone history item")
             return nil
         case .Action:
+            error("Non-Standalone history item")
             return nil
         case .PlayerInfoItem:
+            error("Non-Standalone history item")
             return nil
         
         case .InitialState:
