@@ -295,7 +295,7 @@ class PlayerTests: XCTestCase
         
         alice.engine = nil
         alice.pass()
-        XCTAssertTrue(error == "Cannot bid with no engine")
+        XCTAssertTrue(error == "Cannot pass with no engine")
         error = ""
         
         alice.engine = engine

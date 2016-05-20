@@ -234,7 +234,7 @@ public class Player: Equatable
     public func pass(pushDice: [UInt] = [UInt]())
     {
         guard let engine = engine else {
-            error("Cannot bid with no engine")
+            error("Cannot pass with no engine")
             return
         }
         
