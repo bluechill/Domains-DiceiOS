@@ -29,7 +29,7 @@ public class Player: Equatable
         }
     }
     
-    var lastBid: BidAction?
+    public var lastBid: BidAction?
     {
         get
         {
@@ -50,6 +50,142 @@ public class Player: Equatable
             
             return nil
         }
+    }
+    
+    func isValidSpecialRulesBid(count: UInt, face: UInt, lastBid: BidAction) -> Bool
+    {
+        if dice.count == 1
+        {
+            return count > lastBid.count || face > lastBid.face
+        }
+       
+        return count > lastBid.count && face == lastBid.face
+    }
+    
+    func isValidNonSpecialRulesBid(count: UInt, face: UInt, lastBid: BidAction) -> Bool
+    {
+        if face == 1 && lastBid.face != 1
+        {
+            return Double(count) > ceil(Double(lastBid.count)/2.0)
+        }
+        else if face != 1 && lastBid.face == 1
+        {
+            return count > lastBid.count*2
+        }
+       
+        return  count > lastBid.count ||
+                (count == lastBid.count && face > lastBid.face)
+    }
+    
+    public func isValidBid(count: UInt, face: UInt) -> Bool
+    {
+        guard let engine = engine else {
+            error("Cannot bid with no engine")
+            return false
+        }
+        
+        guard count > 0 else {
+            error("Cannot bid zero dice")
+            return false
+        }
+        
+        guard face > 0 && face <= Die.sides else {
+            error("Cannot bid invalid die face \(face)")
+            return false
+        }
+        
+        guard let lastBid = engine.lastBid else {
+            warning("No last bid, therefore valid")
+            return true
+        }
+        
+        if engine.isSpecialRules
+        {
+            return isValidSpecialRulesBid(count, face: face, lastBid: lastBid)
+        }
+        
+        return isValidNonSpecialRulesBid(count, face: face, lastBid: lastBid)
+    }
+    
+    public func canPushDice(pushDice: [UInt]) -> Bool
+    {
+        var dice = self.dice.filter{ $0.pushed == false }
+        
+        for die in pushDice
+        {
+            if let index = dice.indexOf({ $0.face == die })
+            {
+                dice.removeAtIndex(index)
+            }
+            else
+            {
+                error("Cannot push die you do not have \(die)")
+                return false
+            }
+        }
+        
+        if dice.count >= 1
+        {
+            return true
+        }
+        
+        error("Cannot push all your dice")
+        return false
+    }
+    
+    func pushDice(dice: [UInt]) -> Bool
+    {
+        guard canPushDice(dice) else {
+            return false
+        }
+        
+        for die in dice
+        {
+            let index = self.dice.indexOf({
+                $0.face == die && $0.pushed == false
+            })!
+            
+            self.dice[index].pushed = true
+        }
+        
+        for die in self.dice.filter({ $0.pushed == false })
+        {
+            die.roll()
+        }
+        
+        return true
+    }
+    
+    public func bid(count: UInt, face: UInt, pushDice: [UInt] = [UInt]())
+    {
+        guard let engine = engine else {
+            error("Cannot bid with no engine")
+            return
+        }
+        
+        guard engine.currentTurn == self else {
+            error("It is not your turn")
+            return
+        }
+        
+        guard isValidBid(count, face: face) else {
+            return
+        }
+        
+        guard self.pushDice(pushDice) else {
+            return
+        }
+        
+        let correct = engine.countDice(face) >= count
+        
+        let action = BidAction(player: self.name,
+                               count: count,
+                               face: face,
+                               pushedDice: pushDice,
+                               newDice: self.dice.filter({ $0.pushed == false }).map({ $0.face }),
+                               correct: correct)
+        
+        engine.appendHistoryItem(action)
     }
 }
 
