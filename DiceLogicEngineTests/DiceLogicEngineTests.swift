@@ -15,8 +15,10 @@ class DiceLogicEngineTests: XCTestCase
     {
         super.setUp()
         
-        Random.dieFaceGenerator = Random.newDieFaceGenerator(0)
-        Handlers.Error = { (string) in XCTFail(string) }
+        Random.dieFaceGenerator = Random.newGenerator(0)
+        Random.random = Random.newGenerator(0)
+        Handlers.Error = { XCTFail($0) }
+        Handlers.Warning = { XCTFail($0) }
     }
     
     func testInitialization()

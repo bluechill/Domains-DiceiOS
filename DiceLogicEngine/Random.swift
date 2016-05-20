@@ -11,9 +11,10 @@ import GameplayKit
 
 enum Random
 {
-    static var dieFaceGenerator = Random.newDieFaceGenerator(0)
+    static var dieFaceGenerator = Random.newGenerator(0)
+    static var random = Random.newGenerator(0)
     
-    static func newDieFaceGenerator(seed: UInt64) -> GKShuffledDistribution
+    static func newGenerator(seed: UInt64) -> GKShuffledDistribution
     {
         return GKShuffledDistribution(randomSource: GKMersenneTwisterRandomSource(seed: seed), lowestValue: 1, highestValue: Int(Die.sides))
     }

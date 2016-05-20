@@ -11,6 +11,17 @@ import XCTest
 
 class PlayerTests: XCTestCase
 {
+    override func setUp()
+    {
+        super.setUp()
+        
+        Random.dieFaceGenerator = Random.newGenerator(0)
+        Random.random = Random.newGenerator(0)
+        
+        Handlers.Error = { XCTFail($0) }
+        Handlers.Warning = { XCTFail($0) }
+    }
+    
     func testInitialization()
     {
         let player = Player(name: "Alice", dice: [  Die(face: 1),

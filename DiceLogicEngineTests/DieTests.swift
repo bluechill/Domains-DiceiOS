@@ -17,7 +17,10 @@ class DieTests: XCTestCase
     {
         super.setUp()
         
+        Random.dieFaceGenerator = Random.newGenerator(0)
+        Random.random = Random.newGenerator(0)
         Handlers.Error = { XCTFail($0) }
+        Handlers.Warning = { XCTFail($0) }
     }
     
     override func tearDown()
@@ -102,7 +105,8 @@ class DieTests: XCTestCase
     
     func testDie_Roll()
     {
-        Random.dieFaceGenerator = Random.newDieFaceGenerator(0)
+        Random.dieFaceGenerator = Random.newGenerator(0)
+        Random.random = Random.newGenerator(0)
         
         let die = Die()
         
