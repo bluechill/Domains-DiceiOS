@@ -85,9 +85,13 @@ public class DiceLogicEngine: Serializable, Equatable
         }
     }
     
+    public internal(set) var currentTurn: Player?
+    
     init(players: [String])
     {
         self.players = players.map{ Player(name: $0, engine: self) }
+        self.players.shuffle()
+        self.currentTurn = self.players[0]
         
         createNewRound()
     }
@@ -142,7 +146,7 @@ public class DiceLogicEngine: Serializable, Equatable
             return nil
         }
         
-        guard array.count == 2 else {
+        guard array.count == 3 else {
             error("Invalid DiceLogicEngine data array")
             return nil
         }
@@ -152,7 +156,12 @@ public class DiceLogicEngine: Serializable, Equatable
             return nil
         }
         
-        guard let history = array[1].arrayValue else {
+        guard let currentTurn = array[1].stringValue else {
+            error("No currentTurn string in DiceLogicEngine data")
+            return nil
+        }
+        
+        guard let history = array[2].arrayValue else {
             error("No history array in DiceLogicEngine data")
             return nil
         }
@@ -194,6 +203,13 @@ public class DiceLogicEngine: Serializable, Equatable
                                         dice: currentPlayerDiceCalculatedViaHistory(player),
                                         engine: self))
         }
+        
+        guard let currentPlayer = self.player(currentTurn) else {
+            error("Cannot find player whose turn it is")
+            return nil
+        }
+        
+        self.currentTurn = currentPlayer
     }
     
     public func asData() -> MessagePackValue
@@ -201,8 +217,9 @@ public class DiceLogicEngine: Serializable, Equatable
         let playersMap: [MessagePackValue] = self.players.map{ .String($0.name) }
         let historyMap: [MessagePackValue] = self.history.map{ .Array($0.map{ $0.asData() }) }
         
-        return .Array([.Array(playersMap),
-                      .Array(historyMap)])
+        return .Array([ .Array(playersMap),
+                        .String(currentTurn!.name),
+                        .Array(historyMap)])
     }
     
     func player(name: String) -> Player?
@@ -391,5 +408,8 @@ public func ==(lhs: DiceLogicEngine, rhs: DiceLogicEngine) -> Bool
         }
     }
     
-    return lhs.history == rhs.history
+    let lhsCTName = lhs.currentTurn?.name
+    let rhsCTName = rhs.currentTurn?.name
+    
+    return lhs.history == rhs.history && lhsCTName == rhsCTName
 }
