@@ -372,6 +372,19 @@ public class DiceLogicEngine: Serializable, Equatable
         
         return count
     }
+    
+    func advancePlayer()
+    {
+        let index = players.indexOf({ $0.name == self.currentTurn?.name})
+        let newIndex = index!.advancedBy(1)
+        
+        guard newIndex < players.count else {
+            self.currentTurn = players.first!
+            return
+        }
+        
+        self.currentTurn = players[newIndex]
+    }
 }
 
 public func ==(lhs: [[HistoryItem]], rhs: [[HistoryItem]]) -> Bool

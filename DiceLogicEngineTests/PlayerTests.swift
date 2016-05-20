@@ -243,4 +243,102 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(engine.currentRoundHistory.last == correct)
         XCTAssertTrue(engine.lastBid == correct)
     }
+    
+    func testHasPassedThisRound()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+ 
+        XCTAssertFalse(alice.hasPassedThisRound)
+        
+        engine.appendHistoryItem(PassAction(player: "Alice", pushedDice: [], newDice: [], correct: false))
+        XCTAssertTrue(alice.hasPassedThisRound)
+        
+        alice.engine = nil
+        XCTAssertFalse(alice.hasPassedThisRound)
+        alice.engine = engine
+    }
+    
+    func testCanPass()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        
+        var error = String()
+        Handlers.Error = {error = $0}
+        
+        alice.dice.removeRange(0..<4)
+        
+        XCTAssertFalse(alice.canPass())
+        XCTAssertTrue(error == "You cannot pass with only one die")
+        alice.dice.append(Die(face: 3))
+        
+        XCTAssertTrue(alice.canPass())
+        alice.pass()
+
+        XCTAssertFalse(alice.canPass())
+        XCTAssertTrue(error == "You cannot pass more than once per round")
+        error = ""
+    }
+    
+    func testPass()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        guard let bob = engine.player("Bob") else { XCTFail(); return }
+        
+        var error = String()
+        Handlers.Error = {error = $0}
+        
+        alice.engine = nil
+        alice.pass()
+        XCTAssertTrue(error == "Cannot bid with no engine")
+        error = ""
+        
+        alice.engine = engine
+        
+        bob.pass()
+        XCTAssertTrue(error == "It is not your turn")
+        error = ""
+        
+        alice.dice.removeRange(0..<4)
+        alice.pass()
+        XCTAssertTrue(error == "You cannot pass with only one die")
+        error = ""
+        
+        alice.dice.insertContentsOf([   Die(face: 3),
+                                        Die(face: 2),
+                                        Die(face: 4),
+                                        Die(face: 5)], at: 0)
+        
+        alice.pass([0])
+        XCTAssertTrue(error == "Cannot push die you do not have 0")
+        error = ""
+        
+        alice.pass([3,3])
+        XCTAssertTrue(error.isEmpty)
+        
+        let correct = PassAction(player: "Alice",
+                                pushedDice: [3,3],
+                                newDice: [6,4,1],
+                                correct: false)
+        
+        XCTAssertTrue(engine.currentRoundHistory.last == correct)
+        
+        bob.dice.removeAll()
+        bob.dice.appendContentsOf([Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3)])
+        bob.pass()
+        XCTAssertTrue(error.isEmpty)
+        
+        let correct2 = PassAction(player: "Bob",
+                                 pushedDice: [],
+                                 newDice: [3,3,3,3,3],
+                                 correct: true)
+        
+        XCTAssertTrue(engine.currentRoundHistory.last == correct2)
+
+    }
 }
