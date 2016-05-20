@@ -41,6 +41,8 @@ class DiceLogicEngineTests: XCTestCase
         
         XCTAssertTrue(state.players == ["Alice": aliceDice, "Bob": bobDice])
         XCTAssertTrue(state.players == ["Alice": [3,2,4,5,3], "Bob": [1,6,2,5,3]])
+        
+        XCTAssertTrue(engine.currentTurn?.name == "Alice")
     }
     
     func testCreateNewRound()
