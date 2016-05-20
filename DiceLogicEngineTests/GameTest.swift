@@ -103,33 +103,6 @@ class GameTest: XCTestCase
         XCTAssertTrue(engine.winner == alice)
     }
     
-    func packAndCheckEngine(engine: DiceLogicEngine)
-    {
-        let bytes = pack(engine.asData())
-        let data = NSData(bytes: bytes, length: bytes.count)
-        
-        print("Size: \(Double(data.length) / 1024.0) kb")
-        
-        var bytesUnpacked: MessagePackValue
-        
-        do
-        {
-            bytesUnpacked = try unpack(data)
-        }
-        catch
-        {
-            XCTFail()
-            return
-        }
-        
-        guard let engine2 = DiceLogicEngine(data: bytesUnpacked) else {
-            XCTFail()
-            return
-        }
-        
-        XCTAssertTrue(engine == engine2)
-    }
-    
     func doAction(player: Player, diceCount: UInt, lastBid: BidAction?, lastAction: HistoryAction?)
     {
         guard let lastBid = lastBid else {
@@ -165,6 +138,11 @@ class GameTest: XCTestCase
         {
             self.catchErrors = true
             player.challenge(lastAction.player)
+            
+            guard packAndCheckEngine(player.engine!) else {
+                XCTFail()
+                return
+            }
         }
     }
     
@@ -278,6 +256,34 @@ class GameTest: XCTestCase
         }
     }
     
+    func packAndCheckEngine(engine: DiceLogicEngine) -> Bool
+    {
+        let bytes = pack(engine.asData())
+        let data = NSData(bytes: bytes, length: bytes.count)
+        
+        print("Size: \(Double(data.length) / 1024.0) kb")
+        
+        var bytesUnpacked: MessagePackValue
+        
+        do
+        {
+            bytesUnpacked = try unpack(data)
+        }
+        catch
+        {
+            XCTFail()
+            return false
+        }
+        
+        guard let engine2 = DiceLogicEngine(data: bytesUnpacked) else {
+            XCTFail()
+            return false
+        }
+        
+        XCTAssertTrue(engine == engine2)
+        return true
+    }
+    
     func test8Players()
     {
         let engine = DiceLogicEngine(players: (1...8).map({String($0)}))
@@ -299,6 +305,9 @@ class GameTest: XCTestCase
             }
         }
         
-        
+        guard packAndCheckEngine(engine) else {
+            XCTFail()
+            return
+        }
     }
 }
