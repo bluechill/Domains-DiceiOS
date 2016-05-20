@@ -37,14 +37,60 @@ public class Player: Equatable
                 return nil
             }
             
-            for index in (0..<engine.currentRoundHistory.count).reverse()
+            for item in engine.currentRoundHistory.reverse()
             {
-                let item = engine.currentRoundHistory[index]
                 let bid = (item as? BidAction)
                 
                 if bid != nil && bid?.player == name
                 {
                     return bid
+                }
+            }
+            
+            return nil
+        }
+    }
+    
+    public var hasExacted: Bool
+    {
+        get
+        {
+            guard let engine = engine else {
+                return false
+            }
+            
+            for round in engine.history.reverse()
+            {
+                for item in round.reverse()
+                {
+                    let action = (item as? ExactAction)
+                    
+                    if action != nil && action?.player == name
+                    {
+                        return true
+                    }
+                }
+            }
+            
+            return false
+        }
+    }
+    
+    public var lastAction: HistoryAction?
+    {
+        get
+        {
+            guard let engine = engine else {
+                return nil
+            }
+            
+            for item in engine.currentRoundHistory.reverse()
+            {
+                let action = (item as? HistoryAction)
+                
+                if action != nil && action?.player == name
+                {
+                    return action
                 }
             }
             
@@ -60,9 +106,8 @@ public class Player: Equatable
                 return false
             }
             
-            for index in (0..<engine.currentRoundHistory.count).reverse()
+            for item in engine.currentRoundHistory.reverse()
             {
-                let item = engine.currentRoundHistory[index]
                 let pass = (item as? PassAction)
                 
                 if pass != nil && pass?.player == name
@@ -260,6 +305,65 @@ public class Player: Equatable
         
         engine.appendHistoryItem(action)
         engine.advancePlayer()
+    }
+    
+    public func canExact() -> Bool
+    {
+        guard !hasExacted else {
+            error("Cannot exact twice in one game")
+            return false
+        }
+        
+        guard let engine = engine else {
+            error("Cannot exact with no engine")
+            return false
+        }
+        
+        guard let lastBid = engine.lastBid else {
+            error("Can only exact if there is a bid")
+            return false
+        }
+        
+        guard lastBid.player != self.name else {
+            error("Cannot exact yourself")
+            return false
+        }
+        
+        return true
+    }
+    
+    public func exact()
+    {
+        guard let engine = engine else {
+            error("Cannot exact with no engine")
+            return
+        }
+        
+        guard engine.currentTurn == self else {
+            error("It is not your turn")
+            return
+        }
+        
+        guard canExact() else {
+            return
+        }
+        
+        let lastBid = engine.lastBid!
+        
+        let correct = (lastBid.count == engine.countDice(lastBid.face))
+        
+        let action = ExactAction(player: self.name, correct: correct)
+        engine.appendHistoryItem(action)
+        
+        if correct
+        {
+            self.dice.append(Die(face: 1))
+            engine.createNewRound()
+        }
+        else
+        {
+            engine.playerLosesRound(self.name)
+        }
     }
 }
 

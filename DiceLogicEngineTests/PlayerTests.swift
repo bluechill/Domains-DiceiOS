@@ -339,6 +339,95 @@ class PlayerTests: XCTestCase
                                  correct: true)
         
         XCTAssertTrue(engine.currentRoundHistory.last == correct2)
+    }
+    
+    func testHasExacted()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        
+        XCTAssertFalse(alice.hasExacted)
+        
+        engine.appendHistoryItem(ExactAction(player: "Alice", correct: true))
+        XCTAssertTrue(alice.hasExacted)
+        engine.createNewRound()
+        engine.createNewRound()
+        XCTAssertTrue(alice.hasExacted)
+        
+        alice.engine = nil
+        XCTAssertFalse(alice.hasExacted)
+    }
+    
+    func testCanExact()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
 
+        var error = String()
+        Handlers.Error = { error = $0 }
+        
+        XCTAssertFalse(alice.canExact())
+        XCTAssertTrue(error == "Can only exact if there is a bid")
+        error = ""
+        
+        alice.engine = nil
+        XCTAssertFalse(alice.canExact())
+        XCTAssertTrue(error == "Cannot exact with no engine")
+        error = ""
+        
+        alice.engine = engine
+        
+        engine.appendHistoryItem(BidAction(player: "Bob", count: 1, face: 2, pushedDice: [], newDice: [], correct: true))
+        
+        XCTAssertTrue(alice.canExact())
+        XCTAssertTrue(error.isEmpty)
+        
+        engine.appendHistoryItem(BidAction(player: "Alice", count: 1, face: 2, pushedDice: [], newDice: [], correct: true))
+        
+        XCTAssertFalse(alice.canExact())
+        XCTAssertTrue(error == "Cannot exact yourself")
+        error = ""
+        
+        engine.appendHistoryItem(ExactAction(player: "Alice", correct: true))
+        
+        XCTAssertFalse(alice.canExact())
+        XCTAssertTrue(error == "Cannot exact twice in one game")
+    }
+    
+    func testExact()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        
+        guard let alice = engine.player("Alice") else { XCTFail(); return }
+        guard let bob = engine.player("Bob") else { XCTFail(); return }
+        
+        var error = String()
+        Handlers.Error = { error = $0 }
+        
+        alice.exact()
+        XCTAssertTrue(error == "Can only exact if there is a bid")
+        error = ""
+        
+        bob.exact()
+        XCTAssertTrue(error == "It is not your turn")
+        error = ""
+        
+        alice.engine = nil
+        alice.exact()
+        XCTAssertTrue(error == "Cannot exact with no engine")
+        error = ""
+        
+        alice.engine = engine
+        
+        engine.appendHistoryItem(BidAction(player: "Bob", count: 4, face: 3, pushedDice: [], newDice: [], correct: true))
+        
+        alice.exact()
+        XCTAssertTrue(error.isEmpty)
+        
+        let action = ExactAction(player: "Alice", correct: true)
+        
+        XCTAssertTrue(engine.history[0].last == action)
     }
 }
