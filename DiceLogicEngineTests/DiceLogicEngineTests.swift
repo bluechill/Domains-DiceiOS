@@ -223,19 +223,23 @@ class DiceLogicEngineTests: XCTestCase
         XCTAssertTrue(error == "Invalid DiceLogicEngine data array")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [.Int(0),.Int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [.Int(0),.Int(0),.Int(0)]))
         XCTAssertTrue(error == "No players array in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.Int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.Int(0),.Int(0)]))
+        XCTAssertTrue(error == "No currentTurn string in DiceLogicEngine data")
+        error = ""
+        
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.String(""),.Int(0)]))
         XCTAssertTrue(error == "No history array in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[.Int(0)]]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.String(""),[.Int(0)]]))
         XCTAssertTrue(error == "DiceLogicEngine sub-array data is not an array")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[[]]]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.String(""),[[]]]))
         XCTAssertTrue(error == "Empty DiceLogicEngine sub-array data")
         error = ""
         
@@ -247,13 +251,31 @@ class DiceLogicEngineTests: XCTestCase
         
         XCTAssertNil(DiceLogicEngine(data: [
             [.Int(0)],
+            .String(""),
             [[ExactAction(player: "Alice", correct: true).asData()]]
         ]))
         XCTAssertTrue(error == "Player in players array is not a player name")
         error = ""
         
+        XCTAssertNil(DiceLogicEngine(data: [
+            ["Alice"],
+            .String(""),
+            [[ExactAction(player: "Alice", correct: true).asData()]]
+            ]))
+        XCTAssertTrue(error == "Cannot find player whose turn it is")
+        error = ""
+        
+        XCTAssertNil(DiceLogicEngine(data: [
+            ["Alice"],
+            .String(""),
+            [[HistoryItem(type: .Invalid).asData()]]
+            ]))
+        XCTAssertTrue(error == "Non-Standalone history item")
+        error = ""
+        
         XCTAssertNotNil(DiceLogicEngine(data: [
             ["Alice"],
+            .String("Alice"),
             [[InitialState(players: ["Bob": [1,2]]).asData()]]
             ]))
         XCTAssertTrue(error == "Corrupted Player Data for player Alice")
