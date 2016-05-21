@@ -138,11 +138,6 @@ class GameTest: XCTestCase
         {
             self.catchErrors = true
             player.challenge(lastAction.player)
-            
-            guard packAndCheckEngine(player.engine!) else {
-                XCTFail()
-                return
-            }
         }
     }
     
@@ -286,28 +281,59 @@ class GameTest: XCTestCase
     
     func test8Players()
     {
-        let engine = DiceLogicEngine(players: (1...8).map({String($0)}))
-        
-        while engine.winner == nil
-        {
-            var count: UInt = 0
+        measureBlock({
+            let engine = DiceLogicEngine(players: (1...8).map({String($0)}))
             
-            for player in engine.players
+            while engine.winner == nil
             {
-                count += UInt(player.dice.count)
+                var count: UInt = 0
+                
+                for player in engine.players
+                {
+                    count += UInt(player.dice.count)
+                }
+                
+                self.doAction(engine.currentTurn!, diceCount: count, lastBid: engine.lastBid, lastAction: engine.lastAction)
+                
+                if self.error
+                {
+                    return
+                }
             }
             
-            doAction(engine.currentTurn!, diceCount: count, lastBid: engine.lastBid, lastAction: engine.lastAction)
-            
-            if error
-            {
+            guard self.packAndCheckEngine(engine) else {
+                XCTFail()
                 return
             }
-        }
-        
-        guard packAndCheckEngine(engine) else {
-            XCTFail()
-            return
-        }
+        })
+    }
+    
+    func test16Players()
+    {
+        measureBlock({
+            let engine = DiceLogicEngine(players: (1...16).map({String($0)}))
+            
+            while engine.winner == nil
+            {
+                var count: UInt = 0
+                
+                for player in engine.players
+                {
+                    count += UInt(player.dice.count)
+                }
+                
+                self.doAction(engine.currentTurn!, diceCount: count, lastBid: engine.lastBid, lastAction: engine.lastAction)
+                
+                if self.error
+                {
+                    return
+                }
+            }
+            
+            guard self.packAndCheckEngine(engine) else {
+                XCTFail()
+                return
+            }
+        })
     }
 }
