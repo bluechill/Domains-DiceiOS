@@ -16,7 +16,7 @@ public class PlayerInfoItem: HistoryItem
     
     public internal(set) var player: String = ""
     
-    public init(player: String, type: HIType = .PlayerInfoItem)
+    public init(player: String, type: HIType = .playerInfoItem)
     {
         super.init(type: type)
         
@@ -30,12 +30,12 @@ public class PlayerInfoItem: HistoryItem
         let array = data.arrayValue!
         
         guard array.count >= PlayerInfoItem.infoMaxKey+1 else {
-            error("PlayerInfoItem data must have an array of size \(PlayerInfoItem.itemMaxKey+1)!")
+            ErrorHandling.error("PlayerInfoItem data must have an array of size \(PlayerInfoItem.itemMaxKey+1)!")
             return nil
         }
         
         guard let player = array[PlayerInfoItem.playerKey].stringValue else {
-            error("PlayerInfoItem data has no player")
+            ErrorHandling.error("PlayerInfoItem data has no player")
             return nil
         }
         
@@ -46,12 +46,12 @@ public class PlayerInfoItem: HistoryItem
     {
         var array = super.asData().arrayValue!
         
-        array.append(.String(player))
+        array.append(.string(player))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

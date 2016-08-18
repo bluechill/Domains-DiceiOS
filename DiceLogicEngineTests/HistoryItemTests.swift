@@ -22,11 +22,11 @@ class HistoryItemTests: XCTestCase
     
     func testInitialization()
     {
-        let item = HistoryItem(type: .Invalid)
-        let item2 = HistoryItem(type:  .Action)
+        let item = HistoryItem(type: .invalid)
+        let item2 = HistoryItem(type:  .action)
         
-        XCTAssertTrue(item.type == .Invalid)
-        XCTAssertTrue(item2.type == .Action)
+        XCTAssertTrue(item.type == .invalid)
+        XCTAssertTrue(item2.type == .action)
     }
     
     func testFactoryMake()
@@ -35,7 +35,7 @@ class HistoryItemTests: XCTestCase
 
         XCTAssertNil(HistoryItem.makeHistoryItem([]))
         
-        let item01 = HistoryItem(type: .Invalid)
+        let item01 = HistoryItem(type: .invalid)
         XCTAssertNil(HistoryItem.makeHistoryItem(item01.asData()))
         
         let item02 = HistoryAction(player: "Alice", correct: true)
@@ -81,12 +81,12 @@ class HistoryItemTests: XCTestCase
     
     func testEquality()
     {
-        let item = HistoryItem(type: .Invalid)
-        let item2 = HistoryItem(type: .Invalid)
+        let item = HistoryItem(type: .invalid)
+        let item2 = HistoryItem(type: .invalid)
         
         XCTAssertTrue(item == item2)
         
-        let item3 = HistoryItem(type: .Action)
+        let item3 = HistoryItem(type: .action)
         
         XCTAssertFalse(item2 == item3)
     }
@@ -95,17 +95,17 @@ class HistoryItemTests: XCTestCase
     {
         Handlers.Error = { _ in }
 
-        let item = HistoryItem(type: .Action)
+        let item = HistoryItem(type: .action)
         let item_restore = HistoryItem(data: item.asData())
         
         XCTAssertTrue(item_restore != nil)
         XCTAssertTrue(item == item_restore!)
         
-        XCTAssertNil(HistoryItem(data: .Int(0)))
+        XCTAssertNil(HistoryItem(data: .int(0)))
         XCTAssertNil(HistoryItem(data: []))
-        XCTAssertNil(HistoryItem(data: [.Int(-1)]))
+        XCTAssertNil(HistoryItem(data: [.int(-1)]))
         
-        let typeInt = HistoryItem.HIType.PlayerWon.rawValue + 1
-        XCTAssertNil(HistoryItem(data: [.UInt(typeInt)]))
+        let typeInt = HistoryItem.HIType.playerWon.rawValue + 1
+        XCTAssertNil(HistoryItem(data: [.uInt(typeInt)]))
     }
 }

@@ -9,17 +9,26 @@
 import Foundation
 import MessagePack
 
-public class DiceLogicEngine: Serializable, Equatable
-{    
+public protocol DiceObserver
+{
+    func diceLogicActionOccurred(_ engine: DiceLogicEngine)
+    func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
+}
+
+public class DiceLogicEngine: Equatable
+{
     public internal(set) var players = [Player]()
     public internal(set) var history = [[HistoryItem]]()
-
+    
+    public var observers = [DiceObserver]()
+    public var userData = [String:AnyObject]()
+    
     public var currentRoundHistory: [HistoryItem]
     {
         get
         {
             guard let currentRound = history.last else {
-                error("No current round, returning empty array")
+                ErrorHandling.error("No current round, returning empty array")
                 return []
             }
             
@@ -31,7 +40,7 @@ public class DiceLogicEngine: Serializable, Equatable
     {
         get
         {
-            for index in (0..<currentRoundHistory.count).reverse()
+            for index in (0..<currentRoundHistory.count).reversed()
             {
                 let item = currentRoundHistory[index]
                 
@@ -49,7 +58,7 @@ public class DiceLogicEngine: Serializable, Equatable
     {
         get
         {
-            for index in (0..<currentRoundHistory.count).reverse()
+            for index in (0..<currentRoundHistory.count).reversed()
             {
                 let item = currentRoundHistory[index]
                 
@@ -105,7 +114,7 @@ public class DiceLogicEngine: Serializable, Equatable
     
     public internal(set) var currentTurn: Player?
     
-    init(players: [String])
+    public init(players: [String], start: Bool = true)
     {
         self.players = players.map{ Player(
             name: $0,
@@ -113,34 +122,42 @@ public class DiceLogicEngine: Serializable, Equatable
             engine: self)
         }
         
+        if start
+        {
+            shuffleAndCreateRound()
+        }
+    }
+    
+    public func shuffleAndCreateRound()
+    {
         self.players.shuffle()
         self.currentTurn = self.players[0]
         
         createNewRound()
     }
     
-    func currentPlayerDiceCalculatedViaHistory(name: String) -> [Die]
+    func currentPlayerDiceCalculatedViaHistory(_ name: String) -> [Die]
     {
         let currentRound = self.currentRoundHistory
         
         guard currentRound.count > 0 else {
-            error("No history to extract player dice from")
+            ErrorHandling.error("No history to extract player dice from")
             return []
         }
         
         guard let initialState = currentRound.first as? InitialState else {
-            error("Invalid formatted history")
+            ErrorHandling.error("Invalid formatted history")
             return []
         }
         
         guard let player = initialState.players[name] else {
-            error("Corrupted Player Data for player \(name)")
+            ErrorHandling.error("Corrupted Player Data for player \(name)")
             return []
         }
         
         var dice = player.map{ Die(face: $0) }
         
-        for index in (0..<currentRound.count).reverse()
+        for index in (0..<currentRound.count).reversed()
         {
             let item = currentRound[index]
             
@@ -166,8 +183,8 @@ public class DiceLogicEngine: Serializable, Equatable
             }
             
             dice.removeAll()
-            dice.appendContentsOf(action.pushedDice.map{ Die(face: UInt($0), pushed: true) })
-            dice.appendContentsOf(action.newDice.map{ Die(face: UInt($0)) })
+            dice.append(contentsOf: action.pushedDice.map{ Die(face: UInt($0), pushed: true) })
+            dice.append(contentsOf: action.newDice.map{ Die(face: UInt($0)) })
             
             break
         }
@@ -175,43 +192,82 @@ public class DiceLogicEngine: Serializable, Equatable
         return dice
     }
     
-    required public init?(data: MessagePackValue)
+    required public init?(data: Foundation.Data)
     {
-        guard let array = data.arrayValue else {
-            error("DiceLogicEngine data is not an array")
+        guard updateWithData(data) else {
             return nil
         }
-        
-        guard array.count == 3 else {
-            error("Invalid DiceLogicEngine data array")
+    }
+    
+    internal init?(data: MessagePackValue)
+    {
+        guard updateWithData(data) else {
             return nil
+        }
+    }
+    
+    public func updateWithData(_ nsdata: Foundation.Data) -> Bool
+    {
+        var data: MessagePackValue = nil
+        
+        do
+        {
+            data = try unpack(nsdata)
+        }
+        catch
+        {
+            ErrorHandling.error("No data to update with")
+            return false
+        }
+        
+        return updateWithData(data)
+    }
+    
+    internal func updateWithData(_ data: MessagePackValue) -> Bool
+    {
+        self.history.removeAll()
+        self.players.removeAll()
+        
+        guard let array = data.arrayValue else {
+            ErrorHandling.error("DiceLogicEngine data is not an array")
+            return false
+        }
+        
+        guard array.count == 4 else {
+            ErrorHandling.error("Invalid DiceLogicEngine data array")
+            return false
         }
         
         guard let players = array[0].arrayValue else {
-            error("No players array in DiceLogicEngine data")
-            return nil
+            ErrorHandling.error("No players array in DiceLogicEngine data")
+            return false
         }
         
-        guard let currentTurn = array[1].stringValue else {
-            error("No currentTurn string in DiceLogicEngine data")
-            return nil
+        guard let playerUserData = array[1].arrayValue else {
+            ErrorHandling.error("No players userData in DiceLogicEngine data")
+            return false
         }
         
-        guard let history = array[2].arrayValue else {
-            error("No history array in DiceLogicEngine data")
-            return nil
+        guard let currentTurn = array[2].stringValue else {
+            ErrorHandling.error("No currentTurn string in DiceLogicEngine data")
+            return false
+        }
+        
+        guard let history = array[3].arrayValue else {
+            ErrorHandling.error("No history array in DiceLogicEngine data")
+            return false
         }
         
         for item in history
         {
             guard let item = item.arrayValue else {
-                error("DiceLogicEngine sub-array data is not an array")
-                return nil
+                ErrorHandling.error("DiceLogicEngine sub-array data is not an array")
+                return false
             }
             
             guard item.count > 0 else {
-                error("Empty DiceLogicEngine sub-array data")
-                return nil
+                ErrorHandling.error("Empty DiceLogicEngine sub-array data")
+                return false
             }
             
             var round = [HistoryItem]()
@@ -219,7 +275,7 @@ public class DiceLogicEngine: Serializable, Equatable
             for hItem in item
             {
                 guard let newItem = HistoryItem.makeHistoryItem(hItem) else {
-                    return nil
+                    return false
                 }
                 
                 round.append(newItem)
@@ -231,54 +287,109 @@ public class DiceLogicEngine: Serializable, Equatable
         for player in players
         {
             guard let player = player.stringValue else {
-                error("Player in players array is not a player name")
-                return nil
+                ErrorHandling.error("Player in players array is not a player name")
+                return false
             }
             
             self.players.append(Player( name: player,
-                                        dice: currentPlayerDiceCalculatedViaHistory(player),
-                                        engine: self))
+                dice: currentPlayerDiceCalculatedViaHistory(player),
+                engine: self))
+        }
+        
+        guard players.count == playerUserData.count else {
+            ErrorHandling.error("Player User Data and Players Array are not the same size!")
+            return false
+        }
+        
+        for index in 0..<playerUserData.count
+        {
+            guard let data = playerUserData[index].dictionaryValue else {
+                ErrorHandling.error("Data in player userData array is not a dictionary of data")
+                return false
+            }
+            
+            for (key, value) in data
+            {
+                guard let stringKey = key.stringValue else {
+                    ErrorHandling.error("Key is not a string!")
+                    return false
+                }
+                
+                if stringKey == "AI"
+                {
+                    guard let boolValue = value.boolValue else {
+                        ErrorHandling.error("AI Value is not a bool!")
+                        return false
+                    }
+                    
+                    self.players[index].userData[stringKey] = boolValue
+                }
+                else if stringKey == "GCID"
+                {
+                    guard let stringValue = value.stringValue else {
+                        ErrorHandling.error("GCID Key is not a string!")
+                        return false
+                    }
+                    
+                    self.players[index].userData[stringKey] = stringValue
+                }
+                else
+                {
+                    ErrorHandling.error("Unknown key found in user data.  Are you sure this data is for this version of Liar's Dice?")
+                    return false
+                }
+            }
         }
         
         guard let currentPlayer = self.player(currentTurn) else {
-            error("Cannot find player whose turn it is")
-            return nil
+            ErrorHandling.error("Cannot find player whose turn it is")
+            return false
         }
         
         self.currentTurn = currentPlayer
-    }
-    
-    public func asData() -> MessagePackValue
-    {
-        let playersMap: [MessagePackValue] = self.players.map{ .String($0.name) }
-        let historyMap: [MessagePackValue] = self.history.map{ .Array($0.map{ $0.asData() }) }
         
-        return .Array([ .Array(playersMap),
-                        .String(currentTurn!.name),
-                        .Array(historyMap)])
+        observers.forEach({ $0.diceLogicActionOccurred(self) })
+        
+        return true
+    }
+        
+    public func asData() -> Foundation.Data
+    {
+        let playersMap: [MessagePackValue] = self.players.map{ .string($0.name) }
+        let playerUserDataMap: [MessagePackValue] = self.players.map{ .map($0.userDataAsMsgPack()) }
+        
+        let historyMap: [MessagePackValue] = self.history.map{ .array($0.map{ $0.asData() }) }
+        
+        let value = MessagePackValue.array([.array(playersMap),
+                                            .array(playerUserDataMap),
+                                            .string(currentTurn!.name),
+                                            .array(historyMap)])
+        
+        let data = pack(value)
+        return Foundation.Data(bytes: UnsafePointer<UInt8>(data), count: data.count)
     }
     
-    func player(name: String) -> Player?
+    func player(_ name: String) -> Player?
     {
         let array = players.filter{ $0.name == name }
         
         guard array.count > 0 else {
-            error("No player with name '\(name)'")
+            ErrorHandling.error("No player with name '\(name)'")
             return nil
         }
         guard array.count == 1 else {
-            error("More than one player with the same name '\(name)'")
+            ErrorHandling.error("More than one player with the same name '\(name)'")
             return nil
         }
         
         return array.first!
     }
     
-    func hasPlayerBeenInSpecialRulesBefore(player: String) -> Bool
+    func hasPlayerBeenInSpecialRulesBefore(_ player: String) -> Bool
     {
-        for round in history.reverse()
+        for round in history.reversed()
         {
-            for item in round.reverse()
+            for item in round.reversed()
             {
                 if  (item as? SpecialRulesInEffect) != nil &&
                     (item as! SpecialRulesInEffect).player == player
@@ -291,7 +402,7 @@ public class DiceLogicEngine: Serializable, Equatable
         return false
     }
     
-    func appendHistoryItem(item: HistoryItem)
+    func appendHistoryItem(_ item: HistoryItem)
     {
         let currentRoundIndex = history.count-1
         history[currentRoundIndex].append(item)
@@ -307,7 +418,7 @@ public class DiceLogicEngine: Serializable, Equatable
             
             if lostItem == nil
             {
-                for item in round.reverse()
+                for item in round.reversed()
                 {
                     if let item = (item as? PlayerLostRound)
                     {
@@ -344,7 +455,7 @@ public class DiceLogicEngine: Serializable, Equatable
         if let playerWhoLostRound = playerWhoLostRound
         {
             guard let player = self.player(playerWhoLostRound) else {
-                error("Invalid player who lost the round.")
+                ErrorHandling.error("Invalid player who lost the round.")
                 return
             }
             
@@ -353,22 +464,24 @@ public class DiceLogicEngine: Serializable, Equatable
                 appendHistoryItem(SpecialRulesInEffect(player: playerWhoLostRound))
             }
         }
+        
+        observers.forEach({ $0.diceLogicRoundDidEnd(self) })
     }
     
-    func playerLosesRound(player: String)
+    func playerLosesRound(_ player: String)
     {
         guard self.winner == nil else {
-            error("Cannot lose round when the game is over")
+            ErrorHandling.error("Cannot lose round when the game is over")
             return
         }
         
         guard let player = self.player(player) else {
-            error("Invalid player lost the round")
+            ErrorHandling.error("Invalid player lost the round")
             return
         }
         
         guard player.dice.count > 0 else {
-            error("Player cannot lose the round when they already have zero dice.")
+            ErrorHandling.error("Player cannot lose the round when they already have zero dice.")
             return
         }
         
@@ -394,7 +507,7 @@ public class DiceLogicEngine: Serializable, Equatable
         createNewRound()
     }
     
-    func countDice(face: UInt) -> UInt
+    func countDice(_ face: UInt) -> UInt
     {
         var count: UInt = 0
         
@@ -414,8 +527,8 @@ public class DiceLogicEngine: Serializable, Equatable
     
     func advancePlayer()
     {
-        let index = players.indexOf({ $0.name == self.currentTurn?.name})!
-        var newIndex = index.advancedBy(1)
+        let index = players.index(where: { $0.name == self.currentTurn?.name})!
+        var newIndex = index.advanced(by: 1)
         
         if newIndex >= players.count
         {
@@ -423,13 +536,14 @@ public class DiceLogicEngine: Serializable, Equatable
         }
         
         var nextPlayers = players[newIndex..<players.count]
-        nextPlayers.appendContentsOf(players[0..<index])
+        nextPlayers.append(contentsOf: players[0..<index])
         
         for player in nextPlayers
         {
             if !player.hasLost
             {
                 self.currentTurn = player
+                observers.forEach({ $0.diceLogicActionOccurred(self) })
                 return
             }
         }

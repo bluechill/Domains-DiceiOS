@@ -13,20 +13,20 @@ public class PlayerLostRound: PlayerInfoItem
 {
     public init(player: String)
     {
-        super.init(player: player, type: .PlayerLostRound)
+        super.init(player: player, type: .playerLostRound)
     }
     
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
         
-        guard self.type == .PlayerLostRound else {
-            error("Must be a PlayerLostRound to initialize as such")
+        guard self.type == .playerLostRound else {
+            ErrorHandling.error("Must be a PlayerLostRound to initialize as such")
             return nil
         }
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

@@ -18,7 +18,7 @@ public class SpecialRulesInEffect: HistoryItem
     
     public init(player: String)
     {
-        super.init(type: .SpecialRulesInEffect)
+        super.init(type: .specialRulesInEffect)
         
         self.player = player
     }
@@ -27,15 +27,15 @@ public class SpecialRulesInEffect: HistoryItem
     {
         super.init(data: data)
         
-        guard self.type == .SpecialRulesInEffect else {
-            error("Must be a SpecialRulesInEffect to initialize as such")
+        guard self.type == .specialRulesInEffect else {
+            ErrorHandling.error("Must be a SpecialRulesInEffect to initialize as such")
             return nil
         }
         
         let array = data.arrayValue!
         
         guard let player = array[SpecialRulesInEffect.playerKey].stringValue else {
-            error("Must have the player who caused special rules")
+            ErrorHandling.error("Must have the player who caused special rules")
             return nil
         }
         
@@ -46,12 +46,12 @@ public class SpecialRulesInEffect: HistoryItem
     {
         var array = super.asData().arrayValue!
         
-        array.append(.String(player))
+        array.append(.string(player))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

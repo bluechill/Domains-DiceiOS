@@ -1,14 +1,13 @@
 //
-//  CollectionType.swift
+//  ArrayExtensions.swift
 //  UM Liars Dice
 //
-//  Created by Alex Turner on 5/19/16.
+//  Created by Alex Turner on 5/26/16.
 //  Copyright © 2016 Alex Turner. All rights reserved.
 //
 
 import Foundation
 
-// From: http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift
 extension Collection {
     /// Return a copy of `self` with its elements shuffled
     func shuffle() -> [Iterator.Element] {

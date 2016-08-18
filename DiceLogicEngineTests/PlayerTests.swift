@@ -126,7 +126,7 @@ class PlayerTests: XCTestCase
         engine.appendHistoryItem(BidAction(player: "Bob", count: 3, face: 3, pushedDice: [], newDice: [], correct: true))
         
         engine.appendHistoryItem(SpecialRulesInEffect(player: "Bob"))
-        bob.dice.removeRange(0..<4)
+        bob.dice.removeSubrange(0..<4)
         
         XCTAssertTrue(alice.isValidBid(4, face: 3))
         XCTAssertFalse(alice.isValidBid(4, face: 2))
@@ -269,7 +269,7 @@ class PlayerTests: XCTestCase
         var error = String()
         Handlers.Error = {error = $0}
         
-        alice.dice.removeRange(0..<4)
+        alice.dice.removeSubrange(0..<4)
         
         XCTAssertFalse(alice.canPass())
         XCTAssertTrue(error == "You cannot pass with only one die")
@@ -304,12 +304,12 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(error == "It is not your turn")
         error = ""
         
-        alice.dice.removeRange(0..<4)
+        alice.dice.removeSubrange(0..<4)
         alice.pass()
         XCTAssertTrue(error == "You cannot pass with only one die")
         error = ""
         
-        alice.dice.insertContentsOf([   Die(face: 3),
+        alice.dice.insert(contentsOf: [   Die(face: 3),
                                         Die(face: 2),
                                         Die(face: 4),
                                         Die(face: 5)], at: 0)
@@ -329,7 +329,7 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(engine.currentRoundHistory.last == correct)
         
         bob.dice.removeAll()
-        bob.dice.appendContentsOf([Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3)])
+        bob.dice.append(contentsOf: [Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3)])
         bob.pass()
         XCTAssertTrue(error.isEmpty)
         

@@ -20,7 +20,7 @@ public class ChallengeAction: HistoryAction
     
     public init(player: String, challengee: String, challengeActionIndex: Int, correct: Bool)
     {
-        super.init(player: player, correct: correct, type: .ChallengeAction)
+        super.init(player: player, correct: correct, type: .challengeAction)
 
         self.challengee = challengee
         self.challengeActionIndex = challengeActionIndex
@@ -30,25 +30,25 @@ public class ChallengeAction: HistoryAction
     {
         super.init(data: data)
         
-        guard self.type == .ChallengeAction else {
-            error("Must be a ChallengeAction to initialize as such")
+        guard self.type == .challengeAction else {
+            ErrorHandling.error("Must be a ChallengeAction to initialize as such")
             return nil
         }
         
         let array = data.arrayValue!
         
         guard array.count >= ChallengeAction.challengeMaxKey+1 else {
-            error("ChallengeAction data must have \(ChallengeAction.challengeMaxKey+1) items")
+            ErrorHandling.error("ChallengeAction data must have \(ChallengeAction.challengeMaxKey+1) items")
             return nil
         }
         
         guard let challengee = array[ChallengeAction.challengeeKey].stringValue else {
-            error("ChallengeAction data must have a challengee")
+            ErrorHandling.error("ChallengeAction data must have a challengee")
             return nil
         }
         
         guard let challengeActionIndex = array[ChallengeAction.challengeActionIndexKey].integerValue else {
-            error("ChallengeAction data must have a challenge action index")
+            ErrorHandling.error("ChallengeAction data must have a challenge action index")
             return nil
         }
         
@@ -60,13 +60,13 @@ public class ChallengeAction: HistoryAction
     {
         var array = super.asData().arrayValue!
         
-        array.append(.String(challengee))
-        array.append(.Int(Int64(challengeActionIndex)))
+        array.append(.string(challengee))
+        array.append(.int(Int64(challengeActionIndex)))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

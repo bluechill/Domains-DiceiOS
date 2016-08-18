@@ -24,8 +24,8 @@ class ExactActionTests: XCTestCase
     func testEquality()
     {
         let action1 = ExactAction(player: "Alice", correct: true)
-        let action2 = HistoryAction(player: "Alice", correct: true, type: .ExactAction)
-        let action3 = HistoryAction(player: "Alice", correct: true, type: .PushAction)
+        let action2 = HistoryAction(player: "Alice", correct: true, type: .exactAction)
+        let action3 = HistoryAction(player: "Alice", correct: true, type: .pushAction)
         let action4 = ExactAction(player: "Alice", correct: true)
         
         XCTAssertFalse(action1 == action2)
@@ -44,9 +44,9 @@ class ExactActionTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(ExactAction(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .String("Alice"),
-            .Bool(true)
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true)
             ]))
     }
 }

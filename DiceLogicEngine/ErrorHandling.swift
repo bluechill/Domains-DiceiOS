@@ -15,20 +15,23 @@ public enum Handlers
     static var Warning: (String) -> Void = { _ in }
 }
 
-public func error(items: String..., separator: String = " ", terminator: String = "\n")
+public class ErrorHandling
 {
-    let errorString = items.joinWithSeparator(separator)
-    let string = "Error: " + errorString
-    print(string.red, separator: "", terminator: terminator)
+    public static func error(_ items: String..., separator: String = " ", terminator: String = "\n")
+    {
+        let errorString = items.joined(separator: separator)
+        let string = "Error: " + errorString
+        print(string.red, separator: "", terminator: terminator)
+        
+        Handlers.Error(errorString)
+    }
     
-    Handlers.Error(errorString)
-}
-
-public func warning(items: String..., separator: String = " ", terminator: String = "\n")
-{
-    let warningString = items.joinWithSeparator(separator)
-    let string = "Warning: " + warningString
-    print(string.blue, separator: "", terminator: terminator)
-    
-    Handlers.Warning(warningString)
+    public static func warning(_ items: String..., separator: String = " ", terminator: String = "\n")
+    {
+        let warningString = items.joined(separator: separator)
+        let string = "Warning: " + warningString
+        print(string.blue, separator: "", terminator: terminator)
+        
+        Handlers.Warning(warningString)
+    }
 }

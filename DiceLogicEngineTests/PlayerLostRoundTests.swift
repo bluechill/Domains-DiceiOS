@@ -41,8 +41,8 @@ class PlayerLostRoundTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(PlayerLostRound(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .String("Alice")
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice")
             ]))
     }
 }

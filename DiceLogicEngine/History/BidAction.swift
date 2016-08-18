@@ -19,7 +19,7 @@ public class BidAction: PushAction
     
     public init(player: String, count: UInt, face: UInt, pushedDice: [UInt], newDice: [UInt], correct: Bool)
     {
-        super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .BidAction)
+        super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .bidAction)
         
         self.count = count
         self.face = face
@@ -29,25 +29,25 @@ public class BidAction: PushAction
     {
         super.init(data: data)
         
-        guard self.type == .BidAction else {
-            error("Must be a BidAction to initialize as such")
+        guard self.type == .bidAction else {
+            ErrorHandling.error("Must be a BidAction to initialize as such")
             return nil
         }
         
         let array = data.arrayValue!
         
         guard array.count >= PushAction.pushMaxKey+3 else {
-            error("BidAction data must have an array of size \(PushAction.pushMaxKey+3)")
+            ErrorHandling.error("BidAction data must have an array of size \(PushAction.pushMaxKey+3)")
             return nil
         }
         
         guard let count = array[BidAction.countKey].unsignedIntegerValue else {
-            error("BidAction data must have a count key")
+            ErrorHandling.error("BidAction data must have a count key")
             return nil
         }
         
         guard let face = array[BidAction.faceKey].unsignedIntegerValue else {
-            error("BidAction data must have a die face key")
+            ErrorHandling.error("BidAction data must have a die face key")
             return nil
         }
         
@@ -59,13 +59,13 @@ public class BidAction: PushAction
     {
         var array = super.asData().arrayValue!
         
-        array.append(.UInt(UInt64(count)))
-        array.append(.UInt(UInt64(face)))
+        array.append(.uInt(UInt64(count)))
+        array.append(.uInt(UInt64(face)))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

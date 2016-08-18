@@ -24,8 +24,8 @@ class PassActionTests: XCTestCase
     func testEquality()
     {
         let action1 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
-        let action2 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .PassAction)
-        let action3 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .PushAction)
+        let action2 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .passAction)
+        let action3 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .pushAction)
         let action4 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
         
         XCTAssertFalse(action1 == action2)
@@ -43,17 +43,17 @@ class PassActionTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(PassAction(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .String("Alice"),
-            .Bool(true),
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true),
             [],
             []
             ]))
         
         XCTAssertNotNil(PassAction(data: [
-            .UInt(HistoryItem.HIType.PassAction.rawValue),
-            .String("Alice"),
-            .Bool(true),
+            .uInt(HistoryItem.HIType.passAction.rawValue),
+            .string("Alice"),
+            .bool(true),
             [],
             []
             ]))

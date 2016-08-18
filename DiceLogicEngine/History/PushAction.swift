@@ -18,7 +18,7 @@ public class PushAction: HistoryAction
     public internal(set) var pushedDice = [UInt]()
     public internal(set) var newDice = [UInt]()
     
-    public init(player: String, pushedDice: [UInt], newDice: [UInt], correct: Bool, type: HIType = .PushAction)
+    public init(player: String, pushedDice: [UInt], newDice: [UInt], correct: Bool, type: HIType = .pushAction)
     {
         super.init(player: player, correct: correct, type: type)
         
@@ -33,24 +33,24 @@ public class PushAction: HistoryAction
         let array = data.arrayValue!
         
         guard array.count >= PushAction.pushMaxKey+1 else {
-            error("PushAction data must have an array of size \(PushAction.pushMaxKey+1)!")
+            ErrorHandling.error("PushAction data must have an array of size \(PushAction.pushMaxKey+1)!")
             return nil
         }
         
         guard let packedDice = array[PushAction.pushKey].arrayValue else {
-            error("PushAction data must have an array of pushedDice")
+            ErrorHandling.error("PushAction data must have an array of pushedDice")
             return nil
         }
         
         guard let packedNewDice = array[PushAction.newKey].arrayValue else {
-            error("PushAction data must have an array of newDice")
+            ErrorHandling.error("PushAction data must have an array of newDice")
             return nil
         }
         
         for packedDie in packedDice
         {
             guard let die = packedDie.unsignedIntegerValue else {
-                error("PushAction data must consist of UInts")
+                ErrorHandling.error("PushAction data must consist of UInts")
                 return nil
             }
             
@@ -60,7 +60,7 @@ public class PushAction: HistoryAction
         for packedDie in packedNewDice
         {
             guard let die = packedDie.unsignedIntegerValue else {
-                error("PushAction data must consist of UInts")
+                ErrorHandling.error("PushAction data must consist of UInts")
                 return nil
             }
             
@@ -72,13 +72,13 @@ public class PushAction: HistoryAction
     {
         var array = super.asData().arrayValue!
         
-        array.append(.Array(pushedDice.map{ .UInt(UInt64($0)) }))
-        array.append(.Array(newDice.map{ .UInt(UInt64($0)) }))
+        array.append(.array(pushedDice.map{ .uInt(UInt64($0)) }))
+        array.append(.array(newDice.map{ .uInt(UInt64($0)) }))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

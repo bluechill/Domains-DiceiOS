@@ -28,12 +28,12 @@ public class Die: Equatable, Serializable
         {
             if newValue < 1
             {
-                error("Invalid Die Face.  Setting it to 1.")
+                ErrorHandling.error("Invalid Die Face.  Setting it to 1.")
                 _face = 1
             }
             else if newValue > Die.sides
             {
-                error("Invalid Die Face.  Setting it to \(Die.sides).")
+                ErrorHandling.error("Invalid Die Face.  Setting it to \(Die.sides).")
                 _face = Die.sides
             }
             else
@@ -60,24 +60,24 @@ public class Die: Equatable, Serializable
     required public init(data: MessagePackValue)
     {
         guard let dieArray = data.arrayValue else {
-            error("Bad data passed to Die initializer: data is not an array")
+            ErrorHandling.error("Bad data passed to Die initializer: data is not an array")
             return
         }
         
         guard dieArray.count == 2 else {
-            error("Die data is not an array of size 2")
+            ErrorHandling.error("Die data is not an array of size 2")
             return
         }
         
         guard let face = dieArray[Die.faceKey].unsignedIntegerValue else
         {
-            error("Die has no face key")
+            ErrorHandling.error("Die has no face key")
             return
         }
         
         guard let pushed = dieArray[Die.pushedKey].boolValue else
         {
-            error("Die has no pushed key")
+            ErrorHandling.error("Die has no pushed key")
             return
         }
         
@@ -87,8 +87,8 @@ public class Die: Equatable, Serializable
     
     public func asData() -> MessagePackValue
     {
-        let array: [MessagePackValue] = [.UInt(UInt64(self.face)), .Bool(self.pushed)]
-        return .Array(array)
+        let array: [MessagePackValue] = [.uInt(UInt64(self.face)), .bool(self.pushed)]
+        return .array(array)
     }
     
     func roll()

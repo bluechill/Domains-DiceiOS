@@ -13,20 +13,20 @@ public class ExactAction: HistoryAction
 {
     public init(player: String, correct: Bool)
     {
-        super.init(player: player, correct: correct, type: .ExactAction)
+        super.init(player: player, correct: correct, type: .exactAction)
     }
     
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
         
-        guard self.type == .ExactAction else {
-            error("Must be a ExactAction to initialize as such")
+        guard self.type == .exactAction else {
+            ErrorHandling.error("Must be a ExactAction to initialize as such")
             return nil
         }
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

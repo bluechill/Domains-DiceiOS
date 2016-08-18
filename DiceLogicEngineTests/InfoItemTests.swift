@@ -24,7 +24,7 @@ class PlayerInfoItemTests: XCTestCase
     {
         let item = PlayerInfoItem(player: "Alice")
         XCTAssertTrue(item.player == "Alice")
-        XCTAssertTrue(item.type == .PlayerInfoItem)
+        XCTAssertTrue(item.type == .playerInfoItem)
     }
     
     func testSerialization()
@@ -37,11 +37,11 @@ class PlayerInfoItemTests: XCTestCase
         XCTAssertTrue(action == action_restore)
         
         XCTAssertNil(PlayerInfoItem(data: []))
-        XCTAssertNil(PlayerInfoItem(data: [.Int(-1)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.Invalid.rawValue)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.PlayerInfoItem.rawValue)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.PlayerInfoItem.rawValue),.Int(0)]))
-        XCTAssertNotNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.PlayerInfoItem.rawValue),"Alice"]))
+        XCTAssertNil(PlayerInfoItem(data: [.int(-1)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uInt(HistoryItem.HIType.invalid.rawValue)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uInt(HistoryItem.HIType.playerInfoItem.rawValue)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uInt(HistoryItem.HIType.playerInfoItem.rawValue),.int(0)]))
+        XCTAssertNotNil(PlayerInfoItem(data: [.uInt(HistoryItem.HIType.playerInfoItem.rawValue),"Alice"]))
     }
     
     func testEquality()
@@ -59,12 +59,12 @@ class PlayerInfoItemTests: XCTestCase
         XCTAssertFalse(action == (action3 as HistoryItem))
         XCTAssertFalse((action as HistoryItem) == action3)
         
-        XCTAssertFalse(HistoryItem(type: .Invalid) == action)
+        XCTAssertFalse(HistoryItem(type: .invalid) == action)
         
-        let action9 = PlayerInfoItem(player: "Alice", type: .Invalid)
+        let action9 = PlayerInfoItem(player: "Alice", type: .invalid)
         XCTAssertFalse(action == action9)
         
-        let action10 = HistoryItem(type: .PlayerInfoItem)
+        let action10 = HistoryItem(type: .playerInfoItem)
         XCTAssertFalse(action == action10)
     }
 }

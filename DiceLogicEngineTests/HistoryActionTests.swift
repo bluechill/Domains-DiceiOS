@@ -41,13 +41,13 @@ class HistoryActionTests: XCTestCase
         XCTAssertTrue(action == action_restore)
         
         XCTAssertNil(HistoryAction(data: []))
-        XCTAssertNil(HistoryAction(data: [.Int(-1)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Invalid.rawValue)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),.Int(0),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Int(0)]))        
-        XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.Action.rawValue),"Alice",.Bool(false)]))
+        XCTAssertNil(HistoryAction(data: [.int(-1)]))
+        XCTAssertNil(HistoryAction(data: [.uInt(HistoryItem.HIType.invalid.rawValue)]))
+        XCTAssertNil(HistoryAction(data: [.uInt(HistoryItem.HIType.action.rawValue)]))
+        XCTAssertNil(HistoryAction(data: [.uInt(HistoryItem.HIType.action.rawValue),.int(0)]))
+        XCTAssertNil(HistoryAction(data: [.uInt(HistoryItem.HIType.action.rawValue),.int(0),.int(0)]))
+        XCTAssertNil(HistoryAction(data: [.uInt(HistoryItem.HIType.action.rawValue),"Alice",.int(0)]))        
+        XCTAssertNotNil(HistoryAction(data: [.uInt(HistoryItem.HIType.action.rawValue),"Alice",.bool(false)]))
     }
     
     func testEquality()
@@ -89,12 +89,12 @@ class HistoryActionTests: XCTestCase
         XCTAssertFalse(action == (action2 as HistoryItem))
         XCTAssertFalse((action as HistoryItem) == action2)
         
-        XCTAssertFalse(HistoryItem(type: .Invalid) == action)
+        XCTAssertFalse(HistoryItem(type: .invalid) == action)
         
-        let action9 = HistoryAction(player: "Alice", correct: false, type: .BidAction)
+        let action9 = HistoryAction(player: "Alice", correct: false, type: .bidAction)
         XCTAssertFalse(action == action9)
         
-        let action10 = HistoryItem(type: .Action)
+        let action10 = HistoryItem(type: .action)
         XCTAssertFalse(action == action10)
     }
 }

@@ -41,10 +41,10 @@ class InitialStateTests: XCTestCase
         XCTAssertFalse(item1 == item5)
         XCTAssertFalse(item1 == item6)
         
-        let action = HistoryItem(type: .InitialState)
+        let action = HistoryItem(type: .initialState)
         XCTAssertFalse(item1 == action)
         
-        let action2 = HistoryItem(type: .Invalid)
+        let action2 = HistoryItem(type: .invalid)
         XCTAssertFalse(item1 == action2)
     }
     
@@ -58,40 +58,40 @@ class InitialStateTests: XCTestCase
         XCTAssertTrue(item == item_restore)
         
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
+            .uInt(HistoryItem.HIType.invalid.rawValue),
         ]))
         
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
         ]))
         
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             []
         ]))
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             [:]
         ]))
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":"A"]
         ]))
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
-            [.Int(1):"A"]
+            .uInt(HistoryItem.HIType.initialState.rawValue),
+            [.int(1):"A"]
         ]))
         XCTAssertNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[-1]]
         ]))
         
         XCTAssertNotNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[]]
         ]))
         XCTAssertNotNil(InitialState(data: [
-            .UInt(HistoryItem.HIType.InitialState.rawValue),
+            .uInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[0,1,2]]
         ]))
     }

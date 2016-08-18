@@ -41,8 +41,8 @@ class PlayerLostTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(PlayerLost(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .String("Alice")
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice")
             ]))
     }
 }

@@ -37,10 +37,10 @@ class ChallengeActionTests: XCTestCase
         XCTAssertTrue(item1 == item2)
         XCTAssertFalse(item2 == item3)
         
-        let action = HistoryAction(player: "Alice", correct: true, type: .ChallengeAction)
+        let action = HistoryAction(player: "Alice", correct: true, type: .challengeAction)
         XCTAssertFalse(item1 == action)
         
-        let action2 = HistoryAction(player: "Alice", correct: true, type: .Action)
+        let action2 = HistoryAction(player: "Alice", correct: true, type: .action)
         XCTAssertFalse(item1 == action2)
     }
     
@@ -53,19 +53,19 @@ class ChallengeActionTests: XCTestCase
         
         XCTAssertTrue(item == item_restore)
         
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false)]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob"]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),.Int(5),1]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob","a"]))
+        XCTAssertNil(ChallengeAction(data: [.uInt(HistoryItem.HIType.challengeAction.rawValue),"Alice",.bool(false)]))
+        XCTAssertNil(ChallengeAction(data: [.uInt(HistoryItem.HIType.challengeAction.rawValue),"Alice",.bool(false),"Bob"]))
+        XCTAssertNil(ChallengeAction(data: [.uInt(HistoryItem.HIType.challengeAction.rawValue),"Alice",.bool(false),.int(5),1]))
+        XCTAssertNil(ChallengeAction(data: [.uInt(HistoryItem.HIType.challengeAction.rawValue),"Alice",.bool(false),"Bob","a"]))
         
-        XCTAssertNotNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.ChallengeAction.rawValue),"Alice",.Bool(false),"Bob",1]))
+        XCTAssertNotNil(ChallengeAction(data: [.uInt(HistoryItem.HIType.challengeAction.rawValue),"Alice",.bool(false),"Bob",1]))
         
         XCTAssertNil(ChallengeAction(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .String("Alice"),
-            .Bool(true),
-            .String("Bob"),
-            .Int(0)
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true),
+            .string("Bob"),
+            .int(0)
             ]))
     }
 }

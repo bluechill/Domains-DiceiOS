@@ -25,8 +25,8 @@ class SpecialRulesInEffectTests: XCTestCase
     {
         let action1 = SpecialRulesInEffect(player: "Alice")
         let action2 = SpecialRulesInEffect(player: "Alice")
-        let action3 = HistoryItem(type: .Invalid)
-        let action4 = HistoryItem(type: .SpecialRulesInEffect)
+        let action3 = HistoryItem(type: .invalid)
+        let action4 = HistoryItem(type: .specialRulesInEffect)
         
         XCTAssertFalse(action1 == action3)
         XCTAssertFalse(action1 == action4)
@@ -44,18 +44,18 @@ class SpecialRulesInEffectTests: XCTestCase
         XCTAssertTrue(action.player == "Alice")
         
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue)
+            .uInt(HistoryItem.HIType.invalid.rawValue)
         ]))
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.Invalid.rawValue),
-            .Int(1)
+            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .int(1)
         ]))
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.SpecialRulesInEffect.rawValue),
-            .Int(1)
+            .uInt(HistoryItem.HIType.specialRulesInEffect.rawValue),
+            .int(1)
         ]))
         XCTAssertNotNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.SpecialRulesInEffect.rawValue),
+            .uInt(HistoryItem.HIType.specialRulesInEffect.rawValue),
             "Alice"
         ]))
     }

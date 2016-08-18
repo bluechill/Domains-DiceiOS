@@ -18,7 +18,7 @@ public class InitialState: HistoryItem
     
     public init(players: [String: Array<UInt>])
     {
-        super.init(type: .InitialState)
+        super.init(type: .initialState)
         
         self.players = players
     }
@@ -27,37 +27,37 @@ public class InitialState: HistoryItem
     {
         super.init(data: data)
         
-        guard self.type == .InitialState else {
-            error("Must be an InitialState to initialize as such")
+        guard self.type == .initialState else {
+            ErrorHandling.error("Must be an InitialState to initialize as such")
             return nil
         }
         
         let array = data.arrayValue!
         
         guard array.count >= InitialState.initialStateMaxKey+1 else {
-            error("InitialState data must have an array of size \(InitialState.initialStateMaxKey+1)!")
+            ErrorHandling.error("InitialState data must have an array of size \(InitialState.initialStateMaxKey+1)!")
             return nil
         }
         
         guard let packedPlayers = array[InitialState.playersKey].dictionaryValue else {
-            error("InitialState data must have a dictionary of pushedDice")
+            ErrorHandling.error("InitialState data must have a dictionary of pushedDice")
             return nil
         }
         
         guard packedPlayers.count > 0 else {
-            error("There will always be at least two players even if they have no dice, in an InitialState")
+            ErrorHandling.error("There will always be at least two players even if they have no dice, in an InitialState")
             return nil
         }
         
         for (packedPlayer, packedDiceArray) in packedPlayers
         {
             guard let player = packedPlayer.stringValue else {
-                error("InitialState must have a string player")
+                ErrorHandling.error("InitialState must have a string player")
                 return nil
             }
             
             guard let packedDice = packedDiceArray.arrayValue else {
-                error("InitialState must have dice")
+                ErrorHandling.error("InitialState must have dice")
                 return nil
             }
             
@@ -66,7 +66,7 @@ public class InitialState: HistoryItem
             for packedDie in packedDice
             {
                 guard let die = packedDie.unsignedIntegerValue else {
-                    error("InitialState dice must consist of UInts")
+                    ErrorHandling.error("InitialState dice must consist of UInts")
                     return nil
                 }
                 
@@ -85,15 +85,15 @@ public class InitialState: HistoryItem
         
         for (key, value) in players
         {
-            dictionary[.String(key)] = .Array(value.map{.UInt(UInt64($0))})
+            dictionary[.string(key)] = .array(value.map{.uInt(UInt64($0))})
         }
         
-        array.append(.Map(dictionary))
+        array.append(.map(dictionary))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

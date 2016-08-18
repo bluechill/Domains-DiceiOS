@@ -29,11 +29,11 @@ class HandlersTests: XCTestCase
         Handlers.Error = { _ in e = true }
         
         XCTAssertFalse(e)
-        error("test")
+        ErrorHandling.error("test")
         XCTAssertTrue(e)
         e = false
         XCTAssertFalse(e)
-        error("test2")
+        ErrorHandling.error("test2")
         XCTAssertTrue(e)
     }
     
@@ -43,11 +43,11 @@ class HandlersTests: XCTestCase
         Handlers.Warning = { _ in w = true }
         
         XCTAssertFalse(w)
-        warning("test")
+        ErrorHandling.warning("test")
         XCTAssertTrue(w)
         w = false
         XCTAssertFalse(w)
-        warning("test2")
+        ErrorHandling.warning("test2")
         XCTAssertTrue(w)
     }
 }

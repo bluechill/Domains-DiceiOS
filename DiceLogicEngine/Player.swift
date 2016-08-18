@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MessagePack
 
 public class Player: Equatable
 {
@@ -14,6 +15,26 @@ public class Player: Equatable
     
     public var dice: Array<Die> = []
     public var name: String = ""
+    
+    public var userData = [String:AnyObject]()
+    internal func userDataAsMsgPack() -> [MessagePackValue:MessagePackValue]
+    {
+        var result = [MessagePackValue:MessagePackValue]()
+        
+        for (key,value) in userData
+        {
+            if key == "AI"
+            {
+                result[.string(key)] = true
+            }
+            else if key == "GCID"
+            {
+                result[.string(key)] = .string(value as! String)
+            }
+        }
+        
+        return result
+    }
     
     weak var engine: DiceLogicEngine?
     
@@ -40,7 +61,7 @@ public class Player: Equatable
                 return nil
             }
             
-            for item in engine.currentRoundHistory.reverse()
+            for item in engine.currentRoundHistory.reversed()
             {
                 let bid = (item as? BidAction)
                 
@@ -62,9 +83,9 @@ public class Player: Equatable
                 return false
             }
             
-            for round in engine.history.reverse()
+            for round in engine.history.reversed()
             {
-                for item in round.reverse()
+                for item in round.reversed()
                 {
                     let action = (item as? ExactAction)
                     
@@ -87,7 +108,7 @@ public class Player: Equatable
                 return nil
             }
             
-            for item in engine.currentRoundHistory.reverse()
+            for item in engine.currentRoundHistory.reversed()
             {
                 let action = (item as? HistoryAction)
                 
@@ -109,7 +130,7 @@ public class Player: Equatable
                 return false
             }
             
-            for item in engine.currentRoundHistory.reverse()
+            for item in engine.currentRoundHistory.reversed()
             {
                 let pass = (item as? PassAction)
                 
@@ -123,7 +144,7 @@ public class Player: Equatable
         }
     }
     
-    func isValidSpecialRulesBid(count: UInt, face: UInt, lastBid: BidAction) -> Bool
+    func isValidSpecialRulesBid(_ count: UInt, face: UInt, lastBid: BidAction) -> Bool
     {
         if dice.count == 1
         {
@@ -133,7 +154,7 @@ public class Player: Equatable
         return count > lastBid.count && face == lastBid.face
     }
     
-    func isValidNonSpecialRulesBid(count: UInt, face: UInt, lastBid: BidAction) -> Bool
+    func isValidNonSpecialRulesBid(_ count: UInt, face: UInt, lastBid: BidAction) -> Bool
     {
         if face == 1 && lastBid.face != 1
         {
@@ -148,25 +169,25 @@ public class Player: Equatable
                 (count == lastBid.count && face > lastBid.face)
     }
     
-    public func isValidBid(count: UInt, face: UInt) -> Bool
+    public func isValidBid(_ count: UInt, face: UInt) -> Bool
     {
         guard let engine = engine else {
-            error("Cannot bid with no engine")
+            ErrorHandling.error("Cannot bid with no engine")
             return false
         }
         
         guard count > 0 else {
-            error("Cannot bid zero dice")
+            ErrorHandling.error("Cannot bid zero dice")
             return false
         }
         
         guard face > 0 && face <= Die.sides else {
-            error("Cannot bid invalid die face \(face)")
+            ErrorHandling.error("Cannot bid invalid die face \(face)")
             return false
         }
         
         guard let lastBid = engine.lastBid else {
-            warning("No last bid, therefore valid")
+            ErrorHandling.warning("No last bid, therefore valid")
             return true
         }
         
@@ -178,19 +199,19 @@ public class Player: Equatable
         return isValidNonSpecialRulesBid(count, face: face, lastBid: lastBid)
     }
     
-    public func canPushDice(pushDice: [UInt]) -> Bool
+    public func canPushDice(_ pushDice: [UInt]) -> Bool
     {
         var dice = self.dice.filter{ $0.pushed == false }
         
         for die in pushDice
         {
-            if let index = dice.indexOf({ $0.face == die })
+            if let index = dice.index(where: { $0.face == die })
             {
-                dice.removeAtIndex(index)
+                dice.remove(at: index)
             }
             else
             {
-                error("Cannot push die you do not have \(die)")
+                ErrorHandling.error("Cannot push die you do not have \(die)")
                 return false
             }
         }
@@ -200,11 +221,11 @@ public class Player: Equatable
             return true
         }
         
-        error("Cannot push all your dice")
+        ErrorHandling.error("Cannot push all your dice")
         return false
     }
     
-    func pushDice(dice: [UInt]) -> Bool
+    func pushDice(_ dice: [UInt]) -> Bool
     {
         guard canPushDice(dice) else {
             return false
@@ -216,7 +237,7 @@ public class Player: Equatable
         
         for die in dice
         {
-            let index = self.dice.indexOf({
+            let index = self.dice.index(where: {
                 $0.face == die && $0.pushed == false
             })!
             
@@ -231,15 +252,15 @@ public class Player: Equatable
         return true
     }
     
-    public func bid(count: UInt, face: UInt, pushDice: [UInt] = [UInt]())
+    public func bid(_ count: UInt, face: UInt, pushDice: [UInt] = [UInt]())
     {
         guard let engine = engine else {
-            error("Cannot bid with no engine")
+            ErrorHandling.error("Cannot bid with no engine")
             return
         }
         
         guard engine.currentTurn == self else {
-            error("It is not your turn")
+            ErrorHandling.error("It is not your turn")
             return
         }
         
@@ -267,27 +288,27 @@ public class Player: Equatable
     public func canPass() -> Bool
     {
         guard !hasPassedThisRound else {
-            error("You cannot pass more than once per round")
+            ErrorHandling.error("You cannot pass more than once per round")
             return false
         }
         
         guard self.dice.count > 1 else {
-            error("You cannot pass with only one die")
+            ErrorHandling.error("You cannot pass with only one die")
             return false
         }
         
         return true
     }
     
-    public func pass(pushDice: [UInt] = [UInt]())
+    public func pass(_ pushDice: [UInt] = [UInt]())
     {
         guard let engine = engine else {
-            error("Cannot pass with no engine")
+            ErrorHandling.error("Cannot pass with no engine")
             return
         }
         
         guard engine.currentTurn == self else {
-            error("It is not your turn")
+            ErrorHandling.error("It is not your turn")
             return
         }
         
@@ -313,22 +334,22 @@ public class Player: Equatable
     public func canExact() -> Bool
     {
         guard !hasExacted else {
-            error("Cannot exact twice in one game")
+            ErrorHandling.error("Cannot exact twice in one game")
             return false
         }
         
         guard let engine = engine else {
-            error("Cannot exact with no engine")
+            ErrorHandling.error("Cannot exact with no engine")
             return false
         }
         
         guard let lastBid = engine.lastBid else {
-            error("Can only exact if there is a bid")
+            ErrorHandling.error("Can only exact if there is a bid")
             return false
         }
         
         guard lastBid.player != self.name else {
-            error("Cannot exact yourself")
+            ErrorHandling.error("Cannot exact yourself")
             return false
         }
         
@@ -338,12 +359,12 @@ public class Player: Equatable
     public func exact()
     {
         guard let engine = engine else {
-            error("Cannot exact with no engine")
+            ErrorHandling.error("Cannot exact with no engine")
             return
         }
         
         guard engine.currentTurn == self else {
-            error("It is not your turn")
+            ErrorHandling.error("It is not your turn")
             return
         }
         
@@ -369,19 +390,19 @@ public class Player: Equatable
         }
     }
     
-    public func canChallenge(player: String) -> Bool
+    public func canChallenge(_ player: String) -> Bool
     {
         guard let engine = engine else {
-            error("Cannot challenge with no engine")
+            ErrorHandling.error("Cannot challenge with no engine")
             return false
         }
         
         guard player != self.name else {
-            error("Cannot challenge yourself")
+            ErrorHandling.error("Cannot challenge yourself")
             return false
         }
         
-        let myIndex = engine.players.indexOf({ $0.name == self.name })!
+        let myIndex = engine.players.index(where: { $0.name == self.name })!
         var challenge1Index = myIndex-1
         
         if challenge1Index < 0
@@ -420,7 +441,7 @@ public class Player: Equatable
         let challenge2Player = engine.players[challenge2Index]
         
         guard challenge1Player.name == player || challenge2Player.name == player else {
-            error("Cannot challenge a player other than the last two")
+            ErrorHandling.error("Cannot challenge a player other than the last two")
             return false
         }
         
@@ -433,7 +454,7 @@ public class Player: Equatable
         if challenge1Player.name == player
         {
             guard bidAction1 != nil || passAction1 != nil else {
-                error("Cannot challenge something other than a bid or pass")
+                ErrorHandling.error("Cannot challenge something other than a bid or pass")
                 return false
             }
             
@@ -441,7 +462,7 @@ public class Player: Equatable
         }
         
         guard passAction1 != nil else {
-            error("Cannot challenge through anything but a pass")
+            ErrorHandling.error("Cannot challenge through anything but a pass")
             return false
         }
         
@@ -449,22 +470,22 @@ public class Player: Equatable
         let passAction2 = challenge2Action as? PassAction
         
         guard bidAction2 != nil || passAction2 != nil else {
-            error("Cannot challenge something other than a bid or pass")
+            ErrorHandling.error("Cannot challenge something other than a bid or pass")
             return false
         }
         
         return true
     }
     
-    public func challenge(player: String)
+    public func challenge(_ player: String)
     {
         guard let engine = engine else {
-            error("Cannot challenge with no engine")
+            ErrorHandling.error("Cannot challenge with no engine")
             return
         }
         
         guard engine.currentTurn == self else {
-            error("It is not your turn")
+            ErrorHandling.error("It is not your turn")
             return
         }
         
@@ -476,7 +497,7 @@ public class Player: Equatable
         
         let correct = !lastAction.correct
         
-        let index = engine.currentRoundHistory.indexOf(lastAction)!
+        let index = engine.currentRoundHistory.index(of: lastAction)!
         
         let action = ChallengeAction(player: self.name,
                                      challengee: player,

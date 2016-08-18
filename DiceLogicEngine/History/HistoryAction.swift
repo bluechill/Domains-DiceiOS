@@ -18,7 +18,7 @@ public class HistoryAction: HistoryItem
     public internal(set) var player: String = ""
     public internal(set) var correct: Bool = false
     
-    public init(player: String, correct: Bool, type: HIType = .Action)
+    public init(player: String, correct: Bool, type: HIType = .action)
     {
         super.init(type: type)
         
@@ -33,19 +33,19 @@ public class HistoryAction: HistoryItem
         let array = data.arrayValue!
         
         guard array.count >= HistoryAction.actionMaxKey+1 else {
-            error("HistoryAction data must have an array of size \(HistoryAction.actionMaxKey+1)!")
+            ErrorHandling.error("HistoryAction data must have an array of size \(HistoryAction.actionMaxKey+1)!")
             return nil
         }
         
         guard let player = array[HistoryAction.playerKey].stringValue else {
-            error("HistoryAction data has no player")
+            ErrorHandling.error("HistoryAction data has no player")
             return nil
         }
         
         self.player = player
         
         guard let correct = array[HistoryAction.correctKey].boolValue else {
-            error("HistoryAction data has no correct key")
+            ErrorHandling.error("HistoryAction data has no correct key")
             return nil
         }
         
@@ -56,13 +56,13 @@ public class HistoryAction: HistoryItem
     {
         var array = super.asData().arrayValue!
         
-        array.append(.String(player))
-        array.append(.Bool(correct))
+        array.append(.string(player))
+        array.append(.bool(correct))
         
-        return .Array(array)
+        return .array(array)
     }
     
-    public override func isEqualTo(item: HistoryItem) -> Bool
+    public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false

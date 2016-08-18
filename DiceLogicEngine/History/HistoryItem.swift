@@ -16,70 +16,70 @@ public class HistoryItem: Equatable, Serializable
     
     public enum HIType: UInt64
     {
-        case Invalid = 0
+        case invalid = 0
         
-        case InitialState
-        case SpecialRulesInEffect
+        case initialState
+        case specialRulesInEffect
         
-        case Action
+        case action
         
-        case PushAction
-        case BidAction
-        case PassAction
+        case pushAction
+        case bidAction
+        case passAction
         
-        case ExactAction
-        case ChallengeAction
+        case exactAction
+        case challengeAction
         
-        case PlayerInfoItem
-        case PlayerLostRound
-        case PlayerLost
-        case PlayerWon
+        case playerInfoItem
+        case playerLostRound
+        case playerLost
+        case playerWon
     }
     
-    public internal(set) var type: HIType = .Invalid
+    public internal(set) var type: HIType = .invalid
     
-    static public func makeHistoryItem(data: MessagePackValue) -> HistoryItem?
+    static public func makeHistoryItem(_ data: MessagePackValue) -> HistoryItem?
     {
         guard let item = HistoryItem(data: data) else {
-            error("Invalid History Item")
+            ErrorHandling.error("Invalid History Item")
             return nil
         }
         
         switch item.type
         {
-        case .Invalid:
-            error("Non-Standalone history item")
+        case .invalid:
+            ErrorHandling.error("Non-Standalone history item")
             return nil
-        case .PushAction:
-            error("Non-Standalone history item")
+        case .pushAction:
+            ErrorHandling.error("Non-Standalone history item")
             return nil
-        case .Action:
-            error("Non-Standalone history item")
+        case .action:
+            ErrorHandling.error("Non-Standalone history item")
             return nil
-        case .PlayerInfoItem:
-            error("Non-Standalone history item")
+        case .playerInfoItem:
+            ErrorHandling.error("Non-Standalone history item")
             return nil
         
-        case .InitialState:
+        case .initialState:
             return InitialState(data: data)
-        case .SpecialRulesInEffect:
+        case .specialRulesInEffect:
             return SpecialRulesInEffect(data: data)
         
-        case .BidAction:
+        case .bidAction:
             return BidAction(data: data)
-        case .PassAction:
+        case .passAction:
             return PassAction(data: data)
             
-        case .ExactAction:
+        case .exactAction:
             return ExactAction(data: data)
-        case .ChallengeAction:
+        case .challengeAction:
             return ChallengeAction(data: data)
         
-        case .PlayerLostRound:
+        case .playerLostRound:
             return PlayerLostRound(data: data)
-        case .PlayerLost:
+        case .playerLost:
             return PlayerLost(data: data)
-        case .PlayerWon:
+        case .playerWon:
             return PlayerWon(data: data)
         }
     }
@@ -92,22 +92,22 @@ public class HistoryItem: Equatable, Serializable
     required public init?(data: MessagePackValue)
     {
         guard let array = data.arrayValue else {
-            error("HistoryItem data is not an array")
+            ErrorHandling.error("HistoryItem data is not an array")
             return nil
         }
         
         guard array.count >= HistoryItem.itemMaxKey+1 else {
-            error("HistoryItem data has to have an array of size \(HistoryItem.itemMaxKey+1)")
+            ErrorHandling.error("HistoryItem data has to have an array of size \(HistoryItem.itemMaxKey+1)")
             return nil
         }
         
         guard let typeRawValue = array[HistoryItem.typeKey].unsignedIntegerValue else {
-            error("HistoryItem data has no type")
+            ErrorHandling.error("HistoryItem data has no type")
             return nil
         }
         
         guard let type = HIType(rawValue: typeRawValue) else {
-            error("HistoryItem data has an invalid type")
+            ErrorHandling.error("HistoryItem data has an invalid type")
             return nil
         }
         
@@ -116,10 +116,10 @@ public class HistoryItem: Equatable, Serializable
     
     public func asData() -> MessagePackValue
     {
-        return .Array([.UInt(self.type.rawValue)])
+        return .array([.uInt(self.type.rawValue)])
     }
     
-    public func isEqualTo(item: HistoryItem) -> Bool
+    public func isEqualTo(_ item: HistoryItem) -> Bool
     {
         return self.type == item.type
     }
