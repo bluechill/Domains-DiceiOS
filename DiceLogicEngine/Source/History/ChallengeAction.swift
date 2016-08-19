@@ -60,10 +60,10 @@ public class ChallengeAction: HistoryAction
     {
         var array = super.asData().arrayValue!
         
-        array.append(.string(challengee))
-        array.append(.int(Int64(challengeActionIndex)))
+        array.append(.String(challengee))
+        array.append(.Int(Int64(challengeActionIndex)))
         
-        return .array(array)
+        return .Array(array)
     }
     
     public override func isEqualTo(_ item: HistoryItem) -> Bool

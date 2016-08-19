@@ -36,7 +36,7 @@ class GameTest: XCTestCase
         }
     }
     
-    func testTwoPlayers()
+    func test2Players()
     {
         let engine = DiceLogicEngine(players: ["Alice","Bob"])
         
@@ -52,12 +52,12 @@ class GameTest: XCTestCase
                 engine.currentTurn?.bid(UInt(j), face: 2)
             }
             
-            if engine.currentTurn?.dice.count > 1
+            if let currentTurn = engine.currentTurn, currentTurn.dice.count > 1
             {
                 engine.currentTurn?.pass()
             }
             
-            if engine.currentTurn?.dice.count > 1
+            if let currentTurn = engine.currentTurn, currentTurn.dice.count > 1
             {
                 engine.currentTurn?.pass()
             }
@@ -71,36 +71,36 @@ class GameTest: XCTestCase
         
         engine.printState()
         
-        alice.bid(1, face: 6)
-        bob.exact()
-        engine.printState()
-        
-        bob.bid(2, face: 6)
+        bob.bid(1, face: 4)
         alice.exact()
         engine.printState()
         
-        alice.bid(1, face: 2)
-        bob.bid(2, face: 2)
-        alice.bid(3, face: 2)
-        bob.bid(4, face: 2)
-        alice.pass()
-        bob.pass()
-        alice.challenge("Bob")
+        alice.bid(2, face: 2)
+        bob.exact()
         engine.printState()
         
         bob.bid(1, face: 2)
         alice.bid(2, face: 2)
         bob.bid(3, face: 2)
+        alice.bid(4, face: 2)
+        bob.pass()
         alice.pass()
         bob.challenge("Alice")
         engine.printState()
         
         alice.bid(1, face: 2)
         bob.bid(2, face: 2)
+        alice.bid(3, face: 2)
+        bob.pass()
         alice.challenge("Bob")
         engine.printState()
         
-        XCTAssertTrue(engine.winner == alice)
+        bob.bid(1, face: 2)
+        alice.bid(2, face: 2)
+        bob.challenge("Alice")
+        engine.printState()
+        
+        XCTAssertTrue(engine.winner == bob)
     }
     
     func doAction(_ player: Player, diceCount: UInt, lastBid: BidAction?, lastAction: HistoryAction?)

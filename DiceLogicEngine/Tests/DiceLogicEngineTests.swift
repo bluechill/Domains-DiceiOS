@@ -26,8 +26,8 @@ class DiceLogicEngineTests: XCTestCase
         let engine = DiceLogicEngine(players: ["Alice", "Bob"])
         
         XCTAssertTrue(engine.players.count == 2)
-        XCTAssertTrue(engine.players[0].name == "Alice")
-        XCTAssertTrue(engine.players[1].name == "Bob")
+        XCTAssertTrue(engine.players[0].name == "Bob")
+        XCTAssertTrue(engine.players[1].name == "Alice")
         XCTAssertTrue(engine.history.count == 1)
         XCTAssertTrue(engine.history[0].count == 1)
         XCTAssertNotNil(engine.history[0][0] as? InitialState)
@@ -41,9 +41,9 @@ class DiceLogicEngineTests: XCTestCase
         let bobDice = engine.player("Bob")!.dice.map{ $0.face }
         
         XCTAssertTrue(state.players == ["Alice": aliceDice, "Bob": bobDice])
-        XCTAssertTrue(state.players == ["Alice": [3,2,4,5,3], "Bob": [1,6,2,5,3]])
+        XCTAssertTrue(state.players == ["Alice": [6,2,5,3,6], "Bob": [2,4,5,3,1]])
         
-        XCTAssertTrue(engine.currentTurn?.name == "Alice")
+        XCTAssertTrue(engine.currentTurn?.name == "Bob")
     }
     
     func testCreateNewRound()
@@ -115,7 +115,7 @@ class DiceLogicEngineTests: XCTestCase
         XCTAssertFalse(engine.isSpecialRules)
         XCTAssertTrue(engine.history.count == 1)
 
-        engine.history[0].append(PlayerLostRound(player: "Alice"))
+        engine.history[0].append(PlayerLostRound(player: "Bob"))
         engine.players[0].dice = [Die(face: 1)]
         
         engine.createNewRound()
@@ -129,17 +129,17 @@ class DiceLogicEngineTests: XCTestCase
             return
         }
         
-        XCTAssertTrue(special.player == "Alice")
+        XCTAssertTrue(special.player == "Bob")
         XCTAssertTrue(engine.isSpecialRules)
         
         let engine2 = DiceLogicEngine(players: ["Alice", "Bob"])
-        engine2.history[0].append(PlayerLostRound(player: "Alice"))
-        engine2.players[0].dice = [Die(face: 1)]
+        engine2.history[0].append(PlayerLostRound(player: "Bob"))
+        engine2.players[1].dice = [Die(face: 1)]
         
         engine2.createNewRound()
         XCTAssertTrue(engine2.isSpecialRules)
-        engine2.history[1].append(PlayerLostRound(player: "Alice"))
-        engine2.players[0].dice = [Die(face: 1)]
+        engine2.history[1].append(PlayerLostRound(player: "Bob"))
+        engine2.players[1].dice = [Die(face: 1)]
         
         engine2.createNewRound()
         
@@ -222,123 +222,119 @@ class DiceLogicEngineTests: XCTestCase
         var error = String()
         Handlers.Error = { error = $0 }
         
-        XCTAssertNil(DiceLogicEngine(data: .int(0)))
+        XCTAssertNil(DiceLogicEngine(data: .Int(0)))
         XCTAssertTrue(error == "DiceLogicEngine data is not an array")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [.int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [.Int(0)]))
         XCTAssertTrue(error == "Invalid DiceLogicEngine data array")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [.int(0),.int(0),.int(0),.int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [.Int(0),.Int(0),.Int(0),.Int(0)]))
         XCTAssertTrue(error == "No players array in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.int(0)],.int(0),.int(0),.int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],.Int(0),.Int(0),.Int(0)]))
         XCTAssertTrue(error == "No players userData in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.int(0)],[.int(0)],.int(0),.int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[.Int(0)],.Int(0),.Int(0)]))
         XCTAssertTrue(error == "No currentTurn string in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.int(0)],[.int(0)],.string(""),.int(0)]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[.Int(0)],.String(""),.Int(0)]))
         XCTAssertTrue(error == "No history array in DiceLogicEngine data")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.int(0)],[.int(0)],.string(""),[.int(0)]]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[.Int(0)],.String(""),[.Int(0)]]))
         XCTAssertTrue(error == "DiceLogicEngine sub-array data is not an array")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [[.int(0)],[.int(0)],.string(""),[[]]]))
+        XCTAssertNil(DiceLogicEngine(data: [[.Int(0)],[.Int(0)],.String(""),[[]]]))
         XCTAssertTrue(error == "Empty DiceLogicEngine sub-array data")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
             [],
-            [[.int(0)]]
+            [[.Int(0)]]
         ]))
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            [.int(0)],
-            [.int(0)],
-            .string(""),
+            [.Int(0)],
+            [.Int(0)],
+            .String(""),
             [[ExactAction(player: "Alice", correct: true).asData()]]
         ]))
         XCTAssertTrue(error == "Player in players array is not a player name")
         error = ""
         
-        XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
-            [[:],[:]],
-            .string(""),
-            []]))
+        XCTAssertNil(DiceLogicEngine(data: [[.String("Alice")],[[:],[:]],.String(""), []]))
         XCTAssertTrue(error == "Player User Data and Players Array are not the same size!")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
-            [.int(0)],
-            .string(""),
+            [.String("Alice")],
+            [.Int(0)],
+            .String(""),
             []]))
         XCTAssertTrue(error == "Data in player userData array is not a dictionary of data")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
-            [[.int(0):""]],
-            .string(""),
+            [.String("Alice")],
+            [[.Int(0):""]],
+            .String(""),
             []]))
         XCTAssertTrue(error == "Key is not a string!")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
+            [.String("Alice")],
             [["":""]],
-            .string(""),
+            .String(""),
             []]))
         XCTAssertTrue(error == "Unknown key found in user data.  Are you sure this data is for this version of Liar's Dice?")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
+            [.String("Alice")],
             [["AI":""]],
-            .string(""),
+            .String(""),
             []]))
         XCTAssertTrue(error == "AI Value is not a bool!")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
-            [["GCID":.int(0)]],
-            .string(""),
+            [.String("Alice")],
+            [["GCID":.Int(0)]],
+            .String(""),
             []]))
         XCTAssertTrue(error == "GCID Key is not a string!")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
+            [.String("Alice")],
             [[:]],
-            .string(""),
+            .String(""),
             [[ExactAction(player: "Alice", correct: true).asData()]]
             ]))
         XCTAssertTrue(error == "Cannot find player whose turn it is")
         error = ""
         
         XCTAssertNil(DiceLogicEngine(data: [
-            ["Alice"],
+            [.String("Alice")],
             [[:]],
-            .string(""),
+            .String(""),
             [[HistoryItem(type: .invalid).asData()]]
             ]))
         XCTAssertTrue(error == "Non-Standalone history item")
         error = ""
         
         XCTAssertNotNil(DiceLogicEngine(data: [
-            ["Alice"],
+            [.String("Alice")],
             [[:]],
-            .string("Alice"),
+            .String("Alice"),
             [[InitialState(players: ["Bob": [1,2]]).asData()]]
             ]))
         XCTAssertTrue(error == "Corrupted Player Data for player Alice")
@@ -474,18 +470,37 @@ class DiceLogicEngineTests: XCTestCase
         
         XCTAssertTrue(engine.countDice(1) == 1)
         XCTAssertTrue(engine.countDice(2) == 3)
-        XCTAssertTrue(engine.countDice(3) == 4)
+        XCTAssertTrue(engine.countDice(3) == 3)
         XCTAssertTrue(engine.countDice(4) == 2)
         XCTAssertTrue(engine.countDice(5) == 3)
-        XCTAssertTrue(engine.countDice(6) == 2)
+        XCTAssertTrue(engine.countDice(6) == 3)
+        
+        let total = engine.countDice(1) +
+            engine.countDice(2) +
+            engine.countDice(3) +
+            engine.countDice(4) +
+            engine.countDice(5) +
+            engine.countDice(6);
+        
+        XCTAssertTrue(total <= 60)
+        XCTAssertTrue(total >= 10)
         
         engine.appendHistoryItem(SpecialRulesInEffect(player: "Alice"))
                
         XCTAssertTrue(engine.countDice(1) == 1)
         XCTAssertTrue(engine.countDice(2) == 2)
-        XCTAssertTrue(engine.countDice(3) == 3)
+        XCTAssertTrue(engine.countDice(3) == 2)
         XCTAssertTrue(engine.countDice(4) == 1)
         XCTAssertTrue(engine.countDice(5) == 2)
-        XCTAssertTrue(engine.countDice(6) == 1)
+        XCTAssertTrue(engine.countDice(6) == 2)
+        
+        let specialRulesTotal = engine.countDice(1) +
+            engine.countDice(2) +
+            engine.countDice(3) +
+            engine.countDice(4) +
+            engine.countDice(5) +
+            engine.countDice(6);
+        
+        XCTAssertTrue(specialRulesTotal == 10)
     }
 }

@@ -44,9 +44,9 @@ class ExactActionTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(ExactAction(data: [
-            .uInt(HistoryItem.HIType.invalid.rawValue),
-            .string("Alice"),
-            .bool(true)
+            .UInt(HistoryItem.HIType.invalid.rawValue),
+            .String("Alice"),
+            .Bool(true)
             ]))
     }
 }

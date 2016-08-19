@@ -101,11 +101,11 @@ class HistoryItemTests: XCTestCase
         XCTAssertTrue(item_restore != nil)
         XCTAssertTrue(item == item_restore!)
         
-        XCTAssertNil(HistoryItem(data: .int(0)))
+        XCTAssertNil(HistoryItem(data: .Int(0)))
         XCTAssertNil(HistoryItem(data: []))
-        XCTAssertNil(HistoryItem(data: [.int(-1)]))
+        XCTAssertNil(HistoryItem(data: [.Int(-1)]))
         
         let typeInt = HistoryItem.HIType.playerWon.rawValue + 1
-        XCTAssertNil(HistoryItem(data: [.uInt(typeInt)]))
+        XCTAssertNil(HistoryItem(data: [.UInt(typeInt)]))
     }
 }

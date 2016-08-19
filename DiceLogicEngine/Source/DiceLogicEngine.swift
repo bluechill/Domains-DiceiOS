@@ -130,7 +130,7 @@ public class DiceLogicEngine: Equatable
     
     public func shuffleAndCreateRound()
     {
-        self.players.shuffle()
+        self.players.shuffleInPlace()
         self.currentTurn = self.players[0]
         
         createNewRound()
@@ -355,18 +355,18 @@ public class DiceLogicEngine: Equatable
         
     public func asData() -> Foundation.Data
     {
-        let playersMap: [MessagePackValue] = self.players.map{ .string($0.name) }
-        let playerUserDataMap: [MessagePackValue] = self.players.map{ .map($0.userDataAsMsgPack()) }
+        let playersMap: [MessagePackValue] = self.players.map{ .String($0.name) }
+        let playerUserDataMap: [MessagePackValue] = self.players.map{ .Map($0.userDataAsMsgPack()) }
         
-        let historyMap: [MessagePackValue] = self.history.map{ .array($0.map{ $0.asData() }) }
+        let historyMap: [MessagePackValue] = self.history.map{ .Array($0.map{ $0.asData() }) }
         
-        let value = MessagePackValue.array([.array(playersMap),
-                                            .array(playerUserDataMap),
-                                            .string(currentTurn!.name),
-                                            .array(historyMap)])
+        let value = MessagePackValue.Array([.Array(playersMap),
+                                            .Array(playerUserDataMap),
+                                            .String(currentTurn!.name),
+                                            .Array(historyMap)])
         
         let data = pack(value)
-        return Foundation.Data(bytes: UnsafePointer<UInt8>(data), count: data.count)
+        return Foundation.Data(bytes: data.bytes)
     }
     
     func player(_ name: String) -> Player?
@@ -410,7 +410,7 @@ public class DiceLogicEngine: Equatable
     
     func createNewRound()
     {
-        var playerWhoLostRound = String?()
+        var playerWhoLostRound: String? = nil
         
         if let round = history.last
         {

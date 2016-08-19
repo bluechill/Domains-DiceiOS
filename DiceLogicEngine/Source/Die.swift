@@ -87,8 +87,8 @@ public class Die: Equatable, Serializable
     
     public func asData() -> MessagePackValue
     {
-        let array: [MessagePackValue] = [.uInt(UInt64(self.face)), .bool(self.pushed)]
-        return .array(array)
+        let array: [MessagePackValue] = [.UInt(UInt64(self.face)), .Bool(self.pushed)]
+        return .Array(array)
     }
     
     func roll()
@@ -100,12 +100,12 @@ public class Die: Equatable, Serializable
 
 public func ==(lhs: Die, rhs: Die) -> Bool
 {
-    return lhs._face == rhs._face && lhs.pushed == rhs.pushed
+    return lhs.face == rhs.face && lhs.pushed == rhs.pushed
 }
 
 public func ==(lhs: Die, rhs: UInt) -> Bool
 {
-    return lhs._face == rhs && lhs.pushed == false
+    return lhs.face == rhs && lhs.pushed == false
 }
 
 public func ==(lhs: UInt, rhs: Die) -> Bool

@@ -33,7 +33,7 @@ extension ScrollPickerViewDataSource
 class ScrollPickerView: UIView
 {
     var selectedIndex: UInt = 0
-    private var animating = false
+    internal var animating = false
     
     var datasource: ScrollPickerViewDataSource? = nil
     var delegate: ScrollPickerViewDelegate? = nil
@@ -42,7 +42,7 @@ class ScrollPickerView: UIView
     var footerView: UIView? = nil
     
     private var _tableView: UITableView? = nil
-    private var tableView: UITableView
+    internal var tableView: UITableView
     {
         get
         {
@@ -88,7 +88,7 @@ class ScrollPickerView: UIView
         scrollToSelectedIndex(false)
     }
     
-    private func scrollToSelectedIndex(_ animated: Bool = true)
+    internal func scrollToSelectedIndex(_ animated: Bool = true)
     {
         guard let datasource = datasource else {
             return
@@ -140,9 +140,9 @@ extension ScrollPickerView: UITableViewDataSource
         cell?.backgroundView = UIView()
         cell?.backgroundColor = UIColor.clear
         
-        if cell?.contentView.subviews.count > 0
+        if let cell = cell, cell.contentView.subviews.count > 0
         {
-            cell?.contentView.subviews[0].removeFromSuperview()
+            cell.contentView.subviews[0].removeFromSuperview()
         }
         
         guard let datasource = datasource else {

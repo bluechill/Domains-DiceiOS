@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var mainMenuController: MainMenuViewController?
     var gameCenterController: UIViewController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         
         // From: http://stackoverflow.com/questions/25845855/transparent-navigation-bar-ios

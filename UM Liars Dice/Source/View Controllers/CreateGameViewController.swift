@@ -186,7 +186,7 @@ class CreateGameViewController: UIViewController
                 let alertController = UIAlertController.init(title: "Game Center Disabled", message: "You have been logged out of Game Center. Would you like to authenticate?", preferredStyle: UIAlertControllerStyle.alert);
                 
                 let yes = UIAlertAction.init(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-                    UIApplication.shared.openURL(URL.init(string: "gamecenter:")!)
+                    UIApplication.shared.open(URL.init(string: "gamecenter:")!, options: [:], completionHandler: nil)
                 })
                 
                 let no = UIAlertAction.init(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
@@ -225,7 +225,7 @@ class CreateGameViewController: UIViewController
                     engine.players[index].userData["GCID"] = "-1"
                 }
                 
-                if String(engine.players[index].userData["GCID"]) != localID
+                if String(describing: engine.players[index].userData["GCID"]) != localID
                 {
                     engine.players[index].userData["PlayerController"] = RemotePlayerActionController()
                 }

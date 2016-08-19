@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Rainbow
 
 public enum Handlers
 {
@@ -21,7 +20,7 @@ public class ErrorHandling
     {
         let errorString = items.joined(separator: separator)
         let string = "Error: " + errorString
-        print(string.red, separator: "", terminator: terminator)
+        print(string, separator: "", terminator: terminator)
         
         Handlers.Error(errorString)
     }
@@ -30,7 +29,7 @@ public class ErrorHandling
     {
         let warningString = items.joined(separator: separator)
         let string = "Warning: " + warningString
-        print(string.blue, separator: "", terminator: terminator)
+        print(string, separator: "", terminator: terminator)
         
         Handlers.Warning(warningString)
     }

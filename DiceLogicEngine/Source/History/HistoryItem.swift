@@ -116,7 +116,7 @@ public class HistoryItem: Equatable, Serializable
     
     public func asData() -> MessagePackValue
     {
-        return .array([.uInt(self.type.rawValue)])
+        return .Array([.UInt(self.type.rawValue)])
     }
     
     public func isEqualTo(_ item: HistoryItem) -> Bool

@@ -85,12 +85,12 @@ public class InitialState: HistoryItem
         
         for (key, value) in players
         {
-            dictionary[.string(key)] = .array(value.map{.uInt(UInt64($0))})
+            dictionary[.String(key)] = .Array(value.map{.UInt(UInt64($0))})
         }
         
-        array.append(.map(dictionary))
+        array.append(.Map(dictionary))
         
-        return .array(array)
+        return .Array(array)
     }
     
     public override func isEqualTo(_ item: HistoryItem) -> Bool

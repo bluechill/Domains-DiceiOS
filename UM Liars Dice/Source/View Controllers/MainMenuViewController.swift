@@ -26,7 +26,7 @@ class MainMenuViewController: UIViewController
     
     @IBAction func pressedPoweredBySoar(_ sender: UIButton)
     {
-        UIApplication.shared.openURL(URL(string: "http://soar.eecs.umich.edu/")!)
+        UIApplication.shared.open(URL(string: "http://soar.eecs.umich.edu/")!, options: [:], completionHandler: nil)
     }
     
     @IBAction func playPressed(_ sender: UIButton)

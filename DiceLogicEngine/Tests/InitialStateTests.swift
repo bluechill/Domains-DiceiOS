@@ -58,40 +58,40 @@ class InitialStateTests: XCTestCase
         XCTAssertTrue(item == item_restore)
         
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.invalid.rawValue),
+            .UInt(HistoryItem.HIType.invalid.rawValue),
         ]))
         
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
         ]))
         
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             []
         ]))
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             [:]
         ]))
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":"A"]
         ]))
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
-            [.int(1):"A"]
+            .UInt(HistoryItem.HIType.initialState.rawValue),
+            [.Int(1):"A"]
         ]))
         XCTAssertNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[-1]]
         ]))
         
         XCTAssertNotNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[]]
         ]))
         XCTAssertNotNil(InitialState(data: [
-            .uInt(HistoryItem.HIType.initialState.rawValue),
+            .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[0,1,2]]
         ]))
     }

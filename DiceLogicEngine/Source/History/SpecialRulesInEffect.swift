@@ -46,9 +46,9 @@ public class SpecialRulesInEffect: HistoryItem
     {
         var array = super.asData().arrayValue!
         
-        array.append(.string(player))
+        array.append(.String(player))
         
-        return .array(array)
+        return .Array(array)
     }
     
     public override func isEqualTo(_ item: HistoryItem) -> Bool

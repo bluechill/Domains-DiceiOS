@@ -55,6 +55,7 @@
 		4D342F811CF0BA05003DFE19 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F801CF0BA05003DFE19 /* GameViewController.swift */; };
 		4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F821CF21889003DFE19 /* CreateGameViewController.swift */; };
 		4D342F881CF2439A003DFE19 /* LocalPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F871CF2439A003DFE19 /* LocalPlayerViewController.swift */; };
+		4D3C4D4B1D6768F0009437CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D69D9161D67684C00E0D2A2 /* Foundation.framework */; };
 		4D6494621CF33E2F00F4F498 /* ScrollPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */; };
 		4D6494641CF3578D00F4F498 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494631CF3578D00F4F498 /* DieView.swift */; };
 		4D6494671CF3623000F4F498 /* LiarsDiceColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */; };
@@ -299,6 +300,7 @@
 		4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPickerView.swift; sourceTree = "<group>"; };
 		4D6494631CF3578D00F4F498 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
 		4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiarsDiceColors.swift; sourceTree = "<group>"; };
+		4D69D9161D67684C00E0D2A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
 		4D94C4841D5E3479009B4149 /* PlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerActionController.swift; sourceTree = "<group>"; };
 		4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemotePlayerActionController.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3C4D4B1D6768F0009437CF /* Foundation.framework in Frameworks */,
 				4D1592CE1D675A0D00E6C87E /* MessagePack.framework in Frameworks */,
 				4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */,
 			);
@@ -772,6 +775,7 @@
 		4DE93CCD1CE8EABC008041C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D69D9161D67684C00E0D2A2 /* Foundation.framework */,
 				4D32285E1CEFE54C00BEE34E /* GameKit.framework */,
 				4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */,
 			);
@@ -928,7 +932,6 @@
 				4DE93C281CE8D7D4008041C3 /* Frameworks */,
 				4DE93C291CE8D7D4008041C3 /* Resources */,
 				4DE93CB61CE8DD79008041C3 /* Embed Frameworks */,
-				4DE93CC81CE8E16F008041C3 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1190,25 +1193,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4DE93CC81CE8E16F008041C3 /* Copy Carthage Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/MessagePack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Rainbow.framework",
-			);
-			name = "Copy Carthage Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D1592611D67591100E6C87E /* Sources */ = {
@@ -1675,7 +1659,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1718,7 +1702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1736,6 +1720,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/UM Liars Dice/Source/UM Liars Dice.entitlements";
 				DEVELOPMENT_TEAM = PG6DD9A3H4;
 				INFOPLIST_FILE = "$(SRCROOT)/UM Liars Dice/Source/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1751,6 +1736,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/UM Liars Dice/Source/UM Liars Dice.entitlements";
 				DEVELOPMENT_TEAM = PG6DD9A3H4;
 				INFOPLIST_FILE = "$(SRCROOT)/UM Liars Dice/Source/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1818,12 +1804,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/DiceLogicEngine/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1845,12 +1829,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/DiceLogicEngine/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";

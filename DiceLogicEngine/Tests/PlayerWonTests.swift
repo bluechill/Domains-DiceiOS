@@ -41,8 +41,8 @@ class PlayerWonTests: XCTestCase
         XCTAssertTrue(action == action_restored)
         
         XCTAssertNil(PlayerWon(data: [
-            .uInt(HistoryItem.HIType.invalid.rawValue),
-            .string("Alice")
+            .UInt(HistoryItem.HIType.invalid.rawValue),
+            .String("Alice")
             ]))
     }
 }

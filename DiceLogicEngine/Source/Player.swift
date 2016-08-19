@@ -16,7 +16,7 @@ public class Player: Equatable
     public var dice: Array<Die> = []
     public var name: String = ""
     
-    public var userData = [String:AnyObject]()
+    public var userData = [String:Any]()
     internal func userDataAsMsgPack() -> [MessagePackValue:MessagePackValue]
     {
         var result = [MessagePackValue:MessagePackValue]()
@@ -25,11 +25,11 @@ public class Player: Equatable
         {
             if key == "AI"
             {
-                result[.string(key)] = true
+                result[.String(key)] = true
             }
             else if key == "GCID"
             {
-                result[.string(key)] = .string(value as! String)
+                result[.String(key)] = .String(value as! String)
             }
         }
         

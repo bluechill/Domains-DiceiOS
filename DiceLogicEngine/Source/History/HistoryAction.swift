@@ -56,10 +56,10 @@ public class HistoryAction: HistoryItem
     {
         var array = super.asData().arrayValue!
         
-        array.append(.string(player))
-        array.append(.bool(correct))
+        array.append(.String(player))
+        array.append(.Bool(correct))
         
-        return .array(array)
+        return .Array(array)
     }
     
     public override func isEqualTo(_ item: HistoryItem) -> Bool
