@@ -1,0 +1,6 @@
+[submodule "Packages/MessagePack"]
+	path = Packages/MessagePack
+	url = https://github.com/Zewo/MessagePack.git
+[submodule "Packages/C7"]
+	path = Packages/C7
+	url = https://github.com/open-swift/C7.git
