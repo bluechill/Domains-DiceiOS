@@ -61,13 +61,10 @@
 		4DE93CB71CE8DD79008041C3 /* DiceLogicEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4DE93CBF1CE8DDCE008041C3 /* DiceLogicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */; };
 		4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC01CE8DE01008041C3 /* Die.swift */; };
-		4DE93CC51CE8E0D2008041C3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */; };
-		4DE93CC61CE8E0D2008041C3 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */; };
 		4DE93CCA1CE8E23E008041C3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */; };
 		4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */; };
 		4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */; };
 		4DE93CD11CE8EB5A008041C3 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD01CE8EB5A008041C3 /* Random.swift */; };
-		4DE93CD21CE8EFA8008041C3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */; };
 		4DE93CD41CE8F14D008041C3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD31CE8F14D008041C3 /* Player.swift */; };
 		4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD61CE8F270008041C3 /* HistoryItem.swift */; };
 		4DE93CD91CE8F5D0008041C3 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD81CE8F5D0008041C3 /* Serializable.swift */; };
@@ -203,7 +200,6 @@
 		4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@1x.png"; sourceTree = "<group>"; };
 		4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@2x.png"; sourceTree = "<group>"; };
 		4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@3x.png"; sourceTree = "<group>"; };
-		4DE93C9A1CE8DC08008041C3 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiceLogicEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiceLogicEngine.h; sourceTree = "<group>"; };
 		4DE93CA41CE8DD79008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,8 +208,6 @@
 		4DE93CB21CE8DD79008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceLogicEngine.swift; sourceTree = "<group>"; };
 		4DE93CC01CE8DE01008041C3 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
-		4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessagePack.framework; path = Carthage/Build/iOS/MessagePack.framework; sourceTree = "<group>"; };
-		4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rainbow.framework; path = Carthage/Build/iOS/Rainbow.framework; sourceTree = "<group>"; };
 		4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieTests.swift; sourceTree = "<group>"; };
 		4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
@@ -274,8 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */,
-				4DE93CC51CE8E0D2008041C3 /* MessagePack.framework in Frameworks */,
-				4DE93CC61CE8E0D2008041C3 /* Rainbow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE93CAA1CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */,
-				4DE93CD21CE8EFA8008041C3 /* MessagePack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE93CCD1CE8EABC008041C3 /* Frameworks */,
-				4DE93C9A1CE8DC08008041C3 /* Cartfile */,
-				4DE93C601CE8DA99008041C3 /* HTML */,
-				4DE93C631CE8DA99008041C3 /* Images */,
+				4DF5F8C91D661602002438CC /* Resources */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
@@ -380,7 +369,8 @@
 				4DE93C371CE8D7D4008041C3 /* LaunchScreen.storyboard */,
 				4DE93C3A1CE8D7D4008041C3 /* Info.plist */,
 			);
-			path = "UM Liars Dice";
+			name = "UM Liars Dice";
+			path = "UM Liars Dice/Source";
 			sourceTree = "<group>";
 		};
 		4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */ = {
@@ -389,7 +379,8 @@
 				4DE93C431CE8D7D4008041C3 /* UM_Liars_DiceTests.swift */,
 				4DE93C451CE8D7D4008041C3 /* Info.plist */,
 			);
-			path = "UM Liars DiceTests";
+			name = "UM Liars DiceTests";
+			path = "UM Liars Dice/Tests/Backend Tests";
 			sourceTree = "<group>";
 		};
 		4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */ = {
@@ -398,7 +389,8 @@
 				4DE93C4E1CE8D7D4008041C3 /* UM_Liars_DiceUITests.swift */,
 				4DE93C501CE8D7D4008041C3 /* Info.plist */,
 			);
-			path = "UM Liars DiceUITests";
+			name = "UM Liars DiceUITests";
+			path = "UM Liars Dice/Tests/UI Tests";
 			sourceTree = "<group>";
 		};
 		4DE93C601CE8DA99008041C3 /* HTML */ = {
@@ -407,8 +399,7 @@
 				4DE93C611CE8DA99008041C3 /* about.html */,
 				4DE93C621CE8DA99008041C3 /* rules.html */,
 			);
-			name = HTML;
-			path = "UM Liars Dice/HTML";
+			path = HTML;
 			sourceTree = "<group>";
 		};
 		4DE93C631CE8DA99008041C3 /* Images */ = {
@@ -428,8 +419,7 @@
 				4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */,
 				4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */,
 			);
-			name = Images;
-			path = "UM Liars Dice/Images";
+			path = Images;
 			sourceTree = "<group>";
 		};
 		4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */ = {
@@ -446,7 +436,8 @@
 				4DE93CD01CE8EB5A008041C3 /* Random.swift */,
 				4DE93CD81CE8F5D0008041C3 /* Serializable.swift */,
 			);
-			path = DiceLogicEngine;
+			name = DiceLogicEngine;
+			path = DiceLogicEngine/Source;
 			sourceTree = "<group>";
 		};
 		4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */ = {
@@ -472,7 +463,8 @@
 				4D3228571CECD77700BEE34E /* HandlersTests.swift */,
 				4D32285B1CEFAD8200BEE34E /* GameTest.swift */,
 			);
-			path = DiceLogicEngineTests;
+			name = DiceLogicEngineTests;
+			path = DiceLogicEngine/Tests;
 			sourceTree = "<group>";
 		};
 		4DE93CCD1CE8EABC008041C3 /* Frameworks */ = {
@@ -480,8 +472,6 @@
 			children = (
 				4D32285E1CEFE54C00BEE34E /* GameKit.framework */,
 				4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */,
-				4DE93CC31CE8E0D2008041C3 /* MessagePack.framework */,
-				4DE93CC41CE8E0D2008041C3 /* Rainbow.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -512,6 +502,16 @@
 				4D3228591CEE4D6F00BEE34E /* CollectionType.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4DF5F8C91D661602002438CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DE93C601CE8DA99008041C3 /* HTML */,
+				4DE93C631CE8DA99008041C3 /* Images */,
+			);
+			name = Resources;
+			path = "UM Liars Dice/Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,7 +628,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Alex Turner";
 				TargetAttributes = {
 					4DE93C2A1CE8D7D4008041C3 = {
@@ -919,8 +919,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -965,8 +967,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -985,6 +989,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -993,9 +998,10 @@
 		4DE93C541CE8D7D4008041C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "UM Liars Dice/UM Liars Dice.entitlements";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
 				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
@@ -1007,9 +1013,10 @@
 		4DE93C551CE8D7D4008041C3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "UM Liars Dice/UM Liars Dice.entitlements";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
 				INFOPLIST_FILE = "UM Liars Dice/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.umich.UM-Liars-Dice";
@@ -1068,6 +1075,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1094,6 +1102,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
