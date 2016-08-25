@@ -9,6 +9,7 @@
 import UIKit
 import DiceLogicEngine
 import GameKit
+import Cheetah
 
 class CreateGameViewController: UIViewController
 {
@@ -60,6 +61,7 @@ class CreateGameViewController: UIViewController
             UIView.animate(withDuration: CreateGameViewController.animationLength, animations: {
                 stepper.tintColor = LiarsDiceColors.michiganMaize()
             })
+            
         }
         else if !enabled && stepper.isEnabled
         {
@@ -136,115 +138,41 @@ class CreateGameViewController: UIViewController
 
     @IBAction func createGame(_ sender: UIButton)
     {
-        let aiOpponents = Int(aiOpponentsLabel.text!)!
-        let humanOpponents = Int(humanOpponentsLabel.text!)!
+        self.performSegue(withIdentifier: "GameViewSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        guard let gameController = (segue.destination as? GameViewController) else {
+            return
+        }
         
-        let names = NameGenerator.generateNamesFor(aiOpponents)
-        let humanNames = Array(repeating: "Placeholder", count: humanOpponents)
+        var playerCount = 1
+        let localActionController = LocalPlayerActionController()
         
-        let players = names + humanNames
+        var players: [String:PlayerActionController] = ["Player " + String(playerCount): localActionController]
         
-        let engine = DiceLogicEngine(players: players, start: false)
+        for _ in 0..<Int(aiOpponentsStepper.value)
+        {} // TODO: AI
         
-        if humanOpponentsStepper.value > 0 && !passTurnAroundSwitch.isOn
+        for _ in 0..<Int(humanOpponentsStepper.value)
         {
-            // multi-player
-            if GameCenterHelper.isAuthenticated()
+            if passTurnAroundSwitch.isOn
             {
-                createGameButton.isEnabled = false
-                
-                let humanPlayers = Int(humanOpponentsLabel.text!)! + 1
-                
-                let request = GKMatchRequest()
-                request.minPlayers = humanPlayers
-                request.maxPlayers = humanPlayers
-                request.playerGroup = aiOpponents + 1
-                
-                GKTurnBasedMatch.find(for: request, withCompletionHandler: { (match, error) in
-                    guard error == nil else {
-                        return
-                    }
-                    
-                    guard let match = match else {
-                        return
-                    }
-                    
-                    match.loadMatchData(completionHandler: { (data, error) in
-                        guard let data = data else {
-                            // New match, first player
-                            engine.shuffleAndCreateRound()
-                            return
-                        }
-                        
-                        // Previous match, update with data
-                        engine.updateWithData(data)
-                    })
-                })
+                playerCount += 1
+                players["Player " + String(playerCount)] = localActionController
             }
             else
-            {
-                let alertController = UIAlertController.init(title: "Game Center Disabled", message: "You have been logged out of Game Center. Would you like to authenticate?", preferredStyle: UIAlertControllerStyle.alert);
-                
-                let yes = UIAlertAction.init(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-                    UIApplication.shared.open(URL.init(string: "gamecenter:")!, options: [:], completionHandler: nil)
-                })
-                
-                let no = UIAlertAction.init(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
-                
-                alertController.addAction(yes)
-                alertController.addAction(no)
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
+            {} // TODO: Game Center
         }
-        else
+        
+        let engine = DiceLogicEngine(players: players.map{ $0.key }, start: false)
+        
+        for player in engine.players
         {
-            engine.shuffleAndCreateRound()
+            player.userData[GameViewController.PlayerControllerString] = players[player.name]
         }
         
-        var aiPlayers = 0
-        var hPlayers = 0
-        
-        let localID = GKLocalPlayer.localPlayer().playerID
-        
-        for index in 0..<(aiOpponents+humanOpponents)
-        {
-            if  engine.players[index].userData["AI"] != nil ||
-                (engine.players[index].userData["GCID"] == nil && aiPlayers < aiOpponents)
-            {
-                aiPlayers += 1
-                engine.players[index].userData["AI"] = true
-                engine.players[index].userData["PlayerController"] = SoarPlayerActionController()
-            }
-            else if engine.players[index].userData["GCID"] != nil || hPlayers < humanOpponents
-            {
-                hPlayers += 1
-                
-                if engine.players[index].userData["GCID"] == nil
-                {
-                    engine.players[index].userData["GCID"] = "-1"
-                }
-                
-                if String(describing: engine.players[index].userData["GCID"]) != localID
-                {
-                    engine.players[index].userData["PlayerController"] = RemotePlayerActionController()
-                }
-                else
-                {
-                    engine.players[index].userData["PlayerController"] = LocalPlayerActionController()
-                }
-            }
-            else
-            {
-                engine.players[index].userData["PlayerController"] = LocalPlayerActionController()
-            }
-        }
-        
-        if engine.players.filter({ (player) in player.userData["PlayerController"] is LocalPlayerActionController }).count == 0
-        {
-            
-        }
-        
-        self.performSegue(withIdentifier: "PlayGameSegue", sender: self)
+        gameController.game = engine
     }
 }

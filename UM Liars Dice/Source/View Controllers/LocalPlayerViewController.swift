@@ -20,6 +20,13 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     @IBOutlet weak var die4: DieView!
     @IBOutlet weak var die5: DieView!
     
+    @IBOutlet weak var exactButton: UIButton!
+    @IBOutlet weak var passButton: UIButton!
+    @IBOutlet weak var bidButton: UIButton!
+    
+    weak var localPlayerActionController: LocalPlayerActionController!
+    var currentPlayerID = 0
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -100,7 +107,7 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     
     func scrollPickerView(_ scrollPicker: ScrollPickerView, canSelectIndex index: UInt) -> Bool
     {
-        return true
+        return scrollPicker.tableView.isScrollEnabled
     }
 
     func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: UInt)
@@ -130,27 +137,27 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
+        
+        localPlayerActionController.push(die: Int(sender.face))
     }
     
     @IBAction func exact(_ sender: UIButton)
     {
-        
+        localPlayerActionController.exact()
     }
     
     @IBAction func pass(_ sender: UIButton)
     {
-        
+        localPlayerActionController.pass()
     }
     
     @IBAction func bid(_ sender: UIButton)
     {
-        
+        localPlayerActionController.bid()
     }
     
     @IBAction func challenge(_ sender: UIButton)
     {
-        
+        localPlayerActionController.challenge(id: sender.tag)
     }
-    
-     
 }

@@ -4,3 +4,6 @@
 [submodule "Packages/C7"]
 	path = Packages/C7
 	url = https://github.com/open-swift/C7.git
+[submodule "Packages/Cheetah"]
+	path = Packages/Cheetah
+	url = https://github.com/suguru/Cheetah.git
