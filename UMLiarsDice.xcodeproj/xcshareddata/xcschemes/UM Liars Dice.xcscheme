@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4DE93C2A1CE8D7D4008041C3"
                BuildableName = "UM Liars Dice.app"
                BlueprintName = "UM Liars Dice"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "4DE93C3E1CE8D7D4008041C3"
                BuildableName = "UM Liars DiceTests.xctest"
                BlueprintName = "UM Liars DiceTests"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "4DE93C491CE8D7D4008041C3"
                BuildableName = "UM Liars DiceUITests.xctest"
                BlueprintName = "UM Liars DiceUITests"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -55,7 +55,7 @@
                BlueprintIdentifier = "4DE93CA81CE8DD79008041C3"
                BuildableName = "DiceLogicEngineTests.xctest"
                BlueprintName = "DiceLogicEngineTests"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -65,7 +65,7 @@
                BlueprintIdentifier = "4D15926D1D67591100E6C87E"
                BuildableName = "MessagePackTests.xctest"
                BlueprintName = "MessagePackTests"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -75,7 +75,7 @@
                BlueprintIdentifier = "4DADC4781D675E3200A5279C"
                BuildableName = "C7Tests.xctest"
                BlueprintName = "C7Tests"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "4DE93C2A1CE8D7D4008041C3"
             BuildableName = "UM Liars Dice.app"
             BlueprintName = "UM Liars Dice"
-            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -108,7 +108,7 @@
             BlueprintIdentifier = "4DE93C2A1CE8D7D4008041C3"
             BuildableName = "UM Liars Dice.app"
             BlueprintName = "UM Liars Dice"
-            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -127,7 +127,7 @@
             BlueprintIdentifier = "4DE93C2A1CE8D7D4008041C3"
             BuildableName = "UM Liars Dice.app"
             BlueprintName = "UM Liars Dice"
-            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

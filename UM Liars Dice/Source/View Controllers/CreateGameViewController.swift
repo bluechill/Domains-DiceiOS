@@ -9,7 +9,6 @@
 import UIKit
 import DiceLogicEngine
 import GameKit
-import Cheetah
 
 class CreateGameViewController: UIViewController
 {

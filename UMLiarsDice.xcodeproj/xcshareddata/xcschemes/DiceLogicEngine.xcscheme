@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4D1592651D67591100E6C87E"
-               BuildableName = "MessagePack.framework"
-               BlueprintName = "MessagePack"
-               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+               BlueprintIdentifier = "4DE93C9F1CE8DD79008041C3"
+               BuildableName = "DiceLogicEngine.framework"
+               BlueprintName = "DiceLogicEngine"
+               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4D1592651D67591100E6C87E"
-            BuildableName = "MessagePack.framework"
-            BlueprintName = "MessagePack"
-            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+            BlueprintIdentifier = "4DE93C9F1CE8DD79008041C3"
+            BuildableName = "DiceLogicEngine.framework"
+            BlueprintName = "DiceLogicEngine"
+            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4D1592651D67591100E6C87E"
-            BuildableName = "MessagePack.framework"
-            BlueprintName = "MessagePack"
-            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
+            BlueprintIdentifier = "4DE93C9F1CE8DD79008041C3"
+            BuildableName = "DiceLogicEngine.framework"
+            BlueprintName = "DiceLogicEngine"
+            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

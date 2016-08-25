@@ -332,14 +332,14 @@ class LocalPlayerActionController : PlayerActionController
             
             for index in 0..<dice.count
             {
-                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
-                {
-                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? DieView != nil })
-                    
-                    xConstraints[0].firstItem = constraint[0].firstItem
-                    constraint[0].firstItem = dice[0]
-                }
-                else if xConstraints[index].secondItem !=
+//                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
+//                {
+//                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? DieView != nil })
+//                    
+//                    xConstraints[0].firstItem = constraint[0].firstItem
+//                    constraint[0].firstItem = dice[0]
+//                }
+//                else if xConstraints[index].secondItem !=
             }
         }
     }
