@@ -237,8 +237,8 @@ class LocalPlayerActionController : PlayerActionController
         
         die.isEnabled = true
     }
-
-    func disableUI()
+    
+    private func disableButtonFunctionality()
     {
         disableDie(die: playerController.die1, index: 0)
         disableDie(die: playerController.die2, index: 1)
@@ -281,32 +281,33 @@ class LocalPlayerActionController : PlayerActionController
                 self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
             }
         })
-        
-        // Animate sorting of dice
-        
+    }
+    
+    func sortDice()
+    {
         var dice = [playerController.die1,
                     playerController.die2,
                     playerController.die3,
                     playerController.die4,
                     playerController.die5]
-        
-        dice = dice.sorted(by: {
-            let one = isPushed(die: $0.0!)
-            let two = isPushed(die: $0.1!)
             
-            if (one && two) || (!one && !two)
-            {
-                return $0.0!.face < $0.1!.face
-            }
-            else if one
-            {
-                return false
-            }
-            else //if two
-            {
-                return true
-            }
-        })
+            .sorted(by: {
+                let one = isPushed(die: $0.0!)
+                let two = isPushed(die: $0.1!)
+                
+                if (one && two) || (!one && !two)
+                {
+                    return $0.0!.face < $0.1!.face
+                }
+                else if one
+                {
+                    return false
+                }
+                else //if two
+                {
+                    return true
+                }
+            })
         
         dice = dice.filter({ isPushed(die: $0! ) })
         
@@ -332,15 +333,24 @@ class LocalPlayerActionController : PlayerActionController
             
             for index in 0..<dice.count
             {
-//                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
-//                {
-//                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? DieView != nil })
-//                    
-//                    xConstraints[0].firstItem = constraint[0].firstItem
-//                    constraint[0].firstItem = dice[0]
-//                }
-//                else if xConstraints[index].secondItem !=
+                //                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
+                //                {
+                //                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? DieView != nil })
+                //
+                //                    xConstraints[0].firstItem = constraint[0].firstItem
+                //                    constraint[0].firstItem = dice[0]
+                //                }
+                //                else if xConstraints[index].secondItem !=
             }
         }
+    }
+
+    func disableUI()
+    {
+        disableButtonFunctionality()
+        
+        // Animate sorting of dice
+        
+        sortDice()
     }
 }

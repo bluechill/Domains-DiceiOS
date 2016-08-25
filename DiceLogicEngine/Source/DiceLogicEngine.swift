@@ -223,41 +223,8 @@ public class DiceLogicEngine: Equatable
         return updateWithData(data)
     }
     
-    internal func updateWithData(_ data: MessagePackValue) -> Bool
+    private func updateHistory(_ history: [MessagePackValue], _ players: [MessagePackValue]) -> Bool
     {
-        self.history.removeAll()
-        self.players.removeAll()
-        
-        guard let array = data.arrayValue else {
-            ErrorHandling.error("DiceLogicEngine data is not an array")
-            return false
-        }
-        
-        guard array.count == 4 else {
-            ErrorHandling.error("Invalid DiceLogicEngine data array")
-            return false
-        }
-        
-        guard let players = array[0].arrayValue else {
-            ErrorHandling.error("No players array in DiceLogicEngine data")
-            return false
-        }
-        
-        guard let playerUserData = array[1].arrayValue else {
-            ErrorHandling.error("No players userData in DiceLogicEngine data")
-            return false
-        }
-        
-        guard let currentTurn = array[2].stringValue else {
-            ErrorHandling.error("No currentTurn string in DiceLogicEngine data")
-            return false
-        }
-        
-        guard let history = array[3].arrayValue else {
-            ErrorHandling.error("No history array in DiceLogicEngine data")
-            return false
-        }
-        
         for item in history
         {
             guard let item = item.arrayValue else {
@@ -292,10 +259,15 @@ public class DiceLogicEngine: Equatable
             }
             
             self.players.append(Player( name: player,
-                dice: currentPlayerDiceCalculatedViaHistory(player),
-                engine: self))
+                                        dice: currentPlayerDiceCalculatedViaHistory(player),
+                                        engine: self))
         }
         
+        return true
+    }
+    
+    private func updatePlayers(_ playerUserData: [MessagePackValue], _ currentTurn: String) -> Bool
+    {
         guard players.count == playerUserData.count else {
             ErrorHandling.error("Player User Data and Players Array are not the same size!")
             return false
@@ -347,6 +319,52 @@ public class DiceLogicEngine: Equatable
         }
         
         self.currentTurn = currentPlayer
+        
+        return true
+    }
+    
+    internal func updateWithData(_ data: MessagePackValue) -> Bool
+    {
+        self.history.removeAll()
+        self.players.removeAll()
+        
+        guard let array = data.arrayValue else {
+            ErrorHandling.error("DiceLogicEngine data is not an array")
+            return false
+        }
+        
+        guard array.count == 4 else {
+            ErrorHandling.error("Invalid DiceLogicEngine data array")
+            return false
+        }
+        
+        guard let players = array[0].arrayValue else {
+            ErrorHandling.error("No players array in DiceLogicEngine data")
+            return false
+        }
+        
+        guard let playerUserData = array[1].arrayValue else {
+            ErrorHandling.error("No players userData in DiceLogicEngine data")
+            return false
+        }
+        
+        guard let currentTurn = array[2].stringValue else {
+            ErrorHandling.error("No currentTurn string in DiceLogicEngine data")
+            return false
+        }
+        
+        guard let history = array[3].arrayValue else {
+            ErrorHandling.error("No history array in DiceLogicEngine data")
+            return false
+        }
+        
+        guard updateHistory(history, players) else {
+            return false
+        }
+        
+        guard updatePlayers(playerUserData, currentTurn) else {
+            return false
+        }
         
         observers.forEach({ $0.diceLogicActionOccurred(self) })
         

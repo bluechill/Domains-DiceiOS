@@ -151,25 +151,23 @@ import CoreText
         initShapeLayers()
     }
     
-    func initShapeLayers()
+    func initDie1(_ radius: CGFloat)
     {
         die1.frame = self.bounds
-        die2.frame = self.bounds
-        die3.frame = self.bounds
-        die4.frame = self.bounds
-        die5.frame = self.bounds
-        die6.frame = self.bounds
-        dieQ.frame = self.bounds
-        dieB.frame = self.bounds
-        
-        let radius: CGFloat = 0.1
-        
+
         die1.path = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                                    radius: radius * self.bounds.width,
-                                                    startAngle: 0,
-                                                    endAngle: CGFloat(M_PI * 2.0),
-                                                    clockwise: true).cgPath
-        
+                                        radius: radius * self.bounds.width,
+                                        startAngle: 0,
+                                        endAngle: CGFloat(M_PI * 2.0),
+                                        clockwise: true).cgPath
+
+        die1.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDie2(_ radius: CGFloat)
+    {
+        die2.frame = self.bounds
+
         let die2CG = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
                                          radius: radius * self.bounds.width,
                                          startAngle: 0,
@@ -181,112 +179,147 @@ import CoreText
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die2.path = die2CG.cgPath
-        
+
+        die2.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDie3(_ radius: CGFloat)
+    {
+        die3.frame = self.bounds
+
         let die3CG = UIBezierPath.init()
         die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die3.path = die3CG.cgPath
         
+        die3.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDie4(_ radius: CGFloat)
+    {
+        die4.frame = self.bounds
+
         let die4CG = UIBezierPath.init()
         die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die4.path = die4CG.cgPath
+        
+        die4.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDie5(_ radius: CGFloat)
+    {
+        die5.frame = self.bounds
         
         let die5CG = UIBezierPath.init()
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die5.path = die5CG.cgPath
         
+        die5.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDie6(_ radius: CGFloat)
+    {
+        die6.frame = self.bounds
+
         let die6CG = UIBezierPath.init()
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 2.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 2.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                        radius: radius * self.bounds.width,
-                                        startAngle: 0,
-                                        endAngle: CGFloat(M_PI * 2.0),
-                                        clockwise: true))
+                                          radius: radius * self.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
         die6.path = die6CG.cgPath
         
+        die6.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initDieQ(_ radius: CGFloat)
+    {
+        dieQ.frame = self.bounds
+
         let dieQCG = UIBezierPath.init()
         let font = UIFont.systemFont(ofSize: 10 * radius * self.bounds.width)
         
@@ -305,17 +338,25 @@ import CoreText
         }
         dieQ.path = dieQCG.cgPath
         
+        dieQ.fillColor = dieFaceColor.cgColor
+    }
+    
+    func initShapeLayers()
+    {
+        let radius: CGFloat = 0.1
+
+        dieB.frame = self.bounds
         let dieBCG = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: radius * self.bounds.width)
         dieB.path = dieBCG.cgPath
-        
-        die1.fillColor = dieFaceColor.cgColor
-        die2.fillColor = dieFaceColor.cgColor
-        die3.fillColor = dieFaceColor.cgColor
-        die4.fillColor = dieFaceColor.cgColor
-        die5.fillColor = dieFaceColor.cgColor
-        die6.fillColor = dieFaceColor.cgColor
-        dieQ.fillColor = dieFaceColor.cgColor
         dieB.fillColor = dieBackgroundColor.cgColor
+
+        initDie1(radius)
+        initDie2(radius)
+        initDie3(radius)
+        initDie4(radius)
+        initDie5(radius)
+        initDie6(radius)
+        initDieQ(radius)
     }
     
     func dieForFace(_ face: UInt) -> CAShapeLayer
