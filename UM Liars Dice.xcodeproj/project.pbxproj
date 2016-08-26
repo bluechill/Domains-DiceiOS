@@ -656,6 +656,8 @@
 		4D1592671D67591100E6C87E /* MessagePack */ = {
 			isa = PBXGroup;
 			children = (
+				4D46DDBA1D70A755008982D3 /* MessagePackOSX */,
+				4D46DDC51D70A755008982D3 /* MessagePackOSXTests */,
 				4D1592841D67596600E6C87E /* Source */,
 				4D1592831D67596200E6C87E /* Tests */,
 			);
@@ -732,7 +734,8 @@
 			children = (
 				4D46DD671D70A6BD008982D3 /* Info.plist */,
 			);
-			path = DiceLogicEngineOSX;
+			name = DiceLogicEngineOSX;
+			path = ../../DiceLogicEngineOSX;
 			sourceTree = "<group>";
 		};
 		4D46DD701D70A6BE008982D3 /* DiceLogicEngineOSXTests */ = {
@@ -740,7 +743,8 @@
 			children = (
 				4D46DD731D70A6BE008982D3 /* Info.plist */,
 			);
-			path = DiceLogicEngineOSXTests;
+			name = DiceLogicEngineOSXTests;
+			path = ../../DiceLogicEngineOSXTests;
 			sourceTree = "<group>";
 		};
 		4D46DDBA1D70A755008982D3 /* MessagePackOSX */ = {
@@ -749,7 +753,7 @@
 				4D46DDBC1D70A755008982D3 /* Info.plist */,
 			);
 			path = MessagePackOSX;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		4D46DDC51D70A755008982D3 /* MessagePackOSXTests */ = {
 			isa = PBXGroup;
@@ -757,7 +761,7 @@
 				4D46DDC81D70A755008982D3 /* Info.plist */,
 			);
 			path = MessagePackOSXTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		4D46DDF01D70A7F5008982D3 /* C7OSX */ = {
 			isa = PBXGroup;
@@ -765,7 +769,7 @@
 				4D46DDF21D70A7F5008982D3 /* Info.plist */,
 			);
 			path = C7OSX;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		4D46DDFB1D70A7F5008982D3 /* C7OSXTests */ = {
 			isa = PBXGroup;
@@ -773,7 +777,7 @@
 				4D46DDFE1D70A7F5008982D3 /* Info.plist */,
 			);
 			path = C7OSXTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		4D6494651CF3621C00F4F498 /* Shared */ = {
 			isa = PBXGroup;
@@ -801,6 +805,8 @@
 		4DADC4721D675E3200A5279C /* C7 */ = {
 			isa = PBXGroup;
 			children = (
+				4D46DDF01D70A7F5008982D3 /* C7OSX */,
+				4D46DDFB1D70A7F5008982D3 /* C7OSXTests */,
 				4DADC48E1D675E7900A5279C /* Source */,
 				4DADC48F1D675E7C00A5279C /* Tests */,
 			);
@@ -852,19 +858,13 @@
 			isa = PBXGroup;
 			children = (
 				4D1592671D67591100E6C87E /* MessagePack */,
-				4D46DDBA1D70A755008982D3 /* MessagePackOSX */,
-				4D46DDC51D70A755008982D3 /* MessagePackOSXTests */,
 				4DADC4721D675E3200A5279C /* C7 */,
-				4D46DDF01D70A7F5008982D3 /* C7OSX */,
-				4D46DDFB1D70A7F5008982D3 /* C7OSXTests */,
 				4DE93CCD1CE8EABC008041C3 /* Frameworks */,
 				4DF5F8C91D661602002438CC /* Resources */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
-				4D46DD651D70A6BD008982D3 /* DiceLogicEngineOSX */,
 				4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */,
-				4D46DD701D70A6BE008982D3 /* DiceLogicEngineOSXTests */,
 				4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */,
 				4DE93C2C1CE8D7D4008041C3 /* Products */,
 			);
@@ -962,6 +962,7 @@
 		4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */ = {
 			isa = PBXGroup;
 			children = (
+				4D46DD651D70A6BD008982D3 /* DiceLogicEngineOSX */,
 				4DE93D061CEA282C008041C3 /* Extensions */,
 				4DE93CD51CE8F257008041C3 /* History */,
 				4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */,
@@ -980,6 +981,7 @@
 		4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */ = {
 			isa = PBXGroup;
 			children = (
+				4D46DD701D70A6BE008982D3 /* DiceLogicEngineOSXTests */,
 				4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */,
 				4D3228551CECCBC200BEE34E /* PlayerTests.swift */,
 				4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */,
@@ -2767,6 +2769,7 @@
 				4D46DD771D70A6BE008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D46DD781D70A6BE008982D3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -2775,6 +2778,7 @@
 				4D46DD7A1D70A6BE008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D46DDCA1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSX" */ = {
 			isa = XCConfigurationList;
@@ -2783,6 +2787,7 @@
 				4D46DDCC1D70A755008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D46DDCD1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSXTests" */ = {
 			isa = XCConfigurationList;
@@ -2791,6 +2796,7 @@
 				4D46DDCF1D70A755008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D46DE001D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSX" */ = {
 			isa = XCConfigurationList;
@@ -2799,6 +2805,7 @@
 				4D46DE021D70A7F5008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D46DE031D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -2807,6 +2814,7 @@
 				4D46DE051D70A7F5008982D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DADC4881D675E3200A5279C /* Build configuration list for PBXNativeTarget "C7" */ = {
 			isa = XCConfigurationList;
