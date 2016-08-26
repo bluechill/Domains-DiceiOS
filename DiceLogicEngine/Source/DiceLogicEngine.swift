@@ -420,8 +420,8 @@ internal extension DiceLogicEngine
         {
             for item in round.reversed()
             {
-                if  (item as? SpecialRulesInEffect) != nil &&
-                    (item as! SpecialRulesInEffect).player == player
+                if  let item = (item as? SpecialRulesInEffect),
+                    item.player == player
                 {
                     return true
                 }

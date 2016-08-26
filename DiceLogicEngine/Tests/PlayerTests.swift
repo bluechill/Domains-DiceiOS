@@ -16,7 +16,7 @@ class PlayerTests: XCTestCase
         super.setUp()
         
         Random.random = Random.newGenerator(0)
-        
+
         Handlers.Error = { XCTFail($0) }
         Handlers.Warning = { XCTFail($0) }
     }
@@ -29,7 +29,7 @@ class PlayerTests: XCTestCase
                                                     Die(face: 4),
                                                     Die(face: 5)
         ])
-        
+
         XCTAssertTrue(player.name == "Alice")
         XCTAssertTrue(player.dice.count == 5)
         XCTAssertTrue(player.dice[0].face == 1)

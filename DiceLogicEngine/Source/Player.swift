@@ -29,7 +29,11 @@ public class Player: Equatable
             }
             else if key == "GCID"
             {
-                result[.String(key)] = .String(value as! String)
+                guard let value = value as? String else {
+                    continue
+                }
+                
+                result[.String(key)] = .String(value)
             }
         }
         
