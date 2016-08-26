@@ -56,6 +56,99 @@
 		4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F821CF21889003DFE19 /* CreateGameViewController.swift */; };
 		4D342F881CF2439A003DFE19 /* LocalPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F871CF2439A003DFE19 /* LocalPlayerViewController.swift */; };
 		4D3C4D4B1D6768F0009437CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D69D9161D67684C00E0D2A2 /* Foundation.framework */; };
+		4D46DD6D1D70A6BE008982D3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */; };
+		4D46DD7B1D70A6EC008982D3 /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D46DD7C1D70A6EC008982D3 /* DiceLogicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */; };
+		4D46DD7D1D70A6EC008982D3 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC01CE8DE01008041C3 /* Die.swift */; };
+		4D46DD7E1D70A6EC008982D3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */; };
+		4D46DD7F1D70A6EC008982D3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD31CE8F14D008041C3 /* Player.swift */; };
+		4D46DD801D70A6EC008982D3 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD01CE8EB5A008041C3 /* Random.swift */; };
+		4D46DD811D70A6EC008982D3 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD81CE8F5D0008041C3 /* Serializable.swift */; };
+		4D46DD821D70A6F6008982D3 /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228591CEE4D6F00BEE34E /* CollectionType.swift */; };
+		4D46DD831D70A6F6008982D3 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD61CE8F270008041C3 /* HistoryItem.swift */; };
+		4D46DD841D70A6F6008982D3 /* BidAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDA1CE8F83F008041C3 /* BidAction.swift */; };
+		4D46DD851D70A6F6008982D3 /* HistoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDC1CE8F856008041C3 /* HistoryAction.swift */; };
+		4D46DD861D70A6F6008982D3 /* PushAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE21CE919F0008041C3 /* PushAction.swift */; };
+		4D46DD871D70A6F6008982D3 /* PassAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE81CE926B3008041C3 /* PassAction.swift */; };
+		4D46DD881D70A6F6008982D3 /* ExactAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEC1CE92842008041C3 /* ExactAction.swift */; };
+		4D46DD891D70A6F6008982D3 /* ChallengeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF01CE928A9008041C3 /* ChallengeAction.swift */; };
+		4D46DD8A1D70A6F6008982D3 /* PlayerInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF41CEA1D3C008041C3 /* PlayerInfoItem.swift */; };
+		4D46DD8B1D70A6F6008982D3 /* PlayerLostRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF81CEA222B008041C3 /* PlayerLostRound.swift */; };
+		4D46DD8C1D70A6F6008982D3 /* PlayerLost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228511CEB7DF000BEE34E /* PlayerLost.swift */; };
+		4D46DD8D1D70A6F6008982D3 /* PlayerWon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFA1CEA2238008041C3 /* PlayerWon.swift */; };
+		4D46DD8E1D70A6F6008982D3 /* InitialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D001CEA23E9008041C3 /* InitialState.swift */; };
+		4D46DD8F1D70A6F6008982D3 /* SpecialRulesInEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */; };
+		4D46DDA21D70A707008982D3 /* DiceLogicEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */; };
+		4D46DDA31D70A707008982D3 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228551CECCBC200BEE34E /* PlayerTests.swift */; };
+		4D46DDA41D70A707008982D3 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */; };
+		4D46DDA51D70A707008982D3 /* HistoryItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CDE1CE9104C008041C3 /* HistoryItemTests.swift */; };
+		4D46DDA61D70A707008982D3 /* HistoryActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE01CE9126A008041C3 /* HistoryActionTests.swift */; };
+		4D46DDA71D70A707008982D3 /* PushActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE41CE92288008041C3 /* PushActionTests.swift */; };
+		4D46DDA81D70A707008982D3 /* BidActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CE61CE924A1008041C3 /* BidActionTests.swift */; };
+		4D46DDA91D70A707008982D3 /* PassActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEA1CE9270F008041C3 /* PassActionTests.swift */; };
+		4D46DDAA1D70A707008982D3 /* ExactActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CEE1CE92873008041C3 /* ExactActionTests.swift */; };
+		4D46DDAB1D70A707008982D3 /* ChallengeActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF21CE92A6F008041C3 /* ChallengeActionTests.swift */; };
+		4D46DDAC1D70A707008982D3 /* InfoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CF61CEA1DCD008041C3 /* InfoItemTests.swift */; };
+		4D46DDAD1D70A707008982D3 /* PlayerLostRoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFC1CEA2280008041C3 /* PlayerLostRoundTests.swift */; };
+		4D46DDAE1D70A707008982D3 /* PlayerLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228531CEB7E0C00BEE34E /* PlayerLostTests.swift */; };
+		4D46DDAF1D70A707008982D3 /* PlayerWonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CFE1CEA2288008041C3 /* PlayerWonTests.swift */; };
+		4D46DDB01D70A707008982D3 /* SpecialRulesInEffectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */; };
+		4D46DDB11D70A707008982D3 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
+		4D46DDB21D70A707008982D3 /* HandlersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228571CECD77700BEE34E /* HandlersTests.swift */; };
+		4D46DDB31D70A707008982D3 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D32285B1CEFAD8200BEE34E /* GameTest.swift */; };
+		4D46DDC21D70A755008982D3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDB91D70A754008982D3 /* MessagePack.framework */; };
+		4D46DDD01D70A786008982D3 /* ConvenienceInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15928B1D67599600E6C87E /* ConvenienceInitializers.swift */; };
+		4D46DDD11D70A786008982D3 /* ConvenienceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15928C1D67599600E6C87E /* ConvenienceProperties.swift */; };
+		4D46DDD21D70A786008982D3 /* LiteralConvertibles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15928D1D67599600E6C87E /* LiteralConvertibles.swift */; };
+		4D46DDD31D70A786008982D3 /* MessagePack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15928E1D67599600E6C87E /* MessagePack.swift */; };
+		4D46DDD41D70A786008982D3 /* Pack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15928F1D67599600E6C87E /* Pack.swift */; };
+		4D46DDD51D70A786008982D3 /* Unpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592901D67599600E6C87E /* Unpack.swift */; };
+		4D46DDD61D70A786008982D3 /* MessagePack.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D1592861D67598500E6C87E /* MessagePack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D46DDD71D70A78C008982D3 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592971D6759A300E6C87E /* ArrayTests.swift */; };
+		4D46DDD81D70A78C008982D3 /* BinaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592981D6759A300E6C87E /* BinaryTests.swift */; };
+		4D46DDD91D70A78C008982D3 /* ConvenienceInitializersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592991D6759A300E6C87E /* ConvenienceInitializersTests.swift */; };
+		4D46DDDA1D70A78C008982D3 /* ConveniencePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929A1D6759A300E6C87E /* ConveniencePropertiesTests.swift */; };
+		4D46DDDB1D70A78C008982D3 /* DescriptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929B1D6759A300E6C87E /* DescriptionTests.swift */; };
+		4D46DDDC1D70A78C008982D3 /* DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929C1D6759A300E6C87E /* DoubleTests.swift */; };
+		4D46DDDD1D70A78C008982D3 /* EqualityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929D1D6759A300E6C87E /* EqualityTests.swift */; };
+		4D46DDDE1D70A78C008982D3 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929E1D6759A300E6C87E /* ExampleTests.swift */; };
+		4D46DDDF1D70A78C008982D3 /* ExtendedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D15929F1D6759A300E6C87E /* ExtendedTests.swift */; };
+		4D46DDE01D70A78C008982D3 /* FalseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A01D6759A300E6C87E /* FalseTests.swift */; };
+		4D46DDE11D70A78C008982D3 /* FloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A11D6759A300E6C87E /* FloatTests.swift */; };
+		4D46DDE21D70A78C008982D3 /* HashValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A21D6759A300E6C87E /* HashValueTests.swift */; };
+		4D46DDE31D70A78C008982D3 /* IntegerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A31D6759A300E6C87E /* IntegerTests.swift */; };
+		4D46DDE41D70A78C008982D3 /* MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A41D6759A300E6C87E /* MapTests.swift */; };
+		4D46DDE51D70A78C008982D3 /* MessagePackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A51D6759A300E6C87E /* MessagePackTests.swift */; };
+		4D46DDE61D70A78C008982D3 /* NilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A61D6759A300E6C87E /* NilTests.swift */; };
+		4D46DDE71D70A78C008982D3 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A71D6759A300E6C87E /* StringTests.swift */; };
+		4D46DDE81D70A78C008982D3 /* TrueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A81D6759A300E6C87E /* TrueTests.swift */; };
+		4D46DDE91D70A7AA008982D3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDB91D70A754008982D3 /* MessagePack.framework */; };
+		4D46DDF81D70A7F5008982D3 /* C7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDEF1D70A7F5008982D3 /* C7.framework */; };
+		4D46DE061D70A829008982D3 /* AsyncConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4971D675EC500A5279C /* AsyncConnection.swift */; };
+		4D46DE071D70A829008982D3 /* AsyncDrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4981D675EC500A5279C /* AsyncDrain.swift */; };
+		4D46DE081D70A829008982D3 /* AsyncHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4991D675EC500A5279C /* AsyncHost.swift */; };
+		4D46DE091D70A829008982D3 /* AsyncStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49A1D675EC500A5279C /* AsyncStream.swift */; };
+		4D46DE0A1D70A829008982D3 /* AsyncURIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49B1D675EC500A5279C /* AsyncURIConnection.swift */; };
+		4D46DE0B1D70A829008982D3 /* Byte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49C1D675EC500A5279C /* Byte.swift */; };
+		4D46DE0C1D70A829008982D3 /* C7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49D1D675EC500A5279C /* C7.swift */; };
+		4D46DE0D1D70A829008982D3 /* CaseInsensitiveString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49E1D675EC500A5279C /* CaseInsensitiveString.swift */; };
+		4D46DE0E1D70A829008982D3 /* Closable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC49F1D675EC500A5279C /* Closable.swift */; };
+		4D46DE0F1D70A829008982D3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A01D675EC500A5279C /* Connection.swift */; };
+		4D46DE101D70A829008982D3 /* CustomDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A11D675EC500A5279C /* CustomDataStore.swift */; };
+		4D46DE111D70A829008982D3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A21D675EC500A5279C /* Data.swift */; };
+		4D46DE121D70A829008982D3 /* Drain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A31D675EC500A5279C /* Drain.swift */; };
+		4D46DE131D70A829008982D3 /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A41D675EC500A5279C /* Host.swift */; };
+		4D46DE141D70A829008982D3 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A51D675EC500A5279C /* JSON.swift */; };
+		4D46DE151D70A829008982D3 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A61D675EC500A5279C /* Number.swift */; };
+		4D46DE161D70A829008982D3 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A71D675EC500A5279C /* Stream.swift */; };
+		4D46DE171D70A829008982D3 /* StreamError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A81D675EC500A5279C /* StreamError.swift */; };
+		4D46DE181D70A829008982D3 /* StreamSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4A91D675EC500A5279C /* StreamSequence.swift */; };
+		4D46DE191D70A829008982D3 /* StructuredData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4AA1D675EC500A5279C /* StructuredData.swift */; };
+		4D46DE1A1D70A829008982D3 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4AB1D675EC500A5279C /* Time.swift */; };
+		4D46DE1B1D70A829008982D3 /* URI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4AC1D675EC500A5279C /* URI.swift */; };
+		4D46DE1C1D70A829008982D3 /* URIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4AD1D675EC500A5279C /* URIConnection.swift */; };
+		4D46DE1D1D70A829008982D3 /* C7.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DADC4901D675E9100A5279C /* C7.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D46DE1E1D70A82E008982D3 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4C51D675ED500A5279C /* ExampleTests.swift */; };
 		4D6494621CF33E2F00F4F498 /* ScrollPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */; };
 		4D6494641CF3578D00F4F498 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494631CF3578D00F4F498 /* DieView.swift */; };
 		4D6494671CF3623000F4F498 /* LiarsDiceColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */; };
@@ -173,6 +266,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4D1592651D67591100E6C87E;
 			remoteInfo = MessagePack;
+		};
+		4D46DD6E1D70A6BE008982D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D46DD631D70A6BD008982D3;
+			remoteInfo = DiceLogicEngineOSX;
+		};
+		4D46DDC31D70A755008982D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D46DDB81D70A754008982D3;
+			remoteInfo = MessagePackOSX;
+		};
+		4D46DDF91D70A7F5008982D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D46DDEE1D70A7F5008982D3;
+			remoteInfo = C7OSX;
 		};
 		4DADC47B1D675E3200A5279C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -297,6 +411,18 @@
 		4D342F801CF0BA05003DFE19 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4D342F821CF21889003DFE19 /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		4D342F871CF2439A003DFE19 /* LocalPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlayerViewController.swift; sourceTree = "<group>"; };
+		4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiceLogicEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DD671D70A6BD008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D46DD6C1D70A6BE008982D3 /* DiceLogicEngineOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiceLogicEngineOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DD731D70A6BE008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D46DDB91D70A754008982D3 /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DDBC1D70A755008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D46DDC11D70A755008982D3 /* MessagePackOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessagePackOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DDC81D70A755008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D46DDEF1D70A7F5008982D3 /* C7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = C7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DDF21D70A7F5008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = C7OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D46DDFE1D70A7F5008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPickerView.swift; sourceTree = "<group>"; };
 		4D6494631CF3578D00F4F498 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
 		4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiarsDiceColors.swift; sourceTree = "<group>"; };
@@ -416,6 +542,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D15926F1D67591100E6C87E /* MessagePack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD601D70A6BD008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDE91D70A7AA008982D3 /* MessagePack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD691D70A6BE008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DD6D1D70A6BE008982D3 /* DiceLogicEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDB51D70A754008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDBE1D70A755008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDC21D70A755008982D3 /* MessagePack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDEB1D70A7F5008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDF41D70A7F5008982D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDF81D70A7F5008982D3 /* C7.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +727,54 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		4D46DD651D70A6BD008982D3 /* DiceLogicEngineOSX */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DD671D70A6BD008982D3 /* Info.plist */,
+			);
+			path = DiceLogicEngineOSX;
+			sourceTree = "<group>";
+		};
+		4D46DD701D70A6BE008982D3 /* DiceLogicEngineOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DD731D70A6BE008982D3 /* Info.plist */,
+			);
+			path = DiceLogicEngineOSXTests;
+			sourceTree = "<group>";
+		};
+		4D46DDBA1D70A755008982D3 /* MessagePackOSX */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DDBC1D70A755008982D3 /* Info.plist */,
+			);
+			path = MessagePackOSX;
+			sourceTree = "<group>";
+		};
+		4D46DDC51D70A755008982D3 /* MessagePackOSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DDC81D70A755008982D3 /* Info.plist */,
+			);
+			path = MessagePackOSXTests;
+			sourceTree = "<group>";
+		};
+		4D46DDF01D70A7F5008982D3 /* C7OSX */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DDF21D70A7F5008982D3 /* Info.plist */,
+			);
+			path = C7OSX;
+			sourceTree = "<group>";
+		};
+		4D46DDFB1D70A7F5008982D3 /* C7OSXTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D46DDFE1D70A7F5008982D3 /* Info.plist */,
+			);
+			path = C7OSXTests;
+			sourceTree = "<group>";
+		};
 		4D6494651CF3621C00F4F498 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,13 +852,19 @@
 			isa = PBXGroup;
 			children = (
 				4D1592671D67591100E6C87E /* MessagePack */,
+				4D46DDBA1D70A755008982D3 /* MessagePackOSX */,
+				4D46DDC51D70A755008982D3 /* MessagePackOSXTests */,
 				4DADC4721D675E3200A5279C /* C7 */,
+				4D46DDF01D70A7F5008982D3 /* C7OSX */,
+				4D46DDFB1D70A7F5008982D3 /* C7OSXTests */,
 				4DE93CCD1CE8EABC008041C3 /* Frameworks */,
 				4DF5F8C91D661602002438CC /* Resources */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
 				4DE93C421CE8D7D4008041C3 /* UM Liars DiceTests */,
 				4DE93C4D1CE8D7D4008041C3 /* UM Liars DiceUITests */,
+				4D46DD651D70A6BD008982D3 /* DiceLogicEngineOSX */,
 				4DE93CA11CE8DD79008041C3 /* DiceLogicEngine */,
+				4D46DD701D70A6BE008982D3 /* DiceLogicEngineOSXTests */,
 				4DE93CAF1CE8DD79008041C3 /* DiceLogicEngineTests */,
 				4DE93C2C1CE8D7D4008041C3 /* Products */,
 			);
@@ -656,6 +882,12 @@
 				4D15926E1D67591100E6C87E /* MessagePackTests.xctest */,
 				4DADC4711D675E3200A5279C /* C7.framework */,
 				4DADC4791D675E3200A5279C /* C7Tests.xctest */,
+				4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */,
+				4D46DD6C1D70A6BE008982D3 /* DiceLogicEngineOSXTests.xctest */,
+				4D46DDB91D70A754008982D3 /* MessagePack.framework */,
+				4D46DDC11D70A755008982D3 /* MessagePackOSXTests.xctest */,
+				4D46DDEF1D70A7F5008982D3 /* C7.framework */,
+				4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -831,6 +1063,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D46DD611D70A6BD008982D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DD7B1D70A6EC008982D3 /* DiceLogicEngine.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDB61D70A754008982D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDD61D70A786008982D3 /* MessagePack.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDEC1D70A7F5008982D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DE1D1D70A829008982D3 /* C7.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DADC46E1D675E3200A5279C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -885,6 +1141,114 @@
 			name = MessagePackTests;
 			productName = MessagePackTests;
 			productReference = 4D15926E1D67591100E6C87E /* MessagePackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D46DD631D70A6BD008982D3 /* DiceLogicEngineOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DD751D70A6BE008982D3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineOSX" */;
+			buildPhases = (
+				4D46DD5F1D70A6BD008982D3 /* Sources */,
+				4D46DD601D70A6BD008982D3 /* Frameworks */,
+				4D46DD611D70A6BD008982D3 /* Headers */,
+				4D46DD621D70A6BD008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DiceLogicEngineOSX;
+			productName = DiceLogicEngineOSX;
+			productReference = 4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D46DD6B1D70A6BE008982D3 /* DiceLogicEngineOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DD781D70A6BE008982D3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineOSXTests" */;
+			buildPhases = (
+				4D46DD681D70A6BE008982D3 /* Sources */,
+				4D46DD691D70A6BE008982D3 /* Frameworks */,
+				4D46DD6A1D70A6BE008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D46DD6F1D70A6BE008982D3 /* PBXTargetDependency */,
+			);
+			name = DiceLogicEngineOSXTests;
+			productName = DiceLogicEngineOSXTests;
+			productReference = 4D46DD6C1D70A6BE008982D3 /* DiceLogicEngineOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D46DDB81D70A754008982D3 /* MessagePackOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DDCA1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSX" */;
+			buildPhases = (
+				4D46DDB41D70A754008982D3 /* Sources */,
+				4D46DDB51D70A754008982D3 /* Frameworks */,
+				4D46DDB61D70A754008982D3 /* Headers */,
+				4D46DDB71D70A754008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MessagePackOSX;
+			productName = MessagePackOSX;
+			productReference = 4D46DDB91D70A754008982D3 /* MessagePack.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D46DDC01D70A755008982D3 /* MessagePackOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DDCD1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSXTests" */;
+			buildPhases = (
+				4D46DDBD1D70A755008982D3 /* Sources */,
+				4D46DDBE1D70A755008982D3 /* Frameworks */,
+				4D46DDBF1D70A755008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D46DDC41D70A755008982D3 /* PBXTargetDependency */,
+			);
+			name = MessagePackOSXTests;
+			productName = MessagePackOSXTests;
+			productReference = 4D46DDC11D70A755008982D3 /* MessagePackOSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D46DDEE1D70A7F5008982D3 /* C7OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DE001D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSX" */;
+			buildPhases = (
+				4D46DDEA1D70A7F5008982D3 /* Sources */,
+				4D46DDEB1D70A7F5008982D3 /* Frameworks */,
+				4D46DDEC1D70A7F5008982D3 /* Headers */,
+				4D46DDED1D70A7F5008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = C7OSX;
+			productName = C7OSX;
+			productReference = 4D46DDEF1D70A7F5008982D3 /* C7.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D46DDF61D70A7F5008982D3 /* C7OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D46DE031D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSXTests" */;
+			buildPhases = (
+				4D46DDF31D70A7F5008982D3 /* Sources */,
+				4D46DDF41D70A7F5008982D3 /* Frameworks */,
+				4D46DDF51D70A7F5008982D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D46DDFA1D70A7F5008982D3 /* PBXTargetDependency */,
+			);
+			name = C7OSXTests;
+			productName = C7OSXTests;
+			productReference = 4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		4DADC4701D675E3200A5279C /* C7 */ = {
@@ -1040,6 +1404,33 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
 					};
+					4D46DD631D70A6BD008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Manual;
+					};
+					4D46DD6B1D70A6BE008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = PG6DD9A3H4;
+						ProvisioningStyle = Automatic;
+					};
+					4D46DDB81D70A754008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Manual;
+					};
+					4D46DDC01D70A755008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = PG6DD9A3H4;
+						ProvisioningStyle = Automatic;
+					};
+					4D46DDEE1D70A7F5008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Manual;
+					};
+					4D46DDF61D70A7F5008982D3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = PG6DD9A3H4;
+						ProvisioningStyle = Automatic;
+					};
 					4DADC4701D675E3200A5279C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = PG6DD9A3H4;
@@ -1107,6 +1498,12 @@
 				4D15926D1D67591100E6C87E /* MessagePackTests */,
 				4DADC4701D675E3200A5279C /* C7 */,
 				4DADC4781D675E3200A5279C /* C7Tests */,
+				4D46DD631D70A6BD008982D3 /* DiceLogicEngineOSX */,
+				4D46DD6B1D70A6BE008982D3 /* DiceLogicEngineOSXTests */,
+				4D46DDB81D70A754008982D3 /* MessagePackOSX */,
+				4D46DDC01D70A755008982D3 /* MessagePackOSXTests */,
+				4D46DDEE1D70A7F5008982D3 /* C7OSX */,
+				4D46DDF61D70A7F5008982D3 /* C7OSXTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1120,6 +1517,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4D15926C1D67591100E6C87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD621D70A6BD008982D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD6A1D70A6BE008982D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDB71D70A754008982D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDBF1D70A755008982D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDED1D70A7F5008982D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDF51D70A7F5008982D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1230,6 +1669,134 @@
 				4D1592BB1D6759A900E6C87E /* ArrayTests.swift in Sources */,
 				4D1592C51D6759A900E6C87E /* FloatTests.swift in Sources */,
 				4D1592CA1D6759A900E6C87E /* NilTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD5F1D70A6BD008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DD811D70A6EC008982D3 /* Serializable.swift in Sources */,
+				4D46DD891D70A6F6008982D3 /* ChallengeAction.swift in Sources */,
+				4D46DD821D70A6F6008982D3 /* CollectionType.swift in Sources */,
+				4D46DD7F1D70A6EC008982D3 /* Player.swift in Sources */,
+				4D46DD841D70A6F6008982D3 /* BidAction.swift in Sources */,
+				4D46DD8F1D70A6F6008982D3 /* SpecialRulesInEffect.swift in Sources */,
+				4D46DD871D70A6F6008982D3 /* PassAction.swift in Sources */,
+				4D46DD851D70A6F6008982D3 /* HistoryAction.swift in Sources */,
+				4D46DD8C1D70A6F6008982D3 /* PlayerLost.swift in Sources */,
+				4D46DD8B1D70A6F6008982D3 /* PlayerLostRound.swift in Sources */,
+				4D46DD7E1D70A6EC008982D3 /* ErrorHandling.swift in Sources */,
+				4D46DD801D70A6EC008982D3 /* Random.swift in Sources */,
+				4D46DD831D70A6F6008982D3 /* HistoryItem.swift in Sources */,
+				4D46DD7D1D70A6EC008982D3 /* Die.swift in Sources */,
+				4D46DD8D1D70A6F6008982D3 /* PlayerWon.swift in Sources */,
+				4D46DD8A1D70A6F6008982D3 /* PlayerInfoItem.swift in Sources */,
+				4D46DD7C1D70A6EC008982D3 /* DiceLogicEngine.swift in Sources */,
+				4D46DD881D70A6F6008982D3 /* ExactAction.swift in Sources */,
+				4D46DD861D70A6F6008982D3 /* PushAction.swift in Sources */,
+				4D46DD8E1D70A6F6008982D3 /* InitialState.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DD681D70A6BE008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDB11D70A707008982D3 /* InitialStateTests.swift in Sources */,
+				4D46DDAE1D70A707008982D3 /* PlayerLostTests.swift in Sources */,
+				4D46DDAF1D70A707008982D3 /* PlayerWonTests.swift in Sources */,
+				4D46DDA91D70A707008982D3 /* PassActionTests.swift in Sources */,
+				4D46DDAA1D70A707008982D3 /* ExactActionTests.swift in Sources */,
+				4D46DDA61D70A707008982D3 /* HistoryActionTests.swift in Sources */,
+				4D46DDA71D70A707008982D3 /* PushActionTests.swift in Sources */,
+				4D46DDA81D70A707008982D3 /* BidActionTests.swift in Sources */,
+				4D46DDB21D70A707008982D3 /* HandlersTests.swift in Sources */,
+				4D46DDAB1D70A707008982D3 /* ChallengeActionTests.swift in Sources */,
+				4D46DDA41D70A707008982D3 /* DieTests.swift in Sources */,
+				4D46DDB31D70A707008982D3 /* GameTest.swift in Sources */,
+				4D46DDB01D70A707008982D3 /* SpecialRulesInEffectTests.swift in Sources */,
+				4D46DDA51D70A707008982D3 /* HistoryItemTests.swift in Sources */,
+				4D46DDA31D70A707008982D3 /* PlayerTests.swift in Sources */,
+				4D46DDA21D70A707008982D3 /* DiceLogicEngineTests.swift in Sources */,
+				4D46DDAC1D70A707008982D3 /* InfoItemTests.swift in Sources */,
+				4D46DDAD1D70A707008982D3 /* PlayerLostRoundTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDB41D70A754008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDD31D70A786008982D3 /* MessagePack.swift in Sources */,
+				4D46DDD51D70A786008982D3 /* Unpack.swift in Sources */,
+				4D46DDD21D70A786008982D3 /* LiteralConvertibles.swift in Sources */,
+				4D46DDD11D70A786008982D3 /* ConvenienceProperties.swift in Sources */,
+				4D46DDD01D70A786008982D3 /* ConvenienceInitializers.swift in Sources */,
+				4D46DDD41D70A786008982D3 /* Pack.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDBD1D70A755008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DDDA1D70A78C008982D3 /* ConveniencePropertiesTests.swift in Sources */,
+				4D46DDE01D70A78C008982D3 /* FalseTests.swift in Sources */,
+				4D46DDDB1D70A78C008982D3 /* DescriptionTests.swift in Sources */,
+				4D46DDE81D70A78C008982D3 /* TrueTests.swift in Sources */,
+				4D46DDDF1D70A78C008982D3 /* ExtendedTests.swift in Sources */,
+				4D46DDE41D70A78C008982D3 /* MapTests.swift in Sources */,
+				4D46DDDD1D70A78C008982D3 /* EqualityTests.swift in Sources */,
+				4D46DDE31D70A78C008982D3 /* IntegerTests.swift in Sources */,
+				4D46DDE71D70A78C008982D3 /* StringTests.swift in Sources */,
+				4D46DDE51D70A78C008982D3 /* MessagePackTests.swift in Sources */,
+				4D46DDD91D70A78C008982D3 /* ConvenienceInitializersTests.swift in Sources */,
+				4D46DDDE1D70A78C008982D3 /* ExampleTests.swift in Sources */,
+				4D46DDE21D70A78C008982D3 /* HashValueTests.swift in Sources */,
+				4D46DDD81D70A78C008982D3 /* BinaryTests.swift in Sources */,
+				4D46DDDC1D70A78C008982D3 /* DoubleTests.swift in Sources */,
+				4D46DDD71D70A78C008982D3 /* ArrayTests.swift in Sources */,
+				4D46DDE11D70A78C008982D3 /* FloatTests.swift in Sources */,
+				4D46DDE61D70A78C008982D3 /* NilTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDEA1D70A7F5008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DE151D70A829008982D3 /* Number.swift in Sources */,
+				4D46DE121D70A829008982D3 /* Drain.swift in Sources */,
+				4D46DE191D70A829008982D3 /* StructuredData.swift in Sources */,
+				4D46DE081D70A829008982D3 /* AsyncHost.swift in Sources */,
+				4D46DE061D70A829008982D3 /* AsyncConnection.swift in Sources */,
+				4D46DE161D70A829008982D3 /* Stream.swift in Sources */,
+				4D46DE0E1D70A829008982D3 /* Closable.swift in Sources */,
+				4D46DE181D70A829008982D3 /* StreamSequence.swift in Sources */,
+				4D46DE0D1D70A829008982D3 /* CaseInsensitiveString.swift in Sources */,
+				4D46DE1A1D70A829008982D3 /* Time.swift in Sources */,
+				4D46DE0C1D70A829008982D3 /* C7.swift in Sources */,
+				4D46DE141D70A829008982D3 /* JSON.swift in Sources */,
+				4D46DE101D70A829008982D3 /* CustomDataStore.swift in Sources */,
+				4D46DE091D70A829008982D3 /* AsyncStream.swift in Sources */,
+				4D46DE1C1D70A829008982D3 /* URIConnection.swift in Sources */,
+				4D46DE111D70A829008982D3 /* Data.swift in Sources */,
+				4D46DE131D70A829008982D3 /* Host.swift in Sources */,
+				4D46DE0B1D70A829008982D3 /* Byte.swift in Sources */,
+				4D46DE0F1D70A829008982D3 /* Connection.swift in Sources */,
+				4D46DE071D70A829008982D3 /* AsyncDrain.swift in Sources */,
+				4D46DE171D70A829008982D3 /* StreamError.swift in Sources */,
+				4D46DE1B1D70A829008982D3 /* URI.swift in Sources */,
+				4D46DE0A1D70A829008982D3 /* AsyncURIConnection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D46DDF31D70A7F5008982D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D46DE1E1D70A82E008982D3 /* ExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,6 +1951,21 @@
 			target = 4D1592651D67591100E6C87E /* MessagePack */;
 			targetProxy = 4D1592791D67591100E6C87E /* PBXContainerItemProxy */;
 		};
+		4D46DD6F1D70A6BE008982D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D46DD631D70A6BD008982D3 /* DiceLogicEngineOSX */;
+			targetProxy = 4D46DD6E1D70A6BE008982D3 /* PBXContainerItemProxy */;
+		};
+		4D46DDC41D70A755008982D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D46DDB81D70A754008982D3 /* MessagePackOSX */;
+			targetProxy = 4D46DDC31D70A755008982D3 /* PBXContainerItemProxy */;
+		};
+		4D46DDFA1D70A7F5008982D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D46DDEE1D70A7F5008982D3 /* C7OSX */;
+			targetProxy = 4D46DDF91D70A7F5008982D3 /* PBXContainerItemProxy */;
+		};
 		4DADC47C1D675E3200A5279C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DADC4701D675E3200A5279C /* C7 */;
@@ -1530,6 +2112,294 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UM Liars Dice.app/UM Liars Dice";
+			};
+			name = Release;
+		};
+		4D46DD761D70A6BE008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DiceLogicEngineOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
+				PRODUCT_NAME = DiceLogicEngine;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D46DD771D70A6BE008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DiceLogicEngineOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
+				PRODUCT_NAME = DiceLogicEngine;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D46DD791D70A6BE008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = DiceLogicEngineOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngineOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4D46DD7A1D70A6BE008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = DiceLogicEngineOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngineOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4D46DDCB1D70A755008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = MessagePackOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = io.zewo.MessagePack;
+				PRODUCT_NAME = MessagePack;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D46DDCC1D70A755008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = MessagePackOSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = io.zewo.MessagePack;
+				PRODUCT_NAME = MessagePack;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D46DDCE1D70A755008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = MessagePackOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.MessagePackOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4D46DDCF1D70A755008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = MessagePackOSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.MessagePackOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4D46DE011D70A7F5008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = C7OSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "open-swift.C7";
+				PRODUCT_NAME = C7;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D46DE021D70A7F5008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = C7OSX/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "open-swift.C7";
+				PRODUCT_NAME = C7;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D46DE041D70A7F5008982D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = C7OSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.C7OSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4D46DE051D70A7F5008982D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = C7OSXTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.C7OSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1889,6 +2759,54 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4D46DD751D70A6BE008982D3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DD761D70A6BE008982D3 /* Debug */,
+				4D46DD771D70A6BE008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D46DD781D70A6BE008982D3 /* Build configuration list for PBXNativeTarget "DiceLogicEngineOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DD791D70A6BE008982D3 /* Debug */,
+				4D46DD7A1D70A6BE008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D46DDCA1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DDCB1D70A755008982D3 /* Debug */,
+				4D46DDCC1D70A755008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D46DDCD1D70A755008982D3 /* Build configuration list for PBXNativeTarget "MessagePackOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DDCE1D70A755008982D3 /* Debug */,
+				4D46DDCF1D70A755008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D46DE001D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DE011D70A7F5008982D3 /* Debug */,
+				4D46DE021D70A7F5008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D46DE031D70A7F5008982D3 /* Build configuration list for PBXNativeTarget "C7OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D46DE041D70A7F5008982D3 /* Debug */,
+				4D46DE051D70A7F5008982D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		4DADC4881D675E3200A5279C /* Build configuration list for PBXNativeTarget "C7" */ = {
 			isa = XCConfigurationList;

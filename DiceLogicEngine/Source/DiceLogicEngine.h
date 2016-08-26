@@ -6,7 +6,7 @@
 //  Copyright © 2016 Alex Turner. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for DiceLogicEngine.
 FOUNDATION_EXPORT double DiceLogicEngineVersionNumber;
