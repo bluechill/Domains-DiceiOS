@@ -11,4 +11,4 @@ xcode_sdk: iphonesimulator10.0
 
 script:
   - xcodebuild -scheme 'UM Liars Dice' -sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO clean build | xcpretty -c
-  - xcodebuild -scheme 'UM Liars Dice' test | xcpretty -c
+  - xcodebuild -scheme 'DiceLogicEngineOSX' test | xcpretty -c
