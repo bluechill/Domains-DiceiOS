@@ -25,6 +25,51 @@ class LocalPlayerActionController : PlayerActionController
         enableUI()
     }
     
+    private func enableOrDisableDice(_ die: DieView, _ index: Int)
+    {
+        if self.player.dice.count >= (index + 1)
+        {
+            die.face = self.player.dice[index].face
+            
+            if die.isHidden
+            {
+                UIView.transition(with: die,
+                                  duration: GameViewController.animationLength,
+                                  options: UIViewAnimationOptions.transitionCrossDissolve,
+                                  animations: {
+                                    die.isHidden = false
+                    },
+                                  completion: nil)
+            }
+        }
+        else
+        {
+            UIView.transition(with: die,
+                              duration: GameViewController.animationLength,
+                              options: UIViewAnimationOptions.transitionCrossDissolve,
+                              animations: { die.isHidden = true },
+                              completion: nil)
+        }
+    }
+
+    private func animateButtonEnable(_ button: UIButton, _ state: Bool)
+    {
+        if state && !button.isEnabled
+        {
+            UIView.animate(withDuration: GameViewController.animationLength, animations: {
+                button.tintColor = LiarsDiceColors.michiganMaize()
+            })
+        }
+        else if !state && button.isEnabled
+        {
+            UIView.animate(withDuration: GameViewController.animationLength, animations: {
+                button.tintColor = UIColor.lightGray
+            })
+        }
+        
+        button.isEnabled = state
+    }
+
     func enableUI()
     {
         enableDie(die: playerController.die1, index: 0)
@@ -33,58 +78,15 @@ class LocalPlayerActionController : PlayerActionController
         enableDie(die: playerController.die4, index: 3)
         enableDie(die: playerController.die5, index: 4)
         
-        let lamdba = { (die: DieView, index: Int) in
-            if self.player.dice.count >= (index + 1)
-            {
-                die.face = self.player.dice[index].face
-                
-                if die.isHidden
-                {
-                    UIView.transition(with: die,
-                                      duration: GameViewController.animationLength,
-                                      options: UIViewAnimationOptions.transitionCrossDissolve,
-                                      animations: {
-                                        die.isHidden = false
-                                      },
-                                      completion: nil)
-                }
-            }
-            else
-            {
-                UIView.transition(with: die,
-                                  duration: GameViewController.animationLength,
-                                  options: UIViewAnimationOptions.transitionCrossDissolve,
-                                  animations: { die.isHidden = true },
-                                  completion: nil)
-            }
-        }
+        enableOrDisableDice(playerController.die1, 0)
+        enableOrDisableDice(playerController.die2, 1)
+        enableOrDisableDice(playerController.die3, 2)
+        enableOrDisableDice(playerController.die4, 3)
+        enableOrDisableDice(playerController.die5, 4)
         
-        lamdba(playerController.die1, 0)
-        lamdba(playerController.die2, 1)
-        lamdba(playerController.die3, 2)
-        lamdba(playerController.die4, 3)
-        lamdba(playerController.die5, 4)
-        
-        let buttonAnimateEnable = { (button: UIButton, state: Bool) in
-            if state && !button.isEnabled
-            {
-                UIView.animate(withDuration: GameViewController.animationLength, animations: {
-                    button.tintColor = LiarsDiceColors.michiganMaize()
-                })
-            }
-            else if !state && button.isEnabled
-            {
-                UIView.animate(withDuration: GameViewController.animationLength, animations: {
-                    button.tintColor = UIColor.lightGray
-                })
-            }
-            
-            button.isEnabled = state
-        }
-        
-        buttonAnimateEnable(playerController.exactButton, player.canExact())
-        buttonAnimateEnable(playerController.passButton, player.canPass())
-        buttonAnimateEnable(playerController.bidButton, true)
+        animateButtonEnable(playerController.exactButton, player.canExact())
+        animateButtonEnable(playerController.passButton, player.canPass())
+        animateButtonEnable(playerController.bidButton, true)
         
         playerController.countPicker.tableView.isScrollEnabled = true
         playerController.facePicker.tableView.isScrollEnabled = true

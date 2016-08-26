@@ -700,7 +700,7 @@ Current Turn: You</string>
         <!--About-->
         <scene sceneID="edC-AP-zLo">
             <objects>
-                <viewController title="About" automaticallyAdjustsScrollViewInsets="NO" id="g6z-Wp-DfQ" customClass="AboutViewController" customModule="UM_Liars_Dice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" automaticallyAdjustsScrollViewInsets="NO" id="g6z-Wp-DfQ" customClass="WebViewController" customModule="UM_Liars_Dice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oxr-Fo-ghG"/>
                         <viewControllerLayoutGuide type="bottom" id="LUb-eA-ci8"/>
@@ -725,6 +725,9 @@ Current Turn: You</string>
                             <constraint firstItem="LUb-eA-ci8" firstAttribute="top" secondItem="pGb-Ni-qZ3" secondAttribute="bottom" constant="8" id="ple-6r-MRH"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="resource" value="about"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="view" destination="vpt-zV-cse" id="Yqc-zX-P6g"/>
                         <outlet property="webView" destination="pGb-Ni-qZ3" id="44t-Jx-clw"/>
@@ -894,7 +897,7 @@ Current Turn: You</string>
         <!--Help-->
         <scene sceneID="tBT-v0-VqT">
             <objects>
-                <viewController title="Help" automaticallyAdjustsScrollViewInsets="NO" id="Jr3-Rs-wEX" customClass="HelpViewController" customModule="UM_Liars_Dice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Help" automaticallyAdjustsScrollViewInsets="NO" id="Jr3-Rs-wEX" customClass="WebViewController" customModule="UM_Liars_Dice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XAO-0U-QXc"/>
                         <viewControllerLayoutGuide type="bottom" id="26g-zw-aSN"/>
@@ -919,6 +922,9 @@ Current Turn: You</string>
                             <constraint firstAttribute="leadingMargin" secondItem="AYD-80-aXd" secondAttribute="leading" id="xyL-xq-xhm"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="resource" value="rules"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="view" destination="6YU-bC-3GK" id="mUs-ZT-1b1"/>
                         <outlet property="webView" destination="AYD-80-aXd" id="UXf-JK-cTP"/>

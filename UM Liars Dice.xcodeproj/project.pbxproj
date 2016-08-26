@@ -48,8 +48,7 @@
 		4D32285A1CEE4D6F00BEE34E /* CollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228591CEE4D6F00BEE34E /* CollectionType.swift */; };
 		4D32285C1CEFAD8200BEE34E /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D32285B1CEFAD8200BEE34E /* GameTest.swift */; };
 		4D32285F1CEFE54C00BEE34E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D32285E1CEFE54C00BEE34E /* GameKit.framework */; };
-		4D3228621CEFE8DA00BEE34E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228611CEFE8DA00BEE34E /* AboutViewController.swift */; };
-		4D3228641CEFEF5A00BEE34E /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228631CEFEF5A00BEE34E /* HelpViewController.swift */; };
+		4D3228621CEFE8DA00BEE34E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3228611CEFE8DA00BEE34E /* WebViewController.swift */; };
 		4D342F7D1CF0AA95003DFE19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F7C1CF0AA95003DFE19 /* SettingsViewController.swift */; };
 		4D342F7F1CF0B3EC003DFE19 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F7E1CF0B3EC003DFE19 /* PlayViewController.swift */; };
 		4D342F811CF0BA05003DFE19 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F801CF0BA05003DFE19 /* GameViewController.swift */; };
@@ -419,8 +418,7 @@
 		4D32285B1CEFAD8200BEE34E /* GameTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
 		4D32285D1CEFE54100BEE34E /* UM Liars Dice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "UM Liars Dice.entitlements"; sourceTree = "<group>"; };
 		4D32285E1CEFE54C00BEE34E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		4D3228611CEFE8DA00BEE34E /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		4D3228631CEFEF5A00BEE34E /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		4D3228611CEFE8DA00BEE34E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4D342F7C1CF0AA95003DFE19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4D342F7E1CF0B3EC003DFE19 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		4D342F801CF0BA05003DFE19 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -725,8 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE93C301CE8D7D4008041C3 /* MainMenuViewController.swift */,
-				4D3228611CEFE8DA00BEE34E /* AboutViewController.swift */,
-				4D3228631CEFEF5A00BEE34E /* HelpViewController.swift */,
+				4D3228611CEFE8DA00BEE34E /* WebViewController.swift */,
 				4D342F7C1CF0AA95003DFE19 /* SettingsViewController.swift */,
 				4D342F7E1CF0B3EC003DFE19 /* PlayViewController.swift */,
 				4D342F801CF0BA05003DFE19 /* GameViewController.swift */,
@@ -1869,7 +1866,7 @@
 				4D2F49F01CF7720F0058BD7B /* NameGenerator.swift in Sources */,
 				4D94C4891D5E36E4009B4149 /* SoarPlayerActionController.swift in Sources */,
 				4D94C48D1D5F6B9C009B4149 /* LocalPlayerActionController.swift in Sources */,
-				4D3228621CEFE8DA00BEE34E /* AboutViewController.swift in Sources */,
+				4D3228621CEFE8DA00BEE34E /* WebViewController.swift in Sources */,
 				4DE93C311CE8D7D4008041C3 /* MainMenuViewController.swift in Sources */,
 				4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */,
 				4D2F49F21CF772EF0058BD7B /* RandomRange.swift in Sources */,
@@ -1879,7 +1876,6 @@
 				4D94C4851D5E3479009B4149 /* PlayerActionController.swift in Sources */,
 				4D342F7F1CF0B3EC003DFE19 /* PlayViewController.swift in Sources */,
 				4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */,
-				4D3228641CEFEF5A00BEE34E /* HelpViewController.swift in Sources */,
 				4D94C4871D5E36DA009B4149 /* RemotePlayerActionController.swift in Sources */,
 				4D2F49F41CF77E3A0058BD7B /* Shuffle.swift in Sources */,
 			);
