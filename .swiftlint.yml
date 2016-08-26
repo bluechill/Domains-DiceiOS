@@ -1,3 +1,14 @@
 disabled_rules:
   - opening_brace
   - statement_position
+
+custom_rules:
+  todo_format:
+        match_kinds: comment
+        message: >
+            Prefix TODO/FIXME/etc with email prefix and date,
+            so if you're <name@example.com>, then you'd write:
+            // (name/2016-07-28)TODO: Document custom rule
+        # This isn't a perfect check, but it should guide folks the right
+        # direction for common cases.
+        regex: "[^)](TODO|FIXME|XXX|HACK|!{3}|[?]{3}):"
