@@ -12,18 +12,18 @@ import GameKit
 class GameCenterHelper
 {
     static var playerMap = [String:String]()
-    
+
     static func isAuthenticated() -> Bool
     {
         return GKLocalPlayer.localPlayer().isAuthenticated
     }
-        
+
     static func playerIDToDisplayName(_ playerID: String) -> String
     {
         guard let player = playerMap[playerID] else {
             return playerID
         }
-        
+
         return player
     }
 }

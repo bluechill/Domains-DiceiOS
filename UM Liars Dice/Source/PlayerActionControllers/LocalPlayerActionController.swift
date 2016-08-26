@@ -13,24 +13,24 @@ class LocalPlayerActionController : PlayerActionController
 {
     weak var playerController: LocalPlayerViewController!
     weak var gameController: GameViewController!
-    
+
     weak var player: Player!
-    
+
     func performAction(_ player: Player)
     {
         playerController.localPlayerActionController = self
-        
+
         self.player = player
-        
+
         enableUI()
     }
-    
+
     private func enableOrDisableDice(_ die: DieView, _ index: Int)
     {
         if self.player.dice.count >= (index + 1)
         {
             die.face = self.player.dice[index].face
-            
+
             if die.isHidden
             {
                 UIView.transition(with: die,
@@ -66,7 +66,7 @@ class LocalPlayerActionController : PlayerActionController
                 button.tintColor = UIColor.lightGray
             })
         }
-        
+
         button.isEnabled = state
     }
 
@@ -77,69 +77,69 @@ class LocalPlayerActionController : PlayerActionController
         enableDie(die: playerController.die3, index: 2)
         enableDie(die: playerController.die4, index: 3)
         enableDie(die: playerController.die5, index: 4)
-        
+
         enableOrDisableDice(playerController.die1, 0)
         enableOrDisableDice(playerController.die2, 1)
         enableOrDisableDice(playerController.die3, 2)
         enableOrDisableDice(playerController.die4, 3)
         enableOrDisableDice(playerController.die5, 4)
-        
+
         animateButtonEnable(playerController.exactButton, player.canExact())
         animateButtonEnable(playerController.passButton, player.canPass())
         animateButtonEnable(playerController.bidButton, true)
-        
+
         playerController.countPicker.tableView.isScrollEnabled = true
         playerController.facePicker.tableView.isScrollEnabled = true
         playerController.countPicker.tableView.allowsSelection = true
         playerController.facePicker.tableView.allowsSelection = true
-        
+
         UIView.animate(withDuration: GameViewController.animationLength, animations: {
             if let index = self.playerController.countPicker.tableView.indexPathForSelectedRow {
                 self.playerController.countPicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
             }
-            
+
             if let index = self.playerController.facePicker.tableView.indexPathForSelectedRow {
                 self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
             }
         })
     }
-    
+
     func bid()
     {
         disableUI()
     }
-    
+
     func pass()
     {
         enableUI()
     }
-    
+
     func exact()
     {
         disableUI()
     }
-    
+
     func challenge(id: Int)
     {
         disableUI()
     }
-    
+
     func isPushed(die: DieView) -> Bool
     {
         let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.top && $0.secondAttribute == NSLayoutAttribute.bottom && $0.firstItem as! NSObject == die })
-        
+
         guard constraint.count == 1 else {
             return false
         }
-        
+
         if constraint[0].constant == 0
         {
             return true
         }
-        
+
         return false
     }
-    
+
     func push(die: Int)
     {
         let dice = [playerController.die1,
@@ -147,9 +147,9 @@ class LocalPlayerActionController : PlayerActionController
                     playerController.die3,
                     playerController.die4,
                     playerController.die5]
-        
+
         let unpushedDice = dice.filter({ !isPushed(die: $0!) })
-        
+
         if unpushedDice.count == 1
         {
             if unpushedDice[0]! == playerController.die1
@@ -200,7 +200,7 @@ class LocalPlayerActionController : PlayerActionController
             }
         }
     }
-    
+
     func disableDie(die: DieView, index: Int)
     {
         if self.player.dice.count >= (index + 1)
@@ -217,10 +217,10 @@ class LocalPlayerActionController : PlayerActionController
                               animations: { die.isHidden = true },
                               completion: nil)
         }
-        
+
         die.isEnabled = false
     }
-    
+
     func enableDie(die: DieView, index: Int)
     {
         if self.player.dice.count >= (index + 1)
@@ -237,10 +237,10 @@ class LocalPlayerActionController : PlayerActionController
                               animations: { die.isHidden = true },
                               completion: nil)
         }
-        
+
         die.isEnabled = true
     }
-    
+
     private func disableButtonFunctionality()
     {
         disableDie(die: playerController.die1, index: 0)
@@ -248,7 +248,7 @@ class LocalPlayerActionController : PlayerActionController
         disableDie(die: playerController.die3, index: 2)
         disableDie(die: playerController.die4, index: 3)
         disableDie(die: playerController.die5, index: 4)
-        
+
         let buttonAnimateEnable = { (button: UIButton, state: Bool) in
             if state && !button.isEnabled
             {
@@ -262,30 +262,30 @@ class LocalPlayerActionController : PlayerActionController
                     button.tintColor = UIColor.lightGray
                 })
             }
-            
+
             button.isEnabled = state
         }
-        
+
         buttonAnimateEnable(playerController.exactButton, false)
         buttonAnimateEnable(playerController.passButton, false)
         buttonAnimateEnable(playerController.bidButton, false)
-        
+
         playerController.countPicker.tableView.isScrollEnabled = false
         playerController.facePicker.tableView.isScrollEnabled = false
         playerController.countPicker.tableView.allowsSelection = false
         playerController.facePicker.tableView.allowsSelection = false
-        
+
         UIView.animate(withDuration: GameViewController.animationLength, animations: {
             if let index = self.playerController.countPicker.tableView.indexPathForSelectedRow {
                 self.playerController.countPicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
             }
-            
+
             if let index = self.playerController.facePicker.tableView.indexPathForSelectedRow {
                 self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
             }
         })
     }
-    
+
     func sortDice()
     {
         var dice = [playerController.die1,
@@ -293,11 +293,11 @@ class LocalPlayerActionController : PlayerActionController
                     playerController.die3,
                     playerController.die4,
                     playerController.die5]
-            
+
             .sorted(by: {
                 let one = isPushed(die: $0.0!)
                 let two = isPushed(die: $0.1!)
-                
+
                 if (one && two) || (!one && !two)
                 {
                     return $0.0!.face < $0.1!.face
@@ -311,17 +311,17 @@ class LocalPlayerActionController : PlayerActionController
                     return true
                 }
             })
-        
+
         dice = dice.filter({ isPushed(die: $0! ) })
-        
+
         if dice.count > 0
         {
             var xConstraints: [NSLayoutConstraint] = []
-            
+
             for die in dice
             {
                 let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.trailing && $0.firstItem as? NSObject == die })
-                
+
                 if constraint.count == 1
                 {
                     xConstraints.append(constraint[0])
@@ -329,11 +329,11 @@ class LocalPlayerActionController : PlayerActionController
                 else
                 {
                     let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? NSObject == die })
-                    
+
                     xConstraints.append(constraint[0])
                 }
             }
-            
+
             for index in 0..<dice.count
             {
                 //                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
@@ -351,9 +351,9 @@ class LocalPlayerActionController : PlayerActionController
     func disableUI()
     {
         disableButtonFunctionality()
-        
+
         // Animate sorting of dice
-        
+
         sortDice()
     }
 }

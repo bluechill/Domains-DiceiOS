@@ -13,19 +13,19 @@ class PlayerTableViewButton: UIButton
 {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
+
         OperationQueue.main.addOperation({ self.isHighlighted = true })
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
-        
+
         OperationQueue.main.addOperation({ self.isHighlighted = false })
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
+
         OperationQueue.main.addOperation({ self.isHighlighted = false })
     }
 }
@@ -35,7 +35,7 @@ class PlayerTableViewCell: UITableViewCell
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var challengeButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     @IBOutlet weak var die1: DieView!
     @IBOutlet weak var die2: DieView!
     @IBOutlet weak var die3: DieView!
@@ -46,15 +46,15 @@ class PlayerTableViewCell: UITableViewCell
 class GameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DiceObserver
 {
     // MARK: Variables
-    
+
     var game: DiceLogicEngine? = nil
     weak var localPlayerViewController: LocalPlayerViewController!
-    
+
     @IBOutlet weak var opponentsView: UITableView!
-    
+
     static var animationLength: Double = 0.33
     static let PlayerControllerString = "PlayerController"
-    
+
     // MARK: DiceObserver Methods
 
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
@@ -64,12 +64,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             controller.performAction(engine.currentTurn!)
         }
     }
-    
+
     func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
     {
-        
+
     }
-    
+
     // MARK: Storyboard Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -88,64 +88,64 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
+
     override func viewDidLayoutSubviews()
     {
         game!.observers.append(self)
-        
+
         if game!.currentTurn == nil
         {
             game!.shuffleAndCreateRound()
-            
+
             diceLogicActionOccurred(game!)
         }
     }
-    
+
     // MARK: Table View Methods
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return game!.players.count-1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cellIdentifier = "cell"
-        
+
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? PlayerTableViewCell
-        
+
         if cell == nil
         {
             cell = PlayerTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
         }
-        
+
         cell?.selectionStyle = UITableViewCellSelectionStyle.default
-        
+
         let background = UIView()
         background.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
         cell?.selectedBackgroundView = background
-        
+
         guard let game = game else {
             return cell!
         }
-        
+
         var playerID = (indexPath as NSIndexPath).row
         if playerID >= localPlayerViewController.currentPlayerID
         {
             playerID += 1
         }
-        
+
         cell?.playerLabel.text = game.players[playerID].name
         cell?.challengeButton.tag = playerID
-        
+
         var pushedDice = game.players[playerID].dice.filter({ $0.pushed })
         pushedDice.sort(by: { $0.face < $1.face })
-        
+
         let lambda = { (dieView: DieView?, index: Int) in
             guard let dieView = dieView else {
                 return
             }
-            
+
             if pushedDice.count >= (index + 1)
             {
                 dieView.face = pushedDice[index].face
@@ -155,18 +155,18 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 dieView.face = 0
             }
         }
-        
+
         lambda(cell?.die1, 0)
         lambda(cell?.die2, 1)
         lambda(cell?.die3, 2)
         lambda(cell?.die4, 3)
         lambda(cell?.die5, 4)
-        
+
         guard let currentTurn = game.currentTurn else {
             cell?.challengeButton.isEnabled = false
             return cell!
         }
-        
+
         if currentTurn.userData[GameViewController.PlayerControllerString] is LocalPlayerActionController
         {
             cell?.challengeButton.isEnabled = currentTurn.canChallenge(game.players[playerID].name)
@@ -175,20 +175,20 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             cell?.challengeButton.isEnabled = false
         }
-        
+
         return cell!
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         return "Opponents"
     }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         if let view = view as? UITableViewHeaderFooterView
@@ -198,7 +198,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             view.textLabel!.textColor = UIColor.white
         }
     }
-    
+
     @IBAction func challenge(_ sender: UIButton)
     {
         localPlayerViewController.challenge(sender)

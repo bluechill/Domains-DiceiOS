@@ -16,18 +16,18 @@ class HandlersTests: XCTestCase
         Handlers.Error = { _ in }
         Handlers.Warning = { _ in }
     }
-    
+
     override func tearDown()
     {
         Handlers.Error = { _ in }
         Handlers.Warning = { _ in }
     }
-    
+
     func testError()
     {
         var e = false
         Handlers.Error = { _ in e = true }
-        
+
         XCTAssertFalse(e)
         ErrorHandling.error("test")
         XCTAssertTrue(e)
@@ -36,12 +36,12 @@ class HandlersTests: XCTestCase
         ErrorHandling.error("test2")
         XCTAssertTrue(e)
     }
-    
+
     func testWarning()
     {
         var w = false
         Handlers.Warning = { _ in w = true }
-        
+
         XCTAssertFalse(w)
         ErrorHandling.warning("test")
         XCTAssertTrue(w)

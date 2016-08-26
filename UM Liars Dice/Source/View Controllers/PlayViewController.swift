@@ -16,42 +16,42 @@ class GameViewCell: UITableViewCell
 class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var gameTableView: UITableView!
-    
+
     var singlePlayerGames = [String]()
     var multiPlayerGames = [String]()
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+
         singlePlayerGames = ["1\n2", "3\n4", "5\n6"]
         multiPlayerGames = ["7\n8","9\n10","11\n12"]
-        
+
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
         gameTableView.addGestureRecognizer(longPress)
     }
-    
+
     @IBAction func longPressRecognized(_ sender: UILongPressGestureRecognizer)
     {
         gameTableView.setEditing(true, animated: true)
-        
+
         let item = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(doneEditing))
         self.navigationItem.setRightBarButton(item, animated: true)
     }
-    
+
     @IBAction func doneEditing(_ sender: UIBarButtonItem)
     {
         gameTableView.setEditing(false, animated: true)
-        
+
         let item = UIBarButtonItem(title: "New Game", style: UIBarButtonItemStyle.plain, target: self, action: #selector(newGameSegue))
         self.navigationItem.setRightBarButton(item, animated: true)
     }
-    
+
     @IBAction func newGameSegue(_ sender: UIBarButtonItem)
     {
         self.performSegue(withIdentifier: "NewGameSegue", sender: sender)
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if section == 0
@@ -63,25 +63,25 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return multiPlayerGames.count
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cellIdentifier = "cell"
-        
+
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? GameViewCell
-        
+
         if cell == nil
         {
             cell = GameViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
         }
-        
+
         cell?.showsReorderControl = true
         cell?.selectionStyle = UITableViewCellSelectionStyle.default
-        
+
         let background = UIView()
         background.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
         cell?.selectedBackgroundView = background
-        
+
         if (indexPath as NSIndexPath).section == 0
         {
             cell?.gameLabel.text = singlePlayerGames[(indexPath as NSIndexPath).row]
@@ -90,15 +90,15 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             cell?.gameLabel.text = multiPlayerGames[(indexPath as NSIndexPath).row]
         }
-        
+
         return cell!
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int
     {
         return 2
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         if section == 0
@@ -110,7 +110,7 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return "Multiplayer Games"
         }
     }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         if let view = view as? UITableViewHeaderFooterView
@@ -133,11 +133,11 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             {
                 multiPlayerGames.remove(at: (indexPath as NSIndexPath).row)
             }
-            
+
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
     {
         if (sourceIndexPath as NSIndexPath).section == 0
@@ -151,7 +151,7 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             multiPlayerGames.insert(item, at: (destinationIndexPath as NSIndexPath).row)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
     {
         if (sourceIndexPath as NSIndexPath).section == 0 && (sourceIndexPath as NSIndexPath).section != (proposedDestinationIndexPath as NSIndexPath).section
@@ -162,7 +162,7 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             return IndexPath(row: 0, section: 1)
         }
-        
+
         return proposedDestinationIndexPath
     }
 }

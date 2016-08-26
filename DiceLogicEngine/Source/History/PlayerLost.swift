@@ -15,23 +15,23 @@ public class PlayerLost: PlayerInfoItem
     {
         super.init(player: player, type: .playerLost)
     }
-    
+
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
-        
+
         guard self.type == .playerLost else {
             ErrorHandling.error("Must be a PlayerLost to initialize as such")
             return nil
         }
     }
-    
+
     public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {
             return false
         }
-        
+
         return (item as? PlayerLost) != nil
     }
 }

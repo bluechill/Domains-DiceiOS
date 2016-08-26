@@ -12,9 +12,11 @@ import GameplayKit
 enum Random
 {
     static var random = Random.newGenerator(0)
-    
+
     static func newGenerator(_ seed: UInt64) -> GKShuffledDistribution
     {
-        return GKShuffledDistribution(randomSource: GKMersenneTwisterRandomSource(seed: seed), lowestValue: 1, highestValue: Int(Die.sides))
+        return GKShuffledDistribution(randomSource: GKMersenneTwisterRandomSource(seed: seed),
+                                      lowestValue: 1,
+                                      highestValue: Int(Die.sides))
     }
 }

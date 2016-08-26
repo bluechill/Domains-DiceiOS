@@ -13,13 +13,13 @@ import GameKit
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-    
+
     var mainMenuController: MainMenuViewController?
     var gameCenterController: UIViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
-        
+
         // From: http://stackoverflow.com/questions/25845855/transparent-navigation-bar-ios
         // Sets background to a blank/empty image
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().isTranslucent = true
-        
+
         GKLocalPlayer.localPlayer().authenticateHandler = { (controller, error) in
             if  let controller = controller
             {
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 }
             }
         }
-        
+
         return true
     }
 

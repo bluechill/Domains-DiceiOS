@@ -16,21 +16,25 @@ public enum Handlers
 
 public class ErrorHandling
 {
-    public static func error(_ items: String..., separator: String = " ", terminator: String = "\n")
+    public static func error(   _ items: String...,
+                                separator: String = " ",
+                                terminator: String = "\n")
     {
         let errorString = items.joined(separator: separator)
         let string = "Error: " + errorString
         print(string, separator: "", terminator: terminator)
-        
+
         Handlers.Error(errorString)
     }
-    
-    public static func warning(_ items: String..., separator: String = " ", terminator: String = "\n")
+
+    public static func warning( _ items: String...,
+                                separator: String = " ",
+                                terminator: String = "\n")
     {
         let warningString = items.joined(separator: separator)
         let string = "Warning: " + warningString
         print(string, separator: "", terminator: terminator)
-        
+
         Handlers.Warning(warningString)
     }
 }

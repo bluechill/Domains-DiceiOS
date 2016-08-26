@@ -15,24 +15,24 @@ class PassActionTests: XCTestCase
     override func setUp()
     {
         super.setUp()
-        
+
         Random.random = Random.newGenerator(0)
         Handlers.Error = { XCTFail($0) }
         Handlers.Warning = { XCTFail($0) }
     }
-    
+
     func testEquality()
     {
         let action1 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
         let action2 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .passAction)
         let action3 = PushAction(player: "Alice", pushedDice: [], newDice: [], correct: true, type: .pushAction)
         let action4 = PassAction(player: "Alice", pushedDice: [], newDice: [], correct: true)
-        
+
         XCTAssertFalse(action1 == action2)
         XCTAssertFalse(action1 == action3)
         XCTAssertTrue(action1 == action4)
     }
-    
+
     func testSerialization()
     {
         Handlers.Error = { _ in }
@@ -41,7 +41,7 @@ class PassActionTests: XCTestCase
         let action_restored = PassAction(data: action.asData())
 
         XCTAssertTrue(action == action_restored)
-        
+
         XCTAssertNil(PassAction(data: [
             .UInt(HistoryItem.HIType.invalid.rawValue),
             .String("Alice"),
@@ -49,7 +49,7 @@ class PassActionTests: XCTestCase
             [],
             []
             ]))
-        
+
         XCTAssertNotNil(PassAction(data: [
             .UInt(HistoryItem.HIType.passAction.rawValue),
             .String("Alice"),

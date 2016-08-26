@@ -22,9 +22,9 @@ extension MutableCollection where Index == Int {
     mutating func shuffleInPlace() {
         // empty and single-element collections don't shuffle
         let size = self.endIndex
-        
+
         if count < 2 { return }
-        
+
         for i in 0..<size - 1 {
             let j = Int(arc4random_uniform(UInt32(size - i))) + i
             guard i != j else { continue }

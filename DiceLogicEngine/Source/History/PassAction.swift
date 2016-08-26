@@ -13,19 +13,23 @@ public class PassAction: PushAction
 {
     public init(player: String, pushedDice: [UInt], newDice: [UInt], correct: Bool)
     {
-        super.init(player: player, pushedDice: pushedDice, newDice: newDice, correct: correct, type: .passAction)
+        super.init(player: player,
+                   pushedDice: pushedDice,
+                   newDice: newDice,
+                   correct: correct,
+                   type: .passAction)
     }
-    
+
     required public init?(data: MessagePackValue)
     {
         super.init(data: data)
-        
+
         guard self.type == .passAction else {
             ErrorHandling.error("Must be a PassAction to initialize as such")
             return nil
         }
     }
-    
+
     public override func isEqualTo(_ item: HistoryItem) -> Bool
     {
         guard super.isEqualTo(item) else {

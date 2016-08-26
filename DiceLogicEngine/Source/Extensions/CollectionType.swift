@@ -23,9 +23,9 @@ extension MutableCollection where Index == Int {
     mutating func shuffleInPlace() {
         // empty and single-element collections don't shuffle
         let size: Int = self.endIndex
-        
+
         if count < 2 { return }
-        
+
         for i in 0..<(size - 1)
         {
             let j = Int(Random.random.nextInt() % Int(size - i)) + i

@@ -14,53 +14,53 @@ class CreateGameViewController: UIViewController
 {
     @IBOutlet weak var aiOpponentsLabel: UILabel!
     @IBOutlet weak var aiOpponentsStepper: UIStepper!
-    
+
     @IBOutlet weak var humanOpponentsLabel: UILabel!
     @IBOutlet weak var humanOpponentsStepper: UIStepper!
-    
+
     @IBOutlet weak var passTurnAroundLabel: UILabel!
     @IBOutlet weak var passTurnAroundSwitch: UISwitch!
-    
+
     @IBOutlet weak var createGameButton: UIButton!
-    
+
     static var maxPlayers: Double = 8
     static var animationLength: Double = 0.33
-    
+
     override func viewWillAppear(_ animated: Bool)
     {
         createGameButton.isEnabled = true
-        
+
         if (!GameCenterHelper.isAuthenticated())
         {
             passTurnAroundSwitch.setOn(true, animated: false)
             passTurnAroundSwitch.isEnabled = false
-            
+
             humanOpponentsStepper.value = 0
             humanOpponentsLabel.text = "0"
-            
+
             passTurnAroundLabel.isHidden = true
             passTurnAroundSwitch.isHidden = true
         }
     }
-    
+
     func checkAndChangeStepper(_ stepper: UIStepper)
     {
         var other = humanOpponentsStepper
-        
+
         if stepper == humanOpponentsStepper
         {
             other = aiOpponentsStepper
         }
-        
+
         stepper.maximumValue = CreateGameViewController.maxPlayers - (other?.value)!
         let enabled = (stepper.maximumValue > 0)
-        
+
         if enabled && !stepper.isEnabled
         {
             UIView.animate(withDuration: CreateGameViewController.animationLength, animations: {
                 stepper.tintColor = LiarsDiceColors.michiganMaize()
             })
-            
+
         }
         else if !enabled && stepper.isEnabled
         {
@@ -68,14 +68,14 @@ class CreateGameViewController: UIViewController
                 stepper.tintColor = UIColor.lightGray
             })
         }
-        
+
         stepper.isEnabled = enabled
     }
-    
+
     func checkAndChangeCreate()
     {
         let enabled = (aiOpponentsStepper.value + humanOpponentsStepper.value > 0)
-        
+
         if enabled && !createGameButton.isEnabled
         {
             UIView.animate(withDuration: CreateGameViewController.animationLength, animations: {
@@ -88,18 +88,18 @@ class CreateGameViewController: UIViewController
                 self.createGameButton.tintColor = UIColor.lightGray
             })
         }
-        
+
         createGameButton.isEnabled = enabled
     }
-    
+
     @IBAction func aiOpponentsDidChangeValue(_ sender: UIStepper)
     {
         aiOpponentsLabel.text = String(Int(sender.value))
-        
+
         checkAndChangeStepper(humanOpponentsStepper)
         checkAndChangeCreate()
     }
-    
+
     @IBAction func humanOpponentsDidChangeValue(_ sender: UIStepper)
     {
         if sender.value != 0 && Int(humanOpponentsLabel.text!) == 0
@@ -128,9 +128,9 @@ class CreateGameViewController: UIViewController
                                       animations: { self.passTurnAroundLabel.isHidden = true },
                                       completion: nil)
         }
-        
+
         humanOpponentsLabel.text = String(Int(sender.value))
-        
+
         checkAndChangeStepper(aiOpponentsStepper)
         checkAndChangeCreate()
     }
@@ -139,21 +139,21 @@ class CreateGameViewController: UIViewController
     {
         self.performSegue(withIdentifier: "GameViewSegue", sender: self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         guard let gameController = (segue.destination as? GameViewController) else {
             return
         }
-        
+
         var playerCount = 1
         let localActionController = LocalPlayerActionController()
-        
+
         var players: [String:PlayerActionController] = ["Player " + String(playerCount): localActionController]
-        
+
         for _ in 0..<Int(aiOpponentsStepper.value)
         {} // TODO: AI
-        
+
         for _ in 0..<Int(humanOpponentsStepper.value)
         {
             if passTurnAroundSwitch.isOn
@@ -164,14 +164,14 @@ class CreateGameViewController: UIViewController
             else
             {} // TODO: Game Center
         }
-        
+
         let engine = DiceLogicEngine(players: players.map{ $0.key }, start: false)
-        
+
         for player in engine.players
         {
             player.userData[GameViewController.PlayerControllerString] = players[player.name]
         }
-        
+
         gameController.game = engine
     }
 }

@@ -14,18 +14,18 @@ class InitialStateTests: XCTestCase
     override func setUp()
     {
         super.setUp()
-        
+
         Random.random = Random.newGenerator(0)
         Handlers.Error = { XCTFail($0) }
         Handlers.Warning = { XCTFail($0) }
     }
-    
+
     func testInitialization()
     {
         let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
         XCTAssertTrue(item.players == ["Alice": [0,1,2], "Bob": [3,4,5]])
     }
-    
+
     func testEquality()
     {
         let item1 = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
@@ -40,31 +40,31 @@ class InitialStateTests: XCTestCase
         XCTAssertFalse(item1 == item4)
         XCTAssertFalse(item1 == item5)
         XCTAssertFalse(item1 == item6)
-        
+
         let action = HistoryItem(type: .initialState)
         XCTAssertFalse(item1 == action)
-        
+
         let action2 = HistoryItem(type: .invalid)
         XCTAssertFalse(item1 == action2)
     }
-    
+
     func testSerialization()
     {
         Handlers.Error = { _ in }
 
         let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
         let item_restore = InitialState(data: item.asData())
-        
+
         XCTAssertTrue(item == item_restore)
-        
+
         XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.invalid.rawValue),
         ]))
-        
+
         XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.initialState.rawValue),
         ]))
-        
+
         XCTAssertNil(InitialState(data: [
             .UInt(HistoryItem.HIType.initialState.rawValue),
             []
@@ -85,7 +85,7 @@ class InitialStateTests: XCTestCase
             .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[-1]]
         ]))
-        
+
         XCTAssertNotNil(InitialState(data: [
             .UInt(HistoryItem.HIType.initialState.rawValue),
             ["Alice":[]]
