@@ -122,7 +122,6 @@
 		4D46DDE61D70A78C008982D3 /* NilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A61D6759A300E6C87E /* NilTests.swift */; };
 		4D46DDE71D70A78C008982D3 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A71D6759A300E6C87E /* StringTests.swift */; };
 		4D46DDE81D70A78C008982D3 /* TrueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A81D6759A300E6C87E /* TrueTests.swift */; };
-		4D46DDE91D70A7AA008982D3 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDB91D70A754008982D3 /* MessagePack.framework */; };
 		4D46DDF81D70A7F5008982D3 /* C7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDEF1D70A7F5008982D3 /* C7.framework */; };
 		4D46DE061D70A829008982D3 /* AsyncConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4971D675EC500A5279C /* AsyncConnection.swift */; };
 		4D46DE071D70A829008982D3 /* AsyncDrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4981D675EC500A5279C /* AsyncDrain.swift */; };
@@ -243,6 +242,8 @@
 		4DE93D011CEA23E9008041C3 /* InitialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D001CEA23E9008041C3 /* InitialState.swift */; };
 		4DE93D031CEA23F1008041C3 /* SpecialRulesInEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D021CEA23F1008041C3 /* SpecialRulesInEffect.swift */; };
 		4DE93D051CEA24B9008041C3 /* SpecialRulesInEffectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93D041CEA24B9008041C3 /* SpecialRulesInEffectTests.swift */; };
+		4DFE04AF1D70D0B500BE8C52 /* C7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDEF1D70A7F5008982D3 /* C7.framework */; };
+		4DFE04B01D70D0BC00BE8C52 /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DDB91D70A754008982D3 /* MessagePack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,6 +344,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4DE93C9F1CE8DD79008041C3;
 			remoteInfo = DiceLogicEngine;
+		};
+		4DFE04AD1D70D0AD00BE8C52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D46DDEE1D70A7F5008982D3;
+			remoteInfo = C7OSX;
+		};
+		4DFE04B11D70D0C100BE8C52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D46DDB81D70A754008982D3;
+			remoteInfo = MessagePackOSX;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -549,7 +564,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D46DDE91D70A7AA008982D3 /* MessagePack.framework in Frameworks */,
+				4DFE04B01D70D0BC00BE8C52 /* MessagePack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +580,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DFE04AF1D70D0B500BE8C52 /* C7.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1157,6 +1173,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4DFE04B21D70D0C100BE8C52 /* PBXTargetDependency */,
 			);
 			name = DiceLogicEngineOSX;
 			productName = DiceLogicEngineOSX;
@@ -1193,6 +1210,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4DFE04AE1D70D0AD00BE8C52 /* PBXTargetDependency */,
 			);
 			name = MessagePackOSX;
 			productName = MessagePackOSX;
@@ -2007,6 +2025,16 @@
 			isa = PBXTargetDependency;
 			target = 4DE93C9F1CE8DD79008041C3 /* DiceLogicEngine */;
 			targetProxy = 4DE93CB31CE8DD79008041C3 /* PBXContainerItemProxy */;
+		};
+		4DFE04AE1D70D0AD00BE8C52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D46DDEE1D70A7F5008982D3 /* C7OSX */;
+			targetProxy = 4DFE04AD1D70D0AD00BE8C52 /* PBXContainerItemProxy */;
+		};
+		4DFE04B21D70D0C100BE8C52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D46DDB81D70A754008982D3 /* MessagePackOSX */;
+			targetProxy = 4DFE04B11D70D0C100BE8C52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

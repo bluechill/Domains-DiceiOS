@@ -7,6 +7,7 @@
 //
 
 import DiceLogicEngine
+import UIKit
 
 class LocalPlayerActionController : PlayerActionController
 {
