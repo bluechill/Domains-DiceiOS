@@ -19,7 +19,7 @@ import UIKit
 
 @objc protocol ScrollPickerViewDelegate
 {
-    func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: UInt)
+    func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: Int)
 }
 
 extension ScrollPickerViewDataSource
@@ -32,7 +32,20 @@ extension ScrollPickerViewDataSource
 
 class ScrollPickerView: UIView
 {
-    var selectedIndex: UInt = 0
+    func getSelectedIndex() -> Int {
+        if let indexPath = tableView.indexPathForSelectedRow
+        {
+            return indexPath.row
+        }
+        
+        return -1
+    }
+    
+    func setSelected(index: Int)
+    {
+        tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.middle)
+    }
+    
     internal var animating = false
     
     var datasource: ScrollPickerViewDataSource? = nil
@@ -55,34 +68,33 @@ class ScrollPickerView: UIView
         }
     }
     
-    private var initialized = false
     override func layoutSubviews()
     {
         super.layoutSubviews()
         
-        if !initialized
+        tableView.backgroundColor = UIColor.clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorColor = UIColor.clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
+        
+        if headerView != nil
         {
-            tableView.backgroundColor = UIColor.clear
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-            tableView.separatorColor = UIColor.clear
-            tableView.showsVerticalScrollIndicator = false
-            tableView.showsHorizontalScrollIndicator = false
-            tableView.rowHeight = UITableViewAutomaticDimension
-            tableView.estimatedRowHeight = 44
-            tableView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
-            
-            if headerView != nil
-            {
-                tableView.tableHeaderView = headerView
-            }
-            
-            if footerView != nil
-            {
-                tableView.tableFooterView = footerView
-            }
-            
+            tableView.tableHeaderView = headerView
+        }
+        
+        if footerView != nil
+        {
+            tableView.tableFooterView = footerView
+        }
+        
+        if !self.subviews.contains(tableView)
+        {
             self.addSubview(tableView)
         }
         
@@ -91,24 +103,13 @@ class ScrollPickerView: UIView
     
     internal func scrollToSelectedIndex(_ animated: Bool = true)
     {
-        guard let datasource = datasource else {
-            return
-        }
-        
-        let rows = datasource.scrollPickerView(numberOfRowsFor: self)
-        if selectedIndex >= rows
-        {
-            selectedIndex = rows-1
-        }
-        
-        let path = IndexPath.init(row: Int(selectedIndex), section: 0)
-        tableView.selectRow(at: path, animated: animated, scrollPosition: UITableViewScrollPosition.middle)
+        tableView.selectRow(at: tableView.indexPathForSelectedRow, animated: animated, scrollPosition: UITableViewScrollPosition.middle)
         
         guard let delegate = delegate else {
             return
         }
         
-        delegate.scrollPickerView(self, didSelectIndex: selectedIndex)
+        delegate.scrollPickerView(self, didSelectIndex: getSelectedIndex())
     }
 }
 
@@ -181,8 +182,6 @@ extension ScrollPickerView: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        selectedIndex = UInt((indexPath as NSIndexPath).row)
-        
         if !animating
         {
             scrollToSelectedIndex()
@@ -249,7 +248,6 @@ extension ScrollPickerView: UITableViewDelegate
         
         if scrollView.contentOffset.y < -scrollView.contentInset.bottom
         {
-            selectedIndex = 0
             tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: UITableViewScrollPosition.none)
             return
         }
@@ -258,7 +256,6 @@ extension ScrollPickerView: UITableViewDelegate
         {
             let index = datasource.scrollPickerView(numberOfRowsFor: self)
             
-            selectedIndex = index-1
             tableView.selectRow(at: IndexPath(row: Int(index-1), section: 0), animated: false, scrollPosition: UITableViewScrollPosition.none)
             return
         }
@@ -270,7 +267,6 @@ extension ScrollPickerView: UITableViewDelegate
             
             if datasource.scrollPickerView(self, canSelectIndex: uIndex)
             {
-                selectedIndex = uIndex
                 let indexPath = IndexPath(row: index, section: 0)
                 
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
@@ -279,7 +275,7 @@ extension ScrollPickerView: UITableViewDelegate
                     return
                 }
                 
-                delegate.scrollPickerView(self, didSelectIndex: uIndex)
+                delegate.scrollPickerView(self, didSelectIndex: Int(uIndex))
             }
         }
     }

@@ -37,9 +37,6 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         facePicker.datasource = self
         facePicker.delegate = self
         
-        countPicker.selectedIndex = 39
-        facePicker.selectedIndex = 4
-        
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: countPicker.frame.width, height: countPicker.frame.height / 3.0))
         let footer2 = UIView(frame: CGRect(x: 0, y: 0, width: facePicker.frame.width, height: facePicker.frame.height / 3.0))
         
@@ -59,8 +56,12 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         facePicker.layer.borderColor = LiarsDiceColors.michiganSelectionBlue().cgColor
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         view.layoutIfNeeded()
+        
+        countPicker.setSelected(index: 39)
+        facePicker.setSelected(index: 4)
     }
     
     func scrollPickerView(numberOfRowsFor scrollPicker: ScrollPickerView) -> UInt
@@ -110,7 +111,7 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         return scrollPicker.tableView.isScrollEnabled
     }
 
-    func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: UInt)
+    func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: Int)
     {
         print("Selected \(index)")
     }
