@@ -23,95 +23,6 @@ public class DiceLogicEngine: Equatable
     public var observers = [DiceObserver]()
     public var userData = [String:AnyObject]()
     
-    public var currentRoundHistory: [HistoryItem]
-    {
-        get
-        {
-            guard let currentRound = history.last else {
-                ErrorHandling.error("No current round, returning empty array")
-                return []
-            }
-            
-            return currentRound
-        }
-    }
-    
-    public var lastBid: BidAction?
-    {
-        get
-        {
-            for index in (0..<currentRoundHistory.count).reversed()
-            {
-                let item = currentRoundHistory[index]
-                
-                if let bid = (item as? BidAction)
-                {
-                    return bid
-                }
-            }
-            
-            return nil
-        }
-    }
-    
-    public var lastAction: HistoryAction?
-    {
-        get
-        {
-            for index in (0..<currentRoundHistory.count).reversed()
-            {
-                let item = currentRoundHistory[index]
-                
-                if let action = (item as? HistoryAction)
-                {
-                    return action
-                }
-            }
-            
-            return nil
-        }
-    }
-    
-    public var isSpecialRules: Bool
-    {
-        get
-        {
-            for index in 0..<currentRoundHistory.count
-            {
-                let item = currentRoundHistory[index]
-                
-                if (item as? SpecialRulesInEffect) != nil
-                {
-                    return true
-                }
-            }
-            
-            return false
-        }
-    }
-    
-    public var playersLeft: [Player]
-    {
-        get
-        {
-            return players.filter{ $0.dice.count > 0 }
-        }
-    }
-    
-    public var winner: Player?
-    {
-        get
-        {
-            let playersLeft = self.playersLeft
-            
-            guard playersLeft.count == 1 else {
-                return nil
-            }
-            
-            return playersLeft.first!
-        }
-    }
-    
     public internal(set) var currentTurn: Player?
     
     public init(players: [String], start: Bool = true)
@@ -205,7 +116,104 @@ public class DiceLogicEngine: Equatable
             return nil
         }
     }
+}
+
+// MARK: Dice Logic Engine Getters
+public extension DiceLogicEngine
+{
+    public var currentRoundHistory: [HistoryItem]
+    {
+        get
+        {
+            guard let currentRound = history.last else {
+                ErrorHandling.error("No current round, returning empty array")
+                return []
+            }
+            
+            return currentRound
+        }
+    }
     
+    public var lastBid: BidAction?
+    {
+        get
+        {
+            for index in (0..<currentRoundHistory.count).reversed()
+            {
+                let item = currentRoundHistory[index]
+                
+                if let bid = (item as? BidAction)
+                {
+                    return bid
+                }
+            }
+            
+            return nil
+        }
+    }
+    
+    public var lastAction: HistoryAction?
+    {
+        get
+        {
+            for index in (0..<currentRoundHistory.count).reversed()
+            {
+                let item = currentRoundHistory[index]
+                
+                if let action = (item as? HistoryAction)
+                {
+                    return action
+                }
+            }
+            
+            return nil
+        }
+    }
+    
+    public var isSpecialRules: Bool
+    {
+        get
+        {
+            for index in 0..<currentRoundHistory.count
+            {
+                let item = currentRoundHistory[index]
+                
+                if (item as? SpecialRulesInEffect) != nil
+                {
+                    return true
+                }
+            }
+            
+            return false
+        }
+    }
+    
+    public var playersLeft: [Player]
+    {
+        get
+        {
+            return players.filter{ $0.dice.count > 0 }
+        }
+    }
+    
+    public var winner: Player?
+    {
+        get
+        {
+            let playersLeft = self.playersLeft
+            
+            guard playersLeft.count == 1 else {
+                return nil
+            }
+            
+            return playersLeft.first!
+        }
+    }
+}
+
+// MARK: Data Serialization
+public extension DiceLogicEngine
+{
     public func updateWithData(_ nsdata: Foundation.Data) -> Bool
     {
         var data: MessagePackValue = nil
@@ -370,7 +378,7 @@ public class DiceLogicEngine: Equatable
         
         return true
     }
-        
+    
     public func asData() -> Foundation.Data
     {
         let playersMap: [MessagePackValue] = self.players.map{ .String($0.name) }
@@ -386,7 +394,10 @@ public class DiceLogicEngine: Equatable
         let data = pack(value)
         return Foundation.Data(bytes: data.bytes)
     }
-    
+}
+
+internal extension DiceLogicEngine
+{
     func player(_ name: String) -> Player?
     {
         let array = players.filter{ $0.name == name }
@@ -507,7 +518,7 @@ public class DiceLogicEngine: Equatable
         
         player.dice.removeLast()
         self.currentTurn = self.player(player.name)
-    
+        
         if player.dice.count == 0
         {
             advancePlayer()
@@ -517,7 +528,7 @@ public class DiceLogicEngine: Equatable
             let playersLeft = self.playersLeft
             if playersLeft.count == 1
             {
-               appendHistoryItem(PlayerWon(player: playersLeft.first!.name))
+                appendHistoryItem(PlayerWon(player: playersLeft.first!.name))
                 return
             }
         }

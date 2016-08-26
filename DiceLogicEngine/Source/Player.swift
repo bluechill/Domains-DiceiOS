@@ -390,16 +390,16 @@ public class Player: Equatable
         }
     }
     
-    public func canChallenge(_ player: String) -> Bool
+    private func checkChallengeIndices(_ player: String) -> (Bool,  Player?, Player?)
     {
         guard let engine = engine else {
             ErrorHandling.error("Cannot challenge with no engine")
-            return false
+            return (false, nil, nil)
         }
         
         guard player != self.name else {
             ErrorHandling.error("Cannot challenge yourself")
-            return false
+            return (false, nil, nil)
         }
         
         let myIndex = engine.players.index(where: { $0.name == self.name })!
@@ -442,9 +442,14 @@ public class Player: Equatable
         
         guard challenge1Player.name == player || challenge2Player.name == player else {
             ErrorHandling.error("Cannot challenge a player other than the last two")
-            return false
+            return (false, nil, nil)
         }
         
+        return (true, challenge1Player, challenge2Player)
+    }
+    
+    private func checkChallengePlayers(_ player: String, _ challenge1Player: Player, _ challenge2Player: Player) -> Bool
+    {
         let challenge1Action = challenge1Player.lastAction
         let challenge2Action = challenge2Player.lastAction
         
@@ -471,6 +476,25 @@ public class Player: Equatable
         
         guard bidAction2 != nil || passAction2 != nil else {
             ErrorHandling.error("Cannot challenge something other than a bid or pass")
+            return false
+        }
+        
+        return true
+    }
+    
+    public func canChallenge(_ player: String) -> Bool
+    {
+        let result = checkChallengeIndices(player)
+        
+        guard result.0 == true else {
+            return false
+        }
+        
+        guard let player1 = result.1, let player2 = result.2 else {
+            return false
+        }
+        
+        guard checkChallengePlayers(player, player1, player2) else {
             return false
         }
         
