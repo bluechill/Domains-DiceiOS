@@ -9,5 +9,5 @@ xcode_scheme: UM Liars Dice
 osx_image: xcode8
 xcode_sdk: iphonesimulator10.0
 
-script:
-- xcodebuild clean build test -project UMLiarsDice.xcodeproj -scheme "UM Liars Dice"
+# script:
+# - xctool clean build test -project UMLiarsDice.xcodeproj -scheme "UM Liars Dice"
