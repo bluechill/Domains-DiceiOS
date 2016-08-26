@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4DADC4701D675E3200A5279C"
                BuildableName = "C7.framework"
                BlueprintName = "C7"
-               ReferencedContainer = "container:UMLiarsDice.xcodeproj">
+               ReferencedContainer = "container:UM Liars Dice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -48,7 +48,7 @@
             BlueprintIdentifier = "4DADC4701D675E3200A5279C"
             BuildableName = "C7.framework"
             BlueprintName = "C7"
-            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
+            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,7 +66,7 @@
             BlueprintIdentifier = "4DADC4701D675E3200A5279C"
             BuildableName = "C7.framework"
             BlueprintName = "C7"
-            ReferencedContainer = "container:UMLiarsDice.xcodeproj">
+            ReferencedContainer = "container:UM Liars Dice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
