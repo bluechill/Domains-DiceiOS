@@ -50,13 +50,10 @@ import CoreText
         set {
             _dieFaceColor = newValue
             
-            die1.fillColor = dieFaceColor.cgColor
-            die2.fillColor = dieFaceColor.cgColor
-            die3.fillColor = dieFaceColor.cgColor
-            die4.fillColor = dieFaceColor.cgColor
-            die5.fillColor = dieFaceColor.cgColor
-            die6.fillColor = dieFaceColor.cgColor
-            dieQ.fillColor = dieFaceColor.cgColor
+            if self.layer.sublayers != nil && self.layer.sublayers!.count > 0
+            {
+                (self.layer.sublayers!.last! as! CAShapeLayer).fillColor = dieFaceColor.cgColor
+            }
         }
     }
     
@@ -64,13 +61,10 @@ import CoreText
     {
         CATransaction.begin()
         CATransaction.setCompletionBlock({
-            self.die1.fillColor = color.cgColor
-            self.die2.fillColor = color.cgColor
-            self.die3.fillColor = color.cgColor
-            self.die4.fillColor = color.cgColor
-            self.die5.fillColor = color.cgColor
-            self.die6.fillColor = color.cgColor
-            self.dieQ.fillColor = color.cgColor
+            if self.layer.sublayers != nil && self.layer.sublayers!.count > 0
+            {
+                (self.layer.sublayers!.last! as! CAShapeLayer).fillColor = color.cgColor
+            }
         })
         
         let animation = CABasicAnimation(keyPath: "fillColor")
@@ -81,13 +75,10 @@ import CoreText
         animation.fillMode = kCAFillModeBoth
         animation.isRemovedOnCompletion = false
         
-        die1.add(animation, forKey: "fillColor")
-        die2.add(animation, forKey: "fillColor")
-        die3.add(animation, forKey: "fillColor")
-        die4.add(animation, forKey: "fillColor")
-        die5.add(animation, forKey: "fillColor")
-        die6.add(animation, forKey: "fillColor")
-        dieQ.add(animation, forKey: "fillColor")
+        if self.layer.sublayers != nil && self.layer.sublayers!.count > 0
+        {
+            self.layer.sublayers!.last!.add(animation, forKey: "fillColor")
+        }
         
         _dieFaceColor = color
         CATransaction.commit()
@@ -117,13 +108,6 @@ import CoreText
         }
     }
     
-    var die1 = CAShapeLayer()
-    var die2 = CAShapeLayer()
-    var die3 = CAShapeLayer()
-    var die4 = CAShapeLayer()
-    var die5 = CAShapeLayer()
-    var die6 = CAShapeLayer()
-    var dieQ = CAShapeLayer()
     var dieB = CAShapeLayer()
     
     required init?(coder aDecoder: NSCoder)
@@ -149,24 +133,32 @@ import CoreText
     override func layoutSubviews()
     {
         initShapeLayers()
+        
+        self.face = _face
     }
     
-    func initDie1(_ radius: CGFloat)
+    func Die1(_ radius: CGFloat) -> CAShapeLayer
     {
-        die1.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
 
-        die1.path = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
+        die.path = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
                                         radius: radius * self.bounds.width,
                                         startAngle: 0,
                                         endAngle: CGFloat(M_PI * 2.0),
                                         clockwise: true).cgPath
 
-        die1.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDie2(_ radius: CGFloat)
+    func Die2(_ radius: CGFloat) -> CAShapeLayer
     {
-        die2.frame = self.bounds
+        let die = CAShapeLayer()
+
+        die.frame = self.bounds
 
         let die2CG = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
                                          radius: radius * self.bounds.width,
@@ -178,14 +170,18 @@ import CoreText
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die2.path = die2CG.cgPath
+        die.path = die2CG.cgPath
 
-        die2.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDie3(_ radius: CGFloat)
+    func Die3(_ radius: CGFloat) -> CAShapeLayer
     {
-        die3.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
 
         let die3CG = UIBezierPath.init()
         die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
@@ -203,14 +199,18 @@ import CoreText
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die3.path = die3CG.cgPath
+        die.path = die3CG.cgPath
         
-        die3.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDie4(_ radius: CGFloat)
+    func Die4(_ radius: CGFloat) -> CAShapeLayer
     {
-        die4.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
 
         let die4CG = UIBezierPath.init()
         die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
@@ -233,14 +233,18 @@ import CoreText
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die4.path = die4CG.cgPath
+        die.path = die4CG.cgPath
         
-        die4.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDie5(_ radius: CGFloat)
+    func Die5(_ radius: CGFloat) -> CAShapeLayer
     {
-        die5.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
         
         let die5CG = UIBezierPath.init()
         die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
@@ -270,14 +274,18 @@ import CoreText
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die5.path = die5CG.cgPath
+        die.path = die5CG.cgPath
         
-        die5.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDie6(_ radius: CGFloat)
+    func Die6(_ radius: CGFloat) -> CAShapeLayer
     {
-        die6.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
 
         let die6CG = UIBezierPath.init()
         die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
@@ -311,14 +319,18 @@ import CoreText
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die6.path = die6CG.cgPath
+        die.path = die6CG.cgPath
         
-        die6.fillColor = dieFaceColor.cgColor
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
-    func initDieQ(_ radius: CGFloat)
+    func DieQ(_ radius: CGFloat) -> CAShapeLayer
     {
-        dieQ.frame = self.bounds
+        let die = CAShapeLayer()
+        
+        die.frame = self.bounds
 
         let dieQCG = UIBezierPath.init()
         let font = UIFont.systemFont(ofSize: 10 * radius * self.bounds.width)
@@ -336,27 +348,20 @@ import CoreText
             
             dieQCG.append(path)
         }
-        dieQ.path = dieQCG.cgPath
         
-        dieQ.fillColor = dieFaceColor.cgColor
+        die.path = dieQCG.cgPath
+        die.fillColor = dieFaceColor.cgColor
+        
+        return die
     }
     
+    static let Radius: CGFloat = 0.1
     func initShapeLayers()
     {
-        let radius: CGFloat = 0.1
-
         dieB.frame = self.bounds
-        let dieBCG = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: radius * self.bounds.width)
+        let dieBCG = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: DieView.Radius * self.bounds.width)
         dieB.path = dieBCG.cgPath
         dieB.fillColor = dieBackgroundColor.cgColor
-
-        initDie1(radius)
-        initDie2(radius)
-        initDie3(radius)
-        initDie4(radius)
-        initDie5(radius)
-        initDie6(radius)
-        initDieQ(radius)
     }
     
     func dieForFace(_ face: UInt) -> CAShapeLayer
@@ -364,19 +369,19 @@ import CoreText
         switch face
         {
         case 1:
-            return die1
+            return Die1(DieView.Radius)
         case 2:
-            return die2
+            return Die2(DieView.Radius)
         case 3:
-            return die3
+            return Die3(DieView.Radius)
         case 4:
-            return die3
+            return Die4(DieView.Radius)
         case 5:
-            return die5
+            return Die5(DieView.Radius)
         case 6:
-            return die6
+            return Die6(DieView.Radius)
         default:
-            return dieQ
+            return DieQ(DieView.Radius)
         }
     }
 }
