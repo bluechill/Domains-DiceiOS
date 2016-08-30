@@ -102,7 +102,10 @@ import CoreText
 
             if self.layer.sublayers != nil && self.layer.sublayers!.count > 0
             {
-                self.layer.replaceSublayer(self.layer.sublayers!.last!, with: dieForFace(_face))
+                dieB = DieView.DieB(DieView.Radius, self.bounds)
+                self.layer.replaceSublayer(self.layer.sublayers![self.layer.sublayers!.count-2], with: dieB)
+                self.layer.replaceSublayer(self.layer.sublayers!.last!, with: DieView.DieForFace(_face, self.bounds))
+                (self.layer.sublayers!.last! as? CAShapeLayer)!.fillColor = dieFaceColor.cgColor
             }
         }
     }
@@ -116,7 +119,8 @@ import CoreText
         initShapeLayers()
 
         self.layer.addSublayer(dieB)
-        self.layer.addSublayer(dieForFace(self.face))
+        self.layer.addSublayer(DieView.DieForFace(self.face, self.bounds))
+        (self.layer.sublayers!.last! as? CAShapeLayer)!.fillColor = dieFaceColor.cgColor
     }
 
     required override init(frame: CGRect)
@@ -126,7 +130,8 @@ import CoreText
         initShapeLayers()
 
         self.layer.addSublayer(dieB)
-        self.layer.addSublayer(dieForFace(self.face))
+        self.layer.addSublayer(DieView.DieForFace(self.face, self.bounds))
+        (self.layer.sublayers!.last! as? CAShapeLayer)!.fillColor = dieFaceColor.cgColor
     }
 
     override func layoutSubviews()
@@ -136,203 +141,191 @@ import CoreText
         self.face = _face
     }
 
-    func Die1(_ radius: CGFloat) -> CAShapeLayer
+    static func Die1(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
-        die.path = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                        radius: radius * self.bounds.width,
+        die.path = UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 2.0, y: die.bounds.height / 2.0),
+                                        radius: radius * die.bounds.width,
                                         startAngle: 0,
                                         endAngle: CGFloat(M_PI * 2.0),
                                         clockwise: true).cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func Die2(_ radius: CGFloat) -> CAShapeLayer
+    static func Die2(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
-        let die2CG = UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                         radius: radius * self.bounds.width,
+        let die2CG = UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                         radius: radius * die.bounds.width,
                                          startAngle: 0,
                                          endAngle: CGFloat(M_PI * 2.0),
                                          clockwise: true)
-        die2CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die2CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die.path = die2CG.cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func Die3(_ radius: CGFloat) -> CAShapeLayer
+    static func Die3(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
         let die3CG = UIBezierPath.init()
-        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                          radius: radius * self.bounds.width,
+        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 2.0, y: die.bounds.height / 2.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die3CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die.path = die3CG.cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func Die4(_ radius: CGFloat) -> CAShapeLayer
+    static func Die4(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
         let die4CG = UIBezierPath.init()
-        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+        die4CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die.path = die4CG.cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func Die5(_ radius: CGFloat) -> CAShapeLayer
+    static func Die5(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
         let die5CG = UIBezierPath.init()
-        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
-                                          startAngle: 0,
-                                          endAngle: CGFloat(M_PI * 2.0),
-                                          clockwise: true))
-
-        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 2.0, y: self.bounds.height / 2.0),
-                                          radius: radius * self.bounds.width,
+        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
 
-        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 2.0, y: die.bounds.height / 2.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+
+        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
+                                          startAngle: 0,
+                                          endAngle: CGFloat(M_PI * 2.0),
+                                          clockwise: true))
+        die5CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die.path = die5CG.cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func Die6(_ radius: CGFloat) -> CAShapeLayer
+    static func Die6(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
         let die6CG = UIBezierPath.init()
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width / 4.0, y: self.bounds.height / 2.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width / 4.0, y: die.bounds.height / 2.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 2.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 2.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
 
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height / 4.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
-        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: self.bounds.width * 3.0 / 4.0, y: self.bounds.height * 3.0 / 4.0),
-                                          radius: radius * self.bounds.width,
+        die6CG.append(UIBezierPath.init(  arcCenter: CGPoint(x: die.bounds.width * 3.0 / 4.0, y: die.bounds.height * 3.0 / 4.0),
+                                          radius: radius * die.bounds.width,
                                           startAngle: 0,
                                           endAngle: CGFloat(M_PI * 2.0),
                                           clockwise: true))
         die.path = die6CG.cgPath
 
-        die.fillColor = dieFaceColor.cgColor
-
         return die
     }
 
-    func DieQ(_ radius: CGFloat) -> CAShapeLayer
+    static func DieQ(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
     {
         let die = CAShapeLayer()
 
-        die.frame = self.bounds
+        die.frame = bounds
 
         let dieQCG = UIBezierPath.init()
-        let font = UIFont.systemFont(ofSize: 10 * radius * self.bounds.width)
+        let font = UIFont.systemFont(ofSize: 10 * radius * die.bounds.width)
 
         var unichars = [UniChar]("?".utf16)
         var glyphs = [CGGlyph](repeating: 0, count: unichars.count)
@@ -343,13 +336,22 @@ import CoreText
             let path = UIBezierPath(cgPath: cgpath)
 
             path.apply(CGAffineTransform.init(scaleX: 1.0, y: -1.0))
-            path.apply(CGAffineTransform.init(translationX: self.bounds.width / 2.0 - path.bounds.width / 2.0, y: self.bounds.height / 2.0 + path.bounds.height / 2.0))
+            path.apply(CGAffineTransform.init(translationX: die.bounds.width / 2.0 - path.bounds.width / 2.0, y: die.bounds.height / 2.0 + path.bounds.height / 2.0))
 
             dieQCG.append(path)
         }
 
         die.path = dieQCG.cgPath
-        die.fillColor = dieFaceColor.cgColor
+        return die
+    }
+
+    static func DieB(_ radius: CGFloat, _ bounds: CGRect) -> CAShapeLayer
+    {
+        let die = CAShapeLayer()
+
+        die.frame = bounds
+        die.path = UIBezierPath.init(roundedRect: bounds, cornerRadius: radius * bounds.width).cgPath
+        die.fillColor = UIColor.white.cgColor
 
         return die
     }
@@ -357,30 +359,28 @@ import CoreText
     static let Radius: CGFloat = 0.1
     func initShapeLayers()
     {
-        dieB.frame = self.bounds
-        let dieBCG = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: DieView.Radius * self.bounds.width)
-        dieB.path = dieBCG.cgPath
+        dieB = DieView.DieB(DieView.Radius, self.bounds)
         dieB.fillColor = dieBackgroundColor.cgColor
     }
 
-    func dieForFace(_ face: UInt) -> CAShapeLayer
+    static func DieForFace(_ face: UInt, _ bounds: CGRect) -> CAShapeLayer
     {
         switch face
         {
         case 1:
-            return Die1(DieView.Radius)
+            return Die1(DieView.Radius,bounds)
         case 2:
-            return Die2(DieView.Radius)
+            return Die2(DieView.Radius,bounds)
         case 3:
-            return Die3(DieView.Radius)
+            return Die3(DieView.Radius,bounds)
         case 4:
-            return Die4(DieView.Radius)
+            return Die4(DieView.Radius,bounds)
         case 5:
-            return Die5(DieView.Radius)
+            return Die5(DieView.Radius,bounds)
         case 6:
-            return Die6(DieView.Radius)
+            return Die6(DieView.Radius,bounds)
         default:
-            return DieQ(DieView.Radius)
+            return DieQ(DieView.Radius,bounds)
         }
     }
 }

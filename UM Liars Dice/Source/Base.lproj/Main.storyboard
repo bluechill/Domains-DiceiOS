@@ -408,6 +408,9 @@
                     </view>
                     <connections>
                         <outlet property="opponentsView" destination="T6j-nE-qdA" id="Fbo-p1-O0q"/>
+                        <outlet property="previousBidView" destination="PpG-fT-cmg" id="0I3-5O-RCq"/>
+                        <outlet property="statsLabelView" destination="t4Q-Ai-AJO" id="7mH-IM-vGW"/>
+                        <outlet property="yourPreviousBidView" destination="pDB-it-6pr" id="klt-t6-z0U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcW-HB-oQa" userLabel="First Responder" sceneMemberID="firstResponder"/>

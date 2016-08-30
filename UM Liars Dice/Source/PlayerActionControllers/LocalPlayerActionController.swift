@@ -22,12 +22,143 @@ class LocalPlayerActionController: PlayerActionController
 
         self.player = player
 
+        updateUI()
         enableUI()
+    }
+
+    func countDie(_ die: UInt) -> Int
+    {
+        var count = 0
+
+        for player in gameController.game!.players
+        {
+            if playerController.localPlayerActionController.player == nil
+            {
+                break
+            }
+            else if die == 0
+            {
+                if player != playerController.localPlayerActionController.player
+                {
+                    count += player.dice.filter({ !$0.pushed }).count
+                }
+            }
+            else if player == playerController.localPlayerActionController.player
+            {
+                count += player.dice.filter({ $0.face == die }).count
+            }
+            else
+            {
+                count += player.dice.filter({ $0.pushed && $0.face == die }).count
+            }
+        }
+
+        return count
+    }
+
+    func imageOfDie(_ face: UInt) -> UIImage
+    {
+        let size: CGSize = CGSize(width: gameController!.statsLabelView.frame.height,
+                                  height: gameController!.statsLabelView.frame.height)
+
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+
+        let layer = CALayer()
+
+        let bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+
+        let dieB = DieView.DieB(DieView.Radius, bounds)
+        layer.addSublayer(dieB)
+
+        if face != 7
+        {
+            let die = DieView.DieForFace(face, bounds)
+            die.fillColor = playerController.die1.dieFaceColor.cgColor
+            layer.addSublayer(die)
+        }
+
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+
+        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return outputImage!
+    }
+
+    func statsLabelText() -> NSAttributedString
+    {
+        let dice: Int = gameController.game!.players.map({ $0.dice.count }).sum()
+
+        let string = NSMutableAttributedString(string: "\(dice) dice, \(countDie(1)) 1s \(countDie(2)) 2s \(countDie(3)) 3s \(countDie(4)) 4s \(countDie(5)) 5s \(countDie(6)) 6s \(countDie(0)) us")
+
+        let die = NSTextAttachment()
+        die.image = imageOfDie(7)
+
+        let one = NSTextAttachment()
+        one.image = imageOfDie(1)
+
+        let two = NSTextAttachment()
+        two.image = imageOfDie(2)
+
+        let three = NSTextAttachment()
+        three.image = imageOfDie(3)
+
+        let four = NSTextAttachment()
+        four.image = imageOfDie(4)
+
+        let five = NSTextAttachment()
+        five.image = imageOfDie(5)
+
+        let six = NSTextAttachment()
+        six.image = imageOfDie(6)
+
+        let unknown = NSTextAttachment()
+        unknown.image = imageOfDie(0)
+
+//        string.replaceCharacters(in: string.mutableString.range(of: "dice"),
+//                                with: NSAttributedString(attachment: die))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "1s"),
+                                 with: NSAttributedString(attachment: one))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "2s"),
+                                 with: NSAttributedString(attachment: two))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "3s"),
+                                 with: NSAttributedString(attachment: three))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "4s"),
+                                 with: NSAttributedString(attachment: four))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "5s"),
+                                 with: NSAttributedString(attachment: five))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "6s"),
+                                 with: NSAttributedString(attachment: six))
+
+        string.replaceCharacters(in: string.mutableString.range(of: "us"),
+                                 with: NSAttributedString(attachment: unknown))
+
+        return string
+    }
+
+    func previousBidText() -> NSAttributedString
+    {
+        return NSAttributedString()
+    }
+
+    func yourPreviousBidText() -> NSAttributedString
+    {
+        return NSAttributedString()
     }
 
     func updateUI()
     {
         disableUI()
+
+        self.gameController.statsLabelView.attributedText = statsLabelText()
+        self.gameController.previousBidView.attributedText = previousBidText()
+        self.gameController.yourPreviousBidView.attributedText = yourPreviousBidText()
     }
 
     private func enableOrDisableDice(_ die: DieView, _ index: Int)

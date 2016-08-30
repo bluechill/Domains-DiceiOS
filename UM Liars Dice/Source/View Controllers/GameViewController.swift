@@ -51,12 +51,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     weak var localPlayerViewController: LocalPlayerViewController!
 
     @IBOutlet weak var opponentsView: UITableView!
+    @IBOutlet weak var statsLabelView: UILabel!
+    @IBOutlet weak var previousBidView: UILabel!
+    @IBOutlet weak var yourPreviousBidView: UILabel!
 
     static var animationLength: Double = 0.33
     static let PlayerControllerString = "PlayerController"
 
     // MARK: DiceObserver Methods
-
+    
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
     {
         localPlayerViewController.localPlayerActionController.updateUI()

@@ -151,6 +151,7 @@
 		4D6494641CF3578D00F4F498 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494631CF3578D00F4F498 /* DieView.swift */; };
 		4D6494671CF3623000F4F498 /* LiarsDiceColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */; };
 		4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
+		4D948B151D760D3F00827948 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D948B141D760D3F00827948 /* Collection.swift */; };
 		4D94C4851D5E3479009B4149 /* PlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4841D5E3479009B4149 /* PlayerActionController.swift */; };
 		4D94C4871D5E36DA009B4149 /* RemotePlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */; };
 		4D94C4891D5E36E4009B4149 /* SoarPlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4881D5E36E4009B4149 /* SoarPlayerActionController.swift */; };
@@ -441,6 +442,7 @@
 		4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiarsDiceColors.swift; sourceTree = "<group>"; };
 		4D69D9161D67684C00E0D2A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
+		4D948B141D760D3F00827948 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4D94C4841D5E3479009B4149 /* PlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerActionController.swift; sourceTree = "<group>"; };
 		4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemotePlayerActionController.swift; sourceTree = "<group>"; };
 		4D94C4881D5E36E4009B4149 /* SoarPlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoarPlayerActionController.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 				4D2F49EF1CF7720F0058BD7B /* NameGenerator.swift */,
 				4D2F49F11CF772EF0058BD7B /* RandomRange.swift */,
 				4D2F49F31CF77E3A0058BD7B /* Shuffle.swift */,
+				4D948B141D760D3F00827948 /* Collection.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1903,6 +1906,7 @@
 				4DE93C311CE8D7D4008041C3 /* MainMenuViewController.swift in Sources */,
 				4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */,
 				4D2F49F21CF772EF0058BD7B /* RandomRange.swift in Sources */,
+				4D948B151D760D3F00827948 /* Collection.swift in Sources */,
 				4D6494641CF3578D00F4F498 /* DieView.swift in Sources */,
 				4D6494621CF33E2F00F4F498 /* ScrollPickerView.swift in Sources */,
 				4D342F7D1CF0AA95003DFE19 /* SettingsViewController.swift in Sources */,
