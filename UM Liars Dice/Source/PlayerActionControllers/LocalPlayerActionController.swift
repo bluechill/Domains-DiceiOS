@@ -25,6 +25,11 @@ class LocalPlayerActionController: PlayerActionController
         enableUI()
     }
 
+    func updateUI()
+    {
+        disableUI()
+    }
+
     private func enableOrDisableDice(_ die: DieView, _ index: Int)
     {
         if self.player.dice.count >= (index + 1)
@@ -70,44 +75,9 @@ class LocalPlayerActionController: PlayerActionController
         button.isEnabled = state
     }
 
-    func enableUI()
-    {
-        enableDie(die: playerController.die1, index: 0)
-        enableDie(die: playerController.die2, index: 1)
-        enableDie(die: playerController.die3, index: 2)
-        enableDie(die: playerController.die4, index: 3)
-        enableDie(die: playerController.die5, index: 4)
-
-        enableOrDisableDice(playerController.die1, 0)
-        enableOrDisableDice(playerController.die2, 1)
-        enableOrDisableDice(playerController.die3, 2)
-        enableOrDisableDice(playerController.die4, 3)
-        enableOrDisableDice(playerController.die5, 4)
-
-        animateButtonEnable(playerController.exactButton, player.canExact())
-        animateButtonEnable(playerController.passButton, player.canPass())
-        animateButtonEnable(playerController.bidButton, true)
-
-        playerController.countPicker.tableView.isScrollEnabled = true
-        playerController.facePicker.tableView.isScrollEnabled = true
-        playerController.countPicker.tableView.allowsSelection = true
-        playerController.facePicker.tableView.allowsSelection = true
-
-        UIView.animate(withDuration: GameViewController.animationLength, animations: {
-            if let index = self.playerController.countPicker.tableView.indexPathForSelectedRow {
-                self.playerController.countPicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
-            }
-
-            if let index = self.playerController.facePicker.tableView.indexPathForSelectedRow {
-                self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
-            }
-        })
-    }
-
     func bid()
     {
-        sortDice()
-//        disableUI()
+        disableUI()
     }
 
     func pass()
@@ -204,18 +174,27 @@ class LocalPlayerActionController: PlayerActionController
 
     func disableDie(die: DieView, index: Int)
     {
-        if self.player.dice.count >= (index + 1)
+        if self.player != nil && self.player.dice.count >= (index + 1)
         {
             die.face = self.player.dice[index].face
             die.setDieBackgroundColorAnimated(  color: UIColor.lightGray.withAlphaComponent(0.5),
                                              duration: GameViewController.animationLength)
         }
-        else
+        else if self.player != nil
         {
             UIView.transition(with: die,
                               duration: GameViewController.animationLength,
                               options: UIViewAnimationOptions.transitionCrossDissolve,
                               animations: { die.isHidden = true },
+                              completion: nil)
+        }
+        else if self.player == nil
+        {
+            die.face = 0
+            UIView.transition(with: die,
+                              duration: GameViewController.animationLength,
+                              options: UIViewAnimationOptions.transitionCrossDissolve,
+                              animations: { die.isHidden = false },
                               completion: nil)
         }
 
@@ -224,6 +203,11 @@ class LocalPlayerActionController: PlayerActionController
 
     func enableDie(die: DieView, index: Int)
     {
+        if self.player == nil
+        {
+            return
+        }
+
         if self.player.dice.count >= (index + 1)
         {
             die.face = self.player.dice[index].face
@@ -268,7 +252,7 @@ class LocalPlayerActionController: PlayerActionController
         }
 
         buttonAnimateEnable(playerController.exactButton, false)
-        buttonAnimateEnable(playerController.passButton, false)
+//        buttonAnimateEnable(playerController.passButton, false)
         buttonAnimateEnable(playerController.bidButton, false)
 
         playerController.countPicker.tableView.isScrollEnabled = false
@@ -283,6 +267,51 @@ class LocalPlayerActionController: PlayerActionController
 
             if let index = self.playerController.facePicker.tableView.indexPathForSelectedRow {
                 self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+            }
+        })
+    }
+
+    private func enableButtonFunctionality()
+    {
+        enableDie(die: playerController.die1, index: 0)
+        enableDie(die: playerController.die2, index: 1)
+        enableDie(die: playerController.die3, index: 2)
+        enableDie(die: playerController.die4, index: 3)
+        enableDie(die: playerController.die5, index: 4)
+
+        let buttonAnimateEnable = { (button: UIButton, state: Bool) in
+            if state && !button.isEnabled
+            {
+                UIView.animate(withDuration: GameViewController.animationLength, animations: {
+                    button.tintColor = LiarsDiceColors.michiganMaize()
+                })
+            }
+            else if !state && button.isEnabled
+            {
+                UIView.animate(withDuration: GameViewController.animationLength, animations: {
+                    button.tintColor = UIColor.lightGray
+                })
+            }
+
+            button.isEnabled = state
+        }
+
+        buttonAnimateEnable(playerController.exactButton, player.canExact())
+        buttonAnimateEnable(playerController.passButton, player.canPass())
+        buttonAnimateEnable(playerController.bidButton, true)
+
+        playerController.countPicker.tableView.isScrollEnabled = true
+        playerController.facePicker.tableView.isScrollEnabled = true
+        playerController.countPicker.tableView.allowsSelection = true
+        playerController.facePicker.tableView.allowsSelection = true
+
+        UIView.animate(withDuration: GameViewController.animationLength, animations: {
+            if let index = self.playerController.countPicker.tableView.indexPathForSelectedRow {
+                self.playerController.countPicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
+            }
+
+            if let index = self.playerController.facePicker.tableView.indexPathForSelectedRow {
+                self.playerController.facePicker.tableView.cellForRow(at: index)?.selectedBackgroundView!.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
             }
         })
     }
@@ -398,6 +427,15 @@ class LocalPlayerActionController: PlayerActionController
     func disableUI()
     {
         disableButtonFunctionality()
+
+        // Animate sorting of dice
+
+        sortDice()
+    }
+
+    func enableUI()
+    {
+        enableButtonFunctionality()
 
         // Animate sorting of dice
 

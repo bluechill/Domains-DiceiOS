@@ -102,8 +102,7 @@ import CoreText
 
             if self.layer.sublayers != nil && self.layer.sublayers!.count > 0
             {
-                let _ = self.layer.sublayers!.removeLast()
-                self.layer.addSublayer(dieForFace(_face))
+                self.layer.replaceSublayer(self.layer.sublayers!.last!, with: dieForFace(_face))
             }
         }
     }

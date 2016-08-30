@@ -59,6 +59,8 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
     {
+        localPlayerViewController.localPlayerActionController.updateUI()
+
         if let controller = (engine.currentTurn?.userData[GameViewController.PlayerControllerString] as? PlayerActionController)
         {
             controller.performAction(engine.currentTurn!)
@@ -83,6 +85,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     localActionController.playerController = localPlayerViewController
                     localActionController.gameController = self
                     self.localPlayerViewController = localPlayerViewController
+                    self.localPlayerViewController.localPlayerActionController = localActionController
                     break
                 }
             }
@@ -92,13 +95,11 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLayoutSubviews()
     {
         game!.observers.append(self)
+    }
 
-        if game!.currentTurn == nil
-        {
-            game!.shuffleAndCreateRound()
-
-            diceLogicActionOccurred(game!)
-        }
+    override func viewDidAppear(_ animated: Bool)
+    {
+        diceLogicActionOccurred(game!)
     }
 
     // MARK: Table View Methods

@@ -165,7 +165,7 @@ class CreateGameViewController: UIViewController
             {} // TODO: Game Center
         }
 
-        let engine = DiceLogicEngine(players: players.map{ $0.key }, start: false)
+        let engine = DiceLogicEngine(players: players.map{ $0.key }, start: true)
 
         for player in engine.players
         {
