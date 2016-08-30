@@ -316,7 +316,7 @@ public extension DiceLogicEngine
                 else
                 {
                     ErrorHandling.error("Unknown key found in user data.  " +
-                                        "Are you sure this data is for this" +
+                                        "Are you sure this data is for this " +
                                         "version of Liar's Dice?")
                     return false
                 }
