@@ -8,7 +8,7 @@
 
 import DiceLogicEngine
 
-class SoarPlayerActionController : PlayerActionController
+class SoarPlayerActionController: PlayerActionController
 {
     func performAction(_ player: Player) {}
 }

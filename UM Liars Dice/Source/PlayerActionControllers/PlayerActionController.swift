@@ -12,4 +12,3 @@ protocol PlayerActionController: class
 {
     func performAction(_ player: Player)
 }
-

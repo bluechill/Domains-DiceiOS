@@ -44,10 +44,10 @@ class HistoryActionTests: XCTestCase
         XCTAssertNil(HistoryAction(data: [.Int(-1)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.invalid.rawValue)]))
         XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue),.Int(0),.Int(0)]))
-        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue),"Alice",.Int(0)]))
-        XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue),"Alice",.Bool(false)]))
+        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue), .Int(0)]))
+        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue), .Int(0), .Int(0)]))
+        XCTAssertNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue), "Alice", .Int(0)]))
+        XCTAssertNotNil(HistoryAction(data: [.UInt(HistoryItem.HIType.action.rawValue), "Alice", .Bool(false)]))
     }
 
     func testEquality()

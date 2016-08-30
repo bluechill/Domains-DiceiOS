@@ -8,7 +8,7 @@
 
 import DiceLogicEngine
 
-class RemotePlayerActionController : PlayerActionController
+class RemotePlayerActionController: PlayerActionController
 {
     func performAction(_ player: Player) {}
 }

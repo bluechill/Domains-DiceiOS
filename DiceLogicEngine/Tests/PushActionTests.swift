@@ -22,17 +22,17 @@ class PushActionTests: XCTestCase
 
     func testInitialization()
     {
-        let item = PushAction(player: "Alice", pushedDice: [1,2,3], newDice: [0,1], correct: true, type: .pushAction)
+        let item = PushAction(player: "Alice", pushedDice: [1, 2,3], newDice: [0, 1], correct: true, type: .pushAction)
 
-        XCTAssertTrue(item.pushedDice == [1,2,3])
-        XCTAssertTrue(item.newDice == [0,1])
+        XCTAssertTrue(item.pushedDice == [1, 2,3])
+        XCTAssertTrue(item.newDice == [0, 1])
     }
 
     func testEquality()
     {
-        let item1 = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1], correct: true)
-        let item2 = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1], correct: true)
-        let item3 = PushAction(player: "Alice", pushedDice: [0,2,2], newDice: [0,1], correct: true)
+        let item1 = PushAction(player: "Alice", pushedDice: [0, 1,2], newDice: [0, 1], correct: true)
+        let item2 = PushAction(player: "Alice", pushedDice: [0, 1,2], newDice: [0, 1], correct: true)
+        let item3 = PushAction(player: "Alice", pushedDice: [0, 2,2], newDice: [0, 1], correct: true)
 
         XCTAssertTrue(item1 == item2)
         XCTAssertFalse(item2 == item3)
@@ -48,20 +48,20 @@ class PushActionTests: XCTestCase
     {
         Handlers.Error = { _ in }
 
-        let item = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1], correct: true)
+        let item = PushAction(player: "Alice", pushedDice: [0, 1,2], newDice: [0, 1], correct: true)
         let item_restore = PushAction(data: item.asData())
 
         XCTAssertTrue(item == item_restore)
 
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false)]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),-1]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[-1,-2,-3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[],-1]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[],[-1,-2,-3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),"S",[0,1,2,3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[-1,1,2,3],[0,1,2,3]]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false)]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), -1]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [-1, -2, -3]]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], -1]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], [-1, -2, -3]]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), "S", [0, 1,2, 3]]))
+        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [-1, 1,2, 3], [0, 1,2, 3]]))
 
-        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[],[]]))
-        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue),"Alice",.Bool(false),[0,1,2,3],[0,1,2,3]]))
+        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], []]))
+        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [0, 1,2, 3], [0, 1,2, 3]]))
     }
 }

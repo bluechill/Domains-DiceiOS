@@ -22,18 +22,18 @@ class InitialStateTests: XCTestCase
 
     func testInitialization()
     {
-        let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
-        XCTAssertTrue(item.players == ["Alice": [0,1,2], "Bob": [3,4,5]])
+        let item = InitialState(players: ["Alice": [0, 1,2], "Bob": [3, 4,5]])
+        XCTAssertTrue(item.players == ["Alice": [0, 1,2], "Bob": [3, 4,5]])
     }
 
     func testEquality()
     {
-        let item1 = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
-        let item2 = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
-        let item3 = InitialState(players: ["Alice": [0,1,2], "John": [3,4,5]])
-        let item4 = InitialState(players: ["Alice": [0,1,2], "Bob": [4,5,6]])
-        let item5 = InitialState(players: ["John": [0,1,2], "Bob": [3,4,5]])
-        let item6 = InitialState(players: ["Alice": [4,5,6]])
+        let item1 = InitialState(players: ["Alice": [0, 1,2], "Bob": [3, 4,5]])
+        let item2 = InitialState(players: ["Alice": [0, 1,2], "Bob": [3, 4,5]])
+        let item3 = InitialState(players: ["Alice": [0, 1,2], "John": [3, 4,5]])
+        let item4 = InitialState(players: ["Alice": [0, 1,2], "Bob": [4, 5,6]])
+        let item5 = InitialState(players: ["John": [0, 1,2], "Bob": [3, 4,5]])
+        let item6 = InitialState(players: ["Alice": [4, 5,6]])
 
         XCTAssertTrue(item1 == item2)
         XCTAssertFalse(item1 == item3)
@@ -52,7 +52,7 @@ class InitialStateTests: XCTestCase
     {
         Handlers.Error = { _ in }
 
-        let item = InitialState(players: ["Alice": [0,1,2], "Bob": [3,4,5]])
+        let item = InitialState(players: ["Alice": [0, 1,2], "Bob": [3, 4,5]])
         let item_restore = InitialState(data: item.asData())
 
         XCTAssertTrue(item == item_restore)
@@ -92,7 +92,7 @@ class InitialStateTests: XCTestCase
         ]))
         XCTAssertNotNil(InitialState(data: [
             .UInt(HistoryItem.HIType.initialState.rawValue),
-            ["Alice":[0,1,2]]
+            ["Alice":[0, 1,2]]
         ]))
     }
 }

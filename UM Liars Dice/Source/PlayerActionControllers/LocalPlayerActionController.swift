@@ -9,7 +9,7 @@
 import DiceLogicEngine
 import UIKit
 
-class LocalPlayerActionController : PlayerActionController
+class LocalPlayerActionController: PlayerActionController
 {
     weak var playerController: LocalPlayerViewController!
     weak var gameController: GameViewController!
@@ -106,7 +106,8 @@ class LocalPlayerActionController : PlayerActionController
 
     func bid()
     {
-        disableUI()
+        sortDice()
+//        disableUI()
     }
 
     func pass()
@@ -294,58 +295,104 @@ class LocalPlayerActionController : PlayerActionController
                     playerController.die4,
                     playerController.die5]
 
-            .sorted(by: {
-                let one = isPushed(die: $0.0!)
-                let two = isPushed(die: $0.1!)
+        var pushedDice = dice.filter({ isPushed(die: $0!) })
+        let unpushedDice = dice.filter({ !isPushed(die: $0!) })
 
-                if (one && two) || (!one && !two)
-                {
-                    return $0.0!.face < $0.1!.face
-                }
-                else if one
-                {
-                    return false
-                }
-                else //if two
-                {
-                    return true
-                }
+        pushedDice = pushedDice.sorted(by: {
+            let one = isPushed(die: $0.0!)
+            let two = isPushed(die: $0.1!)
+
+            if (one && two) || (!one && !two)
+            {
+                return $0.0!.face < $0.1!.face
+            }
+            else if one
+            {
+                return false
+            }
+            else //if two
+            {
+                return true
+            }
+        })
+
+        dice = pushedDice + unpushedDice
+
+        for index in 0..<dice.count
+        {
+            guard let die = dice[index] else {
+                print("Error: die is not valid")
+                return
+            }
+
+            var constraints = self.playerController.view.constraints.filter({
+                $0.firstAttribute == NSLayoutAttribute.leading &&
+                    $0.secondAttribute == NSLayoutAttribute.trailing &&
+                    $0.firstItem as? NSObject == die
             })
 
-        dice = dice.filter({ isPushed(die: $0! ) })
-
-        if dice.count > 0
-        {
-            var xConstraints: [NSLayoutConstraint] = []
-
-            for die in dice
+            if constraints.count == 0
             {
-                let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.trailing && $0.firstItem as? NSObject == die })
-
-                if constraint.count == 1
-                {
-                    xConstraints.append(constraint[0])
-                }
-                else
-                {
-                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? NSObject == die })
-
-                    xConstraints.append(constraint[0])
-                }
+                constraints = self.playerController.view.constraints.filter({
+                    $0.firstAttribute == NSLayoutAttribute.leading &&
+                        $0.secondAttribute == NSLayoutAttribute.leading &&
+                        $0.firstItem as! NSObject == die
+                })
             }
 
-            for index in 0..<dice.count
+            guard constraints.count == 1 else {
+                print("Error: Die has no matching constraints for sorting.")
+                return
+            }
+
+            self.playerController.view.removeConstraint(constraints[0])
+
+            if index == 0
             {
-                //                if index == 0 && xConstraints[0].secondAttribute != NSLayoutAttribute.leading
-                //                {
-                //                    let constraint = self.playerController.view.constraints.filter({ $0.firstAttribute == NSLayoutAttribute.leading && $0.secondAttribute == NSLayoutAttribute.leading && $0.firstItem as? DieView != nil })
-                //
-                //                    xConstraints[0].firstItem = constraint[0].firstItem
-                //                    constraint[0].firstItem = dice[0]
-                //                }
-                //                else if xConstraints[index].secondItem !=
+                self.playerController.view.addConstraint(NSLayoutConstraint(item: die,
+                                                                            attribute: NSLayoutAttribute.leading,
+                                                                            relatedBy: NSLayoutRelation.equal,
+                                                                            toItem: self.playerController.view,
+                                                                            attribute: NSLayoutAttribute.leading,
+                                                                            multiplier: 1.0,
+                                                                            constant: 0.0))
+            }
+            else
+            {
+                self.playerController.view.addConstraint(NSLayoutConstraint(item: die,
+                                                                            attribute: NSLayoutAttribute.leading,
+                                                                            relatedBy: NSLayoutRelation.equal,
+                                                                            toItem: dice[index-1]!,
+                                                                            attribute: NSLayoutAttribute.trailing,
+                                                                            multiplier: 1.0,
+                                                                            constant: 8.0))
+            }
+
+
+            var endConstraint = self.playerController.view.constraints.filter({
+                $0.firstAttribute == NSLayoutAttribute.leading &&
+                $0.secondAttribute == NSLayoutAttribute.trailing &&
+                $0.firstItem as? NSObject == playerController.countPicker &&
+                $0.secondItem as? NSObject == die
+            })
+
+            if endConstraint.count == 1
+            {
+                self.playerController.view.removeConstraint(endConstraint[0])
             }
         }
+
+        self.playerController.view.addConstraint(NSLayoutConstraint(item: self.playerController.countPicker,
+                                                                    attribute: NSLayoutAttribute.leading,
+                                                                    relatedBy: NSLayoutRelation.equal,
+                                                                    toItem: dice[4]!,
+                                                                    attribute: NSLayoutAttribute.trailing,
+                                                                    multiplier: 1.0,
+                                                                    constant: 12.0))
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.playerController.view.layoutIfNeeded()
+        })
     }
 
     func disableUI()

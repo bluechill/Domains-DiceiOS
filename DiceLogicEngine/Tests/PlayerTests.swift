@@ -94,7 +94,7 @@ class PlayerTests: XCTestCase
 
     func testIsValidBid()
     {
-        let engine = DiceLogicEngine(players: ["Alice","Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
 
         guard let alice = engine.player("Alice") else { XCTFail(); return }
         guard let bob = engine.player("Bob")  else { XCTFail(); return }
@@ -164,7 +164,7 @@ class PlayerTests: XCTestCase
 
     func testCanPushDice()
     {
-        let engine = DiceLogicEngine(players: ["Alice","Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
 
         guard let alice = engine.player("Alice") else { XCTFail(); return }
 
@@ -177,13 +177,13 @@ class PlayerTests: XCTestCase
         // 2,5,3,6
 
         XCTAssertTrue(alice.canPushDice([6]))
-        XCTAssertTrue(alice.canPushDice([6,2]))
-        XCTAssertTrue(alice.canPushDice([6,2,5]))
-        XCTAssertTrue(alice.canPushDice([6,2,5,3]))
-        XCTAssertTrue(alice.canPushDice([6,5,3,6]))
-        XCTAssertTrue(alice.canPushDice([6,2,3,6]))
-        XCTAssertTrue(alice.canPushDice([6,2,5,6]))
-        XCTAssertTrue(alice.canPushDice([2,5,3,6]))
+        XCTAssertTrue(alice.canPushDice([6, 2]))
+        XCTAssertTrue(alice.canPushDice([6, 2,5]))
+        XCTAssertTrue(alice.canPushDice([6, 2,5, 3]))
+        XCTAssertTrue(alice.canPushDice([6, 5,3, 6]))
+        XCTAssertTrue(alice.canPushDice([6, 2,3, 6]))
+        XCTAssertTrue(alice.canPushDice([6, 2,5, 6]))
+        XCTAssertTrue(alice.canPushDice([2, 5,3, 6]))
 
         var error = String()
         Handlers.Error = { error = $0 }
@@ -196,7 +196,7 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(error == "Cannot push die you do not have 4")
         error = ""
 
-        XCTAssertFalse(alice.canPushDice([6,2,5,3,6]))
+        XCTAssertFalse(alice.canPushDice([6, 2,5, 3,6]))
         XCTAssertTrue(error == "Cannot push all your dice")
     }
 
@@ -234,7 +234,7 @@ class PlayerTests: XCTestCase
         error = ""
         warning = ""
 
-        bob.bid(1, face: 2, pushDice: [3,1])
+        bob.bid(1, face: 2, pushDice: [3, 1])
         XCTAssertTrue(error.isEmpty)
         XCTAssertTrue(warning == "No last bid, therefore valid")
         warning = ""
@@ -242,8 +242,8 @@ class PlayerTests: XCTestCase
         let correct = BidAction(player: "Bob",
                                 count: 1,
                                 face: 2,
-                                pushedDice: [3,1],
-                                newDice: [2,4,5],
+                                pushedDice: [3, 1],
+                                newDice: [2, 4,5],
                                 correct: true)
 
         XCTAssertTrue(engine.currentRoundHistory.last == correct)
@@ -324,24 +324,24 @@ class PlayerTests: XCTestCase
         XCTAssertTrue(error == "Cannot push die you do not have 0")
         error = ""
 
-        bob.pass([3,1])
+        bob.pass([3, 1])
         XCTAssertTrue(error.isEmpty)
 
         let correct = PassAction(player: "Bob",
-                                pushedDice: [3,1],
-                                newDice: [2,4,5],
+                                pushedDice: [3, 1],
+                                newDice: [2, 4,5],
                                 correct: false)
 
         XCTAssertTrue(engine.currentRoundHistory.last == correct)
 
         alice.dice.removeAll()
-        alice.dice.append(contentsOf: [Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3),Die(face: 3)])
+        alice.dice.append(contentsOf: [Die(face: 3), Die(face: 3), Die(face: 3), Die(face: 3), Die(face: 3)])
         alice.pass()
         XCTAssertTrue(error.isEmpty)
 
         let correct2 = PassAction(player: "Alice",
                                  pushedDice: [],
-                                 newDice: [3,3,3,3,3],
+                                 newDice: [3, 3,3, 3,3],
                                  correct: true)
 
         XCTAssertTrue(engine.currentRoundHistory.last == correct2)
@@ -457,7 +457,7 @@ class PlayerTests: XCTestCase
 
     func testCanChallenge()
     {
-        let engine = DiceLogicEngine(players: ["Alice","Bob","Eve","Mary"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob", "Eve", "Mary"])
 
         guard let eve = engine.player("Eve") else { XCTFail(); return }
 
@@ -505,7 +505,7 @@ class PlayerTests: XCTestCase
 
     func testChallenge()
     {
-        let engine = DiceLogicEngine(players: ["Alice","Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
 
         guard let alice = engine.player("Alice") else { XCTFail(); return }
         guard let bob = engine.player("Bob") else { XCTFail(); return }

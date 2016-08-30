@@ -25,7 +25,7 @@ class PlayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
 
         singlePlayerGames = ["1\n2", "3\n4", "5\n6"]
-        multiPlayerGames = ["7\n8","9\n10","11\n12"]
+        multiPlayerGames = ["7\n8", "9\n10", "11\n12"]
 
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
         gameTableView.addGestureRecognizer(longPress)

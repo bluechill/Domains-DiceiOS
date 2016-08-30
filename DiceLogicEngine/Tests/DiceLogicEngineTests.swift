@@ -363,8 +363,8 @@ class DiceLogicEngineTests: XCTestCase
 
         engine.history[0].removeAll()
         engine.history[0].append(InitialState(players: ["Alice": [6, 6, 6, 6, 6]]))
-        engine.history[0].append(PushAction(player: "Alice", pushedDice: [4, 4], newDice: [3,3,3], correct: true))
-        engine.history[0].append(PushAction(player: "Alice", pushedDice: [2, 2], newDice: [1,2,5], correct: true))
+        engine.history[0].append(PushAction(player: "Alice", pushedDice: [4, 4], newDice: [3, 3,3], correct: true))
+        engine.history[0].append(PushAction(player: "Alice", pushedDice: [2, 2], newDice: [1, 2,5], correct: true))
         engine.history[0].append(PushAction(player: "Bob", pushedDice: [4, 4], newDice: [3, 3, 3], correct: true))
         engine.history[0].append(HistoryItem(type: .invalid))
 

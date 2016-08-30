@@ -38,7 +38,7 @@ class GameTest: XCTestCase
 
     func test2Players()
     {
-        let engine = DiceLogicEngine(players: ["Alice","Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
 
         guard let alice = engine.player("Alice") else { XCTFail(); return }
         guard let bob = engine.player("Bob") else { XCTFail(); return }

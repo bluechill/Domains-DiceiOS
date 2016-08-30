@@ -44,11 +44,11 @@ class HistoryItemTests: XCTestCase
         let item03 = PlayerInfoItem(player: "Alice")
         XCTAssertNil(HistoryItem.makeHistoryItem(item03.asData()))
 
-        let item04 = PushAction(player: "Alice", pushedDice: [0,1,2], newDice: [0,1,2], correct: true)
+        let item04 = PushAction(player: "Alice", pushedDice: [0, 1,2], newDice: [0, 1,2], correct: true)
         XCTAssertNil(HistoryItem.makeHistoryItem(item04.asData()))
 
 
-        let item05 = InitialState(players: ["Alice": [0,1,2], "Bob": [0,1,2]])
+        let item05 = InitialState(players: ["Alice": [0, 1,2], "Bob": [0, 1,2]])
         XCTAssertTrue(item05 == HistoryItem.makeHistoryItem(item05.asData()))
 
         let item06 = SpecialRulesInEffect(player: "Alice")
