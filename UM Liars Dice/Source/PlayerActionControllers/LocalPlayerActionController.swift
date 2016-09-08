@@ -29,6 +29,7 @@ class LocalPlayerActionController: PlayerActionController
     func countDie(_ die: UInt) -> Int
     {
         var count = 0
+        let specialRules = gameController.game!.isSpecialRules
 
         for player in gameController.game!.players
         {
@@ -45,11 +46,11 @@ class LocalPlayerActionController: PlayerActionController
             }
             else if player == playerController.localPlayerActionController.player
             {
-                count += player.dice.filter({ $0.face == die }).count
+                count += player.dice.filter({ $0.face == die || ($0.face == 1 && !specialRules) }).count
             }
             else
             {
-                count += player.dice.filter({ $0.pushed && $0.face == die }).count
+                count += player.dice.filter({ $0.pushed && ($0.face == die || ($0.face == 1 && !specialRules)) }).count
             }
         }
 
@@ -89,7 +90,7 @@ class LocalPlayerActionController: PlayerActionController
     {
         let dice: Int = gameController.game!.players.map({ $0.dice.count }).sum()
 
-        let string = NSMutableAttributedString(string: "\(dice) dice, \(countDie(1)) 1s \(countDie(2)) 2s \(countDie(3)) 3s \(countDie(4)) 4s \(countDie(5)) 5s \(countDie(6)) 6s \(countDie(0)) us")
+        let string = NSMutableAttributedString(string: "\(dice) dice, \(countDie(1)) 1s \(countDie(2)) 2s \(countDie(3)) 3s \(countDie(4)) 4s \(countDie(5)) 5s \(countDie(6)) 6s")
 
         let die = NSTextAttachment()
         die.image = imageOfDie(7)
@@ -136,8 +137,8 @@ class LocalPlayerActionController: PlayerActionController
         string.replaceCharacters(in: string.mutableString.range(of: "6s"),
                                  with: NSAttributedString(attachment: six))
 
-        string.replaceCharacters(in: string.mutableString.range(of: "us"),
-                                 with: NSAttributedString(attachment: unknown))
+//        string.replaceCharacters(in: string.mutableString.range(of: "us"),
+//                                 with: NSAttributedString(attachment: unknown))
 
         return string
     }
@@ -383,7 +384,7 @@ class LocalPlayerActionController: PlayerActionController
         }
 
         buttonAnimateEnable(playerController.exactButton, false)
-//        buttonAnimateEnable(playerController.passButton, false)
+        buttonAnimateEnable(playerController.passButton, false)
         buttonAnimateEnable(playerController.bidButton, false)
 
         playerController.countPicker.tableView.isScrollEnabled = false
