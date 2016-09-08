@@ -1,6 +1,0 @@
-[submodule "Packages/MessagePack"]
-	path = Packages/MessagePack
-	url = https://github.com/bluechill/MessagePack.git
-[submodule "Packages/C7"]
-	path = Packages/C7
-	url = https://github.com/bluechill/C7.git
