@@ -35,6 +35,9 @@ class CreateGameViewController: UIViewController
             passTurnAroundSwitch.setOn(true, animated: false)
             passTurnAroundSwitch.isEnabled = false
 
+            aiOpponentsStepper.value = 1
+            aiOpponentsLabel.text = "1"
+
             humanOpponentsStepper.value = 0
             humanOpponentsLabel.text = "0"
 
@@ -94,6 +97,12 @@ class CreateGameViewController: UIViewController
 
     @IBAction func aiOpponentsDidChangeValue(_ sender: UIStepper)
     {
+        let animation: CATransition = CATransition()
+        animation.duration = GameViewController.animationLength
+        animation.type = kCATransitionFade
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        aiOpponentsLabel.layer.add(animation, forKey: "changeTextTransition")
+
         aiOpponentsLabel.text = String(Int(sender.value))
 
         checkAndChangeStepper(humanOpponentsStepper)
@@ -128,6 +137,12 @@ class CreateGameViewController: UIViewController
                                       animations: { self.passTurnAroundLabel.isHidden = true },
                                       completion: nil)
         }
+
+        let animation: CATransition = CATransition()
+        animation.duration = GameViewController.animationLength
+        animation.type = kCATransitionFade
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        humanOpponentsLabel.layer.add(animation, forKey: "changeTextTransition")
 
         humanOpponentsLabel.text = String(Int(sender.value))
 

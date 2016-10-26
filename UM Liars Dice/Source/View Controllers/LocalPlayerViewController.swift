@@ -14,6 +14,8 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     @IBOutlet weak var countPicker: ScrollPickerView!
     @IBOutlet weak var facePicker: ScrollPickerView!
 
+    var hasTouchedCountPicker = false
+
     @IBOutlet weak var die1: DieView!
     @IBOutlet weak var die2: DieView!
     @IBOutlet weak var die3: DieView!
@@ -25,7 +27,6 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     @IBOutlet weak var bidButton: UIButton!
 
     weak var localPlayerActionController: LocalPlayerActionController!
-    var currentPlayerID = 0
 
     override func viewDidLoad()
     {
@@ -68,7 +69,14 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     {
         if scrollPicker == countPicker
         {
-            return 40
+            var selectedIndex = facePicker.getSelectedIndex()
+            if selectedIndex == -1
+            {
+                selectedIndex = 1
+            }
+
+            let face = Die.sides - UInt(selectedIndex)
+            return (40 - UInt(localPlayerActionController.minimumCountFor(face: face))) + 1
         }
         else
         {
@@ -81,7 +89,7 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         if scrollPicker == countPicker
         {
             let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: scrollPicker.bounds.width, height: scrollPicker.bounds.width))
-            label.text = String(40-index)
+            label.text = String(40 - index)
             label.textColor = UIColor.white
             label.textAlignment = NSTextAlignment.center
             label.backgroundColor = UIColor.clear
@@ -114,6 +122,28 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
     func scrollPickerView(_ scrollPicker: ScrollPickerView, didSelectIndex index: Int)
     {
         print("Selected \(index)")
+
+        guard countPicker.getSelectedIndex() != -1 && facePicker.getSelectedIndex() != -1 else {
+            return
+        }
+
+        let count: UInt = 40 - UInt(countPicker.getSelectedIndex())
+        let face: UInt = Die.sides - UInt(facePicker.getSelectedIndex())
+
+        var animation = {}
+        let state = localPlayerActionController.player.isValidBid(count, face: face)
+
+        if state && !bidButton.isEnabled
+        {
+            animation = { self.bidButton.tintColor = LiarsDiceColors.michiganMaize() }
+        }
+        else if !state && bidButton.isEnabled
+        {
+            animation = { self.bidButton.tintColor = UIColor.lightGray }
+        }
+
+        UIView.animate(withDuration: GameViewController.animationLength, animations: animation)
+        bidButton.isEnabled = state
     }
 
     @IBAction func pushDie(_ sender: DieView)
@@ -140,6 +170,28 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         })
 
         localPlayerActionController.push(die: Int(sender.face))
+
+        var animation = {}
+        let state = localPlayerActionController.player.canPushDice(localPlayerActionController.pushedDice())
+
+        if state && (!bidButton.isEnabled || !passButton.isEnabled)
+        {
+            animation = {
+                self.bidButton.tintColor = LiarsDiceColors.michiganMaize()
+                self.passButton.tintColor = LiarsDiceColors.michiganMaize()
+            }
+        }
+        else if !state && (bidButton.isEnabled || passButton.isEnabled)
+        {
+            animation = {
+                self.bidButton.tintColor = UIColor.lightGray
+                self.passButton.tintColor = UIColor.lightGray
+            }
+        }
+
+        UIView.animate(withDuration: GameViewController.animationLength, animations: animation)
+        bidButton.isEnabled = state
+        passButton.isEnabled = state
     }
 
     @IBAction func exact(_ sender: UIButton)

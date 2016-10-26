@@ -62,12 +62,12 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
     {
-        localPlayerViewController.localPlayerActionController.updateUI()
-
         if let controller = (engine.currentTurn?.userData[GameViewController.PlayerControllerString] as? PlayerActionController)
         {
             controller.performAction(engine.currentTurn!)
         }
+
+
     }
 
     func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
@@ -134,9 +134,13 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         var playerID = (indexPath as NSIndexPath).row
-        if playerID >= localPlayerViewController.currentPlayerID
+
+        if let player = localPlayerViewController.localPlayerActionController.player
         {
-            playerID += 1
+            if playerID >= game.players.index(of: player)!
+            {
+                playerID += 1
+            }
         }
 
         cell?.playerLabel.text = game.players[playerID].name
