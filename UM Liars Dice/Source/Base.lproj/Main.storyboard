@@ -968,7 +968,7 @@ Current Turn: You</string>
                         <outlet property="passTurnAroundLabel" destination="GUl-1R-EXJ" id="Zyb-9a-cNk"/>
                         <outlet property="passTurnAroundSwitch" destination="fvr-Tv-ZY7" id="vxH-t6-Hvn"/>
                         <outlet property="view" destination="YEh-Ti-Y2T" id="tft-Gz-wAe"/>
-                        <segue destination="Vxc-bj-GIY" kind="show" identifier="GameViewSegue" id="5ie-w2-mtV"/>
+                        <segue destination="Vxc-bj-GIY" kind="show" identifier="GameViewSegue" customClass="ReplaceSegue" customModule="UM_Liars_Dice" customModuleProvider="target" id="5ie-w2-mtV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb9-Os-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>

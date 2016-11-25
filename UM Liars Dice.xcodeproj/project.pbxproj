@@ -37,6 +37,7 @@
 		4D1592CC1D6759A900E6C87E /* TrueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1592A81D6759A300E6C87E /* TrueTests.swift */; };
 		4D1592CE1D675A0D00E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
 		4D1592CF1D675A1100E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
+		4D2199371DE8E3E400152693 /* ReplaceSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2199361DE8E3E400152693 /* ReplaceSegue.swift */; };
 		4D2F49EE1CF75F5C0058BD7B /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49ED1CF75F5C0058BD7B /* GameCenterHelper.swift */; };
 		4D2F49F01CF7720F0058BD7B /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49EF1CF7720F0058BD7B /* NameGenerator.swift */; };
 		4D2F49F21CF772EF0058BD7B /* RandomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49F11CF772EF0058BD7B /* RandomRange.swift */; };
@@ -409,6 +410,7 @@
 		4D1592A61D6759A300E6C87E /* NilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NilTests.swift; path = Packages/MessagePack/Tests/MessagePack/NilTests.swift; sourceTree = SOURCE_ROOT; };
 		4D1592A71D6759A300E6C87E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringTests.swift; path = Packages/MessagePack/Tests/MessagePack/StringTests.swift; sourceTree = SOURCE_ROOT; };
 		4D1592A81D6759A300E6C87E /* TrueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrueTests.swift; path = Packages/MessagePack/Tests/MessagePack/TrueTests.swift; sourceTree = SOURCE_ROOT; };
+		4D2199361DE8E3E400152693 /* ReplaceSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceSegue.swift; sourceTree = "<group>"; };
 		4D2F49ED1CF75F5C0058BD7B /* GameCenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		4D2F49EF1CF7720F0058BD7B /* NameGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		4D2F49F11CF772EF0058BD7B /* RandomRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomRange.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				4D2F49F31CF77E3A0058BD7B /* Shuffle.swift */,
 				4D948B141D760D3F00827948 /* Collection.swift */,
 				4D9EF4E51DE8A86A007FD971 /* DieifyText.swift */,
+				4D2199361DE8E3E400152693 /* ReplaceSegue.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1905,6 +1908,7 @@
 				4D6494671CF3623000F4F498 /* LiarsDiceColors.swift in Sources */,
 				4D2F49EE1CF75F5C0058BD7B /* GameCenterHelper.swift in Sources */,
 				4D342F811CF0BA05003DFE19 /* GameViewController.swift in Sources */,
+				4D2199371DE8E3E400152693 /* ReplaceSegue.swift in Sources */,
 				4D2F49F01CF7720F0058BD7B /* NameGenerator.swift in Sources */,
 				4D94C4891D5E36E4009B4149 /* SoarPlayerActionController.swift in Sources */,
 				4D94C48D1D5F6B9C009B4149 /* LocalPlayerActionController.swift in Sources */,
