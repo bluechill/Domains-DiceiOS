@@ -10,7 +10,13 @@ import UIKit
 import DiceLogicEngine
 import GameKit
 
-class CreateGameViewController: UIViewController
+class PlayerNameTableViewCell: UITableViewCell
+{
+    @IBOutlet weak var playerLabel: UILabel!
+    @IBOutlet weak var playerNameText: UITextField!
+}
+
+class CreateGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
     @IBOutlet weak var aiOpponentsLabel: UILabel!
     @IBOutlet weak var aiOpponentsStepper: UIStepper!
@@ -20,6 +26,8 @@ class CreateGameViewController: UIViewController
 
     @IBOutlet weak var passTurnAroundLabel: UILabel!
     @IBOutlet weak var passTurnAroundSwitch: UISwitch!
+
+    @IBOutlet weak var customPlayerNamesTable: UITableView!
 
     @IBOutlet weak var createGameButton: UIButton!
 
@@ -148,6 +156,21 @@ class CreateGameViewController: UIViewController
 
         checkAndChangeStepper(aiOpponentsStepper)
         checkAndChangeCreate()
+
+        customPlayerNamesTable.reloadSections([0], with: UITableViewRowAnimation.fade)
+    }
+
+    @IBAction func passTurnAroundSwitchDidChangeValue(_ sender: UISwitch)
+    {
+        let hidden = !passTurnAroundSwitch.isOn
+        if customPlayerNamesTable.isHidden != hidden
+        {
+            UIView.transition(with: customPlayerNamesTable,
+                              duration: CreateGameViewController.animationLength,
+                              options: UIViewAnimationOptions.transitionCrossDissolve,
+                              animations: { self.customPlayerNamesTable.isHidden = hidden },
+                              completion: nil)
+        }
     }
 
     @IBAction func createGame(_ sender: UIButton)
@@ -164,7 +187,7 @@ class CreateGameViewController: UIViewController
         var playerCount = 1
         let localActionController = LocalPlayerActionController()
 
-        var players: [String:PlayerActionController] = ["Player " + String(playerCount): localActionController]
+        var players: [String:PlayerActionController] = ["Human " + String(playerCount): localActionController]
 
         for _ in 0..<Int(aiOpponentsStepper.value)
         {} // TODO: AI
@@ -174,19 +197,96 @@ class CreateGameViewController: UIViewController
             if passTurnAroundSwitch.isOn
             {
                 playerCount += 1
-                players["Player " + String(playerCount)] = localActionController
+                players["Human " + String(playerCount)] = localActionController
             }
             else
             {} // TODO: Game Center
         }
 
-        let engine = DiceLogicEngine(players: players.map{ $0.key }, start: true)
+        var playerNameMap: [String:String] = [:]
+
+        var count = 0
+        for keyValue in players
+        {
+            guard keyValue.key.characters.starts(with: "Human".characters) else {
+                playerNameMap[keyValue.key] = keyValue.key
+                continue
+            }
+
+            let cell = self.customPlayerNamesTable.cellForRow(at: IndexPath(row: count, section: 0)) as! PlayerNameTableViewCell
+            count += 1
+
+            guard let string = cell.playerNameText.text else {
+                playerNameMap[cell.playerNameText.placeholder!] = keyValue.key
+                continue
+            }
+
+            guard string.characters.count > 0 else {
+                playerNameMap[cell.playerNameText.placeholder!] = keyValue.key
+                continue
+            }
+
+            playerNameMap[string] = keyValue.key
+        }
+
+        let engine = DiceLogicEngine(players: playerNameMap.map{ $0.key }, start: true)
 
         for player in engine.players
         {
-            player.userData[GameViewController.PlayerControllerString] = players[player.name]
+            player.userData[GameViewController.PlayerControllerString] = players[playerNameMap[player.name]!]
         }
 
         gameController.game = engine
+    }
+
+    // MARK: Table View Methods
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return Int(humanOpponentsStepper.value)+1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cellIdentifier = "cell"
+
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? PlayerNameTableViewCell
+
+        if cell == nil
+        {
+            cell = PlayerNameTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
+        }
+
+        cell?.selectionStyle = UITableViewCellSelectionStyle.default
+
+        let background = UIView()
+        background.backgroundColor = LiarsDiceColors.michiganSelectionBlue()
+        cell?.selectedBackgroundView = background
+
+        let playerID = (indexPath as NSIndexPath).row
+        cell?.playerLabel.text = "Player \(playerID+1) Name:"
+        cell?.playerNameText.placeholder = "Player \(playerID+1)"
+
+        return cell!
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        return "Human Player Names"
+    }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        if let view = view as? UITableViewHeaderFooterView
+        {
+            view.backgroundView?.backgroundColor = LiarsDiceColors.michiganBlue()
+            view.textLabel!.backgroundColor = LiarsDiceColors.michiganBlue()
+            view.textLabel!.textColor = UIColor.white
+        }
     }
 }

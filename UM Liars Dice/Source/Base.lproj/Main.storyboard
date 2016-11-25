@@ -926,6 +926,9 @@ Current Turn: You</string>
                                     <constraint firstAttribute="width" constant="49" id="Uu7-LJ-XdI"/>
                                     <constraint firstAttribute="height" constant="31" id="ZR7-cC-YiP"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="passTurnAroundSwitchDidChangeValue:" destination="3S6-QZ-rwg" eventType="valueChanged" id="bXQ-ys-17F"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass-Around: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUl-1R-EXJ">
                                 <rect key="frame" x="83" y="151" width="108.5" height="22"/>
@@ -936,6 +939,58 @@ Current Turn: You</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="51" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-HM-7vZ">
+                                <rect key="frame" x="16" y="238" width="343" height="409"/>
+                                <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="51" id="0fe-ch-aXy" customClass="PlayerNameTableViewCell" customModule="UM_Liars_Dice" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fe-ch-aXy" id="6po-Dc-okp">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-Wu-VRY">
+                                                    <rect key="frame" x="8" y="7.5" width="113" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="evC-8z-HvR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efX-3k-05G">
+                                                    <rect key="frame" x="129" y="3" width="206" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="yuh-Wu-VRY" secondAttribute="leading" id="6T4-02-SwG"/>
+                                                <constraint firstItem="efX-3k-05G" firstAttribute="top" secondItem="6po-Dc-okp" secondAttribute="topMargin" constant="-5" id="QmG-DI-Gob"/>
+                                                <constraint firstItem="efX-3k-05G" firstAttribute="leading" secondItem="yuh-Wu-VRY" secondAttribute="trailing" constant="8" id="SA0-Qb-gy4"/>
+                                                <constraint firstAttribute="topMargin" secondItem="yuh-Wu-VRY" secondAttribute="top" id="T1m-Pm-wqj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="efX-3k-05G" secondAttribute="trailing" id="ilT-bz-czF"/>
+                                                <constraint firstItem="efX-3k-05G" firstAttribute="centerY" secondItem="yuh-Wu-VRY" secondAttribute="centerY" id="iwc-bP-kjx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yuh-Wu-VRY" secondAttribute="bottom" constant="10" id="og4-KI-cDz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="playerLabel" destination="yuh-Wu-VRY" id="8RH-hR-4E4"/>
+                                            <outlet property="playerNameText" destination="efX-3k-05G" id="3JA-yJ-hnf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3S6-QZ-rwg" id="4nP-iJ-yZ6"/>
+                                    <outlet property="delegate" destination="3S6-QZ-rwg" id="hNQ-Ko-5te"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -943,15 +998,19 @@ Current Turn: You</string>
                             <constraint firstItem="Fi7-6q-b2z" firstAttribute="top" secondItem="WEc-ug-ZlS" secondAttribute="bottom" constant="8" id="5VT-zF-SRr"/>
                             <constraint firstItem="XiD-cn-enb" firstAttribute="centerX" secondItem="YEh-Ti-Y2T" secondAttribute="centerX" id="5m0-sQ-btE"/>
                             <constraint firstItem="fvr-Tv-ZY7" firstAttribute="top" secondItem="bHs-tQ-aua" secondAttribute="bottom" constant="8" id="6FK-Xv-9mR"/>
+                            <constraint firstItem="Tbu-HM-7vZ" firstAttribute="top" secondItem="whK-qf-nbU" secondAttribute="bottom" constant="8" id="6kh-Ok-cHa"/>
                             <constraint firstItem="XiD-cn-enb" firstAttribute="leading" secondItem="cDw-Ne-O5A" secondAttribute="trailing" constant="8" id="9Cj-aT-pJj"/>
                             <constraint firstItem="GUl-1R-EXJ" firstAttribute="trailing" secondItem="4F7-3f-PfM" secondAttribute="trailing" id="DPs-1L-MaP"/>
                             <constraint firstItem="4F7-3f-PfM" firstAttribute="leading" secondItem="UJS-vp-yDD" secondAttribute="trailing" constant="8" id="GUp-YY-8Oy"/>
                             <constraint firstItem="whK-qf-nbU" firstAttribute="top" secondItem="GUl-1R-EXJ" secondAttribute="bottom" constant="13" id="PPw-uz-VyT"/>
                             <constraint firstItem="cDw-Ne-O5A" firstAttribute="top" secondItem="WEc-ug-ZlS" secondAttribute="bottom" constant="12" id="Ptj-nH-U2O"/>
                             <constraint firstItem="Fi7-6q-b2z" firstAttribute="leading" secondItem="XiD-cn-enb" secondAttribute="trailing" constant="8" id="W2L-Am-KHK"/>
+                            <constraint firstItem="4ND-nz-6tK" firstAttribute="top" secondItem="Tbu-HM-7vZ" secondAttribute="bottom" constant="20" id="bCK-xh-jUB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tbu-HM-7vZ" secondAttribute="trailing" id="bOf-S8-Ctq"/>
                             <constraint firstItem="fvr-Tv-ZY7" firstAttribute="leading" secondItem="GUl-1R-EXJ" secondAttribute="trailing" constant="8" id="gp5-nH-QfN"/>
                             <constraint firstItem="4F7-3f-PfM" firstAttribute="top" secondItem="XiD-cn-enb" secondAttribute="bottom" constant="16" id="iLE-fR-ehb"/>
                             <constraint firstItem="XiD-cn-enb" firstAttribute="top" secondItem="WEc-ug-ZlS" secondAttribute="bottom" constant="12" id="nIo-Px-kDB"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Tbu-HM-7vZ" secondAttribute="leading" id="nyn-Bc-w4p"/>
                             <constraint firstItem="bHs-tQ-aua" firstAttribute="top" secondItem="Fi7-6q-b2z" secondAttribute="bottom" constant="8" id="php-Mo-WVN"/>
                             <constraint firstItem="GUl-1R-EXJ" firstAttribute="top" secondItem="UJS-vp-yDD" secondAttribute="bottom" constant="15" id="sHr-3T-vWF"/>
                             <constraint firstItem="whK-qf-nbU" firstAttribute="centerX" secondItem="YEh-Ti-Y2T" secondAttribute="centerX" id="sVA-vQ-SCX"/>
@@ -963,6 +1022,7 @@ Current Turn: You</string>
                         <outlet property="aiOpponentsLabel" destination="XiD-cn-enb" id="Icm-HE-MLe"/>
                         <outlet property="aiOpponentsStepper" destination="Fi7-6q-b2z" id="a0q-FQ-SYw"/>
                         <outlet property="createGameButton" destination="whK-qf-nbU" id="gjX-j5-DXx"/>
+                        <outlet property="customPlayerNamesTable" destination="Tbu-HM-7vZ" id="D2x-gf-iB3"/>
                         <outlet property="humanOpponentsLabel" destination="4F7-3f-PfM" id="UcL-Wu-R8V"/>
                         <outlet property="humanOpponentsStepper" destination="bHs-tQ-aua" id="QD0-8e-SSm"/>
                         <outlet property="passTurnAroundLabel" destination="GUl-1R-EXJ" id="Zyb-9a-cNk"/>
@@ -973,7 +1033,7 @@ Current Turn: You</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb9-Os-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2459" y="300"/>
+            <point key="canvasLocation" x="2458.4000000000001" y="300"/>
         </scene>
         <!--Help-->
         <scene sceneID="tBT-v0-VqT">
