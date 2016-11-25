@@ -156,6 +156,8 @@
 		4D94C4871D5E36DA009B4149 /* RemotePlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */; };
 		4D94C4891D5E36E4009B4149 /* SoarPlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4881D5E36E4009B4149 /* SoarPlayerActionController.swift */; };
 		4D94C48D1D5F6B9C009B4149 /* LocalPlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C48C1D5F6B9C009B4149 /* LocalPlayerActionController.swift */; };
+		4D9EF4E41DE8A78C007FD971 /* RoundOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9EF4E31DE8A78C007FD971 /* RoundOverviewController.swift */; };
+		4D9EF4E61DE8A86A007FD971 /* DieifyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9EF4E51DE8A86A007FD971 /* DieifyText.swift */; };
 		4DADC47A1D675E3200A5279C /* C7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DADC4711D675E3200A5279C /* C7.framework */; };
 		4DADC4861D675E3200A5279C /* C7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DADC4711D675E3200A5279C /* C7.framework */; };
 		4DADC4871D675E3200A5279C /* C7.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4DADC4711D675E3200A5279C /* C7.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -447,6 +449,8 @@
 		4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemotePlayerActionController.swift; sourceTree = "<group>"; };
 		4D94C4881D5E36E4009B4149 /* SoarPlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoarPlayerActionController.swift; sourceTree = "<group>"; };
 		4D94C48C1D5F6B9C009B4149 /* LocalPlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalPlayerActionController.swift; sourceTree = "<group>"; };
+		4D9EF4E31DE8A78C007FD971 /* RoundOverviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundOverviewController.swift; sourceTree = "<group>"; };
+		4D9EF4E51DE8A86A007FD971 /* DieifyText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieifyText.swift; sourceTree = "<group>"; };
 		4DADC4711D675E3200A5279C /* C7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = C7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DADC4791D675E3200A5279C /* C7Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = C7Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DADC4901D675E9100A5279C /* C7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C7.h; sourceTree = "<group>"; };
@@ -731,6 +735,7 @@
 				4D342F801CF0BA05003DFE19 /* GameViewController.swift */,
 				4D342F871CF2439A003DFE19 /* LocalPlayerViewController.swift */,
 				4D342F821CF21889003DFE19 /* CreateGameViewController.swift */,
+				4D9EF4E31DE8A78C007FD971 /* RoundOverviewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				4D2F49F11CF772EF0058BD7B /* RandomRange.swift */,
 				4D2F49F31CF77E3A0058BD7B /* Shuffle.swift */,
 				4D948B141D760D3F00827948 /* Collection.swift */,
+				4D9EF4E51DE8A86A007FD971 /* DieifyText.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1907,6 +1913,7 @@
 				4DE93C2F1CE8D7D4008041C3 /* AppDelegate.swift in Sources */,
 				4D2F49F21CF772EF0058BD7B /* RandomRange.swift in Sources */,
 				4D948B151D760D3F00827948 /* Collection.swift in Sources */,
+				4D9EF4E61DE8A86A007FD971 /* DieifyText.swift in Sources */,
 				4D6494641CF3578D00F4F498 /* DieView.swift in Sources */,
 				4D6494621CF33E2F00F4F498 /* ScrollPickerView.swift in Sources */,
 				4D342F7D1CF0AA95003DFE19 /* SettingsViewController.swift in Sources */,
@@ -1915,6 +1922,7 @@
 				4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */,
 				4D94C4871D5E36DA009B4149 /* RemotePlayerActionController.swift in Sources */,
 				4D2F49F41CF77E3A0058BD7B /* Shuffle.swift in Sources */,
+				4D9EF4E41DE8A78C007FD971 /* RoundOverviewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

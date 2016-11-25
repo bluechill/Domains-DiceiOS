@@ -12,7 +12,7 @@ import MessagePack
 public protocol DiceObserver
 {
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
-    func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
+    func diceLogicRoundWillEnd(_ engine: DiceLogicEngine)
 }
 
 public class DiceLogicEngine: Equatable
@@ -490,13 +490,13 @@ internal extension DiceLogicEngine
                 return
             }
 
-            if player.dice.count == 1 && !hasPlayerBeenInSpecialRulesBefore(player.name)
+            if player.dice.count == 1 && !hasPlayerBeenInSpecialRulesBefore(player.name) && playersLeft.count > 2
             {
                 appendHistoryItem(SpecialRulesInEffect(player: playerWhoLostRound))
             }
         }
 
-        observers.forEach({ $0.diceLogicRoundDidEnd(self) })
+        observers.forEach({ $0.diceLogicActionOccurred(self) })
     }
 
     func playerLosesRound(_ player: String)
@@ -515,6 +515,8 @@ internal extension DiceLogicEngine
             ErrorHandling.error("Player cannot lose the round when they already have zero dice.")
             return
         }
+
+        observers.forEach({ $0.diceLogicRoundWillEnd(self) })
 
         appendHistoryItem(PlayerLostRound(player: player.name))
 

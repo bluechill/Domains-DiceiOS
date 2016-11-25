@@ -54,6 +54,7 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var statsLabelView: UILabel!
     @IBOutlet weak var previousBidView: UILabel!
     @IBOutlet weak var yourPreviousBidView: UILabel!
+    @IBOutlet weak var specialRulesDie: DieView!
 
     static var animationLength: Double = 0.33
     static let PlayerControllerString = "PlayerController"
@@ -62,15 +63,52 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func diceLogicActionOccurred(_ engine: DiceLogicEngine)
     {
+        if self.navigationController!.presentedViewController != nil
+        {
+            return
+        }
+
         if let controller = (engine.currentTurn?.userData[GameViewController.PlayerControllerString] as? PlayerActionController)
         {
             controller.performAction(engine.currentTurn!)
         }
     }
 
-    func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
+    func diceLogicRoundWillEnd(_ engine: DiceLogicEngine)
     {
+        let roundover = (self.storyboard?.instantiateViewController(withIdentifier: "RoundOverviewController") as? RoundOverviewController)
+        roundover!.game = engine
+        roundover!.playerDice = engine.players.map({ $0.dice.map({ $0.face }) })
+        roundover!.playerActions = engine.players.map({ $0.lastAction })
 
+        let blurEffect = UIBlurEffect(style: .light)
+        let blueEffectView = UIVisualEffectView(effect: blurEffect)
+        blueEffectView.frame = self.view.bounds
+        roundover?.view.frame = self.view.bounds
+        roundover?.view.backgroundColor = UIColor.clear
+        roundover?.view.insertSubview(blueEffectView, at: 0)
+        roundover?.modalPresentationStyle = .overCurrentContext
+
+        let statsLabelText = NSMutableAttributedString(attributedString: localPlayerViewController.localPlayerActionController.allStatsLabelText())
+        DieText.dieifyText(statsLabelText, CGSize(width: roundover!.previousActionLabel.frame.height * 0.8,
+                                                  height: roundover!.previousActionLabel.frame.height * 0.8))
+
+        roundover?.statsLabelView.attributedText = statsLabelText
+        roundover?.previousActionLabel.attributedText = localPlayerViewController.localPlayerActionController.previousActionText()
+
+        roundover?.previousActionLabel.dieifyText()
+        roundover?.playersView.reloadData()
+        roundover?.localPlayerActionController = localPlayerViewController.localPlayerActionController
+
+        localPlayerViewController.localPlayerActionController.updateUI(animate: false, blankText: true)
+        localPlayerViewController.localPlayerActionController.updateDice()
+        localPlayerViewController.localPlayerActionController.playerController.die1.face = 0
+        localPlayerViewController.localPlayerActionController.playerController.die2.face = 0
+        localPlayerViewController.localPlayerActionController.playerController.die3.face = 0
+        localPlayerViewController.localPlayerActionController.playerController.die4.face = 0
+        localPlayerViewController.localPlayerActionController.playerController.die5.face = 0
+
+        self.navigationController!.present(roundover!, animated: true, completion: nil)
     }
 
     // MARK: Storyboard Methods
@@ -95,7 +133,30 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLayoutSubviews()
     {
-        game!.observers.append(self)
+        if (game!.observers.filter({ ($0 as? GameViewController) == self }).count == 0)
+        {
+            game!.observers.append(self)
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        if (game!.observers.filter({ ($0 as? GameViewController) == self }).count > 0)
+        {
+            game!.observers = game!.observers.filter({ ($0 as? GameViewController) != self })
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self.specialRulesDie.setDieBackgroundColorAnimated(color: LiarsDiceColors.michiganMaize(), duration: 0.33)
+        self.specialRulesDie.isEnabled = false
+        self.specialRulesDie.face = 1
+
+        if (game!.observers.filter({ ($0 as? GameViewController) == self }).count == 0)
+        {
+            game!.observers.append(self)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool)
@@ -143,18 +204,36 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         cell?.playerLabel.text = game.players[playerID].name
 
-        if let bid = game.players[playerID].lastBid
+        if let action = game.players[playerID].lastAction
         {
-            let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Last bid \(bid.count) \(bid.face)s")
+            if let bid = (action as? BidAction)
+            {
+                let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Last bid \(bid.count) \(bid.face)s")
 
-            localPlayerViewController.localPlayerActionController.dieifyText(string: string)
-
-            cell?.playerLabel.attributedText = string
+                cell?.playerLabel.attributedText = string
+                cell?.playerLabel.dieifyText()
+            }
+            else if (action as? ExactAction) != nil
+            {
+                let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Exacted")
+                cell?.playerLabel.attributedText = string
+            }
+            else if let challenge = (action as? ChallengeAction)
+            {
+                let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Challenged \(challenge.challengee)")
+                cell?.playerLabel.attributedText = string
+            }
+            else if (action as? PassAction) != nil
+            {
+                let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Passed")
+                cell?.playerLabel.attributedText = string
+            }
         }
 
         cell?.challengeButton.tag = playerID
 
         var pushedDice = game.players[playerID].dice.filter({ $0.pushed })
+        let dice = game.players[playerID].dice
         pushedDice.sort(by: { $0.face < $1.face })
 
         let lambda = { (dieView: DieView?, index: Int) in
@@ -169,6 +248,15 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
             else
             {
                 dieView.face = 0
+            }
+
+            if dice.count >= index + 1 && dieView.isHidden == true
+            {
+                dieView.isHidden = false
+            }
+            else if dice.count < index + 1 && dieView.isHidden == false
+            {
+                dieView.isHidden = true
             }
         }
 

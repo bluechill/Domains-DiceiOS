@@ -110,7 +110,7 @@ class DiceLogicEngineTests: XCTestCase
 
     func testSpecialRules()
     {
-        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        let engine = DiceLogicEngine(players: ["Alice", "Bob", "Eve"])
 
         XCTAssertFalse(engine.isSpecialRules)
         XCTAssertTrue(engine.history.count == 1)
@@ -132,20 +132,20 @@ class DiceLogicEngineTests: XCTestCase
         XCTAssertTrue(special.player == "Bob")
         XCTAssertTrue(engine.isSpecialRules)
 
-        let engine2 = DiceLogicEngine(players: ["Alice", "Bob"])
+        let engine2 = DiceLogicEngine(players: ["Alice", "Bob", "Eve"])
         engine2.history[0].append(PlayerLostRound(player: "Bob"))
-        engine2.players[1].dice = [Die(face: 1)]
+        engine2.players[2].dice = [Die(face: 1)]
 
         engine2.createNewRound()
         XCTAssertTrue(engine2.isSpecialRules)
         engine2.history[1].append(PlayerLostRound(player: "Bob"))
-        engine2.players[1].dice = [Die(face: 1)]
+        engine2.players[2].dice = [Die(face: 1)]
 
         engine2.createNewRound()
 
         XCTAssertFalse(engine2.isSpecialRules)
 
-        let engine3 = DiceLogicEngine(players: ["Alice", "Bob"])
+        let engine3 = DiceLogicEngine(players: ["Alice", "Bob", "Eve"])
         engine3.playerLosesRound("Alice")
         XCTAssertFalse(engine3.isSpecialRules)
 
@@ -166,6 +166,72 @@ class DiceLogicEngineTests: XCTestCase
 
         engine3.playerLosesRound("Alice")
         XCTAssertFalse(engine3.isSpecialRules)
+    }
+
+    func testFunctionallySpecialRules()
+    {
+        Handlers.Warning = {_ in }
+
+        let engine = DiceLogicEngine(players: ["Alice", "Bob", "Eve"])
+
+        XCTAssertFalse(engine.isSpecialRules)
+        XCTAssertTrue(engine.history.count == 1)
+
+        let alice = engine.player("Alice")!
+        let bob = engine.player("Bob")!
+        let eve = engine.player("Eve")!
+
+        bob.bid(1, face: 2)
+        alice.challenge("Bob")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        alice.bid(40, face: 2)
+        eve.challenge("Alice")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        alice.bid(40, face: 2)
+        eve.challenge("Alice")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        alice.bid(40, face: 2)
+        eve.challenge("Alice")
+
+        XCTAssertTrue(engine.isSpecialRules)
+
+        alice.bid(40, face: 2)
+        eve.challenge("Alice")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        eve.bid(40, face: 2)
+        bob.challenge("Eve")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        eve.bid(40, face: 2)
+        bob.challenge("Eve")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        eve.bid(40, face: 2)
+        bob.challenge("Eve")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        eve.bid(40, face: 2)
+        bob.challenge("Eve")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        eve.bid(40, face: 2)
+        bob.challenge("Eve")
+
+        XCTAssertFalse(engine.isSpecialRules)
+
+        Handlers.Warning = { XCTFail($0) }
     }
 
     func testEquality()
@@ -425,10 +491,10 @@ class DiceLogicEngineTests: XCTestCase
         engine.playerLosesRound("Alice")
         XCTAssertTrue(error.isEmpty, error)
 
-        XCTAssertTrue(engine.currentRoundHistory.count == 5)
+        XCTAssertTrue(engine.currentRoundHistory.count == 4)
 
-        let playerLost = engine.currentRoundHistory[3] as? PlayerLost
-        let playerWon = engine.currentRoundHistory[4] as? PlayerWon
+        let playerLost = engine.currentRoundHistory[2] as? PlayerLost
+        let playerWon = engine.currentRoundHistory[3] as? PlayerWon
 
         XCTAssertNotNil(playerLost)
         XCTAssertNotNil(playerWon)

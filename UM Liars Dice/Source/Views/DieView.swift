@@ -12,7 +12,10 @@ import CoreText
 
 @IBDesignable class DieView: UIButton
 {
-    var _dieBackgroundColor = UIColor.white
+    static let DefaultBackgroundColor = UIColor.white
+    static let DefaultFaceColor = UIColor.black
+
+    var _dieBackgroundColor = DieView.DefaultBackgroundColor
     @IBInspectable var dieBackgroundColor: UIColor {
         get { return _dieBackgroundColor }
         set {
@@ -44,7 +47,7 @@ import CoreText
         CATransaction.commit()
     }
 
-    var _dieFaceColor = UIColor.black
+    var _dieFaceColor = DieView.DefaultFaceColor
     @IBInspectable var dieFaceColor: UIColor {
         get { return _dieFaceColor }
         set {

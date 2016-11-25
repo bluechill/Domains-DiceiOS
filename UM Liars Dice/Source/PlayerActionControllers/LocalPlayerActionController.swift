@@ -36,43 +36,58 @@ class LocalPlayerActionController: PlayerActionController
         }
     }
 
+    func passTurnAction(_ unused: UIAlertAction?)
+    {
+        var bidFace: UInt = 0
+
+        if let bid = self.player.lastBid
+        {
+            bidFace = bid.face
+        }
+        else if let bid = self.gameController.game!.lastBid
+        {
+            bidFace = bid.face
+        }
+        else
+        {
+            bidFace = 2
+        }
+
+        var bidCount = self.minimumCountFor(face: bidFace)
+
+        if bidCount > 40
+        {
+            bidCount = 40
+        }
+
+        OperationQueue.main.addOperation {
+            self.gameController.opponentsView.reloadSections(IndexSet(integer: 0),
+                                                             with: UITableViewRowAnimation.automatic)
+
+            self.updateUI()
+            self.enableUI()
+
+            self.playerController.facePicker.setSelected(index: Int(Die.sides - bidFace))
+            self.playerController.countPicker.setSelected(index: Int(40 - bidCount))
+
+            let count: UInt = 40 - UInt(self.playerController.countPicker.getSelectedIndex())
+            let face: UInt = Die.sides - UInt((self.playerController.facePicker.getSelectedIndex()))
+            self.buttonAnimateEnable(self.playerController.bidButton, self.player.isValidBid(count, face: face), true)
+
+            if self.gameController.game!.isSpecialRules
+            {
+                let controller = UIAlertController(title: "Special Rules In Effect!", message: "Tap to continue.", preferredStyle: UIAlertControllerStyle.alert)
+
+                controller.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.cancel, handler: nil))
+
+                self.playerController.present(controller, animated: true, completion: nil)
+            }
+        }
+    }
+
     func performAction(_ player: Player)
     {
-        guard self.playerController.presentedViewController == nil else {
-            return
-        }
-
         playerController.localPlayerActionController = self
-
-        let action = { (unused: UIAlertAction?) in
-            var bidFace: UInt = 0
-
-            if let bid = self.player.lastBid
-            {
-                bidFace = bid.face
-            }
-            else if let bid = self.gameController.game!.lastBid
-            {
-                bidFace = bid.face
-            }
-            else
-            {
-                bidFace = 2
-            }
-
-            let bidCount = self.minimumCountFor(face: bidFace)
-
-            OperationQueue.main.addOperation {
-                self.gameController.opponentsView.reloadSections(IndexSet(integer: 0),
-                                                                 with: UITableViewRowAnimation.automatic)
-
-                self.updateUI()
-                self.enableUI()
-
-                self.playerController.facePicker.setSelected(index: Int(Die.sides - bidFace))
-                self.playerController.countPicker.setSelected(index: Int(40 - bidCount))
-            }
-        }
 
         if self.player != nil && player != self.player
         {
@@ -89,7 +104,7 @@ class LocalPlayerActionController: PlayerActionController
 
             let controller = UIAlertController(title: "\(player.name)'s turn!", message: "The current turn has been passed to another human player.  Tap to continue as \(player.name)", preferredStyle: UIAlertControllerStyle.alert)
 
-            controller.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.cancel, handler: action))
+            controller.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.cancel, handler: passTurnAction))
 
             self.playerController.present(controller, animated: true, completion: nil)
         }
@@ -99,7 +114,7 @@ class LocalPlayerActionController: PlayerActionController
             self.updateUI(animate: false)
             updateDice()
 
-            action(nil)
+            passTurnAction(nil)
         }
     }
 
@@ -134,98 +149,17 @@ class LocalPlayerActionController: PlayerActionController
         return count
     }
 
-    func imageOfDie(_ face: UInt) -> UIImage
+    func countAllDie(_ die: UInt) -> Int
     {
-        let size: CGSize = CGSize(width: gameController!.statsLabelView.frame.height * 0.8,
-                                  height: gameController!.statsLabelView.frame.height * 0.8)
+        var count = 0
+        let specialRules = gameController.game!.isSpecialRules
 
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-
-        let layer = CALayer()
-
-        let bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-
-        let dieB = DieView.DieB(DieView.Radius, bounds)
-        layer.addSublayer(dieB)
-
-        if face != 7
+        for player in gameController.game!.players
         {
-            let die = DieView.DieForFace(face, bounds)
-            die.fillColor = playerController.die1.dieFaceColor.cgColor
-            layer.addSublayer(die)
+            count += player.dice.filter({ $0.face == die || ($0.face == 1 && !specialRules) }).count
         }
 
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-
-        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return outputImage!
-    }
-
-    func dieifyText(string: NSMutableAttributedString)
-    {
-        let die = NSTextAttachment()
-        die.image = imageOfDie(7)
-
-        let one = NSTextAttachment()
-        one.image = imageOfDie(1)
-
-        let two = NSTextAttachment()
-        two.image = imageOfDie(2)
-
-        let three = NSTextAttachment()
-        three.image = imageOfDie(3)
-
-        let four = NSTextAttachment()
-        four.image = imageOfDie(4)
-
-        let five = NSTextAttachment()
-        five.image = imageOfDie(5)
-
-        let six = NSTextAttachment()
-        six.image = imageOfDie(6)
-
-        let unknown = NSTextAttachment()
-        unknown.image = imageOfDie(0)
-
-        //        string.replaceCharacters(in: string.mutableString.range(of: "dice"),
-        //                                with: NSAttributedString(attachment: die))
-
-        if string.mutableString.range(of: "1s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "1s"),
-                                     with: NSAttributedString(attachment: one))
-        }
-
-        if string.mutableString.range(of: "2s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "2s"),
-                                     with: NSAttributedString(attachment: two))
-        }
-
-        if string.mutableString.range(of: "3s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "3s"),
-                                     with: NSAttributedString(attachment: three))
-        }
-
-        if string.mutableString.range(of: "4s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "4s"),
-                                     with: NSAttributedString(attachment: four))
-        }
-
-        if string.mutableString.range(of: "5s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "5s"),
-                                     with: NSAttributedString(attachment: five))
-        }
-
-        if string.mutableString.range(of: "6s").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "6s"),
-                                     with: NSAttributedString(attachment: six))
-        }
-
-        if string.mutableString.range(of: "us").length > 0 {
-            string.replaceCharacters(in: string.mutableString.range(of: "us"),
-                                     with: NSAttributedString(attachment: unknown))
-        }
+        return count
     }
 
     func statsLabelText() -> NSAttributedString
@@ -234,7 +168,14 @@ class LocalPlayerActionController: PlayerActionController
 
         let string = NSMutableAttributedString(string: "\(dice) dice, \(countDie(1)) 1s \(countDie(2)) 2s \(countDie(3)) 3s \(countDie(4)) 4s \(countDie(5)) 5s \(countDie(6)) 6s")
 
-        dieifyText(string: string)
+        return string
+    }
+
+    func allStatsLabelText() -> NSAttributedString
+    {
+        let dice: Int = gameController.game!.players.map({ $0.dice.count }).sum()
+
+        let string = NSMutableAttributedString(string: "\(dice) dice\n\(countAllDie(1)) 1s \(countAllDie(2)) 2s \(countAllDie(3)) 3s \(countAllDie(4)) 4s \(countAllDie(5)) 5s \(countAllDie(6)) 6s")
 
         return string
     }
@@ -247,9 +188,44 @@ class LocalPlayerActionController: PlayerActionController
 
         let string = NSMutableAttributedString(string: "\(bid.player) bid \(bid.count) \(bid.face)s")
 
-        dieifyText(string: string)
-
         return string
+    }
+
+    func previousActionText() -> NSAttributedString
+    {
+        let game = gameController.game!
+
+        if let action = game.lastAction
+        {
+            if let bid = (action as? BidAction)
+            {
+                let string = NSMutableAttributedString(string: "\(bid.player): Last bid \(bid.count) \(bid.face)s")
+
+                if !bid.correct
+                {
+                    string.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, string.length))
+                }
+
+                return string
+            }
+            else if let exact = (action as? ExactAction)
+            {
+                let string = NSMutableAttributedString(string: "\(exact.player): Exacted \(exact.correct ? "correctly" : "incorrectly")")
+                return string
+            }
+            else if let challenge = (action as? ChallengeAction)
+            {
+                let string = NSMutableAttributedString(string: "\(challenge.player): Challenged \(challenge.challengee) \(challenge.correct ? "correctly" : "incorrectly")")
+                return string
+            }
+            else if let pass = (action as? PassAction)
+            {
+                let string = NSMutableAttributedString(string: "\(pass.player): Passed while \(pass.correct ? "not bluffing" : "bluffing")")
+                return string
+            }
+        }
+
+        return NSAttributedString(string: "No previous action.")
     }
 
     func yourPreviousBidText() -> NSAttributedString
@@ -269,8 +245,6 @@ class LocalPlayerActionController: PlayerActionController
 
         let string = NSMutableAttributedString(string: "It's your turn! You last bid \(bid.count) \(bid.face)s")
 
-        dieifyText(string: string)
-
         return string
     }
 
@@ -287,6 +261,16 @@ class LocalPlayerActionController: PlayerActionController
             self.gameController.yourPreviousBidView.layer.add(animation, forKey: "changeTextTransition")
         }
 
+        let hidden = !self.gameController.game!.isSpecialRules
+        if self.gameController.specialRulesDie.isHidden != hidden
+        {
+            UIView.transition(with: self.gameController.specialRulesDie,
+                              duration: GameViewController.animationLength,
+                              options: UIViewAnimationOptions.transitionCrossDissolve,
+                              animations: { self.gameController.specialRulesDie.isHidden = hidden },
+                              completion: nil)
+        }
+
         if blankText
         {
             self.gameController.statsLabelView.attributedText = NSAttributedString(string: "No player stats")
@@ -299,6 +283,10 @@ class LocalPlayerActionController: PlayerActionController
             self.gameController.previousBidView.attributedText = previousBidText()
             self.gameController.yourPreviousBidView.attributedText = yourPreviousBidText()
         }
+
+        self.gameController.statsLabelView.dieifyText()
+        self.gameController.previousBidView.dieifyText()
+        self.gameController.yourPreviousBidView.dieifyText()
     }
 
     private func enableOrDisableDice(_ die: DieView, _ index: Int)
@@ -312,9 +300,7 @@ class LocalPlayerActionController: PlayerActionController
                 UIView.transition(with: die,
                                   duration: GameViewController.animationLength,
                                   options: UIViewAnimationOptions.transitionCrossDissolve,
-                                  animations: {
-                                    die.isHidden = false
-                    },
+                                  animations: { die.isHidden = false },
                                   completion: nil)
             }
         }
@@ -367,7 +353,10 @@ class LocalPlayerActionController: PlayerActionController
         let controller = UIAlertController(title: "Bid?", message: "", preferredStyle: UIAlertControllerStyle.alert)
 
         let msg = NSMutableAttributedString(string: "Are you sure you want to bid \(count) \(face)s")
-        dieifyText(string: msg)
+
+        DieText.dieifyText(msg, CGSize(width: gameController.statsLabelView.frame.height * 0.8,
+                                       height: gameController.statsLabelView.frame.height * 0.8))
+
         controller.setValue(msg, forKey: "attributedMessage")
 
         controller.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: { (_: UIAlertAction) in
@@ -578,6 +567,15 @@ class LocalPlayerActionController: PlayerActionController
             die.face = self.player.dice[index].face
             die.setDieBackgroundColorAnimated(  color: UIColor.white,
                                                 duration: GameViewController.animationLength)
+
+            if die.isHidden
+            {
+                UIView.transition(with: die,
+                                  duration: GameViewController.animationLength,
+                                  options: UIViewAnimationOptions.transitionCrossDissolve,
+                                  animations: { die.isHidden = false },
+                                  completion: nil)
+            }
         }
         else
         {
@@ -591,6 +589,31 @@ class LocalPlayerActionController: PlayerActionController
         die.isEnabled = true
     }
 
+    func buttonAnimateEnable(_ button: UIButton, _ state: Bool, _ animate: Bool)
+    {
+        var animation = {}
+
+        if state && !button.isEnabled
+        {
+            animation = { button.tintColor = LiarsDiceColors.michiganMaize() }
+        }
+        else if !state && button.isEnabled
+        {
+            animation = { button.tintColor = UIColor.lightGray }
+        }
+
+        if animate
+        {
+            UIView.animate(withDuration: GameViewController.animationLength, animations: animation)
+        }
+        else
+        {
+            animation()
+        }
+
+        button.isEnabled = state
+    }
+
     private func disableButtonFunctionality(animate: Bool)
     {
         disableDie(die: playerController.die1, index: 0)
@@ -599,33 +622,9 @@ class LocalPlayerActionController: PlayerActionController
         disableDie(die: playerController.die4, index: 3)
         disableDie(die: playerController.die5, index: 4)
 
-        let buttonAnimateEnable = { (button: UIButton, state: Bool) in
-            var animation = {}
-
-            if state && !button.isEnabled
-            {
-                animation = { button.tintColor = LiarsDiceColors.michiganMaize() }
-            }
-            else if !state && button.isEnabled
-            {
-                animation = { button.tintColor = UIColor.lightGray }
-            }
-
-            if animate
-            {
-                UIView.animate(withDuration: GameViewController.animationLength, animations: animation)
-            }
-            else
-            {
-                animation()
-            }
-
-            button.isEnabled = state
-        }
-
-        buttonAnimateEnable(playerController.exactButton, false)
-        buttonAnimateEnable(playerController.passButton, false)
-        buttonAnimateEnable(playerController.bidButton, false)
+        buttonAnimateEnable(playerController.exactButton, false, animate)
+        buttonAnimateEnable(playerController.passButton, false, animate)
+        buttonAnimateEnable(playerController.bidButton, false, animate)
 
         playerController.countPicker.tableView.isScrollEnabled = false
         playerController.facePicker.tableView.isScrollEnabled = false
@@ -686,7 +685,10 @@ class LocalPlayerActionController: PlayerActionController
 
         buttonAnimateEnable(playerController.exactButton, player.canExact())
         buttonAnimateEnable(playerController.passButton, player.canPass())
-        buttonAnimateEnable(playerController.bidButton, true)
+
+        let count: UInt = 40 - UInt(playerController.countPicker.getSelectedIndex())
+        let face: UInt = Die.sides - UInt(playerController.facePicker.getSelectedIndex())
+        buttonAnimateEnable(playerController.bidButton, player.isValidBid(count, face: face))
 
         playerController.countPicker.tableView.isScrollEnabled = true
         playerController.facePicker.tableView.isScrollEnabled = true
