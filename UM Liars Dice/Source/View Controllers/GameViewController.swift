@@ -66,8 +66,6 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         {
             controller.performAction(engine.currentTurn!)
         }
-
-
     }
 
     func diceLogicRoundDidEnd(_ engine: DiceLogicEngine)
@@ -144,6 +142,16 @@ class GameViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         cell?.playerLabel.text = game.players[playerID].name
+
+        if let bid = game.players[playerID].lastBid
+        {
+            let string = NSMutableAttributedString(string: "\(game.players[playerID].name): Last bid \(bid.count) \(bid.face)s")
+
+            localPlayerViewController.localPlayerActionController.dieifyText(string: string)
+
+            cell?.playerLabel.attributedText = string
+        }
+
         cell?.challengeButton.tag = playerID
 
         var pushedDice = game.players[playerID].dice.filter({ $0.pushed })

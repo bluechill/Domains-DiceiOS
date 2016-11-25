@@ -45,22 +45,33 @@ class LocalPlayerActionController: PlayerActionController
         playerController.localPlayerActionController = self
 
         let action = { (unused: UIAlertAction?) in
+            var bidFace: UInt = 0
+
             if let bid = self.player.lastBid
             {
-                self.playerController.facePicker.setSelected(index: Int(Die.sides - bid.face))
-                self.playerController.countPicker.setSelected(index: Int(40 - self.minimumCountFor(face: bid.face)))
+                bidFace = bid.face
             }
             else if let bid = self.gameController.game!.lastBid
             {
-                self.playerController.facePicker.setSelected(index: Int(Die.sides - bid.face))
-                self.playerController.countPicker.setSelected(index: Int(40 - self.minimumCountFor(face: bid.face)))
+                bidFace = bid.face
+            }
+            else
+            {
+                bidFace = 2
             }
 
-            self.gameController.opponentsView.reloadSections(IndexSet(integer: 0),
-                                                             with: UITableViewRowAnimation.automatic)
+            let bidCount = self.minimumCountFor(face: bidFace)
 
-            self.updateUI()
-            self.enableUI()
+            OperationQueue.main.addOperation {
+                self.gameController.opponentsView.reloadSections(IndexSet(integer: 0),
+                                                                 with: UITableViewRowAnimation.automatic)
+
+                self.updateUI()
+                self.enableUI()
+
+                self.playerController.facePicker.setSelected(index: Int(Die.sides - bidFace))
+                self.playerController.countPicker.setSelected(index: Int(40 - bidCount))
+            }
         }
 
         if self.player != nil && player != self.player
