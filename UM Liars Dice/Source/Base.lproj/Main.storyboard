@@ -1689,6 +1689,7 @@ Current Turn: You</string>
                                     <constraint firstAttribute="height" constant="44" id="8L5-ol-ztt"/>
                                     <constraint firstAttribute="width" constant="75" id="Yz4-ua-egf"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="dismiss" destination="uzv-qg-YBR" eventType="touchUpInside" id="Foc-bH-6Tz"/>
