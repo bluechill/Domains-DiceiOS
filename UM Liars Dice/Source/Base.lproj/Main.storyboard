@@ -584,7 +584,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Dv-Jr9">
-                                <rect key="frame" x="112.5" y="364.5" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="365.5" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fRq-JM-DSn"/>
                                     <constraint firstAttribute="width" constant="150" id="jcN-lb-Rn8"/>
@@ -598,7 +598,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-D8-ch8">
-                                <rect key="frame" x="112.5" y="465" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="466" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="HqV-mm-tgm"/>
                                     <constraint firstAttribute="height" constant="44" id="Yi5-it-k6w"/>
@@ -612,7 +612,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-sR-RaI">
-                                <rect key="frame" x="112.5" y="566" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="567" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7Jq-z7-20z"/>
                                     <constraint firstAttribute="width" constant="150" id="dXD-ks-3K5"/>
@@ -633,35 +633,35 @@ Current Turn: You</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of5-DE-ga9">
-                                <rect key="frame" x="112.5" y="307.5" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="308.5" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="YdT-qt-ATN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-78-zkJ">
-                                <rect key="frame" x="112.5" y="206.5" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="206.5" width="150" height="58"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ok8-iY-dEq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-jd-qUc">
-                                <rect key="frame" x="112.5" y="408.5" width="150" height="56.5"/>
+                                <rect key="frame" x="112.5" y="409.5" width="150" height="56.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="5XM-At-NbR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if9-Pu-c9w">
-                                <rect key="frame" x="112.5" y="509" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="510" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="9Zd-gs-2Bo"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIf-XA-YSE">
-                                <rect key="frame" x="112.5" y="610" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="611" width="150" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Yix-K6-JXB"/>
@@ -684,7 +684,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68e-I8-ZHg">
-                                <rect key="frame" x="112.5" y="263.5" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="264.5" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="LK9-5Z-APE"/>
                                     <constraint firstAttribute="height" constant="44" id="Oe2-bD-HiQ"/>
@@ -1732,7 +1732,7 @@ Current Turn: You</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0l6-tc-StK"/>
+        <segue reference="kby-mC-Frr"/>
         <segue reference="5ie-w2-mtV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.79607843140000001" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

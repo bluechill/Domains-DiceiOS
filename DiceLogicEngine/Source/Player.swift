@@ -162,11 +162,11 @@ public class Player: Equatable
     {
         if face == 1 && lastBid.face != 1
         {
-            return Double(count) > ceil(Double(lastBid.count)/2.0)
+            return Double(count) >= ceil(Double(lastBid.count)/2.0)
         }
         else if face != 1 && lastBid.face == 1
         {
-            return count > lastBid.count*2
+            return count >= (lastBid.count*2 + 1)
         }
 
         return  count > lastBid.count ||

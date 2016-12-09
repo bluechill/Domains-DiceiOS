@@ -375,8 +375,6 @@ class LocalPlayerActionController: PlayerActionController
         disableUI()
 
         player.pass(pushedDice())
-
-        updateUI()
     }
 
     func exact()
@@ -384,8 +382,6 @@ class LocalPlayerActionController: PlayerActionController
         disableUI()
 
         player.exact()
-
-        updateUI()
     }
 
     func challenge(id: Int)
@@ -393,8 +389,6 @@ class LocalPlayerActionController: PlayerActionController
         disableUI()
 
         player.challenge(gameController.game!.players[id].name)
-
-        updateUI()
     }
 
     func isPushed(die: DieView) -> Bool
