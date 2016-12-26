@@ -4,3 +4,7 @@
 [submodule "Packages/C7"]
 	path = Packages/C7
 	url = https://github.com/bluechill/C7.git
+[submodule "Soar"]
+	path = Soar
+	url = http://github.com/SoarGroup/Soar.git
+	branch = origin/develop
