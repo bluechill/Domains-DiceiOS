@@ -563,4 +563,44 @@ class PlayerTests: XCTestCase
         let action2 = ChallengeAction(player: "Bob", challengee: "Alice", challengeActionIndex: 1, correct: true)
         XCTAssertTrue(engine.history[1][2] == action2)
     }
+
+    func testIsValidBid2()
+    {
+        let engine = DiceLogicEngine(players: ["Alice", "Bob"])
+        guard let bob = engine.player("Bob") else { XCTFail(); return }
+
+        let onesAction = BidAction(player: "Alice", count: 1, face: 1, pushedDice: [], newDice: [], correct: true)
+
+        XCTAssertTrue(bob.isValidNonSpecialRulesBid(2, face: 1, lastBid: onesAction))
+        XCTAssertTrue(bob.isValidNonSpecialRulesBid(3, face: 2, lastBid: onesAction))
+        XCTAssertTrue(bob.isValidNonSpecialRulesBid(3, face: 6, lastBid: onesAction))
+
+        XCTAssertFalse(bob.isValidNonSpecialRulesBid(1, face: 1, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidNonSpecialRulesBid(1, face: 2, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidNonSpecialRulesBid(1, face: 6, lastBid: onesAction))
+
+        XCTAssertFalse(bob.isValidNonSpecialRulesBid(2, face: 2, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidNonSpecialRulesBid(2, face: 6, lastBid: onesAction))
+
+        XCTAssertTrue(bob.isValidSpecialRulesBid(2, face: 1, lastBid: onesAction))
+
+        XCTAssertFalse(bob.isValidSpecialRulesBid(1, face: 1, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidSpecialRulesBid(1, face: 2, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidSpecialRulesBid(1, face: 6, lastBid: onesAction))
+
+        XCTAssertFalse(bob.isValidSpecialRulesBid(2, face: 2, lastBid: onesAction))
+        XCTAssertFalse(bob.isValidSpecialRulesBid(2, face: 6, lastBid: onesAction))
+
+        bob.dice.removeSubrange(1...4)
+
+        XCTAssertFalse(bob.isValidSpecialRulesBid(1, face: 1, lastBid: onesAction))
+
+        XCTAssertTrue(bob.isValidSpecialRulesBid(2, face: 1, lastBid: onesAction))
+
+        XCTAssertTrue(bob.isValidSpecialRulesBid(1, face: 2, lastBid: onesAction))
+        XCTAssertTrue(bob.isValidSpecialRulesBid(1, face: 6, lastBid: onesAction))
+
+        XCTAssertTrue(bob.isValidSpecialRulesBid(2, face: 2, lastBid: onesAction))
+        XCTAssertTrue(bob.isValidSpecialRulesBid(2, face: 6, lastBid: onesAction))
+    }
 }

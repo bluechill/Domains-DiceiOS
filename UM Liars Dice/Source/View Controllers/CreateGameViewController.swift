@@ -171,6 +171,8 @@ class CreateGameViewController: UIViewController, UITableViewDataSource, UITable
                               animations: { self.customPlayerNamesTable.isHidden = hidden },
                               completion: nil)
         }
+
+        checkAndChangeCreate()
     }
 
     @IBAction func createGame(_ sender: UIButton)
