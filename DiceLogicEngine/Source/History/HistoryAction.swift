@@ -57,15 +57,15 @@ public class HistoryAction: HistoryItem
     {
         var array = super.asData().arrayValue!
 
-        array.append(.String(player))
-        array.append(.Bool(correct))
+        array.append(.string(player))
+        array.append(.bool(correct))
 
-        return .Array(array)
+        return .array(array)
     }
 
-    public override func isEqualTo(_ item: HistoryItem) -> Bool
+    public override func isEqual(_ item: Any?) -> Bool
     {
-        guard super.isEqualTo(item) else {
+        guard super.isEqual(item) else {
             return false
         }
 

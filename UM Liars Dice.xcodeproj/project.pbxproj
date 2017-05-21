@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D07A7A71EBF89F900DBB06C /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D07A7A61EBF89F900DBB06C /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D07AD541EBFCA7100DBB06C /* SoarAgent in Resources */ = {isa = PBXBuildFile; fileRef = 4D07AD531EBFCA7100DBB06C /* SoarAgent */; };
 		4D15926F1D67591100E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
 		4D15927B1D67591100E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
 		4D15927C1D67591100E6C87E /* MessagePack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,6 +40,12 @@
 		4D1592CE1D675A0D00E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
 		4D1592CF1D675A1100E6C87E /* MessagePack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1592661D67591100E6C87E /* MessagePack.framework */; };
 		4D2199371DE8E3E400152693 /* ReplaceSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2199361DE8E3E400152693 /* ReplaceSegue.swift */; };
+		4D22C2811ED1D90A00449E54 /* SoarPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D22C2781ED1D90A00449E54 /* SoarPlayer.framework */; };
+		4D22C2881ED1D90A00449E54 /* SoarPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D22C27A1ED1D90A00449E54 /* SoarPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D22C2901ED1D98F00449E54 /* SoarPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D8451861EBE3A8D001016F5 /* SoarPlayer.mm */; };
+		4D22C2911ED1DA0000449E54 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */; };
+		4D22C2921ED1DA0300449E54 /* libSoar-macOS.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D07AC151EBFBA0000DBB06C /* libSoar-macOS.dylib */; };
+		4D22C2951ED1DABD00449E54 /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D07A7A61EBF89F900DBB06C /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D2F49EE1CF75F5C0058BD7B /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49ED1CF75F5C0058BD7B /* GameCenterHelper.swift */; };
 		4D2F49F01CF7720F0058BD7B /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49EF1CF7720F0058BD7B /* NameGenerator.swift */; };
 		4D2F49F21CF772EF0058BD7B /* RandomRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2F49F11CF772EF0058BD7B /* RandomRange.swift */; };
@@ -55,9 +63,7 @@
 		4D342F811CF0BA05003DFE19 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F801CF0BA05003DFE19 /* GameViewController.swift */; };
 		4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F821CF21889003DFE19 /* CreateGameViewController.swift */; };
 		4D342F881CF2439A003DFE19 /* LocalPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D342F871CF2439A003DFE19 /* LocalPlayerViewController.swift */; };
-		4D3C4D4B1D6768F0009437CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D69D9161D67684C00E0D2A2 /* Foundation.framework */; };
 		4D46DD6D1D70A6BE008982D3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */; };
-		4D46DD7B1D70A6EC008982D3 /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D46DD7C1D70A6EC008982D3 /* DiceLogicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */; };
 		4D46DD7D1D70A6EC008982D3 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC01CE8DE01008041C3 /* Die.swift */; };
 		4D46DD7E1D70A6EC008982D3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */; };
@@ -148,10 +154,19 @@
 		4D46DE1C1D70A829008982D3 /* URIConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4AD1D675EC500A5279C /* URIConnection.swift */; };
 		4D46DE1D1D70A829008982D3 /* C7.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DADC4901D675E9100A5279C /* C7.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D46DE1E1D70A82E008982D3 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DADC4C51D675ED500A5279C /* ExampleTests.swift */; };
+		4D5B65ED1ED1E52C000F57FA /* SoarPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B65EC1ED1E52C000F57FA /* SoarPlayerTests.swift */; };
+		4D5B65EE1ED1E6E3000F57FA /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D46DD641D70A6BD008982D3 /* DiceLogicEngine.framework */; };
+		4D5B65EF1ED1E803000F57FA /* SoarAgent in Resources */ = {isa = PBXBuildFile; fileRef = 4D07AD531EBFCA7100DBB06C /* SoarAgent */; };
+		4D5B65FF1ED202F8000F57FA /* SoarPlayeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5B65F81ED202F8000F57FA /* SoarPlayeriOS.framework */; };
+		4D5B66001ED202F8000F57FA /* SoarPlayeriOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5B65F81ED202F8000F57FA /* SoarPlayeriOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D5B66041ED20309000F57FA /* SoarPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D22C27A1ED1D90A00449E54 /* SoarPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D5B66051ED2030D000F57FA /* SoarPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D8451861EBE3A8D001016F5 /* SoarPlayer.mm */; };
+		4D5B66061ED2039B000F57FA /* libSoar-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D07AC131EBFBA0000DBB06C /* libSoar-iOS.a */; };
+		4D5B66071ED203A0000F57FA /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; };
 		4D6494621CF33E2F00F4F498 /* ScrollPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */; };
 		4D6494641CF3578D00F4F498 /* DieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494631CF3578D00F4F498 /* DieView.swift */; };
 		4D6494671CF3623000F4F498 /* LiarsDiceColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */; };
-		4D7540B51E1D3FCA007CA76A /* libSoar-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DAF9EE61E10C24C0002F4F1 /* libSoar-iOS.a */; };
+		4D84517E1EBE3A6C001016F5 /* SoarPlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84517D1EBE3A6C001016F5 /* SoarPlayerActionController.swift */; };
 		4D8AE4631CEA2B290048CA56 /* InitialStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */; };
 		4D948B151D760D3F00827948 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D948B141D760D3F00827948 /* Collection.swift */; };
 		4D94C4851D5E3479009B4149 /* PlayerActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94C4841D5E3479009B4149 /* PlayerActionController.swift */; };
@@ -209,7 +224,6 @@
 		4DE93C971CE8DA99008041C3 /* Spotlight@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7B1CE8DA99008041C3 /* Spotlight@1x.png */; };
 		4DE93C981CE8DA99008041C3 /* Spotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */; };
 		4DE93C991CE8DA99008041C3 /* Spotlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */; };
-		4DE93CA31CE8DD79008041C3 /* DiceLogicEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DE93CAA1CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; };
 		4DE93CB11CE8DD79008041C3 /* DiceLogicEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */; };
 		4DE93CB51CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */; };
@@ -218,7 +232,6 @@
 		4DE93CC11CE8DE01008041C3 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC01CE8DE01008041C3 /* Die.swift */; };
 		4DE93CCA1CE8E23E008041C3 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CC91CE8E23E008041C3 /* ErrorHandling.swift */; };
 		4DE93CCC1CE8E6BF008041C3 /* DieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CCB1CE8E6BF008041C3 /* DieTests.swift */; };
-		4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE93CCE1CE8EAC8008041C3 /* GameplayKit.framework */; };
 		4DE93CD11CE8EB5A008041C3 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD01CE8EB5A008041C3 /* Random.swift */; };
 		4DE93CD41CE8F14D008041C3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD31CE8F14D008041C3 /* Player.swift */; };
 		4DE93CD71CE8F270008041C3 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE93CD61CE8F270008041C3 /* HistoryItem.swift */; };
@@ -250,6 +263,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4D07AC121EBFBA0000DBB06C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D07A8091EBFB5D300DBB06C;
+			remoteInfo = "Soar-iOS";
+		};
+		4D07AC141EBFBA0000DBB06C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D07A8161EBFB5F500DBB06C;
+			remoteInfo = "Soar-macOS";
+		};
+		4D07AC171EBFBA1000DBB06C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D07A8081EBFB5D300DBB06C;
+			remoteInfo = "Soar-iOS";
+		};
 		4D1592701D67591100E6C87E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
@@ -265,6 +299,20 @@
 			remoteInfo = "UM Liars Dice";
 		};
 		4D1592791D67591100E6C87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D1592651D67591100E6C87E;
+			remoteInfo = MessagePack;
+		};
+		4D22C2821ED1D90A00449E54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D22C2771ED1D90A00449E54;
+			remoteInfo = SoarPlayer;
+		};
+		4D22C2931ED1DAA200449E54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
 			proxyType = 1;
@@ -292,12 +340,12 @@
 			remoteGlobalIDString = 4D46DDEE1D70A7F5008982D3;
 			remoteInfo = C7OSX;
 		};
-		4D7540B61E1D3FD0007CA76A /* PBXContainerItemProxy */ = {
+		4D5B65FD1ED202F8000F57FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */;
+			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4D5105C01B2B41A80009AABC;
-			remoteInfo = Soar;
+			remoteGlobalIDString = 4D5B65F71ED202F8000F57FA;
+			remoteInfo = SoarPlayeriOS;
 		};
 		4DADC47B1D675E3200A5279C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -362,13 +410,6 @@
 			remoteGlobalIDString = 4D1A6AC11B6BC42F00B4D0B1;
 			remoteInfo = SoarRunner;
 		};
-		4DAF9EE51E10C24C0002F4F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4DAF9A721E10BF500002F4F1;
-			remoteInfo = "Soar-iOS";
-		};
 		4DE93C401CE8D7D4008041C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DE93C231CE8D7D4008041C3 /* Project object */;
@@ -427,6 +468,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4D5B66001ED202F8000F57FA /* SoarPlayeriOS.framework in Embed Frameworks */,
 				4DADC4871D675E3200A5279C /* C7.framework in Embed Frameworks */,
 				4DE93CB71CE8DD79008041C3 /* DiceLogicEngine.framework in Embed Frameworks */,
 				4D15927C1D67591100E6C87E /* MessagePack.framework in Embed Frameworks */,
@@ -437,6 +479,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D07A7A61EBF89F900DBB06C /* DiceLogicEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiceLogicEngine.h; path = DiceLogicEngine/Headers/DiceLogicEngine.h; sourceTree = SOURCE_ROOT; };
+		4D07AD531EBFCA7100DBB06C /* SoarAgent */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SoarAgent; sourceTree = "<group>"; };
 		4D1592661D67591100E6C87E /* MessagePack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MessagePack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D15926E1D67591100E6C87E /* MessagePackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessagePackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1592851D67598500E6C87E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -467,6 +511,11 @@
 		4D1592A71D6759A300E6C87E /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringTests.swift; path = Packages/MessagePack/Tests/MessagePack/StringTests.swift; sourceTree = SOURCE_ROOT; };
 		4D1592A81D6759A300E6C87E /* TrueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrueTests.swift; path = Packages/MessagePack/Tests/MessagePack/TrueTests.swift; sourceTree = SOURCE_ROOT; };
 		4D2199361DE8E3E400152693 /* ReplaceSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceSegue.swift; sourceTree = "<group>"; };
+		4D22C2781ED1D90A00449E54 /* SoarPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoarPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D22C27A1ED1D90A00449E54 /* SoarPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoarPlayer.h; sourceTree = "<group>"; };
+		4D22C27B1ED1D90A00449E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D22C2801ED1D90A00449E54 /* SoarPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoarPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D22C2871ED1D90A00449E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D2F49ED1CF75F5C0058BD7B /* GameCenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		4D2F49EF1CF7720F0058BD7B /* NameGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		4D2F49F11CF772EF0058BD7B /* RandomRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomRange.swift; sourceTree = "<group>"; };
@@ -497,10 +546,17 @@
 		4D46DDF21D70A7F5008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = C7OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D46DDFE1D70A7F5008982D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D5B65EB1ED1E52C000F57FA /* SoarPlayerTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoarPlayerTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D5B65EC1ED1E52C000F57FA /* SoarPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoarPlayerTests.swift; sourceTree = "<group>"; };
+		4D5B65F81ED202F8000F57FA /* SoarPlayeriOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoarPlayeriOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5B65FB1ED202F8000F57FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D6494611CF33E2F00F4F498 /* ScrollPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollPickerView.swift; sourceTree = "<group>"; };
 		4D6494631CF3578D00F4F498 /* DieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieView.swift; sourceTree = "<group>"; };
 		4D6494661CF3623000F4F498 /* LiarsDiceColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiarsDiceColors.swift; sourceTree = "<group>"; };
 		4D69D9161D67684C00E0D2A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4D84517D1EBE3A6C001016F5 /* SoarPlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoarPlayerActionController.swift; sourceTree = "<group>"; };
+		4D8451841EBE3A8D001016F5 /* UM Liars Dice-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UM Liars Dice-Bridging-Header.h"; sourceTree = "<group>"; };
+		4D8451861EBE3A8D001016F5 /* SoarPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoarPlayer.mm; path = "../UM Liars Dice/Source/PlayerActionControllers/SoarPlayer.mm"; sourceTree = "<group>"; };
 		4D8AE4621CEA2B290048CA56 /* InitialStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialStateTests.swift; sourceTree = "<group>"; };
 		4D948B141D760D3F00827948 /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4D94C4841D5E3479009B4149 /* PlayerActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerActionController.swift; sourceTree = "<group>"; };
@@ -567,7 +623,6 @@
 		4DE93C7C1CE8DA99008041C3 /* Spotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@2x.png"; sourceTree = "<group>"; };
 		4DE93C7D1CE8DA99008041C3 /* Spotlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spotlight@3x.png"; sourceTree = "<group>"; };
 		4DE93CA01CE8DD79008041C3 /* DiceLogicEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DiceLogicEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiceLogicEngine.h; sourceTree = "<group>"; };
 		4DE93CA41CE8DD79008041C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE93CA91CE8DD79008041C3 /* DiceLogicEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiceLogicEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE93CB01CE8DD79008041C3 /* DiceLogicEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceLogicEngineTests.swift; sourceTree = "<group>"; };
@@ -622,6 +677,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D22C2741ED1D90A00449E54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D22C2921ED1DA0300449E54 /* libSoar-macOS.dylib in Frameworks */,
+				4D22C2911ED1DA0000449E54 /* DiceLogicEngine.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D22C27D1ED1D90A00449E54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B65EE1ED1E6E3000F57FA /* DiceLogicEngine.framework in Frameworks */,
+				4D22C2811ED1D90A00449E54 /* SoarPlayer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D46DD601D70A6BD008982D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,6 +742,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D5B65F41ED202F8000F57FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B66071ED203A0000F57FA /* DiceLogicEngine.framework in Frameworks */,
+				4D5B66061ED2039B000F57FA /* libSoar-iOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DADC46D1D675E3200A5279C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -688,11 +770,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D7540B51E1D3FCA007CA76A /* libSoar-iOS.a in Frameworks */,
 				4D15927B1D67591100E6C87E /* MessagePack.framework in Frameworks */,
 				4DE93CB51CE8DD79008041C3 /* DiceLogicEngine.framework in Frameworks */,
 				4DADC4861D675E3200A5279C /* C7.framework in Frameworks */,
 				4D32285F1CEFE54C00BEE34E /* GameKit.framework in Frameworks */,
+				4D5B65FF1ED202F8000F57FA /* SoarPlayeriOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,9 +796,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D3C4D4B1D6768F0009437CF /* Foundation.framework in Frameworks */,
 				4D1592CE1D675A0D00E6C87E /* MessagePack.framework in Frameworks */,
-				4DE93CCF1CE8EAC8008041C3 /* GameplayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +862,26 @@
 				4D1592861D67598500E6C87E /* MessagePack.h */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		4D22C2791ED1D90A00449E54 /* SoarPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				4D22C27A1ED1D90A00449E54 /* SoarPlayer.h */,
+				4D8451861EBE3A8D001016F5 /* SoarPlayer.mm */,
+				4D22C27B1ED1D90A00449E54 /* Info.plist */,
+			);
+			path = SoarPlayer;
+			sourceTree = "<group>";
+		};
+		4D22C2841ED1D90A00449E54 /* SoarPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				4D5B65EC1ED1E52C000F57FA /* SoarPlayerTests.swift */,
+				4D22C2871ED1D90A00449E54 /* Info.plist */,
+				4D5B65EB1ED1E52C000F57FA /* SoarPlayerTests-Bridging-Header.h */,
+			);
+			path = SoarPlayerTests;
 			sourceTree = "<group>";
 		};
 		4D3228601CEFE88800BEE34E /* View Controllers */ = {
@@ -858,6 +958,14 @@
 			path = C7OSXTests;
 			sourceTree = SOURCE_ROOT;
 		};
+		4D5B65F91ED202F8000F57FA /* SoarPlayeriOS */ = {
+			isa = PBXGroup;
+			children = (
+				4D5B65FB1ED202F8000F57FA /* Info.plist */,
+			);
+			path = SoarPlayeriOS;
+			sourceTree = "<group>";
+		};
 		4D6494651CF3621C00F4F498 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -879,6 +987,8 @@
 				4D94C4841D5E3479009B4149 /* PlayerActionController.swift */,
 				4D94C4861D5E36DA009B4149 /* RemotePlayerActionController.swift */,
 				4D94C48C1D5F6B9C009B4149 /* LocalPlayerActionController.swift */,
+				4D84517D1EBE3A6C001016F5 /* SoarPlayerActionController.swift */,
+				4D8451841EBE3A8D001016F5 /* UM Liars Dice-Bridging-Header.h */,
 			);
 			path = PlayerActionControllers;
 			sourceTree = "<group>";
@@ -944,7 +1054,8 @@
 				4DAF9A371E10BCC20002F4F1 /* JSoar-UnitTests */,
 				4DAF9A391E10BCC20002F4F1 /* Prototype-UnitTesting-XCTest.xctest */,
 				4DAF9A3B1E10BCC20002F4F1 /* SoarRunner */,
-				4DAF9EE61E10C24C0002F4F1 /* libSoar-iOS.a */,
+				4D07AC131EBFBA0000DBB06C /* libSoar-iOS.a */,
+				4D07AC151EBFBA0000DBB06C /* libSoar-macOS.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -955,6 +1066,9 @@
 				4DAF9A271E10BCC20002F4F1 /* Soar-xcode.xcodeproj */,
 				4D1592671D67591100E6C87E /* MessagePack */,
 				4DADC4721D675E3200A5279C /* C7 */,
+				4D22C2791ED1D90A00449E54 /* SoarPlayer */,
+				4D22C2841ED1D90A00449E54 /* SoarPlayerTests */,
+				4D5B65F91ED202F8000F57FA /* SoarPlayeriOS */,
 				4DE93CCD1CE8EABC008041C3 /* Frameworks */,
 				4DF5F8C91D661602002438CC /* Resources */,
 				4DE93C2D1CE8D7D4008041C3 /* UM Liars Dice */,
@@ -984,6 +1098,9 @@
 				4D46DDC11D70A755008982D3 /* MessagePackOSXTests.xctest */,
 				4D46DDEF1D70A7F5008982D3 /* C7.framework */,
 				4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */,
+				4D22C2781ED1D90A00449E54 /* SoarPlayer.framework */,
+				4D22C2801ED1D90A00449E54 /* SoarPlayerTests.xctest */,
+				4D5B65F81ED202F8000F57FA /* SoarPlayeriOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1061,7 +1178,7 @@
 				4D46DD651D70A6BD008982D3 /* DiceLogicEngineOSX */,
 				4DE93D061CEA282C008041C3 /* Extensions */,
 				4DE93CD51CE8F257008041C3 /* History */,
-				4DE93CA21CE8DD79008041C3 /* DiceLogicEngine.h */,
+				4D07A7A61EBF89F900DBB06C /* DiceLogicEngine.h */,
 				4DE93CA41CE8DD79008041C3 /* Info.plist */,
 				4DE93CBE1CE8DDCE008041C3 /* DiceLogicEngine.swift */,
 				4DE93CC01CE8DE01008041C3 /* Die.swift */,
@@ -1143,6 +1260,7 @@
 		4DF5F8C91D661602002438CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D07AD531EBFCA7100DBB06C /* SoarAgent */,
 				4DE93C601CE8DA99008041C3 /* HTML */,
 				4DE93C631CE8DA99008041C3 /* Images */,
 			);
@@ -1161,11 +1279,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D22C2751ED1D90A00449E54 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D22C2881ED1D90A00449E54 /* SoarPlayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4D46DD611D70A6BD008982D3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D46DD7B1D70A6EC008982D3 /* DiceLogicEngine.h in Headers */,
+				4D22C2951ED1DABD00449E54 /* DiceLogicEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,6 +1311,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D5B65F51ED202F8000F57FA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B66041ED20309000F57FA /* SoarPlayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DADC46E1D675E3200A5279C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1197,7 +1331,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DE93CA31CE8DD79008041C3 /* DiceLogicEngine.h in Headers */,
+				4D07A7A71EBF89F900DBB06C /* DiceLogicEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1239,6 +1373,42 @@
 			name = MessagePackTests;
 			productName = MessagePackTests;
 			productReference = 4D15926E1D67591100E6C87E /* MessagePackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4D22C2771ED1D90A00449E54 /* SoarPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D22C2891ED1D90A00449E54 /* Build configuration list for PBXNativeTarget "SoarPlayer" */;
+			buildPhases = (
+				4D22C2731ED1D90A00449E54 /* Sources */,
+				4D22C2741ED1D90A00449E54 /* Frameworks */,
+				4D22C2751ED1D90A00449E54 /* Headers */,
+				4D22C2761ED1D90A00449E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoarPlayer;
+			productName = SoarPlayer;
+			productReference = 4D22C2781ED1D90A00449E54 /* SoarPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4D22C27F1ED1D90A00449E54 /* SoarPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D22C28C1ED1D90A00449E54 /* Build configuration list for PBXNativeTarget "SoarPlayerTests" */;
+			buildPhases = (
+				4D22C27C1ED1D90A00449E54 /* Sources */,
+				4D22C27D1ED1D90A00449E54 /* Frameworks */,
+				4D22C27E1ED1D90A00449E54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D22C2831ED1D90A00449E54 /* PBXTargetDependency */,
+			);
+			name = SoarPlayerTests;
+			productName = SoarPlayerTests;
+			productReference = 4D22C2801ED1D90A00449E54 /* SoarPlayerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		4D46DD631D70A6BD008982D3 /* DiceLogicEngineOSX */ = {
@@ -1351,6 +1521,24 @@
 			productReference = 4D46DDF71D70A7F5008982D3 /* C7OSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		4D5B65F71ED202F8000F57FA /* SoarPlayeriOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D5B66011ED202F8000F57FA /* Build configuration list for PBXNativeTarget "SoarPlayeriOS" */;
+			buildPhases = (
+				4D5B65F31ED202F8000F57FA /* Sources */,
+				4D5B65F41ED202F8000F57FA /* Frameworks */,
+				4D5B65F51ED202F8000F57FA /* Headers */,
+				4D5B65F61ED202F8000F57FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoarPlayeriOS;
+			productName = SoarPlayeriOS;
+			productReference = 4D5B65F81ED202F8000F57FA /* SoarPlayeriOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		4DADC4701D675E3200A5279C /* C7 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DADC4881D675E3200A5279C /* Build configuration list for PBXNativeTarget "C7" */;
@@ -1401,10 +1589,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				4D7540B71E1D3FD0007CA76A /* PBXTargetDependency */,
+				4D07AC181EBFBA1000DBB06C /* PBXTargetDependency */,
 				4DE93CB41CE8DD79008041C3 /* PBXTargetDependency */,
 				4D15927A1D67591100E6C87E /* PBXTargetDependency */,
 				4DADC4851D675E3200A5279C /* PBXTargetDependency */,
+				4D5B65FE1ED202F8000F57FA /* PBXTargetDependency */,
 			);
 			name = "UM Liars Dice";
 			productName = "UM Liars Dice";
@@ -1460,6 +1649,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4D22C2941ED1DAA200449E54 /* PBXTargetDependency */,
 			);
 			name = DiceLogicEngine;
 			productName = DiceLogicEngine;
@@ -1507,6 +1697,17 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4DE93C2A1CE8D7D4008041C3;
 					};
+					4D22C2771ED1D90A00449E54 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = PG6DD9A3H4;
+						ProvisioningStyle = Automatic;
+					};
+					4D22C27F1ED1D90A00449E54 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = PG6DD9A3H4;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
 					4D46DD631D70A6BD008982D3 = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Manual;
@@ -1534,6 +1735,11 @@
 						DevelopmentTeam = PG6DD9A3H4;
 						ProvisioningStyle = Automatic;
 					};
+					4D5B65F71ED202F8000F57FA = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = PG6DD9A3H4;
+						ProvisioningStyle = Automatic;
+					};
 					4DADC4701D675E3200A5279C = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = PG6DD9A3H4;
@@ -1548,7 +1754,7 @@
 					4DE93C2A1CE8D7D4008041C3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = PG6DD9A3H4;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -1613,11 +1819,28 @@
 				4D46DDC01D70A755008982D3 /* MessagePackOSXTests */,
 				4D46DDEE1D70A7F5008982D3 /* C7OSX */,
 				4D46DDF61D70A7F5008982D3 /* C7OSXTests */,
+				4D22C2771ED1D90A00449E54 /* SoarPlayer */,
+				4D22C27F1ED1D90A00449E54 /* SoarPlayerTests */,
+				4D5B65F71ED202F8000F57FA /* SoarPlayeriOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		4D07AC131EBFBA0000DBB06C /* libSoar-iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSoar-iOS.a";
+			remoteRef = 4D07AC121EBFBA0000DBB06C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4D07AC151EBFBA0000DBB06C /* libSoar-macOS.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = "libSoar-macOS.dylib";
+			remoteRef = 4D07AC141EBFBA0000DBB06C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		4DAF9A311E10BCC20002F4F1 /* libSoar.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
@@ -1660,13 +1883,6 @@
 			remoteRef = 4DAF9A3A1E10BCC20002F4F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4DAF9EE61E10C24C0002F4F1 /* libSoar-iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libSoar-iOS.a";
-			remoteRef = 4DAF9EE51E10C24C0002F4F1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1678,6 +1894,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4D15926C1D67591100E6C87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D22C2761ED1D90A00449E54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B65EF1ED1E803000F57FA /* SoarAgent in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D22C27E1ED1D90A00449E54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1726,6 +1957,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D5B65F61ED202F8000F57FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DADC46F1D675E3200A5279C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1761,6 +1999,7 @@
 				4DE93C361CE8D7D4008041C3 /* Assets.xcassets in Resources */,
 				4DE93C931CE8DA99008041C3 /* iTunesArtwork.png in Resources */,
 				4DE93C341CE8D7D4008041C3 /* Main.storyboard in Resources */,
+				4D07AD541EBFCA7100DBB06C /* SoarAgent in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,6 +2100,22 @@
 				4D1592BB1D6759A900E6C87E /* ArrayTests.swift in Sources */,
 				4D1592C51D6759A900E6C87E /* FloatTests.swift in Sources */,
 				4D1592CA1D6759A900E6C87E /* NilTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D22C2731ED1D90A00449E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D22C2901ED1D98F00449E54 /* SoarPlayer.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D22C27C1ED1D90A00449E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B65ED1ED1E52C000F57FA /* SoarPlayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1992,6 +2247,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D5B65F31ED202F8000F57FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5B66051ED2030D000F57FA /* SoarPlayer.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DADC46C1D675E3200A5279C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2054,6 +2317,7 @@
 				4D342F7F1CF0B3EC003DFE19 /* PlayViewController.swift in Sources */,
 				4D342F831CF21889003DFE19 /* CreateGameViewController.swift in Sources */,
 				4D94C4871D5E36DA009B4149 /* RemotePlayerActionController.swift in Sources */,
+				4D84517E1EBE3A6C001016F5 /* SoarPlayerActionController.swift in Sources */,
 				4D2F49F41CF77E3A0058BD7B /* Shuffle.swift in Sources */,
 				4D9EF4E41DE8A78C007FD971 /* RoundOverviewController.swift in Sources */,
 			);
@@ -2130,6 +2394,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4D07AC181EBFBA1000DBB06C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Soar-iOS";
+			targetProxy = 4D07AC171EBFBA1000DBB06C /* PBXContainerItemProxy */;
+		};
 		4D1592711D67591100E6C87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4D1592651D67591100E6C87E /* MessagePack */;
@@ -2144,6 +2413,16 @@
 			isa = PBXTargetDependency;
 			target = 4D1592651D67591100E6C87E /* MessagePack */;
 			targetProxy = 4D1592791D67591100E6C87E /* PBXContainerItemProxy */;
+		};
+		4D22C2831ED1D90A00449E54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D22C2771ED1D90A00449E54 /* SoarPlayer */;
+			targetProxy = 4D22C2821ED1D90A00449E54 /* PBXContainerItemProxy */;
+		};
+		4D22C2941ED1DAA200449E54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4D1592651D67591100E6C87E /* MessagePack */;
+			targetProxy = 4D22C2931ED1DAA200449E54 /* PBXContainerItemProxy */;
 		};
 		4D46DD6F1D70A6BE008982D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2160,10 +2439,10 @@
 			target = 4D46DDEE1D70A7F5008982D3 /* C7OSX */;
 			targetProxy = 4D46DDF91D70A7F5008982D3 /* PBXContainerItemProxy */;
 		};
-		4D7540B71E1D3FD0007CA76A /* PBXTargetDependency */ = {
+		4D5B65FE1ED202F8000F57FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Soar;
-			targetProxy = 4D7540B61E1D3FD0007CA76A /* PBXContainerItemProxy */;
+			target = 4D5B65F71ED202F8000F57FA /* SoarPlayeriOS */;
+			targetProxy = 4D5B65FD1ED202F8000F57FA /* PBXContainerItemProxy */;
 		};
 		4DADC47C1D675E3200A5279C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2323,6 +2602,103 @@
 			};
 			name = Release;
 		};
+		4D22C28A1ED1D90A00449E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SoarPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Soar/Core/**";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D22C28B1ED1D90A00449E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SoarPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Soar/Core/**";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4D22C28D1ED1D90A00449E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = SoarPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SoarPlayerTests/SoarPlayerTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4D22C28E1ED1D90A00449E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				INFOPLIST_FILE = SoarPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "SoarPlayerTests/SoarPlayerTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		4D46DD761D70A6BE008982D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2347,7 +2723,6 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2375,7 +2750,6 @@
 				PRODUCT_NAME = DiceLogicEngine;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2605,6 +2979,56 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.C7OSXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4D5B66021ED202F8000F57FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SoarPlayeriOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Soar/Core/**";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4D5B66031ED202F8000F57FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PG6DD9A3H4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SoarPlayeriOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.SoarPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Soar/Core/**";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -2926,7 +3350,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2951,7 +3374,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.DiceLogicEngine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2998,6 +3420,24 @@
 			buildConfigurations = (
 				4D1592811D67591100E6C87E /* Debug */,
 				4D1592821D67591100E6C87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D22C2891ED1D90A00449E54 /* Build configuration list for PBXNativeTarget "SoarPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D22C28A1ED1D90A00449E54 /* Debug */,
+				4D22C28B1ED1D90A00449E54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D22C28C1ED1D90A00449E54 /* Build configuration list for PBXNativeTarget "SoarPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D22C28D1ED1D90A00449E54 /* Debug */,
+				4D22C28E1ED1D90A00449E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3055,6 +3495,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4D5B66011ED202F8000F57FA /* Build configuration list for PBXNativeTarget "SoarPlayeriOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D5B66021ED202F8000F57FA /* Debug */,
+				4D5B66031ED202F8000F57FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		4DADC4881D675E3200A5279C /* Build configuration list for PBXNativeTarget "C7" */ = {
 			isa = XCConfigurationList;

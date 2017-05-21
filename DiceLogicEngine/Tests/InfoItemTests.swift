@@ -37,11 +37,11 @@ class PlayerInfoItemTests: XCTestCase
         XCTAssertTrue(action == action_restore)
 
         XCTAssertNil(PlayerInfoItem(data: []))
-        XCTAssertNil(PlayerInfoItem(data: [.Int(-1)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.invalid.rawValue)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.playerInfoItem.rawValue)]))
-        XCTAssertNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.playerInfoItem.rawValue), .Int(0)]))
-        XCTAssertNotNil(PlayerInfoItem(data: [.UInt(HistoryItem.HIType.playerInfoItem.rawValue), "Alice"]))
+        XCTAssertNil(PlayerInfoItem(data: [.int(-1)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uint(HistoryItem.HIType.invalid.rawValue)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uint(HistoryItem.HIType.playerInfoItem.rawValue)]))
+        XCTAssertNil(PlayerInfoItem(data: [.uint(HistoryItem.HIType.playerInfoItem.rawValue), .int(0)]))
+        XCTAssertNotNil(PlayerInfoItem(data: [.uint(HistoryItem.HIType.playerInfoItem.rawValue), "Alice"]))
     }
 
     func testEquality()

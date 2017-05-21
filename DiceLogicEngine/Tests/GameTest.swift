@@ -261,7 +261,8 @@ class GameTest: XCTestCase
 
         do
         {
-            bytesUnpacked = try unpack(data)
+            let pair = try unpack(data)
+            bytesUnpacked = pair.value
         }
         catch
         {

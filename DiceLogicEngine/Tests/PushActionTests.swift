@@ -53,15 +53,15 @@ class PushActionTests: XCTestCase
 
         XCTAssertTrue(item == item_restore)
 
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false)]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), -1]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [-1, -2, -3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], -1]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], [-1, -2, -3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), "S", [0, 1,2, 3]]))
-        XCTAssertNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [-1, 1,2, 3], [0, 1,2, 3]]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false)]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), -1]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [-1, -2, -3]]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [], -1]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [], [-1, -2, -3]]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), "S", [0, 1,2, 3]]))
+        XCTAssertNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [-1, 1,2, 3], [0, 1,2, 3]]))
 
-        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [], []]))
-        XCTAssertNotNil(PushAction(data: [.UInt(HistoryItem.HIType.pushAction.rawValue), "Alice", .Bool(false), [0, 1,2, 3], [0, 1,2, 3]]))
+        XCTAssertNotNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [], []]))
+        XCTAssertNotNil(PushAction(data: [.uint(HistoryItem.HIType.pushAction.rawValue), "Alice", .bool(false), [0, 1,2, 3], [0, 1,2, 3]]))
     }
 }

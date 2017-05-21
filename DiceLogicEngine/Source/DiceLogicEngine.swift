@@ -15,7 +15,7 @@ public protocol DiceObserver
     func diceLogicRoundWillEnd(_ engine: DiceLogicEngine)
 }
 
-public class DiceLogicEngine: Equatable
+public class DiceLogicEngine: NSObject
 {
     public internal(set) var players = [Player]()
     public internal(set) var history = [[HistoryItem]]()
@@ -27,6 +27,8 @@ public class DiceLogicEngine: Equatable
 
     public init(players: [String], start: Bool = true)
     {
+        super.init()
+
         self.players = players.map{ Player(
             name: $0,
             dice: [Die(), Die(), Die(), Die(), Die()],
@@ -105,6 +107,8 @@ public class DiceLogicEngine: Equatable
 
     required public init?(data: Foundation.Data)
     {
+        super.init()
+
         guard updateWithData(data) else {
             return nil
         }
@@ -112,6 +116,8 @@ public class DiceLogicEngine: Equatable
 
     internal init?(data: MessagePackValue)
     {
+        super.init()
+
         guard updateWithData(data) else {
             return nil
         }
@@ -220,7 +226,8 @@ public extension DiceLogicEngine
 
         do
         {
-            data = try unpack(nsdata)
+            let pair = try unpack(nsdata)
+            data = pair.value
         }
         catch
         {
@@ -383,18 +390,22 @@ public extension DiceLogicEngine
 
     public func asData() -> Foundation.Data
     {
-        let playersMap: [MessagePackValue] = self.players.map{ .String($0.name) }
-        let playerUserDataMap: [MessagePackValue] = self.players.map{ .Map($0.userDataAsMsgPack()) }
+        let playersMap: [MessagePackValue] = self.players.map{ .string($0.name) }
+        let playerUserDataMap: [MessagePackValue] = self.players.map{ .map($0.userDataAsMsgPack()) }
 
-        let historyMap: [MessagePackValue] = self.history.map{ .Array($0.map{ $0.asData() }) }
+        let historyMap: [MessagePackValue] = self.history.map{ .array($0.map{ $0.asData() }) }
 
-        let value = MessagePackValue.Array([.Array(playersMap),
-                                            .Array(playerUserDataMap),
-                                            .String(currentTurn!.name),
-                                            .Array(historyMap)])
+        let value = MessagePackValue.array([.array(playersMap),
+                                            .array(playerUserDataMap),
+                                            .string(currentTurn!.name),
+                                            .array(historyMap)])
 
         let data = pack(value)
-        return Foundation.Data(bytes: data.bytes)
+        let ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
+        data.copyBytes(to: ptr, count: data.count)
+        let result = Foundation.Data(bytes: ptr, count: data.count)
+        ptr.deallocate(capacity: data.count)
+        return result
     }
 }
 
@@ -598,6 +609,40 @@ internal extension DiceLogicEngine
     }
 }
 
+// Equality
+public extension DiceLogicEngine
+{
+    override public func isEqual(_ object: Any?) -> Bool {
+        if (object is DiceLogicEngine)
+        {
+            let lhs = self;
+            let rhs = (object as! DiceLogicEngine);
+
+            // Player == will fail for two different engines, special case it since it
+            //  will definitely fail here
+            for (p1, p2) in zip(lhs.players, rhs.players)
+            {
+                if p1.name != p2.name || p1.dice != p2.dice
+                {
+                    return false
+                }
+            }
+
+            let lhsCTName = lhs.currentTurn?.name
+            let rhsCTName = rhs.currentTurn?.name
+            
+            return lhs.history == rhs.history && lhsCTName == rhsCTName
+        }
+
+        return false;
+    }
+}
+
+public func == (lhs: DiceLogicEngine, rhs: DiceLogicEngine) -> Bool
+{
+    return lhs.isEqual(rhs);
+}
+
 public func == (lhs: [[HistoryItem]], rhs: [[HistoryItem]]) -> Bool
 {
     guard lhs.count == rhs.count else {
@@ -619,22 +664,4 @@ public func == (lhs: [[HistoryItem]], rhs: [[HistoryItem]]) -> Bool
     }
 
     return true
-}
-
-public func == (lhs: DiceLogicEngine, rhs: DiceLogicEngine) -> Bool
-{
-    // Player == will fail for two different engines, special case it since it
-    //  will definitely fail here
-    for (p1, p2) in zip(lhs.players, rhs.players)
-    {
-        if p1.name != p2.name || p1.dice != p2.dice
-        {
-            return false
-        }
-    }
-
-    let lhsCTName = lhs.currentTurn?.name
-    let rhsCTName = rhs.currentTurn?.name
-
-    return lhs.history == rhs.history && lhsCTName == rhsCTName
 }

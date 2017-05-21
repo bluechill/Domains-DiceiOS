@@ -69,15 +69,15 @@ public class BidAction: PushAction
     {
         var array = super.asData().arrayValue!
 
-        array.append(.UInt(UInt64(count)))
-        array.append(.UInt(UInt64(face)))
+        array.append(.uint(UInt64(count)))
+        array.append(.uint(UInt64(face)))
 
-        return .Array(array)
+        return .array(array)
     }
 
-    public override func isEqualTo(_ item: HistoryItem) -> Bool
+    public override func isEqual(_ item: Any?) -> Bool
     {
-        guard super.isEqualTo(item) else {
+        guard super.isEqual(item) else {
             return false
         }
 

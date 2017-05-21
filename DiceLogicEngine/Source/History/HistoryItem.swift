@@ -9,7 +9,7 @@
 import Foundation
 import MessagePack
 
-public class HistoryItem: Equatable, Serializable
+public class HistoryItem: NSObject, Serializable
 {
     static let itemMaxKey: Int = 0
     static private let typeKey: Int = 0
@@ -117,16 +117,22 @@ public class HistoryItem: Equatable, Serializable
 
     public func asData() -> MessagePackValue
     {
-        return .Array([.UInt(self.type.rawValue)])
+        return .array([.uint(self.type.rawValue)])
     }
 
-    public func isEqualTo(_ item: HistoryItem) -> Bool
+    override public func isEqual(_ object: Any?) -> Bool
     {
-        return self.type == item.type
+        if (object is HistoryItem)
+        {
+            let rhs = (object as! HistoryItem)
+            return self.type == rhs.type
+        }
+
+        return false;
     }
 }
 
 public func == (lhs: HistoryItem, rhs: HistoryItem) -> Bool
 {
-    return lhs.isEqualTo(rhs)
+    return lhs.isEqual(rhs)
 }

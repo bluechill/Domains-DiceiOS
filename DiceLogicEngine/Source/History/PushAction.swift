@@ -77,15 +77,15 @@ public class PushAction: HistoryAction
     {
         var array = super.asData().arrayValue!
 
-        array.append(.Array(pushedDice.map{ .UInt(UInt64($0)) }))
-        array.append(.Array(newDice.map{ .UInt(UInt64($0)) }))
+        array.append(.array(pushedDice.map{ .uint(UInt64($0)) }))
+        array.append(.array(newDice.map{ .uint(UInt64($0)) }))
 
-        return .Array(array)
+        return .array(array)
     }
 
-    public override func isEqualTo(_ item: HistoryItem) -> Bool
+    public override func isEqual(_ item: Any?) -> Bool
     {
-        guard super.isEqualTo(item) else {
+        guard super.isEqual(item) else {
             return false
         }
 

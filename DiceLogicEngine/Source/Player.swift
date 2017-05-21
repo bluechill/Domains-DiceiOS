@@ -9,7 +9,7 @@
 import Foundation
 import MessagePack
 
-public class Player: Equatable
+public class Player: NSObject
 {
     static public let startingDice = 5
 
@@ -25,7 +25,7 @@ public class Player: Equatable
         {
             if key == "AI"
             {
-                result[.String(key)] = true
+                result[.string(key)] = true
             }
             else if key == "GCID"
             {
@@ -33,14 +33,14 @@ public class Player: Equatable
                     continue
                 }
 
-                result[.String(key)] = .String(value)
+                result[.string(key)] = .string(value)
             }
         }
 
         return result
     }
 
-    weak var engine: DiceLogicEngine?
+    public weak var engine: DiceLogicEngine?
 
     init(name: String, dice: Array<Die> = [], engine: DiceLogicEngine? = nil)
     {
@@ -544,10 +544,22 @@ public class Player: Equatable
             engine.playerLosesRound(self.name)
         }
     }
+
+    override public func isEqual(_ object: Any?) -> Bool {
+        // engine === to check whether it is the same instance of the class
+        if (object is Player)
+        {
+            let lhs = self
+            let rhs = (object as! Player)
+
+            return lhs.dice == rhs.dice && lhs.name == rhs.name && lhs.engine === rhs.engine
+        }
+
+        return false;
+    }
 }
 
 public func == (lhs: Player, rhs: Player) -> Bool
 {
-    // engine === to check whether it is the same instance of the class
-    return lhs.dice == rhs.dice && lhs.name == rhs.name && lhs.engine === rhs.engine
+    return lhs.isEqual(rhs)
 }

@@ -44,18 +44,18 @@ class SpecialRulesInEffectTests: XCTestCase
         XCTAssertTrue(action.player == "Alice")
 
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.invalid.rawValue)
+            .uint(HistoryItem.HIType.invalid.rawValue)
         ]))
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.invalid.rawValue),
-            .Int(1)
+            .uint(HistoryItem.HIType.invalid.rawValue),
+            .int(1)
         ]))
         XCTAssertNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.specialRulesInEffect.rawValue),
-            .Int(1)
+            .uint(HistoryItem.HIType.specialRulesInEffect.rawValue),
+            .int(1)
         ]))
         XCTAssertNotNil(SpecialRulesInEffect(data: [
-            .UInt(HistoryItem.HIType.specialRulesInEffect.rawValue),
+            .uint(HistoryItem.HIType.specialRulesInEffect.rawValue),
             "Alice"
         ]))
     }

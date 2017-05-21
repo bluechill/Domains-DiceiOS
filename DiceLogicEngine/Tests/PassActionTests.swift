@@ -43,17 +43,17 @@ class PassActionTests: XCTestCase
         XCTAssertTrue(action == action_restored)
 
         XCTAssertNil(PassAction(data: [
-            .UInt(HistoryItem.HIType.invalid.rawValue),
-            .String("Alice"),
-            .Bool(true),
+            .uint(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true),
             [],
             []
             ]))
 
         XCTAssertNotNil(PassAction(data: [
-            .UInt(HistoryItem.HIType.passAction.rawValue),
-            .String("Alice"),
-            .Bool(true),
+            .uint(HistoryItem.HIType.passAction.rawValue),
+            .string("Alice"),
+            .bool(true),
             [],
             []
             ]))

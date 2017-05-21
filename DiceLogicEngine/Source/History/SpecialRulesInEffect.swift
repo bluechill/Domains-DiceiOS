@@ -46,21 +46,21 @@ public class SpecialRulesInEffect: HistoryItem
     {
         var array = super.asData().arrayValue!
 
-        array.append(.String(player))
+        array.append(.string(player))
 
-        return .Array(array)
+        return .array(array)
     }
 
-    public override func isEqualTo(_ item: HistoryItem) -> Bool
+    public override func isEqual(_ item: Any?) -> Bool
     {
-        guard super.isEqualTo(item) else {
+        guard super.isEqual(item) else {
             return false
         }
 
         guard let item = (item as? SpecialRulesInEffect) else {
             return false
         }
-
+        
         return item.player == player
     }
 }

@@ -9,11 +9,13 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet var difficulty: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        difficulty.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "difficulty")
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +24,8 @@ class SettingsViewController: UIViewController {
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func changedDifficulty(_ sender: UISegmentedControl)
+    {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "difficulty")
     }
-    */
-
 }

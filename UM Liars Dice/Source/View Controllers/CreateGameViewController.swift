@@ -191,8 +191,10 @@ class CreateGameViewController: UIViewController, UITableViewDataSource, UITable
 
         var players: [String:PlayerActionController] = ["Human " + String(playerCount): localActionController]
 
-        for _ in 0..<Int(aiOpponentsStepper.value)
-        {} // TODO: AI
+        for i in 0..<Int(aiOpponentsStepper.value)
+        {
+            players["AI " + String(i)] = SoarPlayerActionController()
+        }
 
         for _ in 0..<Int(humanOpponentsStepper.value)
         {

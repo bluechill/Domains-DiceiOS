@@ -9,7 +9,7 @@
 import Foundation
 import MessagePack
 
-public class Die: Equatable, Serializable
+public class Die: NSObject, Serializable
 {
     static private let faceKey = 0
     static private let pushedKey = 1
@@ -45,20 +45,26 @@ public class Die: Equatable, Serializable
 
     public var pushed: Bool = false
 
-    init()
+    override init()
     {
+        super.init()
+
         self.face = UInt(Random.random.nextInt())
         self.pushed = false
     }
 
     init(face: UInt, pushed: Bool = false)
     {
+        super.init()
+
         self.face = face
         self.pushed = pushed
     }
 
     required public init(data: MessagePackValue)
     {
+        super.init()
+
         guard let dieArray = data.arrayValue else {
             ErrorHandling.error("Bad data passed to Die initializer: data is not an array")
             return
@@ -87,8 +93,8 @@ public class Die: Equatable, Serializable
 
     public func asData() -> MessagePackValue
     {
-        let array: [MessagePackValue] = [.UInt(UInt64(self.face)), .Bool(self.pushed)]
-        return .Array(array)
+        let array: [MessagePackValue] = [.uint(UInt64(self.face)), .bool(self.pushed)]
+        return .array(array)
     }
 
     func roll()
@@ -96,16 +102,35 @@ public class Die: Equatable, Serializable
         self.face = UInt(Random.random.nextInt())
         self.pushed = false
     }
+
+    override public func isEqual(_ object: Any?) -> Bool {
+        let lhs = self
+
+        if (object is Die)
+        {
+            let rhs = (object as! Die)
+
+            return lhs.face == rhs.face && lhs.pushed == rhs.pushed
+        }
+        else if (object is UInt)
+        {
+            let rhs = (object as! UInt)
+
+            return lhs.face == rhs && lhs.pushed == false
+        }
+
+        return false;
+    }
 }
 
 public func == (lhs: Die, rhs: Die) -> Bool
 {
-    return lhs.face == rhs.face && lhs.pushed == rhs.pushed
+    return lhs.isEqual(rhs)
 }
 
 public func == (lhs: Die, rhs: UInt) -> Bool
 {
-    return lhs.face == rhs && lhs.pushed == false
+    return lhs.isEqual(rhs)
 }
 
 public func == (lhs: UInt, rhs: Die) -> Bool

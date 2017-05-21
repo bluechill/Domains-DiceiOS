@@ -91,69 +91,69 @@ class BidActionTests: XCTestCase
 
         XCTAssertTrue(item == item_restore)
 
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       []]))
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       1]))
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       -1]))
 
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       1,
                                       -1]))
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       -1,
                                       -1]))
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       -1,
                                       1]))
 
-        XCTAssertNil(BidAction(data: [.UInt(HistoryItem.HIType.invalid.rawValue),
+        XCTAssertNil(BidAction(data: [.uint(HistoryItem.HIType.invalid.rawValue),
                                       "Alice",
-                                      .Bool(false),
+                                      .bool(false),
                                       [],
                                       [],
                                       1,
                                       2]))
 
-        XCTAssertNotNil(BidAction(data: [.UInt(HistoryItem.HIType.bidAction.rawValue),
+        XCTAssertNotNil(BidAction(data: [.uint(HistoryItem.HIType.bidAction.rawValue),
                                          "Alice",
-                                         .Bool(false),
+                                         .bool(false),
                                          [],
                                          [],
                                          1,
                                          2]))
 
         XCTAssertNil(BidAction(data: [
-            .UInt(HistoryItem.HIType.invalid.rawValue),
-            .String("Alice"),
-            .Bool(true),
+            .uint(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true),
             [],
-            .UInt(1),
-            .UInt(1)
+            .uint(1),
+            .uint(1)
             ]))
     }
 }

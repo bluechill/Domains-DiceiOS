@@ -53,19 +53,19 @@ class ChallengeActionTests: XCTestCase
 
         XCTAssertTrue(item == item_restore)
 
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.challengeAction.rawValue), "Alice", .Bool(false)]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.challengeAction.rawValue), "Alice", .Bool(false), "Bob"]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.challengeAction.rawValue), "Alice", .Bool(false), .Int(5), .Int(1)]))
-        XCTAssertNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.challengeAction.rawValue), "Alice", .Bool(false), "Bob", "a"]))
+        XCTAssertNil(ChallengeAction(data: [.uint(HistoryItem.HIType.challengeAction.rawValue), "Alice", .bool(false)]))
+        XCTAssertNil(ChallengeAction(data: [.uint(HistoryItem.HIType.challengeAction.rawValue), "Alice", .bool(false), "Bob"]))
+        XCTAssertNil(ChallengeAction(data: [.uint(HistoryItem.HIType.challengeAction.rawValue), "Alice", .bool(false), .int(5), .int(1)]))
+        XCTAssertNil(ChallengeAction(data: [.uint(HistoryItem.HIType.challengeAction.rawValue), "Alice", .bool(false), "Bob", "a"]))
 
-        XCTAssertNotNil(ChallengeAction(data: [.UInt(HistoryItem.HIType.challengeAction.rawValue), "Alice", .Bool(false), "Bob", .Int(1)]))
+        XCTAssertNotNil(ChallengeAction(data: [.uint(HistoryItem.HIType.challengeAction.rawValue), "Alice", .bool(false), "Bob", .int(1)]))
 
         XCTAssertNil(ChallengeAction(data: [
-            .UInt(HistoryItem.HIType.invalid.rawValue),
-            .String("Alice"),
-            .Bool(true),
-            .String("Bob"),
-            .Int(0)
+            .uint(HistoryItem.HIType.invalid.rawValue),
+            .string("Alice"),
+            .bool(true),
+            .string("Bob"),
+            .int(0)
             ]))
     }
 }

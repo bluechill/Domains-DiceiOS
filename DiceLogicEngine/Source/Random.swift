@@ -9,11 +9,11 @@
 import Foundation
 import GameplayKit
 
-enum Random
+public enum Random
 {
-    static var random = Random.newGenerator(0)
+    public static var random = Random.newGenerator(0)
 
-    static func newGenerator(_ seed: UInt64) -> GKShuffledDistribution
+    public static func newGenerator(_ seed: UInt64) -> GKShuffledDistribution
     {
         return GKShuffledDistribution(randomSource: GKMersenneTwisterRandomSource(seed: seed),
                                       lowestValue: 1,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cEf-wj-GOj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cEf-wj-GOj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -70,7 +70,7 @@
                                         <rect key="frame" x="0.0" y="21" width="343" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edu-PS-N1z" id="xMy-fq-WoG">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="115.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxU-O0-xSn" customClass="DieView" customModule="UM_Liars_Dice" customModuleProvider="target">
@@ -584,7 +584,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Dv-Jr9">
-                                <rect key="frame" x="112.5" y="365.5" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="364.5" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fRq-JM-DSn"/>
                                     <constraint firstAttribute="width" constant="150" id="jcN-lb-Rn8"/>
@@ -598,7 +598,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-D8-ch8">
-                                <rect key="frame" x="112.5" y="466" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="465" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="HqV-mm-tgm"/>
                                     <constraint firstAttribute="height" constant="44" id="Yi5-it-k6w"/>
@@ -612,7 +612,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-sR-RaI">
-                                <rect key="frame" x="112.5" y="567" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="566" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7Jq-z7-20z"/>
                                     <constraint firstAttribute="width" constant="150" id="dXD-ks-3K5"/>
@@ -633,35 +633,35 @@ Current Turn: You</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of5-DE-ga9">
-                                <rect key="frame" x="112.5" y="308.5" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="307.5" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="YdT-qt-ATN"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EeX-78-zkJ">
-                                <rect key="frame" x="112.5" y="206.5" width="150" height="58"/>
+                                <rect key="frame" x="112.5" y="206.5" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ok8-iY-dEq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-jd-qUc">
-                                <rect key="frame" x="112.5" y="409.5" width="150" height="56.5"/>
+                                <rect key="frame" x="112.5" y="408.5" width="150" height="56.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="5XM-At-NbR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if9-Pu-c9w">
-                                <rect key="frame" x="112.5" y="510" width="150" height="57"/>
+                                <rect key="frame" x="112.5" y="509" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="9Zd-gs-2Bo"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIf-XA-YSE">
-                                <rect key="frame" x="112.5" y="611" width="150" height="56"/>
+                                <rect key="frame" x="112.5" y="610" width="150" height="57"/>
                                 <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Yix-K6-JXB"/>
@@ -684,7 +684,7 @@ Current Turn: You</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68e-I8-ZHg">
-                                <rect key="frame" x="112.5" y="264.5" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="263.5" width="150" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="LK9-5Z-APE"/>
                                     <constraint firstAttribute="height" constant="44" id="Oe2-bD-HiQ"/>
@@ -841,12 +841,44 @@ Current Turn: You</string>
                     <view key="view" contentMode="scaleToFill" id="dq2-aP-Y22">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soar Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WzA-Qp-ebX">
+                                <rect key="frame" x="133" y="72" width="108" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aby-Lx-0ky">
+                                <rect key="frame" x="28" y="101" width="319" height="29"/>
+                                <segments>
+                                    <segment title="Easy"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Hard"/>
+                                    <segment title="Harder"/>
+                                    <segment title="Hardest"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedDifficulty:" destination="aUj-Z7-Bea" eventType="valueChanged" id="zFv-HH-yuZ"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.1529411765" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aby-Lx-0ky" firstAttribute="centerX" secondItem="dq2-aP-Y22" secondAttribute="centerX" id="2aU-xE-VXh"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="aby-Lx-0ky" secondAttribute="trailing" id="CLp-T3-oSz"/>
+                            <constraint firstItem="WzA-Qp-ebX" firstAttribute="top" secondItem="1g5-a4-hJE" secondAttribute="bottom" constant="8" id="TuD-Fg-7Y3"/>
+                            <constraint firstItem="WzA-Qp-ebX" firstAttribute="centerX" secondItem="dq2-aP-Y22" secondAttribute="centerX" id="drt-Fg-I3a"/>
+                            <constraint firstItem="aby-Lx-0ky" firstAttribute="top" secondItem="WzA-Qp-ebX" secondAttribute="bottom" constant="8" id="uvp-sW-DRw"/>
+                            <constraint firstItem="aby-Lx-0ky" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dq2-aP-Y22" secondAttribute="leadingMargin" id="wKd-iM-poc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="difficulty" destination="aby-Lx-0ky" id="0JB-1Z-Teq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ouy-Kc-mLm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1629" y="1870"/>
+            <point key="canvasLocation" x="1628" y="1869.7151424287858"/>
         </scene>
         <!--New Game-->
         <scene sceneID="Wol-sD-5jh">
@@ -949,7 +981,7 @@ Current Turn: You</string>
                                         <rect key="frame" x="0.0" y="28" width="343" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fe-ch-aXy" id="6po-Dc-okp">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-Wu-VRY">
