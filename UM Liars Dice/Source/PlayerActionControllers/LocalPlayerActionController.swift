@@ -343,6 +343,30 @@ class LocalPlayerActionController: PlayerActionController
         return dice.filter({ isPushed(die: $0!) }).map{ $0!.face }
     }
 
+    func newPushedDice() -> [UInt]
+    {
+        var potentialDice = self.pushedDice()
+        var stateDice = self.player.dice.filter({ $0.pushed == true }).map({ $0.face })
+
+        var i = 0
+        while i < stateDice.count
+        {
+            let face = stateDice[i]
+
+            if let ix = potentialDice.index(of: face)
+            {
+                potentialDice.remove(at: ix)
+                stateDice.remove(at: i)
+            }
+            else
+            {
+                i += 1
+            }
+        }
+
+        return potentialDice
+    }
+
     func bid()
     {
         let count: UInt = 40 - UInt(playerController.countPicker.getSelectedIndex())
@@ -360,7 +384,7 @@ class LocalPlayerActionController: PlayerActionController
         controller.setValue(msg, forKey: "attributedMessage")
 
         controller.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: { (_: UIAlertAction) in
-            self.player.bid(count, face: face, pushDice: self.pushedDice())
+            self.player.bid(count, face: face, pushDice: self.newPushedDice())
         }))
 
         controller.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { (_ : UIAlertAction) in

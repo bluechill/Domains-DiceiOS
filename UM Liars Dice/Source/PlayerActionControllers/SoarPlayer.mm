@@ -302,7 +302,7 @@ void printEvent(sml::smlPrintEventId eventID, void* pUserData, sml::Agent* pAgen
                     {
                         ChallengeAction* challengeAction = (ChallengeAction*)action;
 
-                        HistoryAction* actionChallenged = (HistoryAction*)[engine.currentRoundHistory objectAtIndex:(NSUInteger)challengeAction.challengeActionIndex];
+                        HistoryAction* actionChallenged = (HistoryAction*)[round objectAtIndex:(NSUInteger)challengeAction.challengeActionIndex];
 
                         if ([actionChallenged isKindOfClass:BidAction.class])
                             idH->CreateStringWME("action", "challenge_bid");

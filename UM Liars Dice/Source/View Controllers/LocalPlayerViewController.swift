@@ -172,7 +172,8 @@ class LocalPlayerViewController: UIViewController, ScrollPickerViewDataSource, S
         localPlayerActionController.push(die: Int(sender.face))
 
         var animation = {}
-        let state = localPlayerActionController.player.canPushDice(localPlayerActionController.pushedDice())
+
+        let state = localPlayerActionController.player.canPushDice(localPlayerActionController.newPushedDice())
 
         if state && (!bidButton.isEnabled || !passButton.isEnabled)
         {
